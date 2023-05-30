@@ -1,0 +1,21 @@
+class CreateUsers < ActiveRecord::Migration[7.0]
+  def change
+    create_table :users do |t|
+      t.string :email, null: false, index: {unique: true}
+      t.string :fname, null: false
+      t.string :lname, null: false
+      t.string :profile_url, index: {unique: true}
+      t.string :headline
+      t.string :pronouns
+      t.text :about
+      t.string :location_country_region, null: false
+      t.string :location_postal_code
+      t.string :location_city, null: false
+      t.string :session_token, null: false, index: {unique: true}
+      t.string :password_digest, null: false
+
+      t.timestamps
+    end
+
+  end
+end
