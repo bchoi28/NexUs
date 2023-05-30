@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+}
