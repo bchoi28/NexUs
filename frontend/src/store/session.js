@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { receiveSessionErrors } from './errors';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -19,19 +20,32 @@ export const removeSession = () => {
 
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
+    const payload = { user: user }
+    // debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
-        body: JSON.stringify(user)
+        body: JSON.stringify(payload)
     });
+    // debugger
 
     if (res.ok) {
         const data = await res.json();
         storeCurrentUser(data.user);
         dispatch(setSession(data.user));
-    } //else {
-    //     throw res;
-    // const errorMessage = 'Custom error message goes here';
-    // throw new Error(errorMessage);
+    } else {
+        const data = await res.json();
+        dispatch(receiveSessionErrors(data.errors))
+    }
+
+
+    // if (res.ok) {
+    //     const data = await res.json();
+    //     storeCurrentUser(data.user);
+    //     dispatch(setSession(data.user));
+    // } else {
+    //     const data = await res.json();
+    //     dispatch(receiveSessionErrors(data.errors))
+    // }
 
     return res;
 }

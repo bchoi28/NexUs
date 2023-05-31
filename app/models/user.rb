@@ -23,6 +23,41 @@ class User < ApplicationRecord
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user&.authenticate(password)
+        nil
+    end
+
+    def self.login_errors(params) 
+        errors = {
+            email: nil,
+            password: nil
+        }
+        # debugger
+        email = params[:email]
+        password = params[:password]
+
+        # email check
+        if email.empty?
+            errors[:email] = 'Please enter an email address'
+        elsif email && !email.match(URI::MailTo::EMAIL_REGEXP)
+            errors[:email] = 'Please enter a valid email address'
+        end
+
+        # password check
+        if password.empty?
+            errors[:password] = 'Please enter a password'
+        elsif password && password.length < 6
+            errors[:password] = 'The password you provided must have at least 6 characters.'
+        end
+        
+        if errors.values.all?(nil)
+            if User.find_by(email: email)
+                errors[:password] =  'That\'s not the right password. Please try again.'
+            else
+                errors[:email] = 'Couldn\'t find a NexUs account associated with this email. Please try again.'
+            end
+        end
+
+        return errors
     end
 
     def reset_session_token!
