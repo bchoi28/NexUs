@@ -78,6 +78,50 @@ button {
     cursor: pointer;
 }
 
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    width: 100%;
+    padding: 0 10px;
+    outline: 0;
+    vertical-align: middle;
+    margin: 0em;
+}
+
+input[type="text"],
+input[type="password"] {
+    /* font-size: 1.4rem;
+    line-height: 1.42857;
+    font-weight: 400;
+    -webkit-transition-duration: 334ms;
+    transition-duration: 334ms;
+    -webkit-transition-property: border-color, -webkit-box-shadow;
+    transition-property: border-color, -webkit-box-shadow;
+    transition-property: border-color, box-shadow;
+    transition-property: border-color, box-shadow, -webkit-box-shadow;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 0 10px;
+    width: 100%;
+    outline: 0;
+    height: 32px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.9); */
+}
+
+
 blockquote,
 q {
     quotes: none;

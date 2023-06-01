@@ -1,0 +1,118 @@
+.signin-form-container {
+    width: 352px;
+    width: 352px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    border-radius: 8px;
+    margin: 0 auto;
+    background: var(--color-background-container, #fff);
+}
+
+.signin-form-heading {
+    font-size: 34px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+    padding: 0 0 4px 0;
+}
+
+.signin-form-subheading {
+    font-size: .9rem;
+    line-height: 1.42857;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.signin-form {
+    margin: auto;
+    position: relative
+}
+
+.signin-form-text-input-div {
+    margin-top: 24px;
+    position: relative;
+    background-color: var(--color-input-container);
+    border-color: var(--color-input-container-border);
+    color: var(--color-input-value);
+    border-radius: 4px;
+    transition-duration: 334ms;
+    box-shadow: none;
+}
+
+.signin-form-text-input {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 1;
+    height: 52px;
+    padding: 28px 12px 6px;
+    border-radius: 4px !important;
+    transition-duration: 334ms;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    width: 100%;
+    outline: 0;
+    background-color: transparent;
+}
+
+.floating-label {
+    font-size: 24px;
+    line-height: 1.33333;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: -3px;
+    left: 0;
+    padding: 14px 0 0 12px;
+    margin: 0;
+    transition: .2s all;
+}
+
+.floating-label.focused {
+    top: -7px;
+    font-size: 12px;
+}
+
+.signin-page-btn {
+    position: relative;
+    top: 3px;
+}
+
+.signin-page-form-divider {
+    padding-bottom: 22px;
+    padding-top: 16px;
+}
+
+.signin-demo-btn {
+    height: min-content;
+    min-height: 48px;
+    border-radius: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration-line: none;
+    text-decoration: none;
+
+    font-weight: 400;
+    margin-bottom: 10px;
+    width: 100%;
+    align-self: center;
+    border: 1px solid #dadce0;
+    background-color: transparent;
+    color: #3c4043;
+    font-size: 14px;
+    transition: background-color .218s, border-color .218s;
+}
+
+.signin-demo-btn:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-emphasis-border);
+    background-color: var(--color-button-container-secondary-emphasis-hover);
+    color: var(--color-button-label-secondary-emphasis-hover);
+}

@@ -21,7 +21,7 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    debugger
+    // debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)

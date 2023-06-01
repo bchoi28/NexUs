@@ -1,0 +1,72 @@
+.signin-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff;
+
+}
+
+.signin-page-header {
+    display: block;
+}
+
+.signin-page-main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+
+}
+
+.signin-nav-logo {
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -1px;
+    font-size: 29px;
+    font-weight: 200;
+    margin: 32px 0 0 56px;
+}
+
+.signin-page-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.signin-page-join-btn {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    box-sizing: border-box;
+    color: #0073b1;
+    font-size: 20px;
+    font-weight: 600;
+    /* height: 32px; */
+    /* line-height: 32px; */
+    overflow: hidden;
+    outline-width: 2px;
+    /* padding: 5px 9px; */
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 167ms;
+    transition-property: background-color, color, -webkit-box-shadow;
+    transition-property: background-color, box-shadow, color;
+    transition-property: background-color, box-shadow, color, -webkit-box-shadow;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    vertical-align: middle;
+    z-index: 0;
+    color: var(--color-action, #0a66c2) !important;
+    border-radius: 28px !important;
+    position: relative;
+    display: inline-block
+}
+
+.signin-page-join-btn:hover {
+    text-decoration: underline;
+    background-color: rgba(152, 216, 244, 0.45);
+}

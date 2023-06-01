@@ -17,6 +17,9 @@ const SignInForm = () => {
     const [emailError, passwordError] = errors ?? [];
     // debugger
 
+    const [emailFocused, setEmailFocused] = useState(false);
+    const [passwordFocused, setPasswordFocused] = useState(false);
+
     const handleEmail = (e) => {
         setEmail(e.target.value)
     };
@@ -42,52 +45,69 @@ const SignInForm = () => {
         e.preventDefault();
         // debugger
         dispatch(loginUser({ email, password }))
-        // .catch(async (res) => {
-        //     let data;
-        //     debugger
-        //     try {
-        //         // .clone() essentially allows you to read the response body twice
-        //         data = await res.clone().json();
-        //     } catch {
-        //         data = await res.text(); // Will hit this case if the server is down
-        //     }
-        //     if (data?.errors) dispatch(receiveSessionErrors(data.errors))
-        // });
-
-        // const currentUser = sessionStorage.getItem('currentUser')
-        // if (currentUser) {
-        //     return <Redirect to='' />
-        // }
-
-        // if (!errors) {
-        //     history.push('/feed');
-        // }
-
     }
 
-    const handleJoin = () => {
-        history.push('/signup')
+    const handleDemo = (e) => {
+        e.preventDefault();
+        dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
     }
 
     return (
-        <>
-            <form className='sign-in-form' onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input id="email" type="text" value={email} onChange={handleEmail} />
-                {emailError && emailError.length !== 0 && <div>{emailError}</div>}
-                <label htmlFor="password">Password</label>
-                <input id="password" type="password" value={password} onChange={handlePassword} />
-                {passwordError && passwordError.length !== 0 && <div>{passwordError}</div>}
-                {/* <Link>Forgot Password?</Link> */}
-                <button type='submit'>Sign in</button>
+        <div className='signin-form-container'>
+            <div className='signin-form-heading'>Sign in</div>
+            <div className='signin-form-subheading'>Stay updated on your professional world</div>
+            <form className='signin-form' onSubmit={handleSubmit}>
+
+                <div className='signin-form-text-input-div'>
+                    <input
+                        className='signin-form-text-input'
+                        id="email"
+                        type="text"
+                        value={email}
+                        onFocus={() => setEmailFocused(true)}
+                        onBlur={() => setEmailFocused(false)}
+                        onChange={handleEmail} />
+                    <label
+                        className={`floating-label ${email || emailFocused ? 'focused' : ''}`}
+                        htmlFor="email">
+                        Email
+                    </label>
+                </div>
+                <p className='input-helper'>
+                    {emailError && emailError.length !== 0 && <div>{emailError}</div>}
+                </p>
+
+                <div className='signin-form-text-input-div' >
+                    <input
+                        className='signin-form-text-input'
+                        id="password"
+                        type="password"
+                        value={password}
+                        onFocus={() => setPasswordFocused(true)}
+                        onBlur={() => setPasswordFocused(false)}
+                        onChange={handlePassword} />
+                    <label
+                        className={`floating-label ${email || passwordFocused ? 'focused' : ''}`}
+                        htmlFor="password">
+                        Password
+                    </label>
+                </div>
+                <p className='input-helper'>
+                    {passwordError && passwordError.length !== 0 && <div>{passwordError}</div>}
+                </p>
+
+                <button type='submit' className='btn-primary signin-btn btn-md signin-page-btn'>Sign in</button>
             </form>
-            <div className='sign-in-form-divider'>
-                <p>or</p>
+
+            <div className='signin-page-form-divider left-right-divider'>
+                <p className='signin-form-divider-text'>or</p>
             </div>
-            <button className='join-now-button' onClick={handleJoin}>
-                New to NexUs? Join now
+
+            <button className='signin-demo-btn' onClick={handleDemo}>
+                Sign in as demo user
             </button>
-        </>
+
+        </div>
     )
 }
 

@@ -1,4 +1,4 @@
-.signin-form-container {
+.splash-signin-form-container {
     display: flex;
     flex-direction: column;
     margin-top: 24px;
@@ -6,7 +6,7 @@
     width: 408px;
 }
 
-.signin-form {
+.splash-signin-form {
     display: flex;
     flex-direction: column;
 
@@ -29,7 +29,6 @@
 .signin-form-divider {
     padding-bottom: 24px;
     padding-top: 16px;
-
 }
 
 .signin-form-divider-text {

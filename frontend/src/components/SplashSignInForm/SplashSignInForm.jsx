@@ -42,7 +42,7 @@ const SplashSignInForm = () => {
         e.preventDefault();
         // debugger
         dispatch(loginUser({ email, password }))
-        debugger
+        // debugger
 
     }
 
@@ -58,8 +58,8 @@ const SplashSignInForm = () => {
 
     return (
         <>
-            <div className='signin-form-container'>
-                <form className='signin-form' onSubmit={handleSubmit}>
+            <div className='splash-signin-form-container'>
+                <form className='splash-signin-form' onSubmit={handleSubmit}>
 
                     <label className='input-label' htmlFor="email">Email</label>
                     <div className='text-input-div'>
