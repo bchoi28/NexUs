@@ -16,15 +16,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_135425) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "fname", null: false
-    t.string "lname", null: false
+    t.string "fname"
+    t.string "lname"
     t.string "profile_url"
     t.string "headline"
     t.string "pronouns"
     t.text "about"
-    t.string "location_country_region", null: false
+    t.string "location_country_region"
     t.string "location_postal_code"
-    t.string "location_city", null: false
+    t.string "location_city"
     t.string "session_token", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false

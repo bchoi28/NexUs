@@ -1,21 +1,43 @@
-import SignInForm from "../SignInForm";
-import NavBar from "./NavBar";
+import SplashSignInForm from "../SplashSignInForm";
+import SplashNavBar from "./SplashNavBar";
+import './SplashPage.css';
+import splashImage from '../../images/splash.svg';
+import spaceImage from '../../images/space.jpg';
+import { useState } from "react";
 
 const SplashPage = () => {
 
+    const [showSpace, setShowSpace] = useState(false);
+
+    const toggleSpace = (e) => {
+        setShowSpace(prevState => !prevState)
+    };
+
     return (
         <>
-            <NavBar />
-            <section className="main">
-                <div>
-                    <h1>Welcome to your intergalactic community</h1>
-                    <SignInForm />
+            <nav className="splash-nav-container">
+                <SplashNavBar />
+            </nav>
+            <div className="splash-main-container">
+                <div className="splash-page-section-1">
+                    <div className="splash-page-section-1-left">
+                        <h1 className="splash-title-1">
+                            Welcome to your
+                            <span className="toggle-space" onMouseEnter={toggleSpace} onMouseLeave={toggleSpace}>
+                                {showSpace ? ' intergalactic ' : ' professional '}
+                            </span>
+                            community
+                        </h1>
+                        <SplashSignInForm />
+                    </div>
+                    <div className="splash-page-section-1-right">
+                        <img
+                            className="splash-image"
+                            src={splashImage}
+                            alt="Welcome to your professional community" />
+                    </div>
                 </div>
-                <div>
-                    {/* <img></img> */}
-                    <div>Img here</div>
-                </div>
-            </section>
+            </div>
         </>
     )
 }

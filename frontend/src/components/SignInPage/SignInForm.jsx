@@ -1,14 +1,14 @@
 import './SignInForm.css'
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { removeSessionErrors } from '../../store/errors';
 
 const SignInForm = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,13 +25,18 @@ const SignInForm = () => {
     };
 
     useEffect(() => {
-        // debugger
-        if (errors && errors.length !== 0) dispatch(removeSessionErrors());
 
         return () => {
-            if (errors && errors.length !== 0) dispatch(removeSessionErrors())
+            // debugger
+            dispatch(removeSessionErrors());
+            // debugger
         }
     }, [])
+
+    if (sessionStorage.getItem('currentUser')) {
+        history.push('/feed')
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -48,6 +53,20 @@ const SignInForm = () => {
         //     }
         //     if (data?.errors) dispatch(receiveSessionErrors(data.errors))
         // });
+
+        // const currentUser = sessionStorage.getItem('currentUser')
+        // if (currentUser) {
+        //     return <Redirect to='' />
+        // }
+
+        // if (!errors) {
+        //     history.push('/feed');
+        // }
+
+    }
+
+    const handleJoin = () => {
+        history.push('/signup')
     }
 
     return (
@@ -65,8 +84,8 @@ const SignInForm = () => {
             <div className='sign-in-form-divider'>
                 <p>or</p>
             </div>
-            <button className='join-now-button'>
-                <Link>New to NexUs? Join now</Link>
+            <button className='join-now-button' onClick={handleJoin}>
+                New to NexUs? Join now
             </button>
         </>
     )

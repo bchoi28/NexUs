@@ -4,10 +4,10 @@
 export const RECEIVE_SESSION_ERRORS = 'session/RECEIVE_SESSION_ERRORS';
 export const REMOVE_SESSION_ERRORS = 'session/REMOVE_SESSION_ERRORS';
 
-export const receiveSessionErrors = ({ email, password }) => {
+export const receiveSessionErrors = (errors) => {
     return {
         type: RECEIVE_SESSION_ERRORS,
-        email, password
+        errors
     }
 }
 export const removeSessionErrors = () => {
@@ -19,13 +19,14 @@ export const removeSessionErrors = () => {
 
 const initialState = {};
 const errorsReducer = (state = initialState, action) => {
-    const newState = { ...state };
+    // const newState = { ...state };
     // debugger
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
-            return { ...newState, email: action.email, password: action.password }
+            return action.errors
         case REMOVE_SESSION_ERRORS:
-            return { ...newState }
+            // debugger
+            return {}
         default:
             return state;
     }

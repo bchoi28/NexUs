@@ -21,7 +21,7 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    // debugger
+    debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
@@ -33,8 +33,10 @@ export const loginUser = (user) => async (dispatch) => {
         storeCurrentUser(data.user);
         dispatch(setSession(data.user));
     } else {
+        // debugger
         const data = await res.json();
         dispatch(receiveSessionErrors(data.errors))
+        // receiveSessionErrors(['error', null]) receives an array of errors
     }
 
 
@@ -62,19 +64,26 @@ export const logoutUser = () => async (dispatch) => {
 }
 
 export const signup = (user) => async (dispatch) => {
+
+    const payload = { user: user }
     const res = await csrfFetch('/api/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(payload)
     })
-
+    // debugger
     if (res.ok) {
         const data = await res.json();
         storeCurrentUser(data.user);
         dispatch(setSession(data.user));
-    };
+    } else {
+        const data = await res.json();
+        // debugger
+        // data.errors => ex.['Email Please enter a valid email address.', 'error2']
+        dispatch(receiveSessionErrors(data.errors))
+    }
 
     return res;
 }

@@ -2,13 +2,13 @@ class User < ApplicationRecord
     has_secure_password
 
     validates :email, 
-        uniqueness: { message: 'is already taken' },
-        length: { in: 6..255, message: 'must be between 6 and 255 characters' },
-        format: { with: URI::MailTo::EMAIL_REGEXP, message: 'is not a valid email address' }
+        uniqueness: { message: 'Someone\'s already using that email.' },
+        length: { in: 6..255, message: 'Email must be 6 characters or more' },
+        format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Please enter a valid email address.' }
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
-    validates :fname, :lname, :location_country_region, :location_city, presence: true
-    validates :profile_url, uniqueness: true
+    # validates :fname, :lname, :location_country_region, :location_city, presence: true
+    # validates :profile_url, uniqueness: true
   
     before_validation :ensure_session_token
 
@@ -23,7 +23,7 @@ class User < ApplicationRecord
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user&.authenticate(password)
-        nil
+        # nil
     end
 
     def self.login_errors(params) 
@@ -57,7 +57,9 @@ class User < ApplicationRecord
             end
         end
 
-        return errors
+        # returns an array of values => ex.['error', nil]
+        # debugger
+        return errors.values
     end
 
     def reset_session_token!

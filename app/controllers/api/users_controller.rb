@@ -6,9 +6,17 @@ class Api::UsersController < ApplicationController
             
         if @user.save
             login!(@user)
-        render :show
+        render 'api/users/show'
+        # render :show
         else
-            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+            # debugger
+            # { errors: ['error1', 'error2'] } 
+            # - check if 'error' contains "Email" as first word
+            errors = @user.errors.full_messages.map do |error|
+                error.start_with?("Email ") ? error.gsub(/^Email\s/, '') : error
+            end
+            # debugger
+            render json: { errors: errors }, status: 422
         end
     end
 

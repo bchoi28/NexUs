@@ -1,0 +1,8 @@
+.signup-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-subtitle {
+    margin: auto;
+}

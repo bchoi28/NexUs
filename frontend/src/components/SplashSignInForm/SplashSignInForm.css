@@ -1,0 +1,65 @@
+.signin-form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 0px;
+    width: 408px;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.signin-btn {
+    cursor: pointer;
+    flex-shrink: 0;
+    max-width: 400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-decoration-line: none;
+
+    border: 1px solid transparent;
+}
+
+.signin-form-divider {
+    padding-bottom: 24px;
+    padding-top: 16px;
+
+}
+
+.signin-form-divider-text {
+    color: var(--color-text);
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.demo-btn {
+    font-weight: 400;
+    margin-bottom: 14px;
+    width: 400px;
+    align-self: center;
+    border: 1px solid #dadce0;
+    background-color: transparent;
+    color: #3c4043;
+    font-size: 14px;
+    transition: background-color .218s, border-color .218s;
+}
+
+.demo-btn:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-emphasis-border);
+    background-color: var(--color-button-container-secondary-emphasis-hover);
+    color: var(--color-button-label-secondary-emphasis-hover);
+}
+
+.join-now-btn {
+    width: 408px;
+    display: block;
+    margin-bottom: 24px;
+
+}

@@ -1,1 +1,214 @@
 /* TODO Add site wide styles */
+
+:root {
+    --primary-font: -apple-system,
+        system-ui,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Helvetica Neue,
+        Fira Sans,
+        Ubuntu,
+        Oxygen,
+        Oxygen Sans,
+        Cantarell,
+        Droid Sans,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol,
+        Lucida Grande,
+        Helvetica,
+        Arial,
+        sans-serif;
+    --primary-color: #2867B2;
+
+    --color-input-value: rgba(0, 0, 0, 0.9);
+    --color-input-helper: rgba(0, 0, 0, 0.6);
+    --color-input-label: rgba(0, 0, 0, 0.75);
+    --color-input-container: rgba(0, 0, 0, 0);
+    --color-input-container-hover: rgba(0, 0, 0, 0.04);
+    --color-input-container-border: rgba(0, 0, 0, 0.75);
+    --color-input-container-border-hover: rgba(0, 0, 0, 0.9);
+    --color-input-container-border-hover: rgba(0, 0, 0, 0.9);
+
+    --color-button-container-primary: #0a66c2;
+    --color-button-container-primary-active: #004182;
+    --color-button-container-primary-border: rgba(0, 0, 0, 0);
+    --color-button-container-primary-hover: #004182;
+    --color-button-container-primary-border-hover: #004182;
+
+    --color-button-container-secondary: rgba(0, 0, 0, 0);
+    --color-button-container-secondary-border: rgba(0, 0, 0, 0.75);
+    --color-button-container-secondary-emphasis-border: #0a66c2;
+    --color-button-container-secondary-hover: rgba(0, 0, 0, 0.04);
+    --color-button-container-secondary-emphasis: rgba(0, 0, 0, 0);
+    --color-button-container-secondary-emphasis-hover: rgba(112, 181, 249, 0.1);
+
+    --color-button-label-secondary: rgba(0, 0, 0, 0.75);
+    --color-button-label-secondary-hover: rgba(0, 0, 0, 0.9);
+    --color-button-label-secondary-emphasis-hover: #004182;
+
+    --color-button-label-primary: #ffffff;
+    --color-button-label-primary-hover: #ffffff;
+    --color-button-label-primary-active: rgba(255, 255, 255, 0.6);
+    --color-button-label-secondary-emphasis: #0a66c2;
+
+    --color-button-container-tertiary-border: rgba(0, 0, 0, 0);
+    --color-button-container-tertiary: rgba(0, 0, 0, 0);
+    --color-button-label-tertiary: rgba(0, 0, 0, 0.75);
+    --color-button-container-tertiary-hover: rgba(0, 0, 0, 0.04);
+    --color-button-label-tertiary-hover: rgba(0, 0, 0, 0.9);
+
+    --font-weight-light: 200;
+    --font-weight-normal: 400;
+    --font-weight-bold: 600;
+
+    --reset-font-black: rgba(0, 0, 0, 0.9);
+
+    --color-text: rgba(0, 0, 0, 0.9);
+    --color-text-accent-2: #8f5849;
+
+    --content: ''
+}
+
+body {
+    font-family: var(--primary-font);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+    color: var(--reset-font-black);
+    background-color: transparent;
+}
+
+.btn-primary {
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    background-color: var(--color-button-container-primary);
+    color: var(--color-button-label-primary);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    background-color: var(--color-button-container-primary-hover);
+    color: var(--color-button-label-primary-hover);
+}
+
+.btn-primary:active {
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    background-color: var(--color-button-container-primary-active);
+    color: var(--color-button-label-primary-active);
+}
+
+.btn-secondary {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-border);
+    background-color: var(--color-button-container-secondary);
+    color: var(--color-button-label-secondary);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-border);
+    background-color: var(--color-button-container-secondary-hover);
+    color: var(--color-button-label-secondary-hover);
+}
+
+.btn-secondary-emphasis {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-emphasis-border);
+    background-color: var(--color-button-container-secondary-emphasis);
+    color: var(--color-button-label-secondary-emphasis);
+}
+
+.btn-secondary-emphasis:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-secondary-emphasis-border);
+    background-color: var(--color-button-container-secondary-emphasis-hover);
+    color: var(--color-button-label-secondary-emphasis-hover);
+}
+
+.btn-tertiary {
+    box-shadow: 0 0 0 1px var(--color-button-container-tertiary-border);
+    background-color: var(--color-button-container-tertiary);
+    color: var(--color-button-label-tertiary);
+}
+
+.btn-tertiary:hover {
+    box-shadow: 0 0 0 1px var(--color-button-container-tertiary-border);
+    background-color: var(--color-button-container-tertiary-hover);
+    color: var(--color-button-label-tertiary-hover);
+}
+
+.btn-md {
+    height: min-content;
+    min-height: 48px;
+    border-radius: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration-line: none;
+    text-decoration: none;
+}
+
+
+.input-label {
+    margin-bottom: 8px;
+    color: var(--color-input-label);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.text-input-div {
+    display: flex;
+    background-color: var(--color-input-container);
+    border-color: var(--color-input-container-border);
+    color: var(--color-input-value);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.text-input-div:hover {
+    background-color: var(--color-input-container-hover);
+    border-color: var(--color-input-container-border-hover);
+    box-shadow: 0 0 0 1px var(--color-input-container-border-hover);
+    border-width: 1px;
+}
+
+.text-input {
+    outline-width: 0px;
+    color: var(--color-text);
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    flex-grow: 1;
+    border: 1px solid transparent;
+    cursor: text;
+}
+
+
+.input-helper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--color-input-helper);
+    font-size: 18px;
+}
+
+.left-right-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.left-right-divider::before,
+.left-right-divider::after {
+    height: 1px;
+    width: auto;
+    flex-grow: 1;
+    background-color: rgb(0 0 0 / .35);
+    content: var(--content)
+}
