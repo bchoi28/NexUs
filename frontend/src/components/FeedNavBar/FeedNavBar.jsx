@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react';
-import './MainNavBar.css'
+import './FeedNavBar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store/session';
 
-const MainNavBar = () => {
+const FeedNavBar = () => {
 
     const dispatch = useDispatch();
 
@@ -46,4 +46,4 @@ const MainNavBar = () => {
     )
 }
 
-export default MainNavBar;
+export default FeedNavBar;

@@ -1,0 +1,38 @@
+.feed-page-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--color-background-canvas) !important;
+}
+
+.feed-navbar-container {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.feed-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin: -52px auto 0;
+    padding: 52px 0 0;
+    border: 1px solid black;
+    transition: opacity .2s;
+    color: rgba (0, 0, 0, 0.9);
+}
+
+.feed-left {
+    width: 25%;
+    border: 1px solid black;
+}
+
+.feed-middle {
+    width: 50%;
+    border: 1px solid black;
+    height: 500px
+}
+
+.feed-right {
+    width: 25%;
+    border: 1px solid black;
+}

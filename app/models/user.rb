@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                      :bigint           not null, primary key
+#  email                   :string           not null
+#  fname                   :string
+#  lname                   :string
+#  profile_url             :string
+#  headline                :string
+#  pronouns                :string
+#  about                   :text
+#  location_country_region :string
+#  location_postal_code    :string
+#  location_city           :string
+#  session_token           :string           not null
+#  password_digest         :string           not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#
 class User < ApplicationRecord
     has_secure_password
 
