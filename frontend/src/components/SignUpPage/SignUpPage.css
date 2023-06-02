@@ -1,8 +1,52 @@
-.signup-main {
+.signup-page-container {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-background-canvas);
 }
 
-.signup-subtitle {
-    margin: auto;
+.signup-page-header {
+    display: block
+}
+
+.signup-nav-logo {
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -1px;
+    font-size: 35px;
+    font-weight: 200;
+    margin: 32px 0 0 56px;
+    cursor: pointer
+}
+
+
+.signup-logo-us {
+    margin-left: 3px;
+    padding-left: 1.5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    letter-spacing: -1px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    font-size: 32px;
+    position: relative;
+    bottom: 1px
+}
+
+.signup-title {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    font-weight: 500;
+    font-size: 32px;
+
+}
+
+.signup-page-main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
 }

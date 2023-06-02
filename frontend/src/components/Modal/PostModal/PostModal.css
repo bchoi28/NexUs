@@ -1,0 +1,15 @@
+.post-modal-header {
+    display: flex;
+}
+
+.post-modal-user-pic {}
+
+.post-modal-user-name {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.post-modal-close {
+    margin-left: auto;
+}

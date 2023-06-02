@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    background-color: var(--color-background-canvas) !important;
+    background-color: var(--color-background-canvas);
 }
 
 .feed-navbar-container {
@@ -14,10 +14,9 @@
     display: flex;
     width: 100%;
     max-width: 100%;
-    margin: -52px auto 0;
+    margin: -0px auto 0;
     padding: 52px 0 0;
     border: 1px solid black;
-    transition: opacity .2s;
     color: rgba (0, 0, 0, 0.9);
 }
 

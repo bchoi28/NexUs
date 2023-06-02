@@ -1,4 +1,5 @@
 .signup-form {
+    width: 352px;
     display: flex;
     flex-direction: column;
     max-width: 400px;
@@ -6,22 +7,79 @@
     padding-left: 24px;
     padding-right: 24px;
     padding-top: 24px;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    background-color: #fff;
 }
 
-.email {
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
+.email,
 .password {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 5px 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    border-width: 1px;
+    border: 1px solid var(--color-input-container-border);
+    color: var(--color-input-label)
 }
 
-.signup-form-divider {
-    align-self: center;
+.email:hover,
+.password:hover {
+    background-color: var(--color-input-container-hover);
+    border-color: var(--color-input-container-border-hover);
+    box-shadow: 0 0 0 1px var(--color-input-container-border-hover);
+    border-width: 1px;
+}
+
+/* .password {
+    padding: 5px 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    border-width: 1px;
+    border: 1px solid var(--color-input-container-border);
+    color: var(--color-input-label)
+}
+
+
+.password:hover {
+    background-color: var(--color-input-container-hover);
+    border-color: var(--color-input-container-border-hover);
+    box-shadow: 0 0 0 1px var(--color-input-container-border-hover);
+    border-width: 1px;
+} */
+
+.signup-input-helper {
+    /* margin-top: 4px; */
+    position: relative;
+    top: -14px;
+    margin-bottom: 5px;
+    color: var(--color-input-helper);
+    font-size: 16px;
+}
+
+.signup-page-form-divider {
+    padding-bottom: 22px;
+    padding-top: 16px;
+}
+
+.signup-page-btn {
+    position: relative;
+    /* top: 10px; */
+    margin-top: 10px;
 }
 
 .link-to-signin {
     align-self: center;
+    margin-top: 5px;
+}
+
+.link-signin {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-signin:hover {
+    text-decoration: underline;
 }

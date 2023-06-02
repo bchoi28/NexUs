@@ -11,7 +11,7 @@ const FeedNavBar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
-        setDropdownOpen(true);
+        setDropdownOpen(prevState => setDropdownOpen(!prevState));
     }
 
     const handleLogout = () => {

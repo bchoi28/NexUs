@@ -4,10 +4,10 @@ import { receiveSessionErrors } from './errors';
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
 
-export const setSession = (user) => {
+export const setSession = ({ id, email, fname, lname }) => {
     return {
         type: SET_SESSION,
-        user
+        user: { id, email, fname, lname }
     };
 };
 
@@ -53,7 +53,7 @@ export const loginUser = (user) => async (dispatch) => {
 }
 
 export const logoutUser = () => async (dispatch) => {
-    const res = await csrfFetch('/api/session', {
+    await csrfFetch('/api/session', {
         method: 'DELETE'
     });
 
@@ -62,31 +62,32 @@ export const logoutUser = () => async (dispatch) => {
     dispatch(removeSession())
 
 }
+// i moved this to user.js
 
-export const signup = (user) => async (dispatch) => {
+// export const signup = (user) => async (dispatch) => {
 
-    const payload = { user: user }
-    const res = await csrfFetch('/api/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    // debugger
-    if (res.ok) {
-        const data = await res.json();
-        storeCurrentUser(data.user);
-        dispatch(setSession(data.user));
-    } else {
-        const data = await res.json();
-        // debugger
-        // data.errors => ex.['Email Please enter a valid email address.', 'error2']
-        dispatch(receiveSessionErrors(data.errors))
-    }
+//     const payload = { user: user }
+//     const res = await csrfFetch('/api/users', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(payload)
+//     })
+//     // debugger
+//     if (res.ok) {
+//         const data = await res.json();
+//         storeCurrentUser(data.user);
+//         dispatch(setSession(data.user));
+//     } else {
+//         const data = await res.json();
+//         // debugger
+//         // data.errors => ex.['Email Please enter a valid email address.', 'error2']
+//         dispatch(receiveSessionErrors(data.errors))
+//     }
 
-    return res;
-}
+//     return res;
+// }
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
@@ -103,9 +104,10 @@ const storeCSRFToken = (res) => {
     if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
 }
 
-const storeCurrentUser = (user) => {
+export const storeCurrentUser = (user) => {
     if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
     else sessionStorage.removeItem('currentUser');
+    // if you pass in null, it removes the key currentUser entirely
 }
 
 
