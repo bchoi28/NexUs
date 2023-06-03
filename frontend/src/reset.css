@@ -71,6 +71,10 @@ select {
     font: inherit;
 }
 
+textarea:focus {
+    outline: none
+}
+
 button {
     padding: 0;
     border: none;

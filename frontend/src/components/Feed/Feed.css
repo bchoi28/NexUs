@@ -8,14 +8,13 @@
 .feed-navbar-container {
     width: 100%;
     border: 1px solid black;
+    margin-bottom: 15px;
 }
 
 .feed-container {
     display: flex;
     width: 100%;
     max-width: 100%;
-    margin: -0px auto 0;
-    padding: 52px 0 0;
     border: 1px solid black;
     color: rgba (0, 0, 0, 0.9);
 }
@@ -30,6 +29,48 @@
     border: 1px solid black;
     height: 500px
 }
+
+.feed-post-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 0 15px;
+    border-radius: 12.8px;
+    background-color: #fff;
+    transition: box-shadow 83ms;
+    border: none;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08)
+}
+
+.feed-post-form-top {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.feed-create-post-button {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+    flex-grow: 1;
+    max-width: none;
+    display: flex;
+    justify-content: left;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 35px;
+
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: 167ms;
+    transition-property: background-color, box-shadow, color;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    min-height: 15px;
+    padding: 16px 22px;
+}
+
 
 .feed-right {
     width: 25%;
