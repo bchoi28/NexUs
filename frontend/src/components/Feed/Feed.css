@@ -18,15 +18,16 @@
     max-width: 100%;
     border: 1px solid black;
     color: rgba (0, 0, 0, 0.9);
+    justify-content: center;
 }
 
 .feed-left {
-    width: 25%;
+    width: 20%;
     border: 1px solid black;
 }
 
 .feed-middle {
-    width: 50%;
+    width: 46%;
     border: 1px solid black;
     height: 100%;
 }
@@ -74,7 +75,7 @@
 
 
 .feed-right {
-    width: 25%;
+    width: 21%;
     border: 1px solid black;
 }
 

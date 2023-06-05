@@ -1,10 +1,10 @@
 import './PostItem.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from '../../store/user';
+import { fetchUser, getUser } from '../../store/user';
 import { deletePost } from '../../store/post';
 
 const PostItem = ({ post }) => {
@@ -27,6 +27,16 @@ const PostItem = ({ post }) => {
     const currentUser = useSelector(getUser);
     const isCurrentUserPost = currentUser && currentUser.id === post.authorId;
 
+    useEffect(() => {
+        dispatch(fetchUser());
+    }, [])
+
+    if (!currentUser) {
+        return (
+            <div>Loading Post...</div>
+        )
+    }
+
     const handleDeletePost = (e) => {
         dispatch(deletePost(post.id))
     }
@@ -37,10 +47,11 @@ const PostItem = ({ post }) => {
             <header className='post-header'>
                 <img src="" alt="profile" />
                 <div className='post-names-headline'>
-                    <div>{post.author.fName} {post.author.lName}</div>
-                    <div>headline</div>
+                    <div className='post-author-names' >{post.author.fName} {post.author.lName}
+                        <span className="post-author-pronouns">({post.author.pronouns})</span>
+                    </div>
+                    <div className='post-author-headline' >{post.author.headline}</div>
                 </div>
-                <div>pronouns</div>
                 <div className='post-dropdown-container'>
                     {isCurrentUserPost &&
                         <button
@@ -51,11 +62,13 @@ const PostItem = ({ post }) => {
                     {dropDownOpen &&
                         <div className='post-dropdown-menu'>
                             <div
+                                className='post-delete-button'
                                 onClick={handleDeletePost}
                             >
                                 Delete Post
                             </div>
                             <div
+                                className='post-update-button'
                                 onClick={handleOpenModal}
                             >
                                 Update Post

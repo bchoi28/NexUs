@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password']
 
     def show
-        debugger
+        # debugger
         @user = User.find(params[:id])
         render :show
     end
@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         @user.image_url = '/Users/brandonchoi/Desktop/aA_projects/fs_project/NexUs/frontend/public/images/default-profile-image-circle.png'
-            debugger
+            # debugger
         if @user.save
             login!(@user)
         # render 'api/users/show'

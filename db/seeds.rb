@@ -20,10 +20,11 @@ ApplicationRecord.transaction do
   User.create!(
     email: 'demo@user.io', 
     password: 'password',
-    fname: 'demo',
-    lname: 'user',
-    image_url: '/Users/brandonchoi/Desktop/aA_projects/fs_project/NexUs/frontend/public/images/default-profile-image-circle.png',
+    fname: 'Demo',
+    lname: 'User',
+    # image_url: '',
     pronouns: 'He/Him',
+    headline: 'Founder @ Nexus | Software Engineer',
     location_country_region: 'USA',
     location_city: 'New York'
   )

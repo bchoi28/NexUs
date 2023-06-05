@@ -15,8 +15,7 @@ const SplashSignInForm = () => {
     // const [errors, setErrors] = useState([]);
     const errors = useSelector(state => Object.values(state.errors));
     const [emailError, passwordError] = errors ?? [];
-    debugger
-
+    // debugger
     const handleEmail = (e) => {
         setEmail(e.target.value)
     };
@@ -51,6 +50,11 @@ const SplashSignInForm = () => {
         e.preventDefault();
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
     }
+    // )
+    //     .then((res) => {
+    //         history.push('/feed')
+    //     })
+    // }
 
     const handleJoin = () => {
         dispatch(removeSessionErrors())

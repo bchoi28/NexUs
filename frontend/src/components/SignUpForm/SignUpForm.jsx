@@ -76,7 +76,7 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
             email: email,
             password: password
         }
-        debugger
+        // debugger
         onSubmit(userObjectStep1)
     }
 
@@ -88,6 +88,9 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
     const handleDemo = (e) => {
         e.preventDefault();
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
+            .then(() => {
+                history.push('/feed');
+            });
     }
 
     return (

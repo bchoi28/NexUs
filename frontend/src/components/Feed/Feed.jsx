@@ -11,6 +11,7 @@ import { getUser } from '../../store/user';
 import { fetchUser } from '../../store/user';
 
 const Feed = () => {
+    debugger
 
     const dispatch = useDispatch();
 
@@ -26,13 +27,13 @@ const Feed = () => {
     const user = useSelector(getUser);
 
     useEffect(() => {
-        debugger
+        // debugger
         const user = JSON.parse(sessionStorage.getItem('currentUser'));
         const userId = user.id;
         dispatch(fetchUser(userId));
     }, [])
 
-    debugger
+    // debugger
     return (
         <div className='feed-page-container'>
 
@@ -48,7 +49,7 @@ const Feed = () => {
                 <div className='feed-middle'>
                     <div className='feed-post-form-container'>
                         <div className='feed-post-form-top'>
-                            {user && <img src={user.imageUrl} alt="profile" />}
+                            {user && <img src='' alt="profile" />}
                             <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                             {modalIsOpen &&

@@ -1,6 +1,6 @@
 import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
-import { receiveUser } from './user';
+import { receiveUser, removeUser } from './user';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -27,22 +27,26 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    debugger
+    // debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
     });
-    debugger
+    // debugger
 
     if (res.ok) {
+        debugger
         const data = await res.json();
+        // right here it triggers a re-render 
+        // of my SplashSignInForm???
         dispatch(setSession(data.user));
         dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
-        debugger
-    } else {
         // debugger
+    } else {
+        debugger
         const data = await res.json();
+        debugger
         dispatch(receiveSessionErrors(data.errors))
         // receiveSessionErrors(['error', null]) receives an array of errors
     }
@@ -67,7 +71,9 @@ export const logoutUser = () => async (dispatch) => {
 
     storeCurrentUser(null);
     // sessionStorage.setItem('currentUser', null);
-    dispatch(removeSession())
+    dispatch(removeSession());
+    dispatch(removeUser());
+
 
 }
 // i moved this to user.js
@@ -99,7 +105,7 @@ export const logoutUser = () => async (dispatch) => {
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
-    debugger
+    // debugger
     storeCSRFToken(res);
     const data = await res.json()
     storeCurrentUser(data.user);
@@ -115,7 +121,7 @@ const storeCSRFToken = (res) => {
 }
 
 export const storeCurrentUser = (user) => {
-    debugger
+    // debugger
     if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
     else sessionStorage.removeItem('currentUser');
     // if you pass in null, it removes the key currentUser entirely

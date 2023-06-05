@@ -1,6 +1,26 @@
 .main-nav-container {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 8px 0 8px 0;
+    width: 100%;
+    margin: 0 20px 0 20px;
+}
+
+.left-main-nav {}
+
+.feed-nav-logo-us {
+    margin-left: 3px;
+    padding-left: 1.5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+    letter-spacing: -1px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    font-size: 32px;
+    position: relative;
+    bottom: 1px
 }
 
 .dropdown-menu {

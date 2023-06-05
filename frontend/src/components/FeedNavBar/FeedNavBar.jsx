@@ -3,10 +3,12 @@ import { useState } from 'react';
 import './FeedNavBar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store/session';
+import { useHistory } from 'react-router-dom';
 
 const FeedNavBar = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -18,12 +20,16 @@ const FeedNavBar = () => {
         dispatch(logoutUser());
     }
 
+    const handleLogo = () => {
+        history.push('/');
+    }
+
     return (
         <div className='main-nav-container'>
 
             <div className='left-main-nav'>
 
-                <NavLink to='/'>Logo</NavLink>
+                <div onClick={handleLogo} className='feed-nav-logo-us'>us</div>
 
             </div>
 
