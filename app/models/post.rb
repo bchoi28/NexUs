@@ -5,6 +5,7 @@
 #  id         :bigint           not null, primary key
 #  author_id  :bigint           not null
 #  body       :text             not null
+#  image_url  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

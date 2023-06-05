@@ -1,13 +1,19 @@
 import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
+import { receiveUser } from './user';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
 
-export const setSession = ({ id, email, fname, lname }) => {
+export const setSession = (userData) => {
+    let user = null;
+    if (userData) {
+        const { id, email, fName, lName } = userData;
+        user = { id, email, fName, lName };
+    }
     return {
         type: SET_SESSION,
-        user: { id, email, fname, lname }
+        user: user
     };
 };
 
@@ -21,17 +27,19 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    // debugger
+    debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
     });
-    // debugger
+    debugger
 
     if (res.ok) {
         const data = await res.json();
-        storeCurrentUser(data.user);
         dispatch(setSession(data.user));
+        dispatch(receiveUser(data.user));
+        storeCurrentUser(data.user);
+        debugger
     } else {
         // debugger
         const data = await res.json();
@@ -91,6 +99,7 @@ export const logoutUser = () => async (dispatch) => {
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
+    debugger
     storeCSRFToken(res);
     const data = await res.json()
     storeCurrentUser(data.user);
@@ -100,11 +109,13 @@ export const restoreSession = () => async (dispatch) => {
 
 // helper methods for restoreSession
 const storeCSRFToken = (res) => {
+    debugger
     const csrfToken = res.headers.get('X-CSRF-Token');
     if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
 }
 
 export const storeCurrentUser = (user) => {
+    debugger
     if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
     else sessionStorage.removeItem('currentUser');
     // if you pass in null, it removes the key currentUser entirely

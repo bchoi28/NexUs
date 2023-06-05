@@ -5,7 +5,7 @@ class Api::PostsController < ApplicationController
         @post.author_id = current_user.id
 
         if @post.save
-            render 'api/posts/create'
+            render :show
         else
             render json: @posts.errors.full_messages, status: 422
         end
@@ -13,14 +13,27 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.all
-        render 'api/posts/index'
+        if params[:user_id].present? 
+            user = User.find(params[:user_id])
+            @posts = user.posts.order(created_at: :desc)
+            # renders only that user's posts (recent at top)
+        else
+            @posts = Post.order(created_at: :desc)
+            # renders all of the posts (recent at top)
+        end
     end
+
+    # custom index to get all posts from one user
+    # def index_of_user
+    #     user = User.find(params[:user_id])
+    #     @posts = user.posts
+    #     render :index
+    # end
 
     def show
         @post = Post.find(params[:id])
         if @post
-            render 'api/posts/show'
+            render :show
         else
             render json: ['Post not found'], status: 404
         end
@@ -29,7 +42,7 @@ class Api::PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
         if @post && @post.update(post_params)
-            render 'api/posts/show'
+            render :show
         else
             render json: @post.errors.full_messages, status: 422
         end
@@ -38,7 +51,7 @@ class Api::PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         if @post && @post.destroy
-            render 'api/posts/show'
+            render :show
         else
             render json: ['Post could not be deleted'], status: 422
         end

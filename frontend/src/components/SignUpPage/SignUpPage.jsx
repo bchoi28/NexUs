@@ -21,13 +21,13 @@ const SignUpPage = () => {
     const [userObject, setUserObject] = useState({});
 
     const handleSignup = ({ email, password }) => {
-        debugger
+        // debugger
         setUserObject({ email, password });
         setFormStep(2);
     }
 
     const handleNameForm = async ({ fname, lname }) => {
-        debugger
+        // debugger
         // setUserObject({ ...userObject, fname, lname })
         const res = await dispatch(signupUser({ ...userObject, fname, lname }))
 
@@ -39,13 +39,13 @@ const SignUpPage = () => {
         }
     }
     useEffect(() => {
-        debugger
+        // debugger
         return () => {
             dispatch(removeSessionErrors())
         }
     }, [])
 
-    debugger
+    // debugger
     return (
         <div className='signup-page-container'>
             <header className='sigup-page-header'>

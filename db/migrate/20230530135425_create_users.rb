@@ -2,8 +2,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
       t.string :email, null: false, index: {unique: true}
-      t.string :fname
-      t.string :lname
+      t.string :fname, null: false
+      t.string :lname, null: false
       t.string :image_url
       t.string :profile_url, index: {unique: true}
       t.string :headline

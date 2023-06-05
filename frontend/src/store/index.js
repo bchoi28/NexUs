@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import errorsReducer from './errors';
 import userReducer from './user';
+import postsReducer from './post';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     user: userReducer,
+    posts: postsReducer,
     errors: errorsReducer
 });
 

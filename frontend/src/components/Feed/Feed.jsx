@@ -3,11 +3,16 @@ import FeedNavBar from '../FeedNavBar';
 import ProfileBadge from '../ProfileBadge';
 import PostIndex from '../PostIndex';
 import PostForm from '../PostForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from '../../store/user';
+import { fetchUser } from '../../store/user';
 
 const Feed = () => {
+
+    const dispatch = useDispatch();
 
     // we need to pass these 2 in wherever we render ModalContainer
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -18,6 +23,16 @@ const Feed = () => {
         setModalIsOpen(false);
     }
 
+    const user = useSelector(getUser);
+
+    useEffect(() => {
+        debugger
+        const user = JSON.parse(sessionStorage.getItem('currentUser'));
+        const userId = user.id;
+        dispatch(fetchUser(userId));
+    }, [])
+
+    debugger
     return (
         <div className='feed-page-container'>
 
@@ -27,13 +42,13 @@ const Feed = () => {
             <div className='feed-container'>
 
                 <div className='feed-left'>
-                    <ProfileBadge />
+                    {user ? <ProfileBadge /> : null}
                 </div>
 
                 <div className='feed-middle'>
                     <div className='feed-post-form-container'>
                         <div className='feed-post-form-top'>
-                            <img src="" alt="profile" />
+                            {user && <img src={user.imageUrl} alt="profile" />}
                             <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                             {modalIsOpen &&
@@ -41,7 +56,7 @@ const Feed = () => {
                                     isOpen={modalIsOpen}
                                     onRequestClose={handleCloseModal}
                                 >
-                                    <ModalSwitch modalType='post' handleClose={handleCloseModal} />
+                                    <ModalSwitch modalType='createPost' handleClose={handleCloseModal} />
                                 </ModalContainer>
                             }
 

@@ -1,0 +1,53 @@
+.post-modal-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-modal-header {
+    display: flex;
+    padding: 20px 20px;
+    height:
+}
+
+.post-modal-user-pic {}
+
+.post-modal-user-name {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.post-modal-close {
+    margin-left: auto;
+}
+
+.post-modal-body-container {
+    height: 150px;
+}
+
+.post-modal-body-input {
+    resize: none;
+    width: 100%;
+    border: none;
+    padding: 0 20px 50px 20px;
+}
+
+.post-modal-footer {
+    display: flex;
+    border: none;
+    padding: 20px 20px;
+    margin-top: auto;
+}
+
+.post-modal-image-container {
+    /* border: none */
+}
+
+.post-modal-image-upload {
+    border: none
+}
+
+.post-modal-update-button {
+    margin-left: auto
+}

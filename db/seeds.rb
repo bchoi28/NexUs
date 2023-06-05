@@ -22,6 +22,8 @@ ApplicationRecord.transaction do
     password: 'password',
     fname: 'demo',
     lname: 'user',
+    image_url: '/Users/brandonchoi/Desktop/aA_projects/fs_project/NexUs/frontend/public/images/default-profile-image-circle.png',
+    pronouns: 'He/Him',
     location_country_region: 'USA',
     location_city: 'New York'
   )
@@ -34,6 +36,22 @@ ApplicationRecord.transaction do
 #       password: 'password'
 #     }) 
 #   end
+
+  Post.create!(
+    author_id: 1,
+    body: "Attention cosmic graduates! I have successfully completed my Intergalactic Academy training, and now I'm ready to embark on my cosmic coding journey. Seeking interstellar opportunities to apply my skills and contribute to groundbreaking space projects. Let's take coding to new frontiers!"
+  )
+
+  Post.create!(
+    author_id: 1,
+    body: "Calling all interstellar job seekers! I'm on the lookout for an out-of-this-world career opportunity. With my stellar skills in space engineering and cosmic problem-solving, I'm ready to make an impact. Reach out if you have any cosmic job openings or if you're interested in intergalactic talent!"
+  )
+
+  Post.create!(
+    author_id: 1,
+    body: "Greetings space explorers! Just discovered a fascinating application of JavaScript in intergalactic travel. By harnessing the power of this universal language, we can optimize spacecraft navigation, calculate warp speeds, and simulate celestial phenomena. Let's dive into the wonders of JavaScript in the cosmic realm!"
+  )
+
 
   puts "Done!"
 end

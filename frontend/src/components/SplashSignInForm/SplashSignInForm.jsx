@@ -15,7 +15,7 @@ const SplashSignInForm = () => {
     // const [errors, setErrors] = useState([]);
     const errors = useSelector(state => Object.values(state.errors));
     const [emailError, passwordError] = errors ?? [];
-    // debugger
+    debugger
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -34,6 +34,7 @@ const SplashSignInForm = () => {
     }, [])
 
     if (sessionStorage.getItem('currentUser')) {
+        debugger
         history.push('/feed')
     }
 

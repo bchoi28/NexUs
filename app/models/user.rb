@@ -4,8 +4,9 @@
 #
 #  id                      :bigint           not null, primary key
 #  email                   :string           not null
-#  fname                   :string
-#  lname                   :string
+#  fname                   :string           not null
+#  lname                   :string           not null
+#  image_url               :string
 #  profile_url             :string
 #  headline                :string
 #  pronouns                :string

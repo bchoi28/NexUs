@@ -1,0 +1,54 @@
+.post-item-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 5px 15px 0 15px;
+    border-radius: 12.8px;
+    background-color: #fff;
+    transition: box-shadow 83ms;
+    border: none;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08)
+}
+
+.post-header {
+    display: flex;
+    margin-bottom: 20px 0 20px 0;
+}
+
+.post-dropdown-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.post-dropdown-icon {
+    margin-left: auto;
+    position: relative;
+}
+
+.post-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.post-update-button {
+    margin-left: auto;
+}
+
+.post-body {
+    margin: 20px 0 20px 0;
+}
+
+.post-image {
+    margin: 20px 0 20px 0;
+}
+
+.post-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 10px;
+}

@@ -3,7 +3,7 @@ import { storeCurrentUser, setSession } from './session';
 import { receiveSessionErrors } from './errors';
 
 
-export const RECEIVE_USER = 'users/RECEIVE_USER'
+export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const REMOVE_USER = 'users/REMOVE_USER';
 
 // regular action creators
@@ -15,7 +15,7 @@ export const receiveUser = (user) => {
         user
     }
 }
-
+debugger
 // removeUser is for delete
 export const removeUser = () => {
     return {
@@ -33,6 +33,9 @@ export const getUser = (state) => {
 export const signupUser = (user) => async (dispatch) => {
     debugger
     const payload = { user: user }
+    // user: { email: 'demo@user.io', password: 'password' }
+    // this way, the params object that the controller access
+    // has a key of user pointing to this user object
     const res = await csrfFetch('/api/users', {
         method: 'POST',
         headers: {
@@ -67,12 +70,22 @@ export const updateUser = (user) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json();
-
+        dispatch(receiveUser(data.user));
     } else {
         const data = await res.json();
     }
 
     return res;
+}
+
+export const fetchUser = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}`);
+    debugger
+    if (res.ok) {
+        const data = await res.json();
+        const user = data.user;
+        dispatch(receiveUser(user));
+    }
 }
 
 
