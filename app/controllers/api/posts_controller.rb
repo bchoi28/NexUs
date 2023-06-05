@@ -13,12 +13,16 @@ class Api::PostsController < ApplicationController
     end
 
     def index
+        # debugger
         if params[:user_id].present? 
+            # debugger
             user = User.find(params[:user_id])
-            @posts = user.posts.order(created_at: :desc)
+            # @posts = user.posts.order(created_at: :desc)
+            @posts = user.posts
             # renders only that user's posts (recent at top)
         else
-            @posts = Post.includes(:author).order(created_at: :desc)
+            @posts = Post.includes(:author).all
+            # @posts = Post.includes(:author).order(created_at: :desc)
             # renders all of the posts (recent at top)
         end
     end

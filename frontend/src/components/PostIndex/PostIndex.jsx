@@ -9,18 +9,17 @@ const PostIndex = () => {
 
     const dispatch = useDispatch();
     const posts = useSelector(getPosts);
+    // const reversedPosts = [...posts].reverse();
 
-    let postItems;
-    if (posts.length > 0) {
-        postItems = posts.map(post => <PostItem key={post.id} post={post} />)
-    } else {
-        postItems = <p>Loading posts...</p>
-    }
+    debugger
+    // const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
+    const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
 
     useEffect(() => {
-        debugger
+        // debugger
         dispatch(fetchPosts());
-    }, [])
+    }, [dispatch])
+
 
     return (
         <div className='post-items-container'>

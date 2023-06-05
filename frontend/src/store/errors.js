@@ -19,7 +19,7 @@ export const removeSessionErrors = () => {
 
 const initialState = {};
 const errorsReducer = (state = initialState, action) => {
-    debugger
+    // debugger
     // const newState = { ...state };
     // debugger
     switch (action.type) {

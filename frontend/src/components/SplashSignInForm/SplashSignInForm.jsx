@@ -4,6 +4,8 @@ import { Link, NavLink, useHistory } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
+import { getUser } from '../../store/user';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SplashSignInForm = () => {
 
@@ -32,18 +34,22 @@ const SplashSignInForm = () => {
         }
     }, [])
 
-    if (sessionStorage.getItem('currentUser')) {
-        debugger
-        history.push('/feed')
+    const sessionUser = useSelector(state => state.session.user);
+    if (sessionUser) {
+        return <Redirect to='/feed' />
     }
 
+    // if (sessionStorage.getItem('currentUser')) {
+    //     debugger
+    //     history.push('/feed')
+    // }
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // debugger
+        debugger
         dispatch(loginUser({ email, password }))
-        // debugger
-
+        debugger
     }
 
     const handleDemo = (e) => {

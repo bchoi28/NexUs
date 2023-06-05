@@ -9,6 +9,7 @@ import { deletePost } from '../../store/post';
 
 const PostItem = ({ post }) => {
     // const { id, body, image_url, created_at, author } = post;
+    debugger
     const dispatch = useDispatch();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -25,7 +26,9 @@ const PostItem = ({ post }) => {
     };
 
     const currentUser = useSelector(getUser);
+    debugger
     const isCurrentUserPost = currentUser && currentUser.id === post.authorId;
+    debugger
 
     useEffect(() => {
         dispatch(fetchUser());

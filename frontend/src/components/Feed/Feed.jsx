@@ -25,7 +25,7 @@ const Feed = () => {
     }
 
     const user = useSelector(getUser);
-
+    debugger
     useEffect(() => {
         debugger
         const user = JSON.parse(sessionStorage.getItem('currentUser'));

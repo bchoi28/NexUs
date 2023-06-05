@@ -39,7 +39,7 @@ export const loginUser = (user) => async (dispatch) => {
         const data = await res.json();
         // right here it triggers a re-render 
         // of my SplashSignInForm???
-        dispatch(setSession(data.user));
+        await dispatch(setSession(data.user));
         dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
         // debugger
@@ -71,9 +71,8 @@ export const logoutUser = () => async (dispatch) => {
 
     storeCurrentUser(null);
     // sessionStorage.setItem('currentUser', null);
-    dispatch(removeSession());
+    await dispatch(removeSession());
     dispatch(removeUser());
-
 
 }
 // i moved this to user.js
