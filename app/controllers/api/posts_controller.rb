@@ -18,7 +18,7 @@ class Api::PostsController < ApplicationController
             @posts = user.posts.order(created_at: :desc)
             # renders only that user's posts (recent at top)
         else
-            @posts = Post.order(created_at: :desc)
+            @posts = Post.includes(:author).order(created_at: :desc)
             # renders all of the posts (recent at top)
         end
     end

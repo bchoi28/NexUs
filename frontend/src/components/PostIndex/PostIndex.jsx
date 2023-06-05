@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import PostItem from '../PostItem';
 
 const PostIndex = () => {
-    // debugger
+    debugger
 
     const dispatch = useDispatch();
     const posts = useSelector(getPosts);
@@ -18,6 +18,7 @@ const PostIndex = () => {
     }
 
     useEffect(() => {
+        debugger
         dispatch(fetchPosts());
     }, [])
 

@@ -27,11 +27,15 @@ const Feed = () => {
     const user = useSelector(getUser);
 
     useEffect(() => {
-        // debugger
+        debugger
         const user = JSON.parse(sessionStorage.getItem('currentUser'));
         const userId = user.id;
         dispatch(fetchUser(userId));
     }, [])
+
+    if (!user) {
+        return <h1>loading</h1>
+    }
 
     // debugger
     return (
