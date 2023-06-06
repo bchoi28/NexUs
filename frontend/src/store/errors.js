@@ -19,14 +19,11 @@ export const removeSessionErrors = () => {
 
 const initialState = {};
 const errorsReducer = (state = initialState, action) => {
-    // debugger
     // const newState = { ...state };
-    // debugger
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
             return action.errors
         case REMOVE_SESSION_ERRORS:
-            // debugger
             return {}
         default:
             return state;

@@ -28,26 +28,20 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
     });
-    // debugger
 
     if (res.ok) {
-        debugger
         const data = await res.json();
         // right here it triggers a re-render 
         // of my SplashSignInForm???
         await dispatch(setSession(data.user));
         dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
-        debugger
     } else {
-        debugger
         const data = await res.json();
-        debugger
         dispatch(receiveSessionErrors(data.errors))
         // receiveSessionErrors(['error', null]) receives an array of errors
     }
@@ -61,12 +55,10 @@ export const logoutUser = () => async (dispatch) => {
     });
 
     storeCurrentUser(null);
-    debugger
     // sessionStorage.setItem('currentUser', null);
     await dispatch(removeSession());
     dispatch(removeUser());
     dispatch(removePosts());
-    debugger
 
 }
 // i moved this to user.js
@@ -81,14 +73,12 @@ export const logoutUser = () => async (dispatch) => {
 //         },
 //         body: JSON.stringify(payload)
 //     })
-//     // debugger
 //     if (res.ok) {
 //         const data = await res.json();
 //         storeCurrentUser(data.user);
 //         dispatch(setSession(data.user));
 //     } else {
 //         const data = await res.json();
-//         // debugger
 //         // data.errors => ex.['Email Please enter a valid email address.', 'error2']
 //         dispatch(receiveSessionErrors(data.errors))
 //     }
@@ -98,7 +88,6 @@ export const logoutUser = () => async (dispatch) => {
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
-    // debugger
     storeCSRFToken(res);
     const data = await res.json()
     storeCurrentUser(data.user);
@@ -108,13 +97,11 @@ export const restoreSession = () => async (dispatch) => {
 
 // helper methods for restoreSession
 const storeCSRFToken = (res) => {
-    debugger
     const csrfToken = res.headers.get('X-CSRF-Token');
     if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
 }
 
 export const storeCurrentUser = (user) => {
-    // debugger
     if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
     else sessionStorage.removeItem('currentUser');
     // if you pass in null, it removes the key currentUser entirely

@@ -54,7 +54,6 @@ class User < ApplicationRecord
             email: nil,
             password: nil
         }
-        # debugger
         email = params[:email]
         password = params[:password]
 
@@ -81,7 +80,6 @@ class User < ApplicationRecord
         end
 
         # returns an array of values => ex.['error', nil]
-        # debugger
         return errors.values
     end
 

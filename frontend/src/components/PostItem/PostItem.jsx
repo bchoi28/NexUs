@@ -9,7 +9,6 @@ import { deletePost } from '../../store/post';
 
 const PostItem = ({ post }) => {
     // const { id, body, created_at, authorId } = post;
-    debugger
     const dispatch = useDispatch();
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -25,11 +24,9 @@ const PostItem = ({ post }) => {
         setDropDownOpen(!dropDownOpen);
     };
 
-    debugger
     const user = useSelector(getUser);
 
     if (!user) {
-        debugger
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         const userId = currentUser?.id;
         if (userId) {
@@ -38,7 +35,6 @@ const PostItem = ({ post }) => {
         return <h1>Loading...</h1>;
     }
 
-    debugger
     const currentUser = user;
     const userId = currentUser?.id;
     const isCurrentUserPost = userId && userId === post.authorId;

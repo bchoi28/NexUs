@@ -10,7 +10,6 @@ import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SignUpPage = () => {
-    debugger
     const currentUser = useSelector(getUser);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -24,13 +23,11 @@ const SignUpPage = () => {
     const [userObject, setUserObject] = useState({});
 
     const handleSignup = ({ email, password }) => {
-        // debugger
         setUserObject({ email, password });
         setFormStep(2);
     }
 
     const handleNameForm = async ({ fname, lname }) => {
-        // debugger
         // setUserObject({ ...userObject, fname, lname })
         const res = await dispatch(signupUser({ ...userObject, fname, lname }))
 
@@ -42,7 +39,6 @@ const SignUpPage = () => {
         }
     }
     useEffect(() => {
-        // debugger
         return () => {
             dispatch(removeSessionErrors())
         }
@@ -53,7 +49,6 @@ const SignUpPage = () => {
     };
 
 
-    // debugger
     return (
         <div className='signup-page-container'>
             <header className='sigup-page-header'>

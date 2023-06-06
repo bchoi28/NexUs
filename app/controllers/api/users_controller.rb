@@ -2,26 +2,22 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password']
 
     def show
-        # debugger
         @user = User.find(params[:id])
         render :show
     end
 
     def create
         @user = User.new(user_params)
-            # debugger
         if @user.save
             login!(@user)
         # render 'api/users/show'
         render :show
         else
-            # debugger
             # { errors: ['error1', 'error2'] } 
             # - check if 'error' contains "Email" as first word
             errors = @user.errors.full_messages.map do |error|
                 error.start_with?("Email ") ? error.gsub(/^Email\s/, '') : error
             end
-            # debugger
             render json: { errors: errors }, status: 422
         end
     end

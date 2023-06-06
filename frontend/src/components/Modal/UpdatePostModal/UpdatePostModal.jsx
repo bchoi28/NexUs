@@ -7,7 +7,6 @@ import { getUser } from '../../../store/user';
 const UpdatePostModal = ({ handleClose, post }) => {
     // handleClose = () => {setModalIsOpen(false)}
     // passed from ModalContainer->ModalSwitch->PostModal
-    // debugger
     const dispatch = useDispatch();
     // const user = useSelector(getUser);
     // subscribes post modal to current user

@@ -5,19 +5,16 @@ import { useEffect } from 'react';
 import PostItem from '../PostItem';
 
 const PostIndex = () => {
-    debugger
 
     const dispatch = useDispatch();
     const posts = useSelector(getPosts);
     const reversedPosts = [...posts].reverse();
     const postItems = reversedPosts.map(post => <PostItem key={post.id} post={post} />)
 
-    debugger
     // const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
     // const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
 
     useEffect(() => {
-        // debugger
         dispatch(fetchPosts());
     }, [dispatch])
 

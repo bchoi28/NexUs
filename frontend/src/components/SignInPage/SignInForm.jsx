@@ -20,7 +20,6 @@ const SignInForm = () => {
     // const [errors, setErrors] = useState([]);
     const errors = useSelector(state => Object.values(state.errors));
     const [emailError, passwordError] = errors ?? [];
-    // debugger
 
     const [emailFocused, setEmailFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
@@ -35,9 +34,7 @@ const SignInForm = () => {
     useEffect(() => {
 
         return () => {
-            // debugger
             dispatch(removeSessionErrors());
-            // debugger
         }
     }, [])
 
@@ -48,7 +45,6 @@ const SignInForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // debugger
         dispatch(loginUser({ email, password }))
     }
 

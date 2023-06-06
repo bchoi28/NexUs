@@ -1,7 +1,6 @@
 class Api::SessionsController < ApplicationController
 
     def show
-        # debugger
         if current_user
             @user = current_user
             render :show
@@ -11,7 +10,6 @@ class Api::SessionsController < ApplicationController
     end
 
     def create
-        # debugger
         user_params = params[:user]
         @user = User.find_by_credentials(user_params[:email], user_params[:password])
         if @user
@@ -19,15 +17,12 @@ class Api::SessionsController < ApplicationController
             render :show
         else
             # { errors: ['error', nil] }
-            # debugger
             render json: {errors: User.login_errors(user_params)}, status: 401
         end
     end
 
     def destroy
-        # debugger
         logout!
-        # debugger
         render json: { message: 'success' }
     end 
 

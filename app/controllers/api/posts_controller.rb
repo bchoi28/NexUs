@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
     wrap_parameters include: Post.attribute_names + [:photo]
 
     def create 
-        debugger
+        
         @post = Post.new(post_params)
         @post.author_id = current_user.id
 
@@ -16,9 +16,7 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        # debugger
         if params[:user_id].present? 
-            # debugger
             user = User.find(params[:user_id])
             # @posts = user.posts.order(created_at: :desc)
             @posts = user.posts

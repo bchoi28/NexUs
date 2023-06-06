@@ -34,7 +34,6 @@ const CreatePostModal = ({ handleClose }) => {
         e.preventDefault();
 
         const formData = new FormData();
-        debugger
         formData.append('post[body]', body);
         if (photoFile) {
             formData.append('post[photo]', photoFile);

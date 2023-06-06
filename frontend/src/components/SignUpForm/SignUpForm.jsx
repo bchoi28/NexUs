@@ -10,7 +10,6 @@ import { getUser } from '../../store/user';
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
-    debugger
 
     const dispatch = useDispatch();
     // const history = useHistory();
@@ -87,16 +86,13 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
             email: email,
             password: password
         }
-        // debugger
         onSubmit(userObjectStep1)
     }
 
 
     const handleDemo = (e) => {
         e.preventDefault();
-        debugger
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
-        debugger
     }
 
     return (

@@ -15,7 +15,6 @@ export const receiveUser = (user) => {
         user
     }
 }
-// debugger
 // removeUser is for delete
 export const removeUser = () => {
     return {
@@ -28,7 +27,6 @@ export const getUser = state => state.user;
 
 // thunk action creators
 export const signupUser = (user) => async (dispatch) => {
-    // debugger
     const payload = { user: user }
     // user: { email: 'demo@user.io', password: 'password' }
     // this way, the params object that the controller access
@@ -41,7 +39,6 @@ export const signupUser = (user) => async (dispatch) => {
         body: JSON.stringify(payload)
     })
 
-    // debugger
     if (res.ok) {
         const data = await res.json();
         storeCurrentUser(data.user);
@@ -77,7 +74,6 @@ export const updateUser = (user) => async (dispatch) => {
 
 export const fetchUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
-    // debugger
     if (res.ok) {
         const data = await res.json();
         const user = data.user;
@@ -89,7 +85,6 @@ export const fetchUser = (userId) => async (dispatch) => {
 
 const userReducer = (state = null, action) => {
     // const nextState = { ...state };
-    debugger
     switch (action.type) {
         case RECEIVE_USER:
             return action.user;
