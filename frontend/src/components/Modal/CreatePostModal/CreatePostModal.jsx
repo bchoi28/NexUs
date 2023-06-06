@@ -14,12 +14,19 @@ const CreatePostModal = ({ handleClose }) => {
 
     const [body, setBody] = useState('')
     const [photoFile, setPhotoFile] = useState(null);
+    const [photoUrl, setPhotoUrl] = useState(null);
+
     const handleBody = (e) => {
         setBody(e.target.value)
     };
     const handleFile = (e) => {
         const file = e.currentTarget.files[0];
         setPhotoFile(file);
+        if (file) {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => setPhotoUrl(fileReader.result);
+        } else setPhotoUrl(null);
     };
 
     // creates a post
@@ -38,6 +45,9 @@ const CreatePostModal = ({ handleClose }) => {
         handleClose();
     }
 
+    let preview = null;
+    if (photoUrl) preview = <img src={photoUrl} alt="" />;
+
     return (
 
         <form className='post-modal-container' onSubmit={handleSubmit}>
@@ -52,6 +62,9 @@ const CreatePostModal = ({ handleClose }) => {
                     onChange={handleBody}
                     placeholder='What do you want to talk about?'>
                 </textarea>
+                <div>
+                    {preview}
+                </div>
             </div>
             <div className='post-modal-footer'>
                 <div className='post-modal-image-container' >
