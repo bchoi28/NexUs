@@ -3,15 +3,18 @@
     justify-content: center;
     width: 100%;
     background-color: #fff;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08)
 }
 
 .main-nav-container {
     display: flex;
     /* justify-content: center; */
     /* justify-content: space-between; */
-    padding: 8px 0 8px 0;
-    width: 87%;
+    padding: 4px 0 5px 0;
+    width: 80.75%;
     margin: 0;
+    align-items: center;
+    border-right: 1px solid var(--color-border-faint);
 }
 
 .left-main-nav {
@@ -20,7 +23,10 @@
     vertical-align: middle;
     position: relative;
     top: 1px;
+    cursor: pointer;
 }
+
+
 
 .feed-nav-logo-us {
     /* margin-left: 3px; */
@@ -38,6 +44,7 @@
     position: relative;
     bottom: 1px;
     line-height: 1.2;
+    text-decoration: none;
 }
 
 .right-main-nav {
@@ -45,13 +52,47 @@
     position: relative;
     margin-left: auto;
     top: 1px;
+    margin-right: 25px;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .main-nav-icons {
-    font-size: 30px;
-    margin: 0 5px;
+    font-size: 28px;
+    margin: 0 18px;
     color: var(--color-icon);
+    text-decoration: none;
+    position: relative;
+    top: 2px;
+    transition: color 0.1s ease-in;
+}
 
+.fa-linkedin-in {
+    top: 3.5px
+}
+
+/* .home-icon {
+    font-size: 24px;
+} */
+
+
+.icon-container:hover .main-nav-icons,
+.icon-container:hover .icon-text {
+    color: var(--color-text-main)
+}
+
+.icon-text {
+    font-size: 10px;
+    color: var(--color-icon);
+    font-weight: 400;
+    position: relative;
+    bottom: -1px;
+    transition: color 0.1s ease-in;
 }
 
 /* .linkedin-main-nav {

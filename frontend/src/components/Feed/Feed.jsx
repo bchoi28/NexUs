@@ -52,7 +52,7 @@ const Feed = () => {
         <div className='feed-page-container'>
 
             <header className='feed-navbar-container'>
-                <FeedNavBar />
+                <FeedNavBar user={user} />
             </header>
             <div className='feed-container'>
 
