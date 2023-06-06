@@ -1,6 +1,7 @@
 import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
 import { receiveUser, removeUser } from './user';
+import { removePosts } from './post';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -27,7 +28,7 @@ export const removeSession = () => {
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
     const payload = { user: user }
-    // debugger
+    debugger
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
@@ -42,7 +43,7 @@ export const loginUser = (user) => async (dispatch) => {
         await dispatch(setSession(data.user));
         dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
-        // debugger
+        debugger
     } else {
         debugger
         const data = await res.json();
@@ -50,16 +51,6 @@ export const loginUser = (user) => async (dispatch) => {
         dispatch(receiveSessionErrors(data.errors))
         // receiveSessionErrors(['error', null]) receives an array of errors
     }
-
-
-    // if (res.ok) {
-    //     const data = await res.json();
-    //     storeCurrentUser(data.user);
-    //     dispatch(setSession(data.user));
-    // } else {
-    //     const data = await res.json();
-    //     dispatch(receiveSessionErrors(data.errors))
-    // }
 
     return res;
 }
@@ -70,9 +61,12 @@ export const logoutUser = () => async (dispatch) => {
     });
 
     storeCurrentUser(null);
+    debugger
     // sessionStorage.setItem('currentUser', null);
     await dispatch(removeSession());
     dispatch(removeUser());
+    dispatch(removePosts());
+    debugger
 
 }
 // i moved this to user.js

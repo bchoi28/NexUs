@@ -4,11 +4,14 @@ import './SignUpPage.css';
 import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
+import { getUser } from '../../store/user';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SignUpPage = () => {
-
+    debugger
+    const currentUser = useSelector(getUser);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -44,6 +47,11 @@ const SignUpPage = () => {
             dispatch(removeSessionErrors())
         }
     }, [])
+
+    if (currentUser) {
+        return <Redirect to='/feed' />
+    };
+
 
     // debugger
     return (

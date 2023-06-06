@@ -1,14 +1,19 @@
 import './SignInForm.css'
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
+import { getUser } from '../../store/user';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { loginRequest, loginSuccess } from '../../store/ui';
 
 const SignInForm = () => {
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
+    const currentUser = useSelector(getUser);
+    // const loading = useSelector(getUiState);
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -36,9 +41,9 @@ const SignInForm = () => {
         }
     }, [])
 
-    if (sessionStorage.getItem('currentUser')) {
-        history.push('/feed')
-    }
+    // if (sessionStorage.getItem('currentUser')) {
+    //     history.push('/feed')
+    // }
 
 
     const handleSubmit = (e) => {
@@ -47,14 +52,20 @@ const SignInForm = () => {
         dispatch(loginUser({ email, password }))
     }
 
-    const handleDemo = (e) => {
+    const handleDemo = async (e) => {
         e.preventDefault();
-        dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
+        dispatch(loginRequest());
+        await dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
+        dispatch(loginSuccess());
+    }
+
+    if (currentUser) {
+        return <Redirect to='/feed' />
     }
 
     return (
         <div className='signin-form-container'>
-            <div className='signin-form-heading'>Sign in</div>
+            <div className='signin-form-heading'>Sign in</div >
             <div className='signin-form-subheading'>Stay updated on your professional world</div>
             <form className='signin-form' onSubmit={handleSubmit}>
 
@@ -107,7 +118,7 @@ const SignInForm = () => {
                 Sign in as demo user
             </button>
 
-        </div>
+        </div >
     )
 }
 

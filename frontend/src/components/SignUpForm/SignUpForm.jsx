@@ -6,12 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
 import LoadingLogo from '../LoadingLogo';
 import { loginUser } from '../../store/session';
+import { getUser } from '../../store/user';
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
+    debugger
+
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const errors = useSelector(state => Object.values(state.errors));
+    // const currentUser = useSelector(getUser);
+
+
+
     const emailErrors = errors.filter(error => error.toLowerCase().includes("email"));
     const passwordErrors = errors.filter(error => error.toLowerCase().includes("password"));
 
@@ -33,6 +40,10 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
     // const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [finalErrors, setFinalErrors] = useState({})
+
+    // if (currentUser) {
+    //     return <Redirect to='/feed' />
+    // };
 
     const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -81,16 +92,11 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
     }
 
 
-    if (sessionStorage.getItem('currentUser')) {
-        history.push('/feed')
-    }
-
     const handleDemo = (e) => {
         e.preventDefault();
+        debugger
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
-            .then(() => {
-                history.push('/feed');
-            });
+        debugger
     }
 
     return (

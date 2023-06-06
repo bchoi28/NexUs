@@ -25,12 +25,12 @@ const ProfileDropDown = ({ user }) => {
                                 <div className='profile-dropdown-headline'>{user.headline}</div>
                             </div>
                         </div>
-                        <div className='profile-dropdown-view-profile-button'>
-                            <NavLink to="/profile">View Profile</NavLink>
+                        <div className='profile-dropdown-view-profile-button-container'>
+                            <NavLink to="/profile" className="dropdown-profile-view-button">View Profile</NavLink>
                         </div>
                     </div>
                     <div className='profile-dropdown-bottom-container'>
-                        <NavLink to="/logout">Sign Out</NavLink>
+                        <NavLink className='dropdown-logout-button' to="/logout">Sign Out</NavLink>
                     </div>
                 </div>
             )}

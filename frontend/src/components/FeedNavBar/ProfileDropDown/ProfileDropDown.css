@@ -1,5 +1,11 @@
 .profile-dropdown {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.profile-button {
+    background-color: #fff;
 }
 
 .profile-dropdown-menu {
@@ -12,10 +18,10 @@
     z-index: 999;
     margin-top: 15px;
     /* padding: 15px; */
-    width: 200px;
+    width: 250px;
     background-color: #fff;
     border-radius: 12px 0 12px 12px;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08)
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.3)
 }
 
 .profile-dropdown-top-container {
@@ -27,7 +33,7 @@
 }
 
 .profile-dropdown-top {
-    padding: 15px 15px 5px 15px;
+    padding: 5px 15px 5px 15px;
     display: flex;
 }
 
@@ -42,6 +48,7 @@
 .profile-dropdown-names {
     color: var(--color-text-main);
     font-weight: 600;
+    font-size: 15px;
 }
 
 .profile-dropdown-headline {
@@ -49,12 +56,37 @@
     font-size: 12px;
 }
 
-.profile-dropdown-view-profile-button {
+.profile-dropdown-view-profile-button-container {
     margin-bottom: 10px;
+    width: 90%;
+    display: flex;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.dropdown-profile-view-button {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 35px;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    flex-grow: 1;
+    max-width: none;
+    padding: 1px 0;
+    /* width: 85%; */
+    justify-content: center;
 }
 
 .profile-dropdown-bottom-container {
     display: flex;
     justify-content: center;
     padding: 5px;
+}
+
+.dropdown-logout-button {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-size: 14px;
 }

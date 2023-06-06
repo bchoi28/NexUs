@@ -24,10 +24,7 @@ export const removeUser = () => {
 }
 
 // selector to get user object
-export const getUser = (state) => {
-    if (state.user.id) return state.user;
-    else return null;
-}
+export const getUser = state => state.user;
 
 // thunk action creators
 export const signupUser = (user) => async (dispatch) => {
@@ -90,15 +87,14 @@ export const fetchUser = (userId) => async (dispatch) => {
 
 
 
-const userReducer = (state = {}, action) => {
-    const nextState = { ...state };
-
+const userReducer = (state = null, action) => {
+    // const nextState = { ...state };
+    debugger
     switch (action.type) {
         case RECEIVE_USER:
             return action.user;
         case REMOVE_USER:
-            delete nextState.user;
-            return nextState;
+            return null;
         default:
             return state;
     }

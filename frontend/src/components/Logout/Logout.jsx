@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/session";
 import LoadingLogo from "../LoadingLogo";
+import { getUser } from "../../store/user";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const Logout = () => {
-    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
-    const history = useHistory();
+
+    const currentUser = useSelector(getUser);
 
     useEffect(() => {
-        dispatch(logoutUser())
-            .then(() => {
-                setLoading(false);
-                history.push('/login');
-            })
-            .catch(() => setLoading(false));
-    }, [dispatch, history]);
+        dispatch(logoutUser());
+    })
 
-    return (
-        loading ? <LoadingLogo /> : null
-    );
+    if (currentUser) {
+        return <LoadingLogo />
+    } else {
+        return <Redirect to='/login' />
+    }
 }
 
 export default Logout;

@@ -4,6 +4,7 @@ import csrfFetch from "./csrf";
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
 export const REMOVE_POST = 'posts/REMOVE_POST';
+export const REMOVE_POSTS = 'posts/REMOVE_POSTS'
 
 // regular action creators
 export const receivePost = (post) => {
@@ -24,6 +25,12 @@ export const removePost = (postId) => {
         postId: postId
     }
 };
+
+export const removePosts = () => {
+    return {
+        type: REMOVE_POSTS,
+    }
+}
 
 // getPost/getPosts selector functions
 export const getPost = postId => state => {
@@ -123,6 +130,8 @@ const postsReducer = (state = {}, action) => {
         case REMOVE_POST:
             delete nextState[action.postId];
             return nextState;
+        case REMOVE_POSTS:
+            return {};
         default:
             return state;
     }
