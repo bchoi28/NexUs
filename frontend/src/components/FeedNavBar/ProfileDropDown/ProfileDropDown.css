@@ -77,6 +77,14 @@
     padding: 1px 0;
     /* width: 85%; */
     justify-content: center;
+    transition: background-color 0.1s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.dropdown-profile-view-button:hover {
+    box-shadow: 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
+    background-color: var(--color-button-container-secondary-emphasis-hover);
+    color: var(--color-button-label-secondary-emphasis-hover);
 }
 
 .profile-dropdown-bottom-container {
@@ -89,4 +97,8 @@
     text-decoration: none;
     color: var(--color-text-light);
     font-size: 14px;
+}
+
+.dropdown-logout-button:hover {
+    text-decoration: underline;
 }

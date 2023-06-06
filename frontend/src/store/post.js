@@ -76,15 +76,15 @@ export const fetchPost = (postId) => async (dispatch) => {
 };
 
 export const createPost = (post) => async (dispatch) => {
-    const payload = { post: post }
+    // const payload = { post: post }
+    debugger
     const res = await csrfFetch('/api/posts', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        // body: JSON.stringify(payload)
+        body: post
     });
     if (res.ok) {
+        debugger
         const data = await res.json();
         const post = data.post;
         dispatch(receivePost(post))
@@ -95,9 +95,10 @@ export const updatePost = (post) => async (dispatch) => {
     const payload = { post: post }
     const res = await csrfFetch(`/api/posts/${post.id}`, {
         method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        // im already doing this in my custom csrfFetch
         body: JSON.stringify(payload)
     });
     if (res.ok) {

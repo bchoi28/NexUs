@@ -71,7 +71,7 @@
     justify-content: center;
     text-align: center;
     /* transition: transform 0.3s ease-in-out; */
-    transition: transform 0.2s;
+    transition: transform 0.1s ease-in-out;
 }
 
 .main-nav-icons {
@@ -81,7 +81,7 @@
     text-decoration: none;
     position: relative;
     top: 2px;
-    transition: color 0.1s ease-in;
+    transition: color 0.1s ease-in-out;
 }
 
 .fa-linkedin-in {
@@ -105,7 +105,7 @@
     font-weight: 400;
     position: relative;
     bottom: -1px;
-    transition: color 0.1s ease-in;
+    transition: color 0.1s ease-in-out;
 }
 
 /* .linkedin-main-nav {

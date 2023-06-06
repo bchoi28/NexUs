@@ -1,6 +1,9 @@
 class Api::PostsController < ApplicationController
 
+    wrap_parameters include: Post.attribute_names + [:photo]
+
     def create 
+        debugger
         @post = Post.new(post_params)
         @post.author_id = current_user.id
 
@@ -65,6 +68,6 @@ class Api::PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:body, :image_url)
+        params.require(:post).permit(:body, :photo)
     end
 end

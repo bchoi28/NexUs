@@ -1,11 +1,11 @@
 json.posts do
     json.array! @posts do |post|
-        json.extract! post, :id, :body, :author_id, :image_url, :created_at, :updated_at
+        json.extract! post, :id, :body, :author_id, :created_at, :updated_at
+        json.photoUrl post.photo.attached? ? post.photo.url : nil
         json.author do
             json.authorId post.author.id
             json.fName post.author.fname
             json.lName post.author.lname
-            json.imageURL post.author.image_url
             json.pronouns post.author.pronouns
             json.headline post.author.headline
         end

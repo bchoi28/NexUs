@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        @user.image_url = '/Users/brandonchoi/Desktop/aA_projects/fs_project/NexUs/frontend/public/images/default-profile-image-circle.png'
             # debugger
         if @user.save
             login!(@user)
@@ -30,6 +29,6 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :fname, :lname, :image_url, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
+        params.require(:user).permit(:email, :password, :fname, :lname, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
     end
 end

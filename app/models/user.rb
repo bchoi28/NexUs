@@ -6,7 +6,6 @@
 #  email                   :string           not null
 #  fname                   :string           not null
 #  lname                   :string           not null
-#  image_url               :string
 #  profile_url             :string
 #  headline                :string
 #  pronouns                :string
@@ -34,6 +33,9 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     #   come back to flesh these associations out
+
+    has_one_attached :photo
+
     has_many :posts;
     has_many :comments;
     has_many :likes;

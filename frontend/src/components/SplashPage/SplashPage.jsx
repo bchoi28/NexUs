@@ -1,7 +1,6 @@
 import SplashSignInForm from "../SplashSignInForm";
 import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
-import splashImage from '../../images/splash.svg';
 import spaceImage from '../../images/space.jpg';
 import { useState } from "react";
 
@@ -33,7 +32,7 @@ const SplashPage = () => {
                     <div className="splash-page-section-1-right">
                         <img
                             className="splash-image"
-                            src={splashImage}
+                            src='https://nexus-seeds.s3.amazonaws.com/nexus-images/splash.svg'
                             alt="Welcome to your professional community" />
                     </div>
                 </div>

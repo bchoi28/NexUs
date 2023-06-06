@@ -8,7 +8,7 @@ import { fetchUser, getUser } from '../../store/user';
 import { deletePost } from '../../store/post';
 
 const PostItem = ({ post }) => {
-    // const { id, body, image_url, created_at, author } = post;
+    // const { id, body, created_at, authorId } = post;
     debugger
     const dispatch = useDispatch();
 
@@ -108,11 +108,7 @@ const PostItem = ({ post }) => {
             <div className='post-body'>
                 {post.body}
             </div>
-            {post.imageURL && <img
-                className='post-image'
-                src={post.imageURL}
-                alt="post"
-            />}
+            <img src={post.photoUrl} alt="post" />
             <div className='post-footer'>Like Comment Bar</div>
 
         </div>

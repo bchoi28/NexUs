@@ -13,24 +13,28 @@ const CreatePostModal = ({ handleClose }) => {
     // subscribes post modal to current user
 
     const [body, setBody] = useState('')
-    const [imageUrl, setImageUrl] = useState(null);
+    const [photoFile, setPhotoFile] = useState(null);
     const handleBody = (e) => {
         setBody(e.target.value)
     };
     const handleFile = (e) => {
-        setImageUrl(e.target.files[0])
+        const file = e.currentTarget.files[0];
+        setPhotoFile(file);
     };
 
     // creates a post
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const post = {
-            body: body,
-            imageUrl: imageUrl
-        };
+        const formData = new FormData();
+        debugger
+        formData.append('post[body]', body);
+        if (photoFile) {
+            formData.append('post[photo]', photoFile);
+        }
 
-        dispatch(createPost(post))
+        dispatch(createPost(formData))
+        // dispatch(createPost('body': body, 'photo': photoFile))
         handleClose();
     }
 
