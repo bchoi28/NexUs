@@ -21,7 +21,7 @@
         Arial,
         sans-serif;
     --primary-color: #2867B2;
-
+    --color-icon: rgba(0, 0, 0, 0.6);
     --color-background-canvas: #f3f2ef;
     --color-border-faint: rgba(0, 0, 0, 0.08);
 

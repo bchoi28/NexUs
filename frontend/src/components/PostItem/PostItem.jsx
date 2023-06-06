@@ -25,20 +25,33 @@ const PostItem = ({ post }) => {
         setDropDownOpen(!dropDownOpen);
     };
 
-    const currentUser = useSelector(getUser);
     debugger
-    const isCurrentUserPost = currentUser && currentUser.id === post.authorId;
-    debugger
+    const user = useSelector(getUser);
 
-    useEffect(() => {
-        dispatch(fetchUser());
-    }, [])
-
-    if (!currentUser) {
-        return (
-            <div>Loading Post...</div>
-        )
+    if (!user) {
+        debugger
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        const userId = currentUser?.id;
+        if (userId) {
+            dispatch(fetchUser(userId));
+        }
+        return <h1>Loading...</h1>;
     }
+
+    debugger
+    const currentUser = user;
+    const userId = currentUser?.id;
+    const isCurrentUserPost = userId && userId === post.authorId;
+
+    // useEffect(() => {
+    //     dispatch(fetchUser());
+    // }, [])
+
+    // if (!currentUser) {
+    //     return (
+    //         <div>Loading Post...</div>
+    //     )
+    // }
 
     const handleDeletePost = (e) => {
         dispatch(deletePost(post.id))

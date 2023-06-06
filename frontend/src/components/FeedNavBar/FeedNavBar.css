@@ -1,27 +1,68 @@
-.main-nav-container {
+.main-nav-container-full {
     display: flex;
-    justify-content: space-between;
-    padding: 8px 0 8px 0;
+    justify-content: center;
     width: 100%;
-    margin: 0 20px 0 20px;
+    background-color: #fff;
 }
 
-.left-main-nav {}
+.main-nav-container {
+    display: flex;
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    padding: 8px 0 8px 0;
+    width: 87%;
+    margin: 0;
+}
+
+.left-main-nav {
+    margin-right: auto;
+    /* align-self: left; */
+    vertical-align: middle;
+    position: relative;
+    top: 1px;
+}
 
 .feed-nav-logo-us {
-    margin-left: 3px;
+    /* margin-left: 3px; */
+    /* margin-right: auto; */
     padding-left: 1.5px;
-    padding-right: 5px;
+    /* padding-top: 2px; */
+    padding-right: 4px;
     padding-bottom: 1px;
     letter-spacing: -1px;
     background-color: var(--primary-color);
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
-    font-size: 32px;
+    font-size: 25px;
     position: relative;
-    bottom: 1px
+    bottom: 1px;
+    line-height: 1.2;
 }
+
+.right-main-nav {
+    display: flex;
+    position: relative;
+    margin-left: auto;
+    top: 1px;
+}
+
+.main-nav-icons {
+    font-size: 30px;
+    margin: 0 5px;
+    color: var(--color-icon);
+
+}
+
+/* .linkedin-main-nav {
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+.github-main-nav {
+    font-size: 30px;
+    color: var(--primary-color)
+} */
 
 .dropdown-menu {
     position: absolute;

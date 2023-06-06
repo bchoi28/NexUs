@@ -25,29 +25,34 @@ const FeedNavBar = () => {
     }
 
     return (
-        <div className='main-nav-container'>
+        <div className='main-nav-container-full'>
+            <div className='main-nav-container'>
 
-            <div className='left-main-nav'>
+                <div className='left-main-nav'>
+                    <div onClick={handleLogo} className='feed-nav-logo-us'>us</div>
+                </div>
 
-                <div onClick={handleLogo} className='feed-nav-logo-us'>us</div>
+                <div className='right-main-nav'>
+                    <div>
+                        <i
+                            class="fa-brands fa-linkedin-in main-nav-icons"
+                            title="linkedin"
+                        ></i></div>
+                    <div><i class="fa-brands fa-github main-nav-icons"></i></div>
+                    <div className="profile-button">
+                        <button onClick={toggleDropdown}>
+                            me
+                        </button>
+                        {dropdownOpen && (
+                            <div className="dropdown-menu">
+                                <NavLink to="/logout">Sign Out</NavLink>
+                            </div>
+                        )}
+                    </div>
 
-            </div>
-
-            <div className='right-main-nav'>
-
-                <div className="profile-button">
-                    <button onClick={toggleDropdown}>
-                        me
-                    </button>
-                    {dropdownOpen && (
-                        <div className="dropdown-menu">
-                            <NavLink to="/logout">Sign Out</NavLink>
-                        </div>
-                    )}
                 </div>
 
             </div>
-
         </div>
     )
 }
