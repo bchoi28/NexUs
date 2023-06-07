@@ -1,6 +1,6 @@
 .modal-custom {
-    width: 600px;
-    height: 500px;
+    width: 500px;
+    height: 400px;
     position: relative;
     margin: 0 auto;
     padding: 0;
@@ -8,6 +8,7 @@
     top: 32px;
     border: none;
     background-color: #fff;
+    border-radius: 10px;
 }
 
 .modal-overlay {

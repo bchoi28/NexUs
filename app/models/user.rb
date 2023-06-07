@@ -20,6 +20,7 @@
 #
 class User < ApplicationRecord
     has_secure_password
+    before_validation :generate_default_pic
 
     validates :email, 
         uniqueness: { message: 'Someone\'s already using that email.' },
@@ -36,11 +37,16 @@ class User < ApplicationRecord
 
     has_one_attached :photo
 
-    has_many :posts;
-    has_many :comments;
-    has_many :likes;
-    has_many :connections;
-    has_many :connection_requests;
+    has_many :posts, 
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Post,
+        dependent: :destroy
+        
+    has_many :comments
+    has_many :likes
+    has_many :connections
+    has_many :connection_requests
 
 
     def self.find_by_credentials(email, password)
@@ -86,6 +92,13 @@ class User < ApplicationRecord
     def reset_session_token!
         self.update!(session_token: generate_unique_session_token)
         self.session_token
+    end
+
+    def generate_default_pic
+        unless self.photo.attached?
+            file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/default-profile-image-circle.png");
+            self.photo.attach(io: file, filename: "default-profile-image-circle.png")
+        end
     end
 
     private

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    wrap_parameters include: User.attribute_names + ['password']
+    wrap_parameters include: User.attribute_names + ['password'] + [:photo]
 
     def show
         @user = User.find(params[:id])
@@ -25,6 +25,6 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :fname, :lname, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
+        params.require(:user).permit(:email, :password, :fname, :lname, :photo, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
     end
 end

@@ -16,6 +16,7 @@ class Api::PostsController < ApplicationController
     end
 
     def index
+        debugger
         if params[:user_id].present? 
             user = User.find(params[:user_id])
             # @posts = user.posts.order(created_at: :desc)
@@ -54,6 +55,7 @@ class Api::PostsController < ApplicationController
     end
 
     def destroy
+        debugger
         @post = Post.find(params[:id])
         if @post && @post.destroy
             render :show

@@ -1,4 +1,4 @@
-.post-modal-container {
+/* .post-modal-container {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
 .post-modal-user-pic {}
 
 .post-modal-user-name {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 600;
     line-height: 1.25;
 }
@@ -41,7 +41,7 @@
 }
 
 .post-modal-image-container {
-    /* border: none */
+    border: none
 }
 
 .post-modal-image-upload {
@@ -50,4 +50,4 @@
 
 .post-modal-update-button {
     margin-left: auto
-}
+} */

@@ -2,7 +2,7 @@ import './ProfileDropDown.css';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ProfileDropDown = ({ user }) => {
+const ProfileDropDown = ({ currentUser }) => {
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -21,8 +21,8 @@ const ProfileDropDown = ({ user }) => {
                         <div className='profile-dropdown-top'>
                             <div>img</div>
                             <div className='profile-dropdown-info'>
-                                <div className='profile-dropdown-names'>{user.fName} {user.lName}</div>
-                                <div className='profile-dropdown-headline'>{user.headline}</div>
+                                <div className='profile-dropdown-names'>{currentUser.fName} {currentUser.lName}</div>
+                                <div className='profile-dropdown-headline'>{currentUser.headline}</div>
                             </div>
                         </div>
                         <div className='profile-dropdown-view-profile-button-container'>

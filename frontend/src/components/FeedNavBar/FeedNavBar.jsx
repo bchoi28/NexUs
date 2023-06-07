@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropDown';
 import userReducer from '../../store/user';
 
-const FeedNavBar = ({ user }) => {
+const FeedNavBar = ({ currentUser }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -41,7 +41,7 @@ const FeedNavBar = ({ user }) => {
                             <span className="icon-text">GitHub</span>
                         </div>
                     </Link>
-                    <ProfileDropDown user={user} />
+                    <ProfileDropDown currentUser={currentUser} />
                 </div>
 
             </div>

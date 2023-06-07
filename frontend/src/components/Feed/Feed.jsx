@@ -23,9 +23,9 @@ const Feed = () => {
         setModalIsOpen(false);
     }
 
-    const user = useSelector(getUser);
+    const currentUser = useSelector(getUser);
 
-    if (!user) {
+    if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         const userId = currentUser?.id;
         if (userId) {
@@ -48,18 +48,18 @@ const Feed = () => {
         <div className='feed-page-container'>
 
             <header className='feed-navbar-container'>
-                <FeedNavBar user={user} />
+                <FeedNavBar currentUser={currentUser} />
             </header>
             <div className='feed-container'>
 
                 <div className='feed-left'>
-                    {user ? <ProfileBadge /> : null}
+                    {currentUser ? <ProfileBadge /> : null}
                 </div>
 
                 <div className='feed-middle'>
                     <div className='feed-post-form-container'>
                         <div className='feed-post-form-top'>
-                            {user && <img src='' alt="profile" />}
+                            {currentUser && <img className='feed-user-profile-pic' src={currentUser.photoUrl} alt="profile" />}
                             <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                             {modalIsOpen &&
@@ -67,15 +67,17 @@ const Feed = () => {
                                     isOpen={modalIsOpen}
                                     onRequestClose={handleCloseModal}
                                 >
-                                    <ModalSwitch modalType='createPost' handleClose={handleCloseModal} />
+                                    <ModalSwitch modalType='createPost' handleClose={handleCloseModal} currentUser={currentUser} />
                                 </ModalContainer>
                             }
 
                         </div>
                         <div className='feed-post-form-bottom' >
-                            photo video
+                            <i class="fa-regular fa-image"></i>
+                            <i class="fa-solid fa-video"></i>
+                            <i class="fa-regular fa-calendar-plus"></i>
+                            <i class="fa-solid fa-newspaper"></i>
                         </div>
-
                         {/* <PostForm /> */}
                     </div>
                     <div className='post-index-container'>

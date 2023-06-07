@@ -8,6 +8,7 @@ import { fetchUser, getUser } from '../../store/user';
 import { deletePost } from '../../store/post';
 
 const PostItem = ({ post }) => {
+    debugger
     // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
 
@@ -53,11 +54,13 @@ const PostItem = ({ post }) => {
         dispatch(deletePost(post.id))
     }
 
+    const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="post" /> : null
+
 
     return (
         <div className='post-item-container'>
             <header className='post-header'>
-                <img src="" alt="profile" />
+                <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
                 <div className='post-names-headline'>
                     <div className='post-author-names' >{post.author.fName} {post.author.lName}
                         <span className="post-author-pronouns">({post.author.pronouns})</span>
@@ -77,13 +80,13 @@ const PostItem = ({ post }) => {
                                 className='post-delete-button'
                                 onClick={handleDeletePost}
                             >
-                                Delete Post
+                                DELETE
                             </div>
                             <div
                                 className='post-update-button'
                                 onClick={handleOpenModal}
                             >
-                                Update Post
+                                EDIT
                             </div>
 
                         </div>
@@ -104,11 +107,13 @@ const PostItem = ({ post }) => {
             <div className='post-body'>
                 {post.body}
             </div>
-            <img src={post.photoUrl} alt="post" />
+            <div>
+                {postPhoto}
+            </div>
             <div className='post-footer'>Like Comment Bar</div>
 
         </div>
     )
 }
 
-export default React.memo(PostItem);
+export default PostItem;

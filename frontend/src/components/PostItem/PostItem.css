@@ -18,8 +18,17 @@
     align-items: center;
 }
 
+.post-profile-pic {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
 .post-names-headline {
-    /* display: flex; */
+    margin-left: 10px;
+    position: relative;
+    bottom: 5px;
 }
 
 .post-author-names {
@@ -43,6 +52,7 @@
     display: flex;
     flex-direction: column;
     margin-left: auto;
+    position: relative;
 }
 
 .post-dropdown-icon {
@@ -66,17 +76,20 @@
 .post-dropdown-menu {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 0;
-    z-index: 10;
+    position: absolute;
+    top: 30%;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-delete-button {
     cursor: pointer;
+    font-size: ;
 }
 
 .post-update-button {
-    margin-left: auto;
+    /* margin-left: auto; */
     cursor: pointer;
 }
 
@@ -94,4 +107,5 @@
 .post-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: 10px;
+    margin-top: 20px;
 }

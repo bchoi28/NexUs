@@ -107,6 +107,7 @@ export const updatePost = (post) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });
@@ -118,17 +119,16 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
-    const nextState = { ...state };
-
+    debugger
     switch (action.type) {
         case RECEIVE_POSTS:
-            return { ...nextState, ...action.posts };
+            return { ...action.posts };
         case RECEIVE_POST:
-            nextState[action.post.id] = action.post;
-            return nextState
+            return { ...state, [action.post.id]: action.post };
         case REMOVE_POST:
-            delete nextState[action.postId];
-            return nextState;
+            const newState = { ...state };
+            delete newState[action.postId];
+            return newState;
         case REMOVE_POSTS:
             return {};
         default:

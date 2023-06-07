@@ -7,7 +7,8 @@
 
 /* Remove default padding */
 ul[class],
-ol[class] {
+ol[class],
+input {
     padding: 0;
 }
 
@@ -99,7 +100,7 @@ div {
 input {
     border: 1px solid rgba(0, 0, 0, 0.6);
     width: 100%;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     outline: 0;
     vertical-align: middle;
     margin: 0em;
