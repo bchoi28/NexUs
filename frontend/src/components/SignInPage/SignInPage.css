@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #fff;
-
+    background-color: var(--color-background-canvas)
 }
 
 .signin-page-header {
@@ -16,7 +15,7 @@
     letter-spacing: -1px;
     font-size: 29px;
     font-weight: 200;
-    margin: 32px 0 0 56px;
+    margin: 26.5px 0 0 76px;
     cursor: pointer;
 }
 
@@ -25,7 +24,6 @@
     flex-direction: column;
     margin: 0 auto;
     justify-content: center;
-
 }
 
 

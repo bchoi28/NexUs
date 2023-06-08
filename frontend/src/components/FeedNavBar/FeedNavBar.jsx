@@ -5,15 +5,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../store/session';
 import { useHistory } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropDown';
-import userReducer from '../../store/user';
+import userReducer, { getUser } from '../../store/user';
 
-const FeedNavBar = ({ currentUser }) => {
+const FeedNavBar = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const currentUser = useSelector(getUser);
+
     const handleLogo = () => {
         history.push('/');
+    }
+
+    if (!currentUser) {
+        return <h1>Loading Nav Bar...</h1>
     }
 
     return (

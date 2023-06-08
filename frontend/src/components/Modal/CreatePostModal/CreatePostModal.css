@@ -40,10 +40,6 @@
     margin-left: auto;
 }
 
-/* .post-modal-close-container:hover {
-    background-color: var(--color-background-small-button-hover);
-} */
-
 .post-modal-close {
     margin-left: auto;
     background-color: #fff;
@@ -59,8 +55,7 @@
 }
 
 .post-modal-close:hover {
-    background-color: var(--color-background-small-button-hover);
-    box-shadow: 0 0 0 0.2px var(--color-button-container-secondary-emphasis-border);
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .post-modal-body-container {
@@ -80,7 +75,7 @@
     border: none;
 }
 
-.photo-preview {
+.post-photo-preview {
     max-height: 500px;
     max-width: 400px;
     margin: auto;
@@ -98,7 +93,7 @@
     /* border: none */
 }
 
-.file-input-label {
+.post-file-input-label {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -106,7 +101,7 @@
     /* justify-content: space-between; */
 }
 
-.file-input-icon {
+.post-file-input-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -115,13 +110,13 @@
     margin-right: 10px;
 }
 
-.file-input-icon i {
+.post-file-input-icon i {
     font-size: 35px;
     transition: transform 0.3s ease;
     color: var(--primary-color);
 }
 
-.file-input-icon i:hover {
+.post-file-input-icon i:hover {
     transform: scale(1.1);
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
     padding: 1px 2px;

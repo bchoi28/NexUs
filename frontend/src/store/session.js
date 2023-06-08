@@ -2,6 +2,7 @@ import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
 import { receiveUser, removeUser } from './user';
 import { removePosts } from './post';
+import { loginSuccess, logoutSuccess } from './ui';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -27,19 +28,21 @@ export const removeSession = () => {
 
 // thunk action creator
 export const loginUser = (user) => async (dispatch) => {
+    debugger
     const payload = { user: user }
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
     });
-
     if (res.ok) {
+        debugger
         const data = await res.json();
         // right here it triggers a re-render 
         // of my SplashSignInForm???
-        await dispatch(setSession(data.user));
+        dispatch(setSession(data.user));
         dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
+        dispatch(loginSuccess());
     } else {
         const data = await res.json();
         dispatch(receiveSessionErrors(data.errors))
@@ -55,11 +58,10 @@ export const logoutUser = () => async (dispatch) => {
     });
 
     storeCurrentUser(null);
-    // sessionStorage.setItem('currentUser', null);
-    await dispatch(removeSession());
+    dispatch(removeSession());
     dispatch(removeUser());
     dispatch(removePosts());
-
+    dispatch(logoutSuccess())
 }
 // i moved this to user.js
 

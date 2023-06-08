@@ -2,13 +2,12 @@ import './Feed.css';
 import FeedNavBar from '../FeedNavBar';
 import ProfileBadge from '../ProfileBadge';
 import PostIndex from '../PostIndex';
-import PostForm from '../PostForm';
 import { useEffect, useState } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from '../../store/user';
-import { fetchUser } from '../../store/user';
+import { getUser, fetchUser } from '../../store/user';
+import { fetchPosts, getPosts } from '../../store/post';
 
 const Feed = () => {
 
@@ -24,25 +23,24 @@ const Feed = () => {
     }
 
     const currentUser = useSelector(getUser);
+    const posts = useSelector(getPosts)
 
-    if (!currentUser) {
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        const userId = currentUser?.id;
-        if (userId) {
-            dispatch(fetchUser(userId));
+    useEffect(() => {
+        if (!currentUser || !currentUser.photoUrl) {
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            dispatch(fetchUser(currentUser.id));
         }
-        return <h1>Loading...</h1>;
+
+        if (!posts) {
+            dispatch(fetchPosts());
+        }
+
+    }, [])
+    // remove currentUser, posts to re-fetch data every time
+
+    if (!currentUser || !posts) {
+        return <h1>Loading Feed...</h1>
     }
-
-    // useEffect(() => {
-    //     const user = JSON.parse(sessionStorage.getItem('currentUser'));
-    //     const userId = user.id;
-    //     dispatch(fetchUser(userId));
-    // }, [])
-
-    // if (!user) {
-    //     return <h1>loading</h1>
-    // }
 
     return (
         <div className='feed-page-container'>
@@ -50,10 +48,11 @@ const Feed = () => {
             <header className='feed-navbar-container'>
                 <FeedNavBar currentUser={currentUser} />
             </header>
+
             <div className='feed-container'>
 
                 <div className='feed-left'>
-                    {currentUser ? <ProfileBadge /> : null}
+                    <ProfileBadge currentUser={currentUser} />
                 </div>
 
                 <div className='feed-middle'>
@@ -73,10 +72,21 @@ const Feed = () => {
 
                         </div>
                         <div className='feed-post-form-bottom' >
-                            <i class="fa-regular fa-image"></i>
-                            <i class="fa-solid fa-video"></i>
-                            <i class="fa-regular fa-calendar-plus"></i>
-                            <i class="fa-solid fa-newspaper"></i>
+                            <i class="fa-regular fa-image feed-photo-icon" >
+                                <span className='feed-photo-icon-text' >Photo</span>
+                            </i>
+                            <i class="fa-solid fa-video feed-video-icon">
+                                <span className='feed-video-icon-text' >Video</span>
+
+                            </i>
+                            <i class="fa-regular fa-calendar-plus feed-calendar-icon">
+                                <span className='feed-calendar-icon-text' >Event</span>
+
+                            </i>
+                            <i class="fa-solid fa-newspaper feed-article-icon">
+                                <span className='feed-article-icon-text' >Write article</span>
+
+                            </i>
                         </div>
                         {/* <PostForm /> */}
                     </div>

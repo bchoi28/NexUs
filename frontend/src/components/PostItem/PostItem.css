@@ -4,7 +4,7 @@
     height: 100%;
     padding: 10px 20px 15px 20px;
     border: 1px solid black;
-    margin: 5px 15px 0 15px;
+    margin: 10px 15px 0 15px;
     border-radius: 12.8px;
     background-color: #fff;
     transition: box-shadow 83ms;
@@ -19,16 +19,18 @@
 }
 
 .post-profile-pic {
-    height: 55px;
-    width: 55px;
+    height: 48px;
+    width: 48px;
     border-radius: 50%;
-    margin-top: 6px;
+    margin-top: 0px;
 }
 
 .post-names-headline {
     margin-left: 10px;
     position: relative;
-    bottom: 5px;
+    top: 6px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
 }
 
 .post-author-names {
@@ -39,13 +41,22 @@
     color: var(--color-text-light);
     font-size: 12px;
     margin-left: 5px;
-
+    position: relative;
+    bottom: 1px
 }
 
 .post-author-headline {
     color: var(--color-text-light);
     font-size: 12px;
+    /* line-height: 1; */
+}
+
+.feed-post-timestamp {
+    font-size: 10px;
     line-height: 1;
+    position: relative;
+    bottom: 5px;
+    color: var(--color-text-light);
 }
 
 .post-dropdown-container {
@@ -98,6 +109,10 @@
     /* overflow-wrap: normal; */
     white-space: normal;
     font-size: 14px;
+}
+
+.post-photo-container {
+    border-radius: 11px;
 }
 
 .post-image {

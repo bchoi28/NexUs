@@ -5,13 +5,15 @@ import errorsReducer from './errors';
 import userReducer from './user';
 import postsReducer from './post';
 import uiReducer from './ui';
+import modalReducer from './modal';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     user: userReducer,
     posts: postsReducer,
     errors: errorsReducer,
-    ui: uiReducer
+    ui: uiReducer,
+    modal: modalReducer
 });
 
 let enhancer;

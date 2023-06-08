@@ -15,6 +15,7 @@ const PostItem = ({ post }) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
+        setDropDownOpen(!dropDownOpen);
     };
     const handleCloseModal = () => {
         setModalIsOpen(false);
@@ -25,9 +26,9 @@ const PostItem = ({ post }) => {
         setDropDownOpen(!dropDownOpen);
     };
 
-    const user = useSelector(getUser);
+    const currentUser = useSelector(getUser);
 
-    if (!user) {
+    if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         const userId = currentUser?.id;
         if (userId) {
@@ -36,25 +37,37 @@ const PostItem = ({ post }) => {
         return <h1>Loading...</h1>;
     }
 
-    const currentUser = user;
-    const userId = currentUser?.id;
-    const isCurrentUserPost = userId && userId === post.authorId;
+    const isCurrentUserPost = currentUser.id && currentUser.id === post.authorId;
 
-    // useEffect(() => {
-    //     dispatch(fetchUser());
-    // }, [])
+    const createdDate = new Date(post.createdAt); // Convert `created_at` to a JavaScript Date object
+    const updatedDate = new Date(post.updatedAt);
+    const currentDateTime = new Date(); // Get the current date and time
 
-    // if (!currentUser) {
-    //     return (
-    //         <div>Loading Post...</div>
-    //     )
-    // }
+    const wasEdited = updatedDate.getTime() - createdDate.getTime() > 5000; // 60,000 milliseconds = 1 minute
+    debugger
+    const timeDifference = currentDateTime - createdDate; // Calculate the difference in milliseconds
+
+    // Calculate the difference in hours and minutes
+    const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
+    const minutesAgo = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let timeAgo;
+    if (hoursAgo > 0) {
+        timeAgo = `${hoursAgo}h`;
+    } else {
+        timeAgo = `${minutesAgo}m`;
+    }
+
+    if (wasEdited) {
+        timeAgo = timeAgo + " \u00B7 Edited";
+    }
 
     const handleDeletePost = (e) => {
         dispatch(deletePost(post.id))
+        setDropDownOpen(!dropDownOpen);
     }
 
-    const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="post" /> : null
+    const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
 
 
     return (
@@ -66,6 +79,7 @@ const PostItem = ({ post }) => {
                         <span className="post-author-pronouns">({post.author.pronouns})</span>
                     </div>
                     <div className='post-author-headline' >{post.author.headline}</div>
+                    <span className='feed-post-timestamp' >{timeAgo}</span>
                 </div>
                 <div className='post-dropdown-container'>
                     {isCurrentUserPost &&
@@ -99,7 +113,7 @@ const PostItem = ({ post }) => {
                         isOpen={modalIsOpen}
                         onRequestClose={handleCloseModal}
                     >
-                        <ModalSwitch modalType='updatePost' handleClose={handleCloseModal} post={post} />
+                        <ModalSwitch modalType='updatePost' handleClose={handleCloseModal} post={post} currentUser={currentUser} />
                     </ModalContainer>
                 }
 
@@ -107,7 +121,7 @@ const PostItem = ({ post }) => {
             <div className='post-body'>
                 {post.body}
             </div>
-            <div>
+            <div className='post-photo-container'>
                 {postPhoto}
             </div>
             <div className='post-footer'>Like Comment Bar</div>

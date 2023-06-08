@@ -45,7 +45,7 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
     }
 
     let photoPreview = null;
-    if (photoUrl) photoPreview = <img className='photo-preview' src={photoUrl} alt="" />;
+    if (photoUrl) photoPreview = <img className='post-photo-preview' src={photoUrl} alt="" />;
 
     return (
 
@@ -72,8 +72,8 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
             </div>
             <div className='post-modal-footer'>
                 <div className='post-modal-image-container' >
-                    <label for="file-input" class="file-input-label">
-                        <span class="file-input-icon">
+                    <label htmlFor="file-input" class="post-file-input-label">
+                        <span class="post-file-input-icon">
                             <i class="fa-solid fa-image"></i>
                         </span>
                         Upload Image

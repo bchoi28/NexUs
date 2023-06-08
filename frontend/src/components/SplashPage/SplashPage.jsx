@@ -1,8 +1,11 @@
 import SplashSignInForm from "../SplashSignInForm";
 import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
-import spaceImage from '../../images/space.jpg';
+// import spaceImage from '../../images/space.jpg';
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getUiState } from "../../store/ui";
+import LoadingLogo from "../LoadingLogo";
 
 const SplashPage = () => {
 
@@ -11,6 +14,11 @@ const SplashPage = () => {
     const toggleSpace = (e) => {
         setShowSpace(prevState => !prevState)
     };
+
+    const loading = useSelector(getUiState);
+    if (loading) {
+        return <LoadingLogo />
+    }
 
     return (
         <>

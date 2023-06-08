@@ -1,5 +1,5 @@
 import csrfFetch from './csrf';
-import { storeCurrentUser, setSession } from './session';
+import { storeCurrentUser, setSession, loginUser } from './session';
 import { receiveSessionErrors } from './errors';
 
 
@@ -44,6 +44,7 @@ export const signupUser = (user) => async (dispatch) => {
         storeCurrentUser(data.user);
         dispatch(setSession(data.user));
         dispatch(receiveUser(data.user))
+        dispatch(loginUser(data.user))
     } else {
         const data = await res.json();
         // data.errors => ex.['Email Please enter a valid email address.', 'error2']
@@ -53,9 +54,9 @@ export const signupUser = (user) => async (dispatch) => {
     return res;
 }
 export const updateUser = (user) => async (dispatch) => {
-
+    debugger
     const payload = { user: user }
-    const res = await csrfFetch(`/api/user/${user.id}`, {
+    const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

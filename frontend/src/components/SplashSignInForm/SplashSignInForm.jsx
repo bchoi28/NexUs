@@ -1,11 +1,13 @@
 import './SplashSignInForm.css'
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { getUser } from '../../store/user';
+// import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { loginRequest } from '../../store/ui';
+// import  from '../LoadingLogo';
 
 const SplashSignInForm = () => {
 
@@ -14,31 +16,16 @@ const SplashSignInForm = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [errors, setErrors] = useState([]);
+
     const errors = useSelector(state => Object.values(state.errors));
     const [emailError, passwordError] = errors ?? [];
-    const handleEmail = (e) => {
-        setEmail(e.target.value)
-    };
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
-    };
+
+    const handleEmail = (e) => setEmail(e.target.value);
+    const handlePassword = (e) => setPassword(e.target.value);
 
     useEffect(() => {
-
-        return () => {
-            dispatch(removeSessionErrors());
-        }
+        return () => dispatch(removeSessionErrors())
     }, [])
-
-    const sessionUser = useSelector(state => state.session.user);
-    if (sessionUser) {
-        return <Redirect to='/feed' />
-    }
-
-    // if (sessionStorage.getItem('currentUser')) {
-    //     history.push('/feed')
-    // }
 
 
     const handleSubmit = async (e) => {
@@ -48,17 +35,18 @@ const SplashSignInForm = () => {
 
     const handleDemo = (e) => {
         e.preventDefault();
+        dispatch(loginRequest());
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
     }
-    // )
-    //     .then((res) => {
-    //         history.push('/feed')
-    //     })
-    // }
 
     const handleJoin = () => {
         dispatch(removeSessionErrors())
         history.push('/signup')
+    }
+
+    const sessionUser = useSelector(state => state.session.user);
+    if (sessionUser) {
+        return <Redirect to='/feed' />
     }
 
     return (

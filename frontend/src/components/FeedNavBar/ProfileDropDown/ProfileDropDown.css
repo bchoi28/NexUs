@@ -6,6 +6,8 @@
 
 .profile-button {
     background-color: #fff;
+    position: relative;
+    z-index: 101;
 }
 
 .profile-dropdown-menu {
@@ -14,8 +16,8 @@
     position: absolute;
     top: 100%;
     /* border: 1px solid black; */
-    right: 10%;
-    z-index: 999;
+    right: -25px;
+    z-index: 100;
     margin-top: 15px;
     /* padding: 15px; */
     width: 250px;
@@ -54,6 +56,7 @@
 .profile-dropdown-headline {
     color: var(--color-text-light);
     font-size: 12px;
+    letter-spacing: -.5px;
 }
 
 .profile-dropdown-view-profile-button-container {
