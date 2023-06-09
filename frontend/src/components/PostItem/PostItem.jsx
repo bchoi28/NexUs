@@ -1,19 +1,24 @@
 import './PostItem.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUser, getUser } from '../../store/user';
 import { deletePost } from '../../store/post';
+import { NavLink } from 'react-router-dom';
+import { fetchSessionUser, getSessionUser } from '../../store/session';
+import Like from '../Like';
 
 const PostItem = ({ post }) => {
     // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
+    const dropdownRef = useRef(null);
+
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
+        setDropDownOpen(!dropDownOpen);
     };
     const handleCloseModal = () => {
         setModalIsOpen(false);
@@ -24,49 +29,79 @@ const PostItem = ({ post }) => {
         setDropDownOpen(!dropDownOpen);
     };
 
-    const user = useSelector(getUser);
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setDropDownOpen(false);
+            }
+        };
 
-    if (!user) {
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    const currentUser = useSelector(getSessionUser)
+
+    if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        const userId = currentUser?.id;
-        if (userId) {
-            dispatch(fetchUser(userId));
+        if (currentUser) {
+            dispatch(fetchSessionUser(currentUser.id))
         }
         return <h1>Loading...</h1>;
     }
 
-    const currentUser = user;
-    const userId = currentUser?.id;
-    const isCurrentUserPost = userId && userId === post.authorId;
+    const isCurrentUserPost = currentUser.id && currentUser.id === post.authorId;
 
-    // useEffect(() => {
-    //     dispatch(fetchUser());
-    // }, [])
+    const createdDate = new Date(post.createdAt); // Convert `created_at` to a JavaScript Date object
+    const updatedDate = new Date(post.updatedAt);
+    const currentDateTime = new Date(); // Get the current date and time
 
-    // if (!currentUser) {
-    //     return (
-    //         <div>Loading Post...</div>
-    //     )
-    // }
+    const wasEdited = updatedDate.getTime() - createdDate.getTime() > 5000; // 60,000 milliseconds = 1 minute
+    const timeDifference = currentDateTime - createdDate; // Calculate the difference in milliseconds
+
+    // Calculate the difference in hours and minutes
+    const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
+    const minutesAgo = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let timeAgo;
+    if (hoursAgo > 0) {
+        timeAgo = `${hoursAgo}h`;
+    } else {
+        timeAgo = `${minutesAgo}m`;
+    }
+
+    if (wasEdited) {
+        timeAgo = timeAgo + " \u00B7 Edited";
+    }
 
     const handleDeletePost = (e) => {
         dispatch(deletePost(post.id))
+        setDropDownOpen(!dropDownOpen);
     }
+
+    const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
 
 
     return (
         <div className='post-item-container'>
             <header className='post-header'>
-                <img src="" alt="profile" />
+                <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
                 <div className='post-names-headline'>
-                    <div className='post-author-names' >{post.author.fName} {post.author.lName}
-                        <span className="post-author-pronouns">({post.author.pronouns})</span>
-                    </div>
+                    <NavLink className='profile-links' to={`/profile/${post.authorId}`} profileUser={post.author}>
+                        <div className='post-author-names' >{post.author.fName} {post.author.lName}
+                            <span className="post-author-pronouns">({post.author.pronouns})</span>
+                        </div>
+                    </NavLink>
                     <div className='post-author-headline' >{post.author.headline}</div>
+                    <span className='feed-post-timestamp' >{timeAgo}</span>
                 </div>
                 <div className='post-dropdown-container'>
                     {isCurrentUserPost &&
                         <button
+                            ref={dropdownRef}
                             className='post-dropdown-icon'
                             onClick={handleDropDownStatus}
                         >...</button>
@@ -77,15 +112,14 @@ const PostItem = ({ post }) => {
                                 className='post-delete-button'
                                 onClick={handleDeletePost}
                             >
-                                Delete Post
+                                <i className=" delete-button fa-regular fa-trash-can"></i>
                             </div>
                             <div
                                 className='post-update-button'
                                 onClick={handleOpenModal}
                             >
-                                Update Post
+                                <i className=" edit-button fa-solid fa-pencil"></i>
                             </div>
-
                         </div>
                     }
                 </div>
@@ -96,7 +130,7 @@ const PostItem = ({ post }) => {
                         isOpen={modalIsOpen}
                         onRequestClose={handleCloseModal}
                     >
-                        <ModalSwitch modalType='updatePost' handleClose={handleCloseModal} post={post} />
+                        <ModalSwitch modalType='updatePost' handleClose={handleCloseModal} post={post} currentUser={currentUser} />
                     </ModalContainer>
                 }
 
@@ -104,11 +138,15 @@ const PostItem = ({ post }) => {
             <div className='post-body'>
                 {post.body}
             </div>
-            <img src={post.photoUrl} alt="post" />
-            <div className='post-footer'>Like Comment Bar</div>
+            <div className='post-photo-container'>
+                {postPhoto}
+            </div>
+            <div className='post-footer'>
+                <Like postId={post.id} />
+            </div>
 
         </div>
     )
 }
 
-export default React.memo(PostItem);
+export default PostItem;

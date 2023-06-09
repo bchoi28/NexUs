@@ -6,11 +6,13 @@ import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { getSessionUser, loginUser } from '../../store/session';
+import LoadingLogo from '../LoadingLogo';
+import { getUiState } from '../../store/ui';
 
 const SignUpPage = () => {
-    const currentUser = useSelector(getUser);
+    const currentUser = useSelector(getSessionUser)
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -21,6 +23,8 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [formStep, setFormStep] = useState(1);
     const [userObject, setUserObject] = useState({});
+    const loading = useSelector(getUiState);
+
 
     const handleSignup = ({ email, password }) => {
         setUserObject({ email, password });
@@ -48,6 +52,9 @@ const SignUpPage = () => {
         return <Redirect to='/feed' />
     };
 
+    if (loading) {
+        return <LoadingLogo />
+    }
 
     return (
         <div className='signup-page-container'>

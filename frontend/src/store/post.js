@@ -75,12 +75,12 @@ export const fetchPost = (postId) => async (dispatch) => {
     }
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (formData) => async (dispatch) => {
     // const payload = { post: post }
     const res = await csrfFetch('/api/posts', {
         method: 'POST',
         // body: JSON.stringify(payload)
-        body: post
+        body: formData
     });
     if (res.ok) {
         const data = await res.json();
@@ -89,15 +89,15 @@ export const createPost = (post) => async (dispatch) => {
     }
 };
 
-export const updatePost = (post) => async (dispatch) => {
-    const payload = { post: post }
-    const res = await csrfFetch(`/api/posts/${post.id}`, {
+export const updatePost = (id, formData) => async (dispatch) => {
+    // const payload = { post: post }
+    const res = await csrfFetch(`/api/posts/${id}`, {
         method: 'PATCH',
         // headers: {
         //     'Content-Type': 'application/json'
         // },
         // im already doing this in my custom csrfFetch
-        body: JSON.stringify(payload)
+        body: formData
     });
     if (res.ok) {
         const data = await res.json();
@@ -118,17 +118,15 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
-    const nextState = { ...state };
-
     switch (action.type) {
         case RECEIVE_POSTS:
-            return { ...nextState, ...action.posts };
+            return { ...state, ...action.posts };
         case RECEIVE_POST:
-            nextState[action.post.id] = action.post;
-            return nextState
+            return { ...state, [action.post.id]: action.post };
         case REMOVE_POST:
-            delete nextState[action.postId];
-            return nextState;
+            const newState = { ...state };
+            delete newState[action.postId];
+            return newState;
         case REMOVE_POSTS:
             return {};
         default:

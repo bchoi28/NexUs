@@ -1,48 +1,24 @@
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './SignUpForm.css';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { signupUser } from '../../store/user';
-import { removeSessionErrors } from '../../store/errors';
-import LoadingLogo from '../LoadingLogo';
 import { loginUser } from '../../store/session';
-import { getUser } from '../../store/user';
+import { loginRequest } from '../../store/ui';
+import { removeSessionErrors } from '../../store/errors';
+
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
 
     const dispatch = useDispatch();
-    // const history = useHistory();
     const errors = useSelector(state => Object.values(state.errors));
-    // const currentUser = useSelector(getUser);
-
-
 
     const emailErrors = errors.filter(error => error.toLowerCase().includes("email"));
     const passwordErrors = errors.filter(error => error.toLowerCase().includes("password"));
 
-    // const [isLoading, setIsLoading] = useState(false);
 
-    // const [state, setState] = useState({
-    //     email: '',
-    //     password: ''
-    // });
-
-    // const handleChange = (e) => {
-    //     const value = e.target.value;
-    //     setState({
-    //         ...state,
-    //         [e.target.name]: value
-    //     });
-    // }
-
-    // const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [finalErrors, setFinalErrors] = useState({})
-
-    // if (currentUser) {
-    //     return <Redirect to='/feed' />
-    // };
 
     const emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -75,6 +51,7 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        dispatch(loginRequest())
 
         const formErrors = validate(email, password);
         if (Object.values(formErrors).some(value => value !== '')) {
@@ -92,8 +69,17 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
     const handleDemo = (e) => {
         e.preventDefault();
+        dispatch(loginRequest());
         dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
     }
+    useEffect(() => {
+
+        return () => {
+            dispatch(removeSessionErrors());
+            setEmail('');
+            setPassword('');
+        }
+    }, [])
 
     return (
         <>

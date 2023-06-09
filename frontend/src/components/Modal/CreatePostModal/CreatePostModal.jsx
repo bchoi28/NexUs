@@ -4,7 +4,7 @@ import { createPost } from '../../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../store/user';
 
-const CreatePostModal = ({ handleClose }) => {
+const CreatePostModal = ({ handleClose, currentUser }) => {
     // handleClose = () => {setModalIsOpen(false)}
     // passed from ModalContainer->ModalSwitch->PostModal
 
@@ -44,31 +44,43 @@ const CreatePostModal = ({ handleClose }) => {
         handleClose();
     }
 
-    let preview = null;
-    if (photoUrl) preview = <img src={photoUrl} alt="" />;
+    let photoPreview = null;
+    if (photoUrl) photoPreview = <img className='post-photo-preview' src={photoUrl} alt="" />;
 
     return (
 
         <form className='post-modal-container' onSubmit={handleSubmit}>
             <header className='post-modal-header'>
-                <img className='post-modal-user-pic' src="" alt="profile" />
-                <div className='post-modal-user-name'>User Name</div>
-                <button className='post-modal-close' onClick={handleClose} >x</button>
+                <img className='post-modal-user-pic' src={currentUser.photoUrl} alt="profile" />
+                <div className='post-modal-name-headline' >
+                    <div className='post-modal-user-name'>{currentUser.fName} {currentUser.lName} </div>
+                    <div className='post-modal-user-headline'>{currentUser.headline}</div>
+                </div>
+                <div className='post-modal-close-container'>
+                    <button className='post-modal-close' onClick={handleClose} >X</button>
+                </div>
             </header>
             <div className='post-modal-body-container'>
-                <textarea
-                    className='post-modal-body-input'
-                    onChange={handleBody}
-                    placeholder='What do you want to talk about?'>
-                </textarea>
-                <div>
-                    {preview}
+                <div className='post-modal-content'>
+                    <textarea
+                        className='post-modal-body-input'
+                        onChange={handleBody}
+                        placeholder='What do you want to talk about?'>
+                    </textarea>
+                    {photoPreview}
                 </div>
             </div>
             <div className='post-modal-footer'>
                 <div className='post-modal-image-container' >
+                    <label htmlFor="file-input" class="post-file-input-label">
+                        <span class="post-file-input-icon">
+                            <i class="fa-solid fa-image"></i>
+                        </span>
+                        Upload Image
+                    </label>
                     <input
-                        className='post-modal-image-input'
+                        id="file-input"
+                        className='post-modal-image-upload'
                         type="file"
                         accept='image/*'
                         onChange={handleFile} />

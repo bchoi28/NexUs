@@ -1,11 +1,24 @@
 .feed-page-container {
     display: flex;
     width: 100%;
-    height: 100%;
+    /* height: 100vh; */
     flex-direction: column;
     align-items: center;
     background-color: var(--color-background-canvas);
 }
+
+/* #main {
+    transition: background-color 0.5s;
+}
+
+.scroll-effect {
+    background-color: #000;
+}
+
+.space-effect {
+    background-color: #222;
+} */
+
 
 .feed-navbar-container {
     width: 100%;
@@ -13,33 +26,41 @@
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
-
 }
+
 
 .feed-container {
     display: flex;
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    /* max-width: 100%; */
     /* border: 1px solid black; */
     color: rgba (0, 0, 0, 0.9);
     justify-content: center;
     margin-top: 56px;
+    position: relative;
+    left: 100px;
+    /* margin-left: 150px; */
 }
 
 .feed-left {
-    width: 17%;
+    width: 15%;
     /* border: 1px solid black; */
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 71px;
+    left: 188px
 }
 
 /* feed left+middle+right = 79% */
 .feed-middle {
-    width: 45%;
+    width: 40%;
     /* border: 1px solid black; */
     height: 100%;
     margin: 0 8px 0 8px;
+    z-index: 100;
 }
 
 .feed-post-form-container {
@@ -61,6 +82,12 @@
     color: rgba(0, 0, 0, 0.6)
 }
 
+.feed-user-profile-pic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+}
+
 .feed-create-post-button {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.6);
@@ -71,12 +98,12 @@
     justify-content: left;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 35px;
-
+    margin-left: 13px;
     cursor: pointer;
     font-weight: 600;
 
     min-height: 15px;
-    padding: 15px 20px;
+    padding: 12px 20px;
     transition: background-color 0.2s ease-in;
 }
 
@@ -84,9 +111,38 @@
     background-color: var(--color-background-button-hover)
 }
 
+.feed-photo-icon {
+    color: #378fe9;
+}
+
+.feed-photo-icon-text,
+.feed-video-icon-text,
+.feed-calendar-icon-text,
+.feed-article-icon-text {
+    color: var(--color-text-light);
+    font-family: var(--primary-font);
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 5px;
+    bottom: 1px;
+    position: relative;
+}
+
+.feed-video-icon {
+    color: #5f9b41;
+}
+
+.feed-calendar-icon {
+    color: #c37d16;
+}
+
+.feed-article-icon {
+    color: #e16745;
+}
+
 
 .feed-right {
-    width: 17%;
+    width: 15%;
     /* border: 1px solid black; */
     background-color: #fff;
     border-radius: 12.8px;
@@ -104,4 +160,18 @@
     transition: box-shadow 83ms;
     border: none;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08) */
+}
+
+.feed-post-form-bottom {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 14px;
+    width: 97%;
+    margin-left: 7px;
+    height: 25px
+}
+
+.feed-post-form-bottom i {
+    font-size: 18px;
 }

@@ -1,0 +1,47 @@
+.about-custom {
+    height: 360px
+}
+
+.update-about-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-about-header {
+    display: flex;
+    padding: 10px;
+    border-bottom: 0.5px solid var(--color-text-light);
+}
+
+.update-about-title {}
+
+.about-subheading {
+    font-size: 12px;
+    padding: 10px
+}
+
+.update-about-input {
+    height: 200px;
+    padding: 10px;
+    margin: 5px 10px 10px 10px;
+    resize: none;
+}
+
+.update-about-save-button {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 12.8px;
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    padding: 2px 11px;
+    font-size: 12px;
+    transition: background-color .1s ease-in-out;
+    transition: transform 0.3s ease;
+    margin-right: 13px;
+}
+
+.update-about-save-button:hover {
+    transform: scale(1.1);
+    background-color: #004182;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
