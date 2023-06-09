@@ -17,6 +17,8 @@
     width: 55px;
     border-radius: 50%;
     /* margin-top: 6px; */
+    position: relative;
+    bottom: 4px
 }
 
 .post-modal-name-headline {

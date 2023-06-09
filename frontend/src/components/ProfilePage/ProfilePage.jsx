@@ -6,13 +6,12 @@ import FeedNavBar from '../FeedNavBar';
 import { useParams } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
-import { fetchSessionUser } from '../../store/session';
+import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { removeUser } from '../../store/user';
 import Login from '../Login/Login';
 
 
 const ProfilePage = () => {
-
     const { id } = useParams();
     const dispatch = useDispatch();
 
@@ -21,7 +20,7 @@ const ProfilePage = () => {
     const [isTruncated, setIsTruncated] = useState(true);
 
     // currentUser = { userObject }
-    const currentUser = useSelector(fetchSessionUser)
+    const currentUser = useSelector(getSessionUser);
 
 
     const handleReadMoreClick = () => {

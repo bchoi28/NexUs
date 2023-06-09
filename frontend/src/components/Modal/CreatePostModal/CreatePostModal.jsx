@@ -72,9 +72,9 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
             </div>
             <div className='post-modal-footer'>
                 <div className='post-modal-image-container' >
-                    <label htmlFor="file-input" class="post-file-input-label">
-                        <span class="post-file-input-icon">
-                            <i class="fa-solid fa-image"></i>
+                    <label htmlFor="file-input" className="post-file-input-label">
+                        <span className="post-file-input-icon">
+                            <i className="fa-solid fa-image"></i>
                         </span>
                         Upload Image
                     </label>
