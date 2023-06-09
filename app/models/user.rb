@@ -18,9 +18,13 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
+
+require 'open-uri'
+
+
 class User < ApplicationRecord
     has_secure_password
-    before_validation :generate_default_pic
+    before_validation :generate_default_pic, :generate_default_cover_photo
 
     validates :email, 
         uniqueness: { message: 'Someone\'s already using that email.' },
@@ -36,15 +40,27 @@ class User < ApplicationRecord
     #   come back to flesh these associations out
 
     has_one_attached :photo
+    has_one_attached :cover_photo
+
 
     has_many :posts, 
         primary_key: :id,
         foreign_key: :author_id,
         class_name: :Post,
         dependent: :destroy
+
+    has_many :experiences,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Experience,
+        dependent: :destroy
         
-    has_many :comments
-    has_many :likes
+    has_many :likes,
+        dependent: :destroy
+
+    has_many :comments,
+        dependent: :destroy
+        
     has_many :connections
     has_many :connection_requests
 
@@ -98,6 +114,13 @@ class User < ApplicationRecord
         unless self.photo.attached?
             file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/default-profile-image-circle.png");
             self.photo.attach(io: file, filename: "default-profile-image-circle.png")
+        end
+    end
+
+    def generate_default_cover_photo
+        unless self.cover_photo.attached?
+            file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/badge-background.png")
+            self.cover_photo.attach(io: file, filename: "badge-background.png")
         end
     end
 

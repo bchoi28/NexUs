@@ -33,8 +33,13 @@
     letter-spacing: -0.5px;
 }
 
+/* .profile-links:hover> :not(.post-author-pronouns) {
+    text-decoration: underline;
+} */
+
 .post-author-names {
     font-weight: 600;
+    color: var(--secondary-color);
 }
 
 .post-author-pronouns {
@@ -69,7 +74,7 @@
 .post-dropdown-icon {
     margin-left: auto;
     position: relative;
-    top: -9px;
+    top: -15px;
     left: 9px;
     color: var(--color-text-light);
     font-size: 22px;
@@ -88,20 +93,33 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 30%;
+    top: 50%;
     z-index: 999;
     justify-content: center;
     align-items: center;
+    left: 13px;
+    font-size: 20px;
 }
 
 .post-delete-button {
     cursor: pointer;
-    font-size: ;
+    position: relative;
+    bottom: 5px
+}
+
+.delete-button {
+    color: red;
 }
 
 .post-update-button {
     /* margin-left: auto; */
     cursor: pointer;
+    position: relative;
+    bottom: 5px;
+}
+
+.edit-button {
+    color: var(--secondary-color)
 }
 
 .post-body {

@@ -1,0 +1,13 @@
+.like-button {
+    background-color: transparent;
+}
+
+.liked-icon {
+    font-size: 23px;
+    color: red
+}
+
+.unliked-icon {
+    font-size: 23px;
+    color: red;
+}

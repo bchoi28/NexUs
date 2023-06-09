@@ -8,5 +8,6 @@ json.post do
     json.pronouns @post.author.pronouns
     json.headline @post.author.headline
     json.photoUrl @post.author.photo.url
+    json.coverPhotoUrl @post.author.cover_photo.url
   end
 end

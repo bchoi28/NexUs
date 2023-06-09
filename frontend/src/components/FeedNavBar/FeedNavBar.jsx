@@ -1,22 +1,13 @@
-import { NavLink, Link } from 'react-router-dom'
-import { useState } from 'react';
 import './FeedNavBar.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../store/session';
-import { useHistory } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
-import userReducer, { getUser } from '../../store/user';
+import SearchBar from '../SearchBar/SearchBar';
 
 const FeedNavBar = () => {
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const currentUser = useSelector(getUser);
-
-    const handleLogo = () => {
-        history.push('/');
-    }
+    const currentUser = useSelector(getSessionUser);
 
     if (!currentUser) {
         return <h1>Loading Nav Bar...</h1>
@@ -28,6 +19,7 @@ const FeedNavBar = () => {
 
                 <div className='left-main-nav'>
                     <NavLink to='/feed' className='feed-nav-logo-us'>us</NavLink>
+                    <SearchBar />
                 </div>
 
                 <div className='right-main-nav'>
@@ -47,7 +39,7 @@ const FeedNavBar = () => {
                             <span className="icon-text">GitHub</span>
                         </div>
                     </Link>
-                    <ProfileDropDown currentUser={currentUser} />
+                    <ProfileDropDown />
                 </div>
 
             </div>

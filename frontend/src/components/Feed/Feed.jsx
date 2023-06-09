@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser, fetchUser } from '../../store/user';
+import { removeUser, getUser, fetchUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
+import { getSessionUser, fetchSessionUser } from '../../store/session';
 
 const Feed = () => {
 
@@ -22,31 +23,47 @@ const Feed = () => {
         setModalIsOpen(false);
     }
 
-    const currentUser = useSelector(getUser);
+    const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
+
 
     useEffect(() => {
         if (!currentUser || !currentUser.photoUrl) {
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-            dispatch(fetchUser(currentUser.id));
+            dispatch(fetchSessionUser(currentUser.id));
         }
-
         if (!posts) {
             dispatch(fetchPosts());
         }
-
+        return () => {
+            dispatch(removeUser());
+        }
     }, [])
-    // remove currentUser, posts to re-fetch data every time
+
 
     if (!currentUser || !posts) {
         return <h1>Loading Feed...</h1>
     }
 
+    // optional space theme
+
+    // window.addEventListener('scroll', function () {
+    //     var mainElement = document.getElementById('main');
+    //     var scrollPosition = window.scrollY;
+
+    //     if (scrollPosition > 0) {
+    //         mainElement.classList.add('space-effect');
+    //     } else {
+    //         mainElement.classList.remove('space-effect');
+    //     }
+    // });
+
+
     return (
-        <div className='feed-page-container'>
+        <div className='feed-page-container scroll-effect' id='main'>
 
             <header className='feed-navbar-container'>
-                <FeedNavBar currentUser={currentUser} />
+                <FeedNavBar />
             </header>
 
             <div className='feed-container'>

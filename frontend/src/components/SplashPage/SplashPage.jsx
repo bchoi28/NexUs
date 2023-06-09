@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getUiState } from "../../store/ui";
 import LoadingLogo from "../LoadingLogo";
+import Login from "../Login/Login";
 
 const SplashPage = () => {
 
@@ -17,7 +18,7 @@ const SplashPage = () => {
 
     const loading = useSelector(getUiState);
     if (loading) {
-        return <LoadingLogo />
+        return <Login />
     }
 
     return (

@@ -2,7 +2,11 @@ import './Loading.css';
 
 const LoadingLogo = () => {
     return (
-        <div>LoadingLogo</div>
+        <div>
+            <div>
+
+            </div>
+        </div>
     )
 }
 

@@ -1,16 +1,19 @@
 import './PostItem.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUser, getUser } from '../../store/user';
 import { deletePost } from '../../store/post';
+import { NavLink } from 'react-router-dom';
+import { fetchSessionUser, getSessionUser } from '../../store/session';
+import Like from '../Like';
 
 const PostItem = ({ post }) => {
-    debugger
     // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
+    const dropdownRef = useRef(null);
+
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
@@ -26,13 +29,26 @@ const PostItem = ({ post }) => {
         setDropDownOpen(!dropDownOpen);
     };
 
-    const currentUser = useSelector(getUser);
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setDropDownOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    const currentUser = useSelector(getSessionUser)
 
     if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        const userId = currentUser?.id;
-        if (userId) {
-            dispatch(fetchUser(userId));
+        if (currentUser) {
+            dispatch(fetchSessionUser(currentUser.id))
         }
         return <h1>Loading...</h1>;
     }
@@ -44,7 +60,6 @@ const PostItem = ({ post }) => {
     const currentDateTime = new Date(); // Get the current date and time
 
     const wasEdited = updatedDate.getTime() - createdDate.getTime() > 5000; // 60,000 milliseconds = 1 minute
-    debugger
     const timeDifference = currentDateTime - createdDate; // Calculate the difference in milliseconds
 
     // Calculate the difference in hours and minutes
@@ -75,15 +90,18 @@ const PostItem = ({ post }) => {
             <header className='post-header'>
                 <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
                 <div className='post-names-headline'>
-                    <div className='post-author-names' >{post.author.fName} {post.author.lName}
-                        <span className="post-author-pronouns">({post.author.pronouns})</span>
-                    </div>
+                    <NavLink className='profile-links' to={`/profile/${post.authorId}`} profileUser={post.author}>
+                        <div className='post-author-names' >{post.author.fName} {post.author.lName}
+                            <span className="post-author-pronouns">({post.author.pronouns})</span>
+                        </div>
+                    </NavLink>
                     <div className='post-author-headline' >{post.author.headline}</div>
                     <span className='feed-post-timestamp' >{timeAgo}</span>
                 </div>
                 <div className='post-dropdown-container'>
                     {isCurrentUserPost &&
                         <button
+                            ref={dropdownRef}
                             className='post-dropdown-icon'
                             onClick={handleDropDownStatus}
                         >...</button>
@@ -94,15 +112,14 @@ const PostItem = ({ post }) => {
                                 className='post-delete-button'
                                 onClick={handleDeletePost}
                             >
-                                DELETE
+                                <i className=" delete-button fa-regular fa-trash-can"></i>
                             </div>
                             <div
                                 className='post-update-button'
                                 onClick={handleOpenModal}
                             >
-                                EDIT
+                                <i className=" edit-button fa-solid fa-pencil"></i>
                             </div>
-
                         </div>
                     }
                 </div>
@@ -124,7 +141,9 @@ const PostItem = ({ post }) => {
             <div className='post-photo-container'>
                 {postPhoto}
             </div>
-            <div className='post-footer'>Like Comment Bar</div>
+            <div className='post-footer'>
+                <Like postId={post.id} />
+            </div>
 
         </div>
     )

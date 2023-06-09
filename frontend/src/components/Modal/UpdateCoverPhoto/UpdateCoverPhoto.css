@@ -1,0 +1,52 @@
+.update-cover-photo-custom {
+    width: 500px;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    /* padding: 0; */
+    max-width: 100%;
+    top: 35px;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.update-cover-photo-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100%;
+    width: 100%;
+}
+
+.update-cover-photo-header {
+    display: flex;
+    padding: 10px;
+    border-bottom: 0.5px solid var(--color-text-light);
+    height: 50px
+}
+
+.update-cover-photo-preview-container {
+    position: relative;
+    /* flex: 1; */
+}
+
+
+.update-cover-photo-preview {
+    height: 150px;
+    /* display: flex; */
+    max-height: 400px;
+    max-width: 500px;
+    /* justify-self: center; */
+    margin: auto;
+    margin-top: 20px
+}
+
+.upload-save-container {
+    margin-top: auto;
+    height: 50px
+}
+
+.update-cover-photo-footer {
+    display: flex;
+}

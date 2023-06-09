@@ -54,6 +54,11 @@
     /* box-shadow: 0px 0x 0px 1px rgba(0, 0, 0, 0.08); */
 }
 
+.profile-photo-camera-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .profile-page-photo {
     height: 150px;
     width: 150px;
@@ -63,6 +68,22 @@
     border: 2px solid #fff;
     margin-left: 22px;
     /* box-shadow: 0px 0x 0px 1px rgba(0, 0, 0, 0.08); */
+}
+
+.camera-button {
+    color: var(--primary-color);
+    position: relative;
+    bottom: 150px;
+    right: 25px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 150px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.camera-button:hover {
+    color: var(--secondary-color);
 }
 
 .profile-intro-info {
@@ -77,6 +98,8 @@
 .profile-intro-info-left {
     display: flex;
     flex-direction: column;
+    position: relative;
+    bottom: 30px
 }
 
 .profile-intro-name-pronouns {
@@ -172,4 +195,17 @@
     background-color: #fff;
     font-size: 12px;
     font-weight: 500;
+}
+
+.loading-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Adjust the height as needed */
+}
+
+.loading-profile-text {
+    text-align: center;
+
 }

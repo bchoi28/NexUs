@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    wrap_parameters include: User.attribute_names + ['password'] + [:photo]
+    wrap_parameters include: User.attribute_names + ['password'] + [:photo] + [:cover_photo]
 
     def show
         @user = User.find(params[:id])
@@ -32,9 +32,19 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def search
+        if params[:query].present?
+            @users = User.where('fname LIKE ?', "%#{params[:query]}%")
+            render :search
+        else
+            @users = []
+            render json: @users
+        end
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :fname, :lname, :photo, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
+        params.require(:user).permit(:email, :password, :fname, :lname, :photo, :cover_photo, :profile_url, :headline, :pronouns, :about, :location_country_region, :location_postal_code, :location_city)
     end
 end

@@ -7,12 +7,19 @@ import { loginSuccess, logoutSuccess } from './ui';
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
 
-export const setSession = (userData) => {
-    let user = null;
-    if (userData) {
-        const { id, email, fName, lName } = userData;
-        user = { id, email, fName, lName };
-    }
+// export const setSession = (userData) => {
+//     let user = null;
+//     if (userData) {
+//         const { id, email, fName, lName } = userData;
+//         user = { id, email, fName, lName };
+//     }
+//     return {
+//         type: SET_SESSION,
+//         user: user
+//     };
+// };
+
+export const setSession = (user) => {
     return {
         type: SET_SESSION,
         user: user
@@ -25,22 +32,32 @@ export const removeSession = () => {
     }
 }
 
+// selector to get sessionUser object
+export const getSessionUser = state => state.session.user;
 
 // thunk action creator
+
+export const fetchSessionUser = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}`);
+    if (res.ok) {
+        const data = await res.json();
+        const user = data.user;
+        dispatch(setSession(user));
+    }
+}
+
 export const loginUser = (user) => async (dispatch) => {
-    debugger
     const payload = { user: user }
     const res = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify(payload)
     });
     if (res.ok) {
-        debugger
         const data = await res.json();
         // right here it triggers a re-render 
         // of my SplashSignInForm???
         dispatch(setSession(data.user));
-        dispatch(receiveUser(data.user));
+        // dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
         dispatch(loginSuccess());
     } else {

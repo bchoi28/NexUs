@@ -21,6 +21,8 @@
         Arial,
         sans-serif;
     --primary-color: #2867B2;
+    --secondary-color: #004182;
+    --tertiary-color: #cc1016;
     --color-icon: rgba(0, 0, 0, 0.6);
     --color-background-canvas: #f3f2ef;
     --color-background-button-hover: rgba(0, 0, 0, 0.08);

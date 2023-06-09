@@ -1,7 +1,7 @@
 import './SignInForm.css'
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { loginUser } from '../../store/session';
+import { getSessionUser, loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
 import { getUser } from '../../store/user';
@@ -12,7 +12,7 @@ const SignInForm = () => {
 
     const dispatch = useDispatch();
     // const history = useHistory();
-    const currentUser = useSelector(getUser);
+    const currentUser = useSelector(getSessionUser)
     // const loading = useSelector(getUiState);
 
     const [email, setEmail] = useState('')
@@ -35,6 +35,8 @@ const SignInForm = () => {
 
         return () => {
             dispatch(removeSessionErrors());
+            setEmail('');
+            setPassword('');
         }
     }, [])
 

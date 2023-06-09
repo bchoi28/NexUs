@@ -10,7 +10,6 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     const dispatch = useDispatch();
     // const user = useSelector(getUser);
     // subscribes post modal to current user
-    debugger
     const [body, setBody] = useState(post.body)
     const [photoFile, setPhotoFile] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(post.photoUrl);
@@ -32,7 +31,6 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        debugger
         const formData = new FormData();
         formData.append('post[body]', body);
         const id = post.id;
@@ -83,9 +81,9 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
             </div>
             <div className='update-modal-footer'>
                 <div className='update-modal-image-container' >
-                    <label htmlFor="file-input" class="update-file-input-label">
-                        <span class="update-file-input-icon">
-                            <i class="fa-solid fa-image"></i>
+                    <label htmlFor="file-input" className="update-file-input-label">
+                        <span className="update-file-input-icon">
+                            <i className="fa-solid fa-image"></i>
                         </span>
                         Upload Image
                     </label>

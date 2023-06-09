@@ -6,14 +6,13 @@ import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { loginUser } from '../../store/session';
+import { getSessionUser, loginUser } from '../../store/session';
 import LoadingLogo from '../LoadingLogo';
 import { getUiState } from '../../store/ui';
 
 const SignUpPage = () => {
-    const currentUser = useSelector(getUser);
+    const currentUser = useSelector(getSessionUser)
     const history = useHistory();
     const dispatch = useDispatch();
 

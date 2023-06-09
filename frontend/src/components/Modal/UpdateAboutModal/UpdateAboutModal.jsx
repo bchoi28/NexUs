@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../../store/modal';
 import { useState } from 'react';
 import { getUser, updateUser } from '../../../store/user';
+import { getSessionUser } from '../../../store/session';
 
 const UpdateAboutModal = ({ about }) => {
-    debugger
     const dispatch = useDispatch();
-    const currentUser = useSelector(getUser);
+    const currentUser = useSelector(getSessionUser)
     const [isOpen, setIsOpen] = useState(true);
     const [updatedAbout, setUpdatedAbout] = useState(about);
     const handleAbout = (e) => {
@@ -21,15 +21,14 @@ const UpdateAboutModal = ({ about }) => {
         setIsOpen(false);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const user = {
             id: currentUser.id,
             about: updatedAbout
         }
-        debugger
-        dispatch(updateUser(user));
+        await dispatch(updateUser(user));
         dispatch(closeModal())
         setIsOpen(false);
     }

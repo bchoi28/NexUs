@@ -1,24 +1,30 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './ProfileBadge.css'
 import { NavLink } from 'react-router-dom';
-import { getUser } from '../../store/user';
+import { fetchSessionUser, getSessionUser } from '../../store/session';
 
 const ProfileBadge = () => {
 
-    const currentUser = useSelector(getUser);
+    const dispatch = useDispatch();
+    const currentUser = useSelector(getSessionUser)
 
     if (!currentUser) {
         return <h1>Loading User...</h1>
     }
 
+    if (!currentUser.coverPhotoUrl) {
+        dispatch(fetchSessionUser(currentUser.id));
+        return <p>...</p>
+    }
+
     return (
         <div className='profile-badge-container'>
-            <img className='badge-background' src="https://nexus-seeds.s3.amazonaws.com/nexus-images/badge-background.png" alt="banner" />
+            <img className='badge-background' src={currentUser.coverPhotoUrl} alt="banner" />
             <div>
-                <img className='badge-photo' src={currentUser.photoUrl} alt="" />
+                <img className='badge-photo' src={currentUser.photoUrl} alt="profile" />
             </div>
             <div>
-                <NavLink className='profile-badge-link' to='/profile'>{currentUser.fName} {currentUser.lName}</NavLink>
+                <NavLink className='profile-badge-link' to={`/profile/${currentUser.id}`}>{currentUser.fName} {currentUser.lName}</NavLink>
             </div>
             <div>
                 <div className='profile-badge-headline' >{currentUser.headline}</div>

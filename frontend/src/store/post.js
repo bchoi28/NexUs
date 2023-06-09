@@ -91,7 +91,6 @@ export const createPost = (formData) => async (dispatch) => {
 
 export const updatePost = (id, formData) => async (dispatch) => {
     // const payload = { post: post }
-    debugger
     const res = await csrfFetch(`/api/posts/${id}`, {
         method: 'PATCH',
         // headers: {
@@ -108,7 +107,6 @@ export const updatePost = (id, formData) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-    debugger
     const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });
@@ -120,7 +118,6 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
-    debugger
     switch (action.type) {
         case RECEIVE_POSTS:
             return { ...state, ...action.posts };

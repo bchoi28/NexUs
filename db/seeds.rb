@@ -41,6 +41,33 @@ require "open-uri"
 
       puts "demo-user created"
 
+      Experience.create!(
+        title: "Senior Software Engineer",
+        employment_type: "Full-time",
+        company_name: "Nexus Technologies",
+        location: "New York",
+        location_type: "Remote",
+        start_date: Date.parse("January 2020"),
+        end_date: nil,
+        industry: "Technology",
+        description: "Lead a team of software engineers in developing interstellar networking solutions. Designed and implemented scalable systems for connecting star systems across the universe. Collaborated with cross-functional teams to ensure seamless communication and data exchange. Pioneered new technologies to push the boundaries of intergalactic connectivity.",
+        user: user
+       )
+      Experience.create!(
+        title: "Physical Therapist",
+        employment_type: "Full-time",
+        company_name: "Galactic Rehabilitation Center",
+        location: "New York",
+        location_type: "On-site",
+        start_date: Date.parse("June 2015"),
+        end_date: Date.parse("December 2019"),
+        industry: "Healthcare",
+        description: "Provided rehabilitative care to interstellar travelers and beings from various star systems. Developed personalized treatment plans to aid in recovery and improve physical well-being. Collaborated with multidisciplinary teams to optimize patient outcomes. Conducted research on advanced therapeutic techniques in zero-gravity environments.",
+        user: user
+      )
+
+      puts 'demo experiences created'
+
       Post.create!(
         author_id: user.id,
         body: "Attention space enthusiasts and cosmic coders! Exciting interstellar job opportunities await. Join the ranks of intergalactic pioneers and shape the future of technology across the universe. Let's connect the stars through code and embark on an extraordinary journey together. #JobOpportunities #InterstellarTech"
@@ -55,6 +82,8 @@ require "open-uri"
           filename: "time-travel.png"
         )
       end
+
+      puts 'demo-user posts created'
     end
 
     User.create!(
@@ -82,7 +111,7 @@ require "open-uri"
           filename: "metaverse.png"
         )
         end
-      end
+    end
 
     User.create!(
       email: 'alien@user.io',
@@ -104,7 +133,33 @@ require "open-uri"
         author_id: user.id,
         body: "Transmissions whisper amidst cosmic void. Decode the silence. Seek truth in darkness."
       )
-    end
+      Experience.create!(
+        title: "Xenomorph Researcher",
+        employment_type: "Scientific Exploration",
+        company_name: "Weyland-Yutani Corporation",
+        location: "LV-426",
+        location_type: "Research Facility",
+        start_date: Date.parse("January 1550"),
+        end_date: Date.parse("March 1600"),
+        industry: "Extraterrestrial Biology",
+        description: "Engaged in groundbreaking research on the Xenomorph species for the Weyland-Yutani Corporation. Conducted extensive studies to unravel the mysterious life cycle, behavior, and genetic makeup of the species. Analyzed their unique adaptation capabilities and developed advanced containment protocols. Contributed to the corporation's pursuit of harnessing the Xenomorph's potential for commercial and scientific applications.",
+        user: user
+      )
+
+      Experience.create!(
+        title: "Spacecraft Infestation Specialist",
+        employment_type: "Intergalactic Pest Control",
+        company_name: "United Galactic Exterminators",
+        location: "Various Spacecraft",
+        location_type: "Interstellar",
+        start_date: Date.parse("June 2175"),
+        end_date: Date.parse("December 2180"),
+        industry: "Alien Infestation Management",
+        description: "Specialized in handling extraterrestrial infestations, specifically the Xenomorph species, aboard spacecraft. Led extermination teams in identifying, containing, and eradicating Xenomorph threats. Developed innovative strategies to minimize collateral damage and protect crew members. Collaborated with spacecraft engineers to enhance vessel designs and security measures against future infestations.",
+        user: user
+      )
+     end
+
 
 #   User.create!(
 #   email: 'predator@user.io',
@@ -142,23 +197,38 @@ require "open-uri"
   #   )
   # end
 
-  # User.create!(
-  #   email: 'darth@user.io',
-  #   password: 'password',
-  #   fname: 'Darth',
-  #   lname: 'Vader, Lord',
-  #   pronouns: 'He/Him',
-  #   headline: 'CEO, Death Star 1 & 2',
-  #   location_country_region: 'Galactic Empire',
-  #   location_city: 'Death Star',
-  #   about: 'Harnessing the power of the Force to code in the dark side. As a Sith Lord and software engineer, I bring balance to the digital realm. Join me on the dark side of development and together we shall rule the galaxy of software engineering.'
-  # ).tap do |user|
-  #   user.photo.attach(
-  #     io: 
-  #     filename:
-  #     content_type:
-  #   )
-  # end
+  User.create!(
+    email: 'darth@user.io',
+    password: 'password',
+    fname: 'Darth',
+    lname: 'Vader, Lord',
+    pronouns: 'He/Him',
+    headline: 'CEO, Death Star 1 & 2',
+    location_country_region: 'Galactic Empire',
+    location_city: 'Death Star',
+    about: 'Harnessing the power of the Force to code in the dark side. As a Sith Lord and software engineer, I bring balance to the digital realm. Join me on the dark side of development and together we shall rule the galaxy of software engineering.'
+  ).tap do |user|
+      user.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/darth-vader.png"),
+        filename: "darth-vader.png"
+      )
+      Experience.create!(
+        title: "Lead Sith Developer",
+        employment_type: "Full-time",
+        company_name: "Galactic Empire",
+        location: "Death Star",
+        location_type: "Office",
+        start_date: Date.new(2000, 1, 1),
+        end_date: Date.new(2010, 12, 31),
+        industry: "Software Engineering",
+        description: "Led a team of Sith developers in building powerful software solutions for the Galactic Empire. Implemented dark side coding techniques and utilized the Force to overcome technical challenges. Achieved significant advancements in Sith software engineering practices.",
+        user: user
+     )
+      Post.create!(
+        author_id: user.id,
+        body: "Seeking a skilled Sith Lord for a senior software engineering position. Must have experience in building Death Star-level applications and knowledge of dark side development techniques. Embrace the power of the dark side and take your career to the next level! #SeniorSoftwareEngineer #SithLordHiring #DarkSideDevelopment"
+      )
+    end
 
 # User.create!(
 #   email: 'babygroot@user.io',

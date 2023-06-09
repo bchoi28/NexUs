@@ -1,41 +1,72 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
-import { Redirect } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
-
+import { fetchSessionUser } from '../../store/session';
+import { removeUser } from '../../store/user';
+import Login from '../Login/Login';
 
 
 const ProfilePage = () => {
 
+    const { id } = useParams();
     const dispatch = useDispatch();
-    const currentUser = useSelector(getUser);
+
+    // upon navigating to profile/:id, profileUser will be initially null
+    const profileUser = useSelector(getUser)
     const [isTruncated, setIsTruncated] = useState(true);
+
+    // currentUser = { userObject }
+    const currentUser = useSelector(fetchSessionUser)
+
 
     const handleReadMoreClick = () => {
         setIsTruncated(!isTruncated);
     };
-
     const renderTruncatedText = () => {
-        const text = currentUser.about.slice(0, 300); // Change 100 to whatever length you need
-        return text + (currentUser.about.length > 300 ? "..." : "");
+        if (!profileUser || !profileUser.about) {
+            return "";
+        }
+
+        const text = profileUser.about.slice(0, 300);
+        return text + (profileUser.about.length > 300 ? "..." : "");
     };
+
+    const profileCoverPhoto = profileUser?.coverPhotoUrl;
+    const profilePhoto = profileUser?.photoUrl;
+
+    const handleEditCoverPhoto = (e) => {
+        e.preventDefault();
+        dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileCoverPhoto }))
+    }
+    const handleEditAbout = (e) => {
+        e.preventDefault();
+        dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
+    }
+
+    useEffect(() => {
+        dispatch(fetchUser(id))
+        return () => {
+            dispatch(removeUser());
+        };
+    }, [])
+
+    if (!profileUser) {
+        return <Login />
+    }
 
     if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        dispatch(fetchUser(currentUser.id));
+        dispatch(fetchSessionUser(currentUser.id))
         return <h1>Loading...</h1>;
     }
 
-    const handleEditAbout = (e) => {
-        debugger
-        e.preventDefault();
-        dispatch(openModal('UpdateAboutModal', { about: currentUser.about }))
-    }
+    const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
+    const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
 
 
 
@@ -44,7 +75,7 @@ const ProfilePage = () => {
             <ModalRoot />
             <div className='profile-page-container'>
                 <header className='feed-navbar-container'>
-                    <FeedNavBar currentUser={currentUser} />
+                    <FeedNavBar />
                 </header>
                 <div className='profile-main-container'>
 
@@ -52,23 +83,24 @@ const ProfilePage = () => {
 
                         <div className='profile-left-content'>
                             <div className='profile-content-intro' >
-                                <img className='profile-intro-background-image' src="https://nexus-seeds.s3.amazonaws.com/nexus-images/badge-background.png" alt="banner" />
-                                <div>
-                                    <img className='profile-page-photo' src={currentUser.photoUrl} alt="" />
+                                <img className='profile-intro-background-image' src={profileCoverPhoto} alt="banner" />
+                                <div className='profile-photo-camera-container'>
+                                    <img className='profile-page-photo' src={profilePhoto} alt="" />
+                                    {cameraIcon}
                                 </div>
                                 <div className='profile-intro-info' >
                                     <div className='profile-intro-info-left'>
                                         <div className='profile-intro-name-pronouns'>
-                                            <div className='profile-intro-name'>{currentUser.fName} {currentUser.lName}</div>
-                                            <div className='profile-intro-pronouns'>({currentUser.pronouns})</div>
+                                            <div className='profile-intro-name'>{profileUser.fName} {profileUser.lName}</div>
+                                            <div className='profile-intro-pronouns'>({profileUser.pronouns})</div>
                                         </div>
-                                        <div className='profile-intro-headline'>{currentUser.headline}</div>
-                                        <div className='profile-intro-location'>{currentUser.locationCity}, {currentUser.locationCountryRegion} </div>
+                                        <div className='profile-intro-headline'>{profileUser.headline}</div>
+                                        <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
                                         <div className='profile-intro-connection-count'>500+ alliances</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
-                                        edit
-                                        education
+                                        {/* edit
+                                        education */}
                                     </div>
                                 </div>
                             </div>
@@ -78,13 +110,13 @@ const ProfilePage = () => {
                                 <div className="profile-about-header">
                                     <div>About</div>
                                     <div>
-                                        <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i>
+                                        {aboutEditIcon}
                                     </div>
                                 </div>
                                 <div className="profile-about-body">
-                                    <div>{isTruncated ? renderTruncatedText() : currentUser.about}</div>
+                                    <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div>
                                 </div>
-                                {currentUser.about.length > 300 && (
+                                {profileUser.about.length > 300 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>
                                         {isTruncated ? "see more" : "see less"}
                                     </button>
