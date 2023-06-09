@@ -87,7 +87,7 @@ class User < ApplicationRecord
         end
 
         # password check
-        if password.empty?
+        if password&.empty?
             errors[:password] = 'Please enter a password'
         elsif password && password.length < 6
             errors[:password] = 'The password you provided must have at least 6 characters.'

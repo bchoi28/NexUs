@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { getSessionUser, loginUser } from '../../store/session';
 import LoadingLogo from '../LoadingLogo';
 import { getUiState } from '../../store/ui';
+import Login from '../Login';
 
 const SignUpPage = () => {
     const currentUser = useSelector(getSessionUser)
@@ -23,7 +24,7 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [formStep, setFormStep] = useState(1);
     const [userObject, setUserObject] = useState({});
-    const loading = useSelector(getUiState);
+    // const loading = useSelector(getUiState);
 
 
     const handleSignup = ({ email, password }) => {
@@ -52,9 +53,9 @@ const SignUpPage = () => {
         return <Redirect to='/feed' />
     };
 
-    if (loading) {
-        return <LoadingLogo />
-    }
+    // if (loading) {
+    //     return <Login />
+    // }
 
     return (
         <div className='signup-page-container'>
