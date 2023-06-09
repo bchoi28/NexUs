@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# NexUs - Intergalactic Professional Networking
 
-Things you may want to cover:
+Welcome to NexUs, a LinkedIn clone designed for those who wish to take their professional networking intergalactic. This full-stack project combines Ruby on Rails on the backend with React and Redux on the frontend to provide a comprehensive networking platform.
 
-* Ruby version
+[Live Site](https://nexus-zblj.onrender.com)
 
-* System dependencies
+## Features
+- User registration and authentication
+- User profiles with customizable information
+- Posts for sharing professional updates and insights
+- Like functionality for engaging with posts and comments
+- File uploads for adding images to posts
+- Intuitive user interface for seamless navigation and interaction
+- Profile search bar with autofill functionality
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Technologies Used
+- Ruby on Rails: Backend framework for building robust APIs and managing data
+- React: JavaScript library for building interactive user interfaces
+- Redux: State management library for managing application state
+- PostgreSQL: Relational database for storing application data
+- CSS: Styling and design of the user interface
+- AWS S3: Cloud storage for uploading and serving user images
