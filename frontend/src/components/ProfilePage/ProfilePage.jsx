@@ -27,12 +27,13 @@ const ProfilePage = () => {
         setIsTruncated(!isTruncated);
     };
     const renderTruncatedText = () => {
+        debugger
         if (!profileUser || !profileUser.about) {
             return "";
+        } else {
+            const text = profileUser.about.slice(0, 347);
+            return text + (profileUser.about.length > 347 ? "..." : "");
         }
-
-        const text = profileUser.about.slice(0, 300);
-        return text + (profileUser.about.length > 300 ? "..." : "");
     };
 
     const profileCoverPhoto = profileUser?.coverPhotoUrl;
@@ -48,11 +49,13 @@ const ProfilePage = () => {
     }
 
     useEffect(() => {
+        debugger
         dispatch(fetchUser(id))
         return () => {
+            debugger
             dispatch(removeUser());
         };
-    }, [])
+    }, [id])
 
     if (!profileUser) {
         return <Login />
@@ -65,6 +68,7 @@ const ProfilePage = () => {
     }
 
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
+
     const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
 
 
@@ -85,7 +89,9 @@ const ProfilePage = () => {
                                 <img className='profile-intro-background-image' src={profileCoverPhoto} alt="banner" />
                                 <div className='profile-photo-camera-container'>
                                     <img className='profile-page-photo' src={profilePhoto} alt="" />
-                                    {cameraIcon}
+                                    <div className='camera-icon-container'>
+                                        {cameraIcon}
+                                    </div>
                                 </div>
                                 <div className='profile-intro-info' >
                                     <div className='profile-intro-info-left'>
@@ -115,7 +121,7 @@ const ProfilePage = () => {
                                 <div className="profile-about-body">
                                     <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div>
                                 </div>
-                                {profileUser.about.length > 300 && (
+                                {profileUser.about?.length > 347 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>
                                         {isTruncated ? "see more" : "see less"}
                                     </button>

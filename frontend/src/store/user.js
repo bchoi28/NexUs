@@ -75,6 +75,7 @@ export const updateUser = (user) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(setSession(data.user));
+        dispatch(receiveUser(data.user))
     }
     // else {
     //     const data = await res.json();

@@ -13,10 +13,12 @@
     /* justify-content: center; */
     /* justify-content: space-between; */
     padding: 4px 0 5px 0;
+    /* width: 800px; */
     width: 80.4%;
     margin: 0;
     align-items: center;
     border-right: 1.6px solid var(--color-border-faint);
+    max-width: 1153px;
 }
 
 .left-main-nav {
