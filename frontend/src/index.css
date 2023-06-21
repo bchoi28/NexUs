@@ -26,6 +26,7 @@
     --color-icon: rgba(0, 0, 0, 0.6);
     --color-background-canvas: #f3f2ef;
     --color-background-button-hover: rgba(0, 0, 0, 0.08);
+    --container-box-shadow: box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
 
     --color-background-small-button-hover: rgba(112, 181, 249, 0.1);
     --color-border-faint: rgba(0, 0, 0, 0.08);
