@@ -14,11 +14,13 @@
     /* justify-content: space-between; */
     padding: 4px 0 5px 0;
     /* width: 800px; */
-    width: 80.4%;
+    /* width: 73.5%; */
+    width: 1121px;
     margin: 0;
     align-items: center;
     border-right: 1.6px solid var(--color-border-faint);
-    max-width: 1153px;
+    max-width: 1122px;
+    min-width: 700px;
 }
 
 .left-main-nav {
