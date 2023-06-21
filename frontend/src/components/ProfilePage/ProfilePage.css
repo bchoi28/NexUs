@@ -20,11 +20,12 @@
 }
 
 .profile-left-container {
-    width: 53%;
+    width: 62%;
     border-radius: 12.8px;
     /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08); */
     margin: 0px 21px;
-    background-color: var(--color-background-canvas)
+    background-color: var(--color-background-canvas);
+    max-width: 770px;
 }
 
 .profile-left-content {
@@ -32,17 +33,19 @@
     flex-direction: column;
     /* min-width: 440px; */
     /* width: 440px; */
-    max-width: 822px;
+    /* max-width: 700; */
     width: 100%;
+    min-width: 245px;
 }
 
 .profile-content-intro {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    height: 360px;
+    /* height: 100%; */
     border-radius: 12.8px;
     /* min-width: 350px; */
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
 }
 
 .profile-intro-background-image {
@@ -56,7 +59,10 @@
 
 .profile-photo-camera-container {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
+    position: relative;
+    /* margin-bottom: 20px; */
 }
 
 .profile-page-photo {
@@ -77,9 +83,15 @@
     right: 25px;
     border-radius: 50%;
     background-color: #fff;
-    margin-bottom: 150px;
+    /* margin-bottom: 150px; */
     padding: 10px;
     cursor: pointer;
+}
+
+.camera-icon-container {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 10px; */
 }
 
 .camera-button:hover {
@@ -93,13 +105,14 @@
     position: relative;
     bottom: 100px;
     padding: 0 25px;
+    margin-bottom: -50px;
 }
 
 .profile-intro-info-left {
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom: 30px
+    /* bottom: 30px */
 }
 
 .profile-intro-name-pronouns {
@@ -148,7 +161,7 @@
 }
 
 .profile-right-container {
-    width: 20%;
+    width: 18%;
     background-color: #fff;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
@@ -162,6 +175,7 @@
     border-radius: 12.8px;
     margin-top: 10px;
     padding-bottom: 10px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
 }
 
 .profile-about-header {
@@ -189,6 +203,7 @@
 .profile-about-body {
     padding: 0 25px;
     font-size: 13px;
+    padding-bottom: 10px;
 }
 
 .see-more-button {

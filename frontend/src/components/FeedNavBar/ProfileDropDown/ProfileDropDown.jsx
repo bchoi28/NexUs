@@ -3,10 +3,14 @@ import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser, setSession } from '../../../store/session';
+import { removeUser } from '../../../store/user';
+
 
 const ProfileDropDown = () => {
+    const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    debugger
 
     const currentUser = useSelector(getSessionUser);
 
