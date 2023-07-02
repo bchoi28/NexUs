@@ -34,11 +34,11 @@ require "open-uri"
       location_city: 'New York',
       about: 'Software engineer specializing in intergalactic networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
     ).tap do |user|
-      user.photo.attach(
-        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/melon-usk-circle.png"),
-        filename: "melon-usk-circle.png"
+        file = File.open("frontend/public/assets/images/seeds/melon-usk-circle.png")
+        user.photo.attach(
+          io: file,
+          filename: "melon-usk-circle.png"
       )
-
       puts "demo-user created"
 
       Experience.create!(
@@ -77,10 +77,10 @@ require "open-uri"
         author_id: user.id,
         body: "Did you know? 92% of time travel breakthroughs are fueled by coding. As software engineers, we hold the keys to unlock temporal possibilities and shape the fabric of reality. Join the coding revolution and pave the way to new temporal horizons. #TimeTravel #Coding"
       ).tap do |post|
-        post.photo.attach(
-          io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/time-travel.png"),
-          filename: "time-travel.png"
-        )
+          post.photo.attach(
+            io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/time-travel.png"),
+            filename: "time-travel.png"
+          )
       end
 
       puts 'demo-user posts created'
@@ -97,8 +97,9 @@ require "open-uri"
       location_city: 'Metaverse',
       about: 'Diving deep into the realm of the Metaverse, I\'m on a mission to connect the digital universe and shape the future of virtual interactions. As an innovative meta-hacker, I thrive in the depths of cyberspace, exploring new frontiers and redefining the boundaries of human connection.'
     ).tap do |user|
+      file_path = "frontend/public/assets/images/seeds/zark-muckerberg.png"
       user.photo.attach(
-        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/zark-muckerberg.png"),
+        io: File.open(file_path),
         filename: "zark-muckerberg.png"
       )
 
