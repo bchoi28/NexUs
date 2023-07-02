@@ -17,6 +17,7 @@ const PostIndex = () => {
     useEffect(() => {
         dispatch(fetchPosts());
     }, [dispatch])
+
     if (posts.length === 0) {
         return <div className='loading-posts'>loading posts...</div>
     }

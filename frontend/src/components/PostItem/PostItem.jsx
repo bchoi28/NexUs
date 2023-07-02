@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import Like from '../Like';
 
-const PostItem = ({ post }) => {
+const PostItem = React.memo(({ post }) => {
     // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
@@ -159,6 +159,6 @@ const PostItem = ({ post }) => {
 
         </div>
     )
-}
+})
 
 export default PostItem;

@@ -14,28 +14,28 @@
 
 
 .liked-icon {
-    font-size: 25px;
+    font-size: 20px;
     color: var(--primary-color-alt)
 }
 
 .unliked-icon {
-    font-size: 25px;
+    font-size: 20px;
     color: var(--primary-color-alt);
 }
 
 .liked-text {
     align-self: flex-end;
-    margin-left: 12px;
-    padding-top: 3px;
-    font-size: 18px;
+    margin-left: 10px;
+    /* padding-top: 3px; */
+    font-size: 16px;
     color: var(--primary-color-alt);
     font-weight: 500;
 }
 
 .unliked-text {
     align-self: flex-end;
-    margin-left: 12px;
-    padding-top: 3px;
-    font-size: 18px;
+    margin-left: 10px;
+    /* padding-top: 3px; */
+    font-size: 16px;
     color: var(--color-text-light)
 }

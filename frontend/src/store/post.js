@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 // regular action constants
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
+export const LIKE_CREATED = 'posts/LIKE_CREATED';
 export const REMOVE_POST = 'posts/REMOVE_POST';
 export const REMOVE_POSTS = 'posts/REMOVE_POSTS'
 
@@ -19,6 +20,14 @@ export const receivePosts = (posts) => {
         posts: posts
     }
 };
+
+export const likeCreated = (postId, likeId) => {
+    return {
+        type: LIKE_CREATED,
+        postId, likeId
+    }
+}
+
 export const removePost = (postId) => {
     return {
         type: REMOVE_POST,
@@ -123,6 +132,8 @@ const postsReducer = (state = {}, action) => {
             return { ...state, ...action.posts };
         case RECEIVE_POST:
             return { ...state, [action.post.id]: action.post };
+        case LIKE_CREATED:
+
         case REMOVE_POST:
             const newState = { ...state };
             delete newState[action.postId];
