@@ -143,6 +143,16 @@ const PostItem = ({ post }) => {
             </div>
             <div className='post-footer'>
                 <Like postId={post.id} />
+                <button className='comment-button-container'>
+                    <i class="comment-button fa-regular fa-comment-dots"></i>
+                    <p className='comment-text'>Comment</p>
+                </button>
+                <button>
+
+                </button>
+                <button>
+
+                </button>
             </div>
 
         </div>

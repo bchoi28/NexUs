@@ -1,13 +1,41 @@
 .like-button {
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.1s ease-in-out;
 }
 
+.like-button:hover {
+    border-radius: 5px;
+    background-color: var(--color-background-button-hover)
+}
+
+
 .liked-icon {
-    font-size: 23px;
-    color: red
+    font-size: 25px;
+    color: var(--primary-color-alt)
 }
 
 .unliked-icon {
-    font-size: 23px;
-    color: red;
+    font-size: 25px;
+    color: var(--primary-color-alt);
+}
+
+.liked-text {
+    align-self: flex-end;
+    margin-left: 12px;
+    padding-top: 3px;
+    font-size: 18px;
+    color: var(--primary-color-alt);
+    font-weight: 500;
+}
+
+.unliked-text {
+    align-self: flex-end;
+    margin-left: 12px;
+    padding-top: 3px;
+    font-size: 18px;
+    color: var(--color-text-light)
 }
