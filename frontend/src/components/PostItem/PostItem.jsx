@@ -147,11 +147,13 @@ const PostItem = ({ post }) => {
                     <i class="comment-button fa-regular fa-comment-dots"></i>
                     <p className='comment-text'>Comment</p>
                 </button>
-                <button>
-
+                <button className='repost-button-container' >
+                    <i class=" repost-button fa-solid fa-retweet"></i>
+                    <p className='repost-text'>Repost</p>
                 </button>
-                <button>
-
+                <button className='send-button-container'>
+                    <i class="send-button fa-regular fa-paper-plane"></i>
+                    <p className='send-text'>Send</p>
                 </button>
             </div>
 

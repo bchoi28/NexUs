@@ -14,7 +14,8 @@
 
 .post-header {
     display: flex;
-    margin-bottom: 20px 0 20px 0;
+    /* margin-bottom: 25px 0 20px 0; */
+    margin-top: 4px;
     align-items: center;
 }
 
@@ -125,7 +126,7 @@
 }
 
 .post-body {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 15px 0;
     /* overflow-wrap: normal; */
     white-space: normal;
     font-size: 16px;
@@ -133,39 +134,45 @@
 
 .post-photo-container {
     border-radius: 11px;
-}
-
-.post-image {
-    margin: 20px 0 20px 0;
+    margin: 0 0 5px 0;
 }
 
 .post-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: 5px;
+    margin-top: 5px;
     margin-bottom: -10px;
     display: flex;
     justify-content: space-between;
 }
 
-.comment-button-container {
+.comment-button-container,
+.repost-button-container,
+.send-button-container {
     display: flex;
     background-color: transparent;
     align-items: center;
     transition: background-color 0.1s ease-in-out;
-    padding: 10px
+    padding: 10px 15px;
 }
 
-.comment-button-container:hover {
+.comment-button-container:hover,
+.repost-button-container:hover,
+.send-button-container:hover {
     border-radius: 5px;
     background-color: var(--color-background-button-hover)
 }
 
-.comment-button {
+.comment-button,
+.repost-button,
+.send-button {
     font-size: 25px;
     color: var(--primary-color-alt)
 }
 
-.comment-text {
+.comment-text,
+.repost-text,
+.send-text {
     margin-left: 12px;
     padding-top: 3px;
     font-size: 18px;
