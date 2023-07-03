@@ -3,8 +3,10 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
+import ModalRoot from '../Modal/ModalRoot';
+import { openModal, closeModal } from '../../store/modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { deletePost, getLikeCount } from '../../store/post';
+import { deletePost, getLikeCount, getLikes } from '../../store/post';
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import Like from '../Like';
@@ -14,6 +16,7 @@ const PostItem = React.memo(({ post }) => {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const likeCount = useSelector(getLikeCount(post.id));
+    const likes = useSelector(getLikes(post.id));
     debugger
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
@@ -82,10 +85,16 @@ const PostItem = React.memo(({ post }) => {
         setDropDownOpen(!dropDownOpen);
     }
 
+    const handleViewLikeCount = (e) => {
+        e.preventDefault();
+        dispatch(openModal('LikeCountModal', { likes: likes }))
+    }
+
     const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
 
     return (
         <div className='post-item-container'>
+            <ModalRoot />
             <header className='post-header'>
                 <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
                 <div className='post-names-headline'>
@@ -141,14 +150,12 @@ const PostItem = React.memo(({ post }) => {
                 {postPhoto}
             </div>
             {likeCount ? (
-                <div className='like-count-container'>
+                <div className='like-count-container' onClick={handleViewLikeCount}>
                     <i className="like-count-icon fa-regular fa-thumbs-up fa-flip-horizontal"></i>
                     <p className='like-count-text'>{likeCount}</p>
                 </div>
             ) : (
-                <div>
-
-                </div>
+                null
             )}
             <div className='post-footer'>
                 <Like postId={post.id} />

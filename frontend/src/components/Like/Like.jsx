@@ -16,7 +16,7 @@ const Like = ({ postId }) => {
     };
 
     return (
-        <button className='like-button' onClick={handleLike}>
+        <button className={liked ? `like-button like-button-active` : `like-button`} onClick={handleLike}>
             {liked ? (
                 <>
                     <i className="liked-icon fa-solid fa-thumbs-up fa-flip-horizontal"></i>
