@@ -3,9 +3,10 @@ import csrfFetch from "./csrf";
 // regular action constants
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
-export const LIKE_CREATED = 'posts/LIKE_CREATED';
 export const REMOVE_POST = 'posts/REMOVE_POST';
-export const REMOVE_POSTS = 'posts/REMOVE_POSTS'
+export const REMOVE_POSTS = 'posts/REMOVE_POSTS';
+export const RECEIVE_LIKE_POST = 'posts/RECEIVE_LIKE_POST';
+export const REMOVE_LIKE_POST = 'posts/REMOVE_LIKE_POST';
 
 // regular action creators
 export const receivePost = (post) => {
@@ -21,13 +22,6 @@ export const receivePosts = (posts) => {
     }
 };
 
-export const likeCreated = (postId, likeId) => {
-    return {
-        type: LIKE_CREATED,
-        postId, likeId
-    }
-}
-
 export const removePost = (postId) => {
     return {
         type: REMOVE_POST,
@@ -41,7 +35,24 @@ export const removePosts = () => {
     }
 }
 
-// getPost/getPosts selector functions
+export const receiveLikePost = (postId, likeId) => {
+    const defaultUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const currentUserId = defaultUser.id;
+
+    return {
+        type: RECEIVE_LIKE_POST,
+        postId, likeId, currentUserId
+    }
+}
+
+export const removeLikePost = (postId, likeId) => {
+    return {
+        type: REMOVE_LIKE_POST,
+        postId, likeId
+    }
+}
+
+// getPost/getPosts selectors
 export const getPost = postId => state => {
     if (state.posts) {
         return state.posts[postId];
@@ -52,6 +63,32 @@ export const getPosts = state => {
     if (state.posts) {
         return Object.values(state.posts);
     } else return [];
+}
+
+// like selectors
+export const getLikeStatus = (postId) => state => {
+    const currentUserId = state.session.user.id;
+    if (state.posts[postId].likes) {
+        const likes = Object.values(state.posts[postId].likes);
+        return likes.some((like) => like.likerId === currentUserId)
+    } else return false;
+}
+
+export const getLikeId = (postId) => state => {
+    const currentUserId = state.session.user.id;
+    if (state.posts[postId].likes) {
+        const currentPostLikes = state.posts[postId].likes;
+        const likeKeys = Object.keys(currentPostLikes);
+        const currentUserLikeKey = likeKeys.find(likeId => currentPostLikes[likeId].likerId === currentUserId);
+        return currentUserLikeKey || null;
+    } else return null;
+}
+
+export const getLikeCount = postId => state => {
+    if (state.posts[postId].likes) {
+        const likeCount = Object.keys(state.posts[postId].likes).length;
+        return likeCount;
+    } else return null;
 }
 
 // thunk action creators
@@ -132,14 +169,30 @@ const postsReducer = (state = {}, action) => {
             return { ...state, ...action.posts };
         case RECEIVE_POST:
             return { ...state, [action.post.id]: action.post };
-        case LIKE_CREATED:
-
         case REMOVE_POST:
             const newState = { ...state };
             delete newState[action.postId];
             return newState;
         case REMOVE_POSTS:
             return {};
+        case RECEIVE_LIKE_POST:
+            const { postId, likeId, currentUserId } = action;
+            return {
+                ...state, [postId]: {
+                    ...state[postId], likes: {
+                        ...state[postId].likes, [likeId]: { likerId: currentUserId }
+                    }
+                }
+            }
+        case REMOVE_LIKE_POST:
+            // const { postId, likeId } = action;
+            const updatedLikes = { ...state[action.postId].likes };
+            delete updatedLikes[action.likeId];
+            return {
+                ...state, [action.postId]: {
+                    ...state[action.postId], likes: updatedLikes
+                }
+            };
         default:
             return state;
     }

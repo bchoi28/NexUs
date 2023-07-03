@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { createLike, createLikeFetch, deleteLike, deleteLikeFetch, getLikeId, getLikeStatus } from '../../store/like';
+import { getLikeStatus, getLikeId } from '../../store/post';
+import { createLikePost, deleteLikePost } from '../../store/like';
 import './Like.css';
 
 const Like = ({ postId }) => {
@@ -8,9 +9,9 @@ const Like = ({ postId }) => {
     const likeId = useSelector(getLikeId(postId));
     const handleLike = () => {
         if (!liked) {
-            dispatch(createLikeFetch(postId));
+            dispatch(createLikePost(postId));
         } else {
-            dispatch(deleteLikeFetch(postId, likeId));
+            dispatch(deleteLikePost(postId, likeId));
         }
     };
 

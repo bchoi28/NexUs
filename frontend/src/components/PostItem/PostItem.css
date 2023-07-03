@@ -137,6 +137,28 @@
     margin: 0 0 5px 0;
 }
 
+.like-count-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    /* margin-top: -5px; */
+}
+
+.like-count-icon {
+    font-size: 11px;
+    color: var(--tertiary-color);
+    /* background-color: var(--secondary-color); */
+    border: 1px solid var(--primary-color-alt);
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.like-count-text {
+    margin-left: 4px;
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
 .post-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: 5px;
