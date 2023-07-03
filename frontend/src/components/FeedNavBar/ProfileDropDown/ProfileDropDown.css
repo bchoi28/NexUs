@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+/* .profile-dropdown:hover,
+.profile-icon-text {
+    transform: scale(1.1);
+    color: var(--color-text-main);
+} */
+
 .profile-button {
     background-color: transparent;
     position: relative;
@@ -14,9 +20,10 @@
     flex-direction: column;
 }
 
-.profile-button-pic:hover {
-    color: var(--color-text-main);
+.profile-button:hover,
+.profile-icon-text {
     transform: scale(1.1);
+    color: var(--primary-color);
 }
 
 .profile-icon-text {
@@ -28,6 +35,10 @@
     left: 2px;
     transition: color 0.1s ease-in-out;
 }
+
+/* .profile-icon-text:hover {
+    color: var(--color-text-main);
+} */
 
 .down-arrow {
     font-size: 10px;

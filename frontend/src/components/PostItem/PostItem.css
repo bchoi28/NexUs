@@ -14,7 +14,8 @@
 
 .post-header {
     display: flex;
-    margin-bottom: 20px 0 20px 0;
+    /* margin-bottom: 25px 0 20px 0; */
+    margin-top: 4px;
     align-items: center;
 }
 
@@ -28,7 +29,7 @@
 .post-names-headline {
     margin-left: 10px;
     position: relative;
-    top: 6px;
+    top: 5px;
     line-height: 1.2;
     letter-spacing: -0.5px;
 }
@@ -40,10 +41,12 @@
 .post-author-names {
     font-weight: 600;
     color: var(--secondary-color);
+    font-size: 17px;
 }
 
 .post-author-pronouns {
     color: var(--color-text-light);
+    font-weight: 500;
     font-size: 12px;
     margin-left: 5px;
     position: relative;
@@ -52,15 +55,15 @@
 
 .post-author-headline {
     color: var(--color-text-light);
-    font-size: 12px;
+    font-size: 14px;
     /* line-height: 1; */
 }
 
 .feed-post-timestamp {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1;
     position: relative;
-    bottom: 5px;
+    bottom: 4px;
     color: var(--color-text-light);
 }
 
@@ -123,22 +126,77 @@
 }
 
 .post-body {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 15px 0;
     /* overflow-wrap: normal; */
     white-space: normal;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .post-photo-container {
     border-radius: 11px;
+    margin: 0 0 5px 0;
 }
 
-.post-image {
-    margin: 20px 0 20px 0;
+.like-count-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.like-count-icon {
+    font-size: 11px;
+    color: var(--tertiary-color);
+    /* background-color: var(--secondary-color); */
+    border: 1px solid var(--primary-color-alt);
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.like-count-text {
+    margin-left: 4px;
+    font-size: 12px;
+    color: var(--color-text-light);
 }
 
 .post-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-    padding-top: 10px;
-    margin-top: 20px;
+    padding-top: 5px;
+    margin-top: 5px;
+    margin-bottom: -10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-button-container,
+.repost-button-container,
+.send-button-container {
+    display: flex;
+    background-color: transparent;
+    align-items: center;
+    transition: background-color 0.1s ease-in-out;
+    padding: 10px 15px;
+}
+
+.comment-button-container:hover,
+.repost-button-container:hover,
+.send-button-container:hover {
+    border-radius: 5px;
+    background-color: var(--color-background-button-hover)
+}
+
+.comment-button,
+.repost-button,
+.send-button {
+    font-size: 20px;
+    color: var(--primary-color-alt)
+}
+
+.comment-text,
+.repost-text,
+.send-text {
+    margin-left: 10px;
+    /* padding-top: 1px; */
+    font-size: 16px;
+    color: var(--color-text-light);
 }

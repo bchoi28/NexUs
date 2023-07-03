@@ -39,7 +39,7 @@
 }
 
 .feed-left {
-    width: 220px;
+    width: 195px;
     border-radius: 12.8px;
     /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08); */
     top: 71px;
@@ -69,7 +69,8 @@
     background-color: #fff;
     transition: box-shadow 83ms;
     border: none;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08)
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    margin-bottom: 7px;
 }
 
 .feed-post-form-top {
@@ -87,7 +88,7 @@
 .feed-create-post-button {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 14px;
+    font-size: 15px;
     flex-grow: 1;
     max-width: none;
     display: flex;
@@ -117,9 +118,9 @@
 .feed-article-icon-text {
     color: var(--color-text-light);
     font-family: var(--primary-font);
-    font-size: 15px;
-    font-weight: 600;
-    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
     bottom: 1px;
     position: relative;
 }
@@ -139,7 +140,7 @@
 
 .feed-right {
     /* width: 15%; */
-    width: 250px;
+    width: 247px;
     /* border: 1px solid black; */
     background-color: #fff;
     border-radius: 12.8px;
@@ -165,11 +166,16 @@
     justify-content: space-between;
     position: relative;
     top: 14px;
-    width: 97%;
-    margin-left: 7px;
-    height: 25px
 }
 
 .feed-post-form-bottom i {
     font-size: 18px;
+    padding: 10px 15px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.feed-post-form-bottom i:hover {
+    border-radius: 5px;
+    background-color: var(--color-background-button-hover);
+    cursor: pointer;
 }

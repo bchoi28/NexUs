@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { createLike, createLikeFetch, deleteLike, deleteLikeFetch, getLikeId, getLikeStatus } from '../../store/like';
+import { getLikeStatus, getLikeId } from '../../store/post';
+import { createLikePost, deleteLikePost } from '../../store/like';
 import './Like.css';
 
 const Like = ({ postId }) => {
@@ -8,15 +9,26 @@ const Like = ({ postId }) => {
     const likeId = useSelector(getLikeId(postId));
     const handleLike = () => {
         if (!liked) {
-            dispatch(createLikeFetch(postId));
+            dispatch(createLikePost(postId));
         } else {
-            dispatch(deleteLikeFetch(postId, likeId));
+            dispatch(deleteLikePost(postId, likeId));
         }
     };
 
     return (
-        <button className='like-button' onClick={handleLike}>
-            {liked ? <i className="liked-icon fa-solid fa-heart"></i> : <i className="unliked-icon fa-regular fa-heart"></i>}
+        <button className={liked ? `like-button like-button-active` : `like-button`} onClick={handleLike}>
+            {liked ? (
+                <>
+                    <i className="liked-icon fa-solid fa-thumbs-up fa-flip-horizontal"></i>
+                    <p className='liked-text'>Like</p>
+                </>
+            ) : (
+                <>
+                    <i class="unliked-icon fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+                    <p className='unliked-text'>Like</p>
+                </>
+            )
+            }
         </button>
     );
 };

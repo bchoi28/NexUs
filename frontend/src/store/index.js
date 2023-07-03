@@ -6,7 +6,7 @@ import userReducer from './user';
 import postsReducer from './post';
 import uiReducer from './ui';
 import modalReducer from './modal';
-import likeReducer from './like';
+// import likeReducer from './like';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
     errors: errorsReducer,
     ui: uiReducer,
     modal: modalReducer,
-    like: likeReducer
+    // like: likeReducer
 });
 
 let enhancer;
