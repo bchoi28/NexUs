@@ -10,7 +10,6 @@ const ProfileDropDown = () => {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    debugger
 
     const currentUser = useSelector(getSessionUser);
 

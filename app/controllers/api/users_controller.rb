@@ -2,9 +2,15 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password'] + [:photo] + [:cover_photo]
 
     def show
+        # debugger
         @user = User.find(params[:id])
-        render :show
+        if params[:likers].present?
+            render :likers
+        else
+            render :show
+        end
     end
+
 
     def create
         @user = User.new(user_params)

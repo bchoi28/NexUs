@@ -4,9 +4,17 @@ json.post do
   # json.likeCount post.likes.count
   # json.likers post.likes.map{ |like| like.user_id }
   json.likes do
-      @post.likes.each do |like|
+      post.likes.each do |like|
           json.set! like.id do
-              json.likerId like.user_id
+              json.likerId like.liker_id
+              json.liker do
+                  json.id like.liker_id
+                  json.fname like.liker.fname
+                  json.lname like.liker.lname
+                  json.headline like.liker.headline
+                  json.pronouns like.liker.pronouns
+                  json.photoUrl like.liker.photo.url
+              end
           end
       end
   end

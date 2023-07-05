@@ -71,12 +71,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_054607) do
   create_table "likes", force: :cascade do |t|
     t.string "likeable_type", null: false
     t.bigint "likeable_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "liker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -112,5 +112,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_054607) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "experiences", "users"
+  add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "posts", "users", column: "author_id"
 end

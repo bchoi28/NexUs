@@ -110,6 +110,20 @@ export const fetchUser = (userId) => async (dispatch) => {
     }
 }
 
+export const fetchLikersData = (likerId) => async (dispatch) => {
+    debugger
+    const res = await csrfFetch(`/api/users/${likerId}?likers=true`);
+    if (res.ok) {
+        const data = await res.json();
+        const user = data.user;
+        return user;
+    } else {
+        debugger
+        return null;
+    }
+}
+
+
 export const fetchUsersSearch = (query) => async (dispatch) => {
     const res = await csrfFetch(`api/users/search?query=${query}`);
     const data = await res.json();

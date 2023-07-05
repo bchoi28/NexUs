@@ -16,12 +16,10 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:create, :index, :show, :update, :destroy] do
       resources :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :index, :show, :update, :destroy]
     end
     resources :experiences, only: [:create, :index, :show, :update, :destroy]
     resources :educations, only: [:create, :index, :show, :update, :destroy]
-    resources :comments, only: [:create, :index, :show, :update, :destroy]
-    resources :likes, only: [:create, :index, :show, :destroy]
-    
 
     resource :session, only: [:show, :create, :destroy]
 

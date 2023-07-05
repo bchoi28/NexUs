@@ -23,7 +23,7 @@ require "open-uri"
   puts "Creating users..."
   # Create one user with an easy to remember email, and password:
 
-    User.create!(
+    user1 = User.create!(
       email: 'demo@user.io',
       password: 'password',
       fname: 'Melon',
@@ -67,26 +67,26 @@ require "open-uri"
       )
 
       puts 'demo experiences created'
-
-      Post.create!(
-        author_id: user.id,
-        body: "Attention space enthusiasts and cosmic coders! Exciting interstellar job opportunities await. Join the ranks of intergalactic pioneers and shape the future of technology across the universe. Let's connect the stars through code and embark on an extraordinary journey together. #JobOpportunities #InterstellarTech"
-      )
-
-      Post.create!(
-        author_id: user.id,
-        body: "Did you know? 92% of time travel breakthroughs are fueled by coding. As software engineers, we hold the keys to unlock temporal possibilities and shape the fabric of reality. Join the coding revolution and pave the way to new temporal horizons. #TimeTravel #Coding"
-      ).tap do |post|
-          post.photo.attach(
-            io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/time-travel.png"),
-            filename: "time-travel.png"
-          )
-      end
-
-      puts 'demo-user posts created'
     end
 
-    User.create!(
+    post1 = Post.create!(
+      author: user1,
+      body: "Attention space enthusiasts and cosmic coders! Exciting interstellar job opportunities await. Join the ranks of intergalactic pioneers and shape the future of technology across the universe. Let's connect the stars through code and embark on an extraordinary journey together. #JobOpportunities #InterstellarTech"
+    )
+
+    post2 = Post.create!(
+      author: user1,
+      body: "Did you know? 92% of time travel breakthroughs are fueled by coding. As software engineers, we hold the keys to unlock temporal possibilities and shape the fabric of reality. Join the coding revolution and pave the way to new temporal horizons. #TimeTravel #Coding"
+    ).tap do |post|
+        post.photo.attach(
+          io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/time-travel.png"),
+          filename: "time-travel.png"
+        )
+    end
+
+    puts 'demo-user posts created'
+
+    user2 = User.create!(
       email: 'zark@user.io',
       password: 'password',
       fname: 'Zark',
@@ -102,19 +102,20 @@ require "open-uri"
         io: File.open(file_path),
         filename: "zark-muckerberg.png"
       )
-
-      Post.create!(
-        author_id: user.id,
-        body: "Exciting times in the Metaverse! Unleashing the power of virtuality. Connect, code, and transcend."
-      ).tap do |post|
-        post.photo.attach(
-          io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/metaverse.png"),
-          filename: "metaverse.png"
-        )
-        end
     end
 
-    User.create!(
+    post3 = Post.create!(
+      author: user2,
+      body: "Exciting times in the Metaverse! Unleashing the power of virtuality. Connect, code, and transcend."
+    ).tap do |post|
+      post.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/metaverse.png"),
+        filename: "metaverse.png"
+      )
+    end
+    
+
+    user3 = User.create!(
       email: 'alien@user.io',
       password: 'password',
       fname: 'Alien',
@@ -130,10 +131,6 @@ require "open-uri"
         filename: "alien-xenomorph.png"
       )
 
-      Post.create!(
-        author_id: user.id,
-        body: "Transmissions whisper amidst cosmic void. Decode the silence. Seek truth in darkness."
-      )
       Experience.create!(
         title: "Xenomorph Researcher",
         employment_type: "Scientific Exploration",
@@ -160,6 +157,11 @@ require "open-uri"
         user: user
       )
      end
+
+    post4 = Post.create!(
+        author: user3,
+        body: "Transmissions whisper amidst cosmic void. Decode the silence. Seek truth in darkness."
+    )
 
 
 #   User.create!(
@@ -198,7 +200,7 @@ require "open-uri"
   #   )
   # end
 
-  User.create!(
+  user4 = User.create!(
     email: 'darth@user.io',
     password: 'password',
     fname: 'Darth',
@@ -225,11 +227,12 @@ require "open-uri"
         description: "Led a team of Sith developers in building powerful software solutions for the Galactic Empire. Implemented dark side coding techniques and utilized the Force to overcome technical challenges. Achieved significant advancements in Sith software engineering practices.",
         user: user
      )
-      Post.create!(
-        author_id: user.id,
-        body: "Seeking a skilled Sith Lord for a senior software engineering position. Must have experience in building Death Star-level applications and knowledge of dark side development techniques. Embrace the power of the dark side and take your career to the next level! #SeniorSoftwareEngineer #SithLordHiring #DarkSideDevelopment"
-      )
     end
+    
+    post5 = Post.create!(
+      author: user4,
+      body: "Seeking a skilled Sith Lord for a senior software engineering position. Must have experience in building Death Star-level applications and knowledge of dark side development techniques. Embrace the power of the dark side and take your career to the next level! #SeniorSoftwareEngineer #SithLordHiring #DarkSideDevelopment"
+    )
 
 # User.create!(
 #   email: 'babygroot@user.io',
@@ -276,6 +279,27 @@ require "open-uri"
   #   author_id: 1,
   #   body: "Greetings space explorers! Just discovered a fascinating application of JavaScript in intergalactic travel. By harnessing the power of this universal language, we can optimize spacecraft navigation, calculate warp speeds, and simulate celestial phenomena. Let's dive into the wonders of JavaScript in the cosmic realm!"
   # )
+
+
+  post1.likes.create!(liker: user2)
+  post1.likes.create!(liker: user3)
+  post1.likes.create!(liker: user4)
+  
+  post2.likes.create!(liker: user2)
+  post2.likes.create!(liker: user3)
+  post2.likes.create!(liker: user4)
+
+  post3.likes.create!(liker: user1)
+  post3.likes.create!(liker: user3)
+  post3.likes.create!(liker: user4)
+
+  post4.likes.create!(liker: user1)
+  post4.likes.create!(liker: user2)
+  post4.likes.create!(liker: user4)
+
+  post5.likes.create!(liker: user1)
+  post5.likes.create!(liker: user2)
+  post5.likes.create!(liker: user3)
 
 
   puts "Done!"

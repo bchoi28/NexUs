@@ -2,12 +2,13 @@ class Api::LikesController < ApplicationController
 
     def create
         @post = Post.find(params[:post_id])
-        @like = @post.likes.create(user: current_user)
+        # debugger
+        @like = @post.likes.create(liker: current_user)
 
         if @like.save
             render :show
         else
-            render json: { errors: like.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: @like.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
@@ -17,7 +18,7 @@ class Api::LikesController < ApplicationController
         if @like.destroy
             render :show
         else
-            render json: { errors: like.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: @like.errors.full_messages }, status: :unprocessable_entity
         end
     end 
 
