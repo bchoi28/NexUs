@@ -3,8 +3,6 @@ json.posts do
         json.set! post.id do
             json.extract! post, :id, :body, :author_id, :created_at, :updated_at
             json.photoUrl post.photo.attached? ? post.photo.url : nil
-            # json.likeCount post.likes.count
-            # json.likers post.likes.map{ |like| like.user_id }
             json.likes do
                 post.likes.each do |like|
                     json.set! like.id do
@@ -20,6 +18,21 @@ json.posts do
                     end
                 end
             end
+            json.comments do
+                post.comments.each do |comment|
+                    json.set! comment.id do
+                        json.extract! comment, :id, :content, :created_at
+                        json.commenter do
+                            json.id comment.commenter.id
+                            json.fname comment.commenter.fname
+                            json.lname comment.commenter.lname
+                            json.headline comment.commenter.headline
+                            json.pronouns comment.commenter.pronouns
+                            json.photoUrl comment.commenter.photo.url
+                        end
+                    end
+                end
+             end
             json.author do
                 json.authorId post.author.id
                 json.fName post.author.fname

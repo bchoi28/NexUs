@@ -18,6 +18,21 @@ json.post do
           end
       end
   end
+  json.comments do
+    post.comments.each do |comment|
+        json.set! comment.id do
+            json.extract! comment, :id, :content, :created_at
+            json.commenter do
+                json.id comment.commenter.id
+                json.fname comment.commenter.fname
+                json.lname comment.commenter.lname
+                json.headline comment.commenter.headline
+                json.pronouns comment.commenter.pronouns
+                json.photoUrl comment.commenter.photo.url
+            end
+        end
+    end
+  end
   json.author do
     json.authorId @post.author.id
     json.fName @post.author.fname
