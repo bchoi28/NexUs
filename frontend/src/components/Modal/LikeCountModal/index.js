@@ -1,3 +1,2 @@
-import LikeCountModal from "./LikeCountModal";
-
+import LikeCountModal from './LikeCountModal';
 export default LikeCountModal;

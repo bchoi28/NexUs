@@ -56,9 +56,15 @@ class User < ApplicationRecord
         dependent: :destroy
         
     has_many :likes,
+        primary_key: :id,
+        foreign_key: :liker_id,
+        class_name: :Like,
         dependent: :destroy
 
     has_many :comments,
+        primary_key: :id,
+        foreign_key: :commenter_id,
+        class_name: :Comment,
         dependent: :destroy
         
     has_many :connections

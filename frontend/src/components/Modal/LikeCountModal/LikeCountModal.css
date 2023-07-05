@@ -1,5 +1,5 @@
 .modal-overlay-like-count {
-    background-color: var(--color-text-light);
+    background-color: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
     left: 0;
@@ -7,3 +7,42 @@
     height: 100vh;
     width: 100vw;
 }
+
+.like-count-modal-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.like-header-count {
+    border-bottom: 1px solid var(--color-text-light);
+}
+
+.like-count-modal-header {
+    display: flex;
+}
+
+.like-count-container-modal {
+    border-bottom: 1px solid black;
+    align-items: center;
+    width: 50px;
+}
+
+.like-count-icon-modal {
+    font-size: 11px;
+    color: var(--tertiary-color);
+    /* background-color: var(--secondary-color); */
+    border: 1px solid var(--primary-color-alt);
+    padding: 2px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.like-count-text-modal {
+    margin-left: 4px;
+    font-size: 12px;
+    color: var(--color-text-light);
+    display: inline-block;
+}
+
+.like-count-users {}
