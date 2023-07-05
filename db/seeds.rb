@@ -228,7 +228,7 @@ require "open-uri"
         user: user
      )
     end
-    
+
     post5 = Post.create!(
       author: user4,
       body: "Seeking a skilled Sith Lord for a senior software engineering position. Must have experience in building Death Star-level applications and knowledge of dark side development techniques. Embrace the power of the dark side and take your career to the next level! #SeniorSoftwareEngineer #SithLordHiring #DarkSideDevelopment"
@@ -300,6 +300,10 @@ require "open-uri"
   post5.likes.create!(liker: user1)
   post5.likes.create!(liker: user2)
   post5.likes.create!(liker: user3)
+  post5.comments.create!(
+    commenter: user1,
+    content: "Count me in!"
+  )
 
 
   puts "Done!"
