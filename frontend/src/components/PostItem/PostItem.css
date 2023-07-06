@@ -145,10 +145,10 @@
 }
 
 .like-count-icon {
-    font-size: 11px;
+    font-size: 15px;
     color: var(--tertiary-color);
     /* background-color: var(--secondary-color); */
-    border: 1px solid var(--primary-color-alt);
+    /* border: 1px solid var(--primary-color-alt); */
     padding: 2px;
     border-radius: 50%;
 }

@@ -98,6 +98,14 @@ export const getLikes = postId => state => {
     } else return null;
 }
 
+export const getLikers = postId => state => {
+    if (state.posts[postId].likes) {
+        const likes = Object.values(state.posts[postId].likes);
+        const likers = likes.map(like => like.liker);
+        return likers;
+    } else return null;
+}
+
 // thunk action creators
 export const fetchPosts = () => async (dispatch) => {
     const res = await csrfFetch('/api/posts');

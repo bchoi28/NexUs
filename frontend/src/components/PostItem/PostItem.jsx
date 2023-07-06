@@ -5,7 +5,7 @@ import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import { openModal, closeModal } from '../../store/modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { deletePost, getLikeCount, getLikes } from '../../store/post';
+import { deletePost, getLikeCount, getLikers } from '../../store/post';
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import Like from '../Like';
@@ -15,14 +15,16 @@ const PostItem = React.memo(({ post }) => {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const likeCount = useSelector(getLikeCount(post.id));
-    const likes = useSelector(getLikes(post.id));
+    const likers = useSelector(getLikers(post.id));
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
         setDropDownOpen(!dropDownOpen);
+        document.body.style.overflow = 'hidden'
     };
     const handleCloseModal = () => {
         setModalIsOpen(false);
+        document.body.style.overflow = '';
     };
 
     const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -85,7 +87,8 @@ const PostItem = React.memo(({ post }) => {
 
     const handleViewLikeCount = (e) => {
         e.preventDefault();
-        dispatch(openModal('LikeCountModal', { likes: likes, likeCount: likeCount }))
+        dispatch(openModal('LikeCountModal', { likers: likers, likeCount: likeCount }));
+        document.body.style.overflow = 'hidden'
     }
 
     const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null

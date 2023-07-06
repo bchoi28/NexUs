@@ -22,7 +22,7 @@ class Api::PostsController < ApplicationController
             @posts = user.posts
             # renders only that user's posts (recent at top)
         else
-            @posts = Post.includes(:author, :likes).all
+            @posts = Post.includes(:author, :likes, :comments).all
             render :index
             # @posts = Post.includes(:author).order(created_at: :desc)
             # renders all of the posts (recent at top)
