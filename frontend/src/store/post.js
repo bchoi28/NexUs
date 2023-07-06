@@ -35,9 +35,7 @@ export const removePosts = () => {
     }
 }
 
-export const receiveLikePost = (postId, likeId) => {
-    const defaultUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    const currentUserId = defaultUser.id;
+export const receiveLikePost = (postId, likeId, currentUserId) => {
 
     return {
         type: RECEIVE_LIKE_POST,
@@ -66,16 +64,15 @@ export const getPosts = state => {
 }
 
 // like selectors
-export const getLikeStatus = (postId) => state => {
-    const currentUserId = state.session.user.id;
+export const getLikeStatus = (postId, currentUserId) => state => {
     if (state.posts[postId].likes) {
         const likes = Object.values(state.posts[postId].likes);
         return likes.some((like) => like.likerId === currentUserId)
     } else return false;
 }
 
-export const getLikeId = (postId) => state => {
-    const currentUserId = state.session.user.id;
+export const getLikeId = (postId, currentUserId) => state => {
+    debugger
     if (state.posts[postId].likes) {
         const currentPostLikes = state.posts[postId].likes;
         const likeKeys = Object.keys(currentPostLikes);

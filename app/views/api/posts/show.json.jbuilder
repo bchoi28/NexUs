@@ -9,8 +9,8 @@ json.post do
               json.likerId like.liker_id
               json.liker do
                   json.id like.liker_id
-                  json.fname like.liker.fname
-                  json.lname like.liker.lname
+                  json.fName like.liker.fname
+                  json.lName like.liker.lname
                   json.headline like.liker.headline
                   json.pronouns like.liker.pronouns
                   json.photoUrl like.liker.photo.url
@@ -24,8 +24,8 @@ json.post do
             json.extract! comment, :id, :content, :created_at
             json.commenter do
                 json.id comment.commenter.id
-                json.fname comment.commenter.fname
-                json.lname comment.commenter.lname
+                json.fName comment.commenter.fname
+                json.lName comment.commenter.lname
                 json.headline comment.commenter.headline
                 json.pronouns comment.commenter.pronouns
                 json.photoUrl comment.commenter.photo.url

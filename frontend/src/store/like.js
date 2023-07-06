@@ -30,25 +30,26 @@ import { fetchPost, receiveLikePost, removeLikePost } from './post';
 // }
 
 // thunk action creators
-export const createLikePost = (postId) => async (dispatch) => {
+export const createLikePost = (postId, currentUserId) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/posts/${postId}/likes`, {
         method: 'POST'
     });
     if (res.ok) {
+        debugger
         const data = await res.json();
-        const likeId = data.likeId
-        dispatch(receiveLikePost(postId, likeId))
+        const likeId = data.like.likeId;
+        dispatch(receiveLikePost(postId, likeId, currentUserId))
         // dispatch(fetchPost(postId))
     }
 }
 
 export const deleteLikePost = (postId, likeId) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/posts/${postId}/likes/${likeId}`, {
         method: 'DELETE'
     });
     if (res.ok) {
-        const data = await res.json();
-        const likeId = data.likeId
         dispatch(removeLikePost(postId, likeId));
     }
 }
