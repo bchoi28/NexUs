@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
 
     def create
         @post = Post.find(params[:post_id])
-        @comment = @post.comments.create(commenter: current_user)
+        @comment = @post.comments.build(commenter: current_user)
 
         if @comment.save
             render :show

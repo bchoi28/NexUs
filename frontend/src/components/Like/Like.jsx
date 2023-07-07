@@ -6,17 +6,16 @@ import { getSessionUser } from '../../store/session';
 
 const Like = ({ postId }) => {
     const dispatch = useDispatch();
-    debugger
     const currentUser = useSelector(getSessionUser);
     const currentUserId = currentUser.id;
-    const likeId = parseInt(useSelector(getLikeId(postId, currentUserId)), 10);
+    const likeId = parseInt(useSelector(getLikeId(postId, currentUserId)));
     const liked = useSelector(getLikeStatus(postId, currentUserId));
-    debugger
 
     const handleLike = () => {
         if (!liked) {
             dispatch(createLikePost(postId, currentUserId));
         } else {
+            debugger
             dispatch(deleteLikePost(postId, likeId));
         }
     };

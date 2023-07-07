@@ -38,8 +38,9 @@ export const createLikePost = (postId, currentUserId) => async (dispatch) => {
     if (res.ok) {
         debugger
         const data = await res.json();
-        const likeId = data.like.likeId;
-        dispatch(receiveLikePost(postId, likeId, currentUserId))
+        const likeId = parseInt(Object.keys(data.like)[0]);
+        const liker = data.like[likeId].liker;
+        dispatch(receiveLikePost(postId, likeId, currentUserId, liker))
         // dispatch(fetchPost(postId))
     }
 }
@@ -53,6 +54,8 @@ export const deleteLikePost = (postId, likeId) => async (dispatch) => {
         dispatch(removeLikePost(postId, likeId));
     }
 }
+
+
 
 // const initialState = {
 //     postLikes: {},
