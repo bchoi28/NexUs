@@ -1,15 +1,17 @@
 import csrfFetch from "./csrf";
 import { receiveCommentPost, removeCommentPost } from "./post";
 
-export const createCommentPost = (postId, currentUserId) => async dispatch => {
+export const createCommentPost = (comment, postId) => async dispatch => {
+    debugger
     const res = await csrfFetch(`api/posts/${postId}/comments`, {
-        method: 'POST'
+        method: 'POST',
+        body: JSON.stringify(comment)
     });
     if (res.ok) {
         const data = await res.json();
         const commentId = parseInt(Object.keys(data.comment)[0]);
-        const commenter = data.comment[commentId].commenter;
-        dispatch(receiveCommentPost(postId, commentId, currentUserId, commenter));
+        const comment = data.comment[commentId];
+        dispatch(receiveCommentPost(postId, commentId, comment));
     }
 }
 
