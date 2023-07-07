@@ -9,9 +9,9 @@ export const createCommentPost = (comment, postId) => async dispatch => {
     });
     if (res.ok) {
         const data = await res.json();
-        const commentId = parseInt(Object.keys(data.comment)[0]);
-        const comment = data.comment[commentId];
-        dispatch(receiveCommentPost(postId, commentId, comment));
+        const commentPostId = parseInt(Object.keys(data.comment)[0]);
+        const comment = data.comment[commentPostId];
+        dispatch(receiveCommentPost(postId, commentPostId, comment));
     }
 }
 

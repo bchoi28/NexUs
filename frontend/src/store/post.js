@@ -239,6 +239,7 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
+    debugger
     switch (action.type) {
         case RECEIVE_POSTS:
             return { ...state, ...action.posts };
@@ -269,12 +270,13 @@ const postsReducer = (state = {}, action) => {
                 }
             };
         case RECEIVE_COMMENT_POST:
-            const { commentPostId, commentId, comment } = action;
-            const comments = state[commentPostId].comments || {};
+            debugger
+            // const { commentPostId, commentId, comment } = action;
+            const comments = state[action.postId].comments || {};
             return {
-                ...state, [commentPostId]: {
-                    ...state[commentPostId], comments: {
-                        ...comments, [commentId]: comment
+                ...state, [action.postId]: {
+                    ...state[action.postId], comments: {
+                        ...comments, [action.commentId]: action.comment
                     }
                 }
             };
