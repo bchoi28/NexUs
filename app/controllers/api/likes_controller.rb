@@ -2,9 +2,7 @@ class Api::LikesController < ApplicationController
 
     def create
         @post = Post.find(params[:post_id])
-        # debugger
-        @like = @post.likes.create(liker: current_user)
-
+        @like = @post.likes.build(liker: current_user)
         if @like.save
             render :show
         else
@@ -13,8 +11,8 @@ class Api::LikesController < ApplicationController
     end
 
     def destroy
+        # debugger
         @like = Like.find(params[:id])
-  
         if @like.destroy
             render :show
         else

@@ -7,6 +7,9 @@ export const REMOVE_POST = 'posts/REMOVE_POST';
 export const REMOVE_POSTS = 'posts/REMOVE_POSTS';
 export const RECEIVE_LIKE_POST = 'posts/RECEIVE_LIKE_POST';
 export const REMOVE_LIKE_POST = 'posts/REMOVE_LIKE_POST';
+export const RECEIVE_COMMENT_POST = 'posts/RECEIVE_COMMENT_POST';
+export const REMOVE_COMMENT_POST = 'posts/REMOVE_COMMENT_POST';
+
 
 // regular action creators
 export const receivePost = (post) => {
@@ -35,13 +38,11 @@ export const removePosts = () => {
     }
 }
 
-export const receiveLikePost = (postId, likeId) => {
-    const defaultUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    const currentUserId = defaultUser.id;
-
+export const receiveLikePost = (postId, likeId, currentUserId, liker) => {
+    debugger
     return {
         type: RECEIVE_LIKE_POST,
-        postId, likeId, currentUserId
+        postId, likeId, currentUserId, liker
     }
 }
 
@@ -51,6 +52,22 @@ export const removeLikePost = (postId, likeId) => {
         postId, likeId
     }
 }
+
+export const receiveCommentPost = (postId, commentId, currentUserId, commenter) => {
+    debugger
+    return {
+        type: RECEIVE_COMMENT_POST,
+        postId, commentId, currentUserId, commenter
+    }
+}
+
+export const removeCommentPost = (postId, commentId) => {
+    return {
+        type: REMOVE_COMMENT_POST,
+        postId, commentId
+    }
+}
+
 
 // getPost/getPosts selectors
 export const getPost = postId => state => {
@@ -66,16 +83,15 @@ export const getPosts = state => {
 }
 
 // like selectors
-export const getLikeStatus = (postId) => state => {
-    const currentUserId = state.session.user.id;
+export const getLikeStatus = (postId, currentUserId) => state => {
     if (state.posts[postId].likes) {
         const likes = Object.values(state.posts[postId].likes);
         return likes.some((like) => like.likerId === currentUserId)
     } else return false;
 }
 
-export const getLikeId = (postId) => state => {
-    const currentUserId = state.session.user.id;
+export const getLikeId = (postId, currentUserId) => state => {
+    debugger
     if (state.posts[postId].likes) {
         const currentPostLikes = state.posts[postId].likes;
         const likeKeys = Object.keys(currentPostLikes);
@@ -84,17 +100,63 @@ export const getLikeId = (postId) => state => {
     } else return null;
 }
 
-export const getLikeCount = postId => state => {
+export const getLikeInformation = postId => state => {
     if (state.posts[postId].likes) {
-        const likeCount = Object.keys(state.posts[postId].likes).length;
-        return likeCount;
+
+        const likes = Object.values(state.posts[postId].likes);
+        const likeCount = likes.length;
+        const likers = likes.map(like => like.liker);
+
+        const likeInformation = {
+            likes, likeCount, likers
+        }
+
+        return likeInformation;
     } else return null;
 }
 
-export const getLikes = postId => state => {
-    if (state.posts[postId].likes) {
-        const likes = Object.values(state.posts[postId].likes);
-        return likes;
+// export const getLikeCount = postId => state => {
+//     if (state.posts[postId].likes) {
+//         const likeCount = Object.keys(state.posts[postId].likes).length;
+//         return likeCount;
+//     } else return null;
+// }
+
+// export const getLikes = postId => state => {
+//     if (state.posts[postId].likes) {
+//         const likes = Object.values(state.posts[postId].likes);
+//         return likes;
+//     } else return null;
+// }
+
+// export const getLikers = postId => state => {
+//     if (state.posts[postId].likes) {
+//         const likes = Object.values(state.posts[postId].likes);
+//         const likers = likes.map(like => like.liker);
+//         return likers;
+//     } else return null;
+// }
+
+export const getCommentCount = postId => state => {
+    if (state.posts[postId].comments) {
+        const comments = Object.keys(state.posts[postId].comments);
+        const commentCount = comments.length;
+        return commentCount;
+    } else return null;
+}
+
+export const getCommentInformation = postId => state => {
+    if (state.posts[postId].comments) {
+
+        const comments = Object.values(state.posts[postId].comments);
+        const commentCount = comments.length;
+        const commenters = comments.map(comment => comment.commenter);
+
+        const commentInformation = {
+            comments, commentCount, commenters
+        }
+
+        return commentInformation;
     } else return null;
 }
 
@@ -183,11 +245,11 @@ const postsReducer = (state = {}, action) => {
         case REMOVE_POSTS:
             return {};
         case RECEIVE_LIKE_POST:
-            const { postId, likeId, currentUserId } = action;
+            const { postId, likeId, currentUserId, liker } = action;
             return {
                 ...state, [postId]: {
                     ...state[postId], likes: {
-                        ...state[postId].likes, [likeId]: { likerId: currentUserId }
+                        ...state[postId].likes, [likeId]: { likerId: currentUserId, liker: liker }
                     }
                 }
             }

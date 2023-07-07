@@ -2,15 +2,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLikeStatus, getLikeId } from '../../store/post';
 import { createLikePost, deleteLikePost } from '../../store/like';
 import './Like.css';
+import { getSessionUser } from '../../store/session';
 
 const Like = ({ postId }) => {
     const dispatch = useDispatch();
-    const liked = useSelector(getLikeStatus(postId));
-    const likeId = useSelector(getLikeId(postId));
+    const currentUser = useSelector(getSessionUser);
+    const currentUserId = currentUser.id;
+    const likeId = parseInt(useSelector(getLikeId(postId, currentUserId)));
+    const liked = useSelector(getLikeStatus(postId, currentUserId));
+
     const handleLike = () => {
         if (!liked) {
-            dispatch(createLikePost(postId));
+            dispatch(createLikePost(postId, currentUserId));
         } else {
+            debugger
             dispatch(deleteLikePost(postId, likeId));
         }
     };

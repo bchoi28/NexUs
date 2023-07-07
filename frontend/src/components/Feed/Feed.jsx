@@ -19,9 +19,11 @@ const Feed = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
+        document.body.style.overflow = 'hidden'
     }
     const handleCloseModal = () => {
         setModalIsOpen(false);
+        document.body.style.overflow = '';
     }
 
     const currentUser = useSelector(getSessionUser);

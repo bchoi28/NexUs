@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
     errors: errorsReducer,
     ui: uiReducer,
     modal: modalReducer,
-    // like: likeReducer
 });
 
 let enhancer;

@@ -76,6 +76,7 @@
     --reset-font-black: rgba(0, 0, 0, 0.9);
 
     --color-text-main: rgba(0, 0, 0, 0.9);
+    --color-border-light: rgba(0, 0, 0, 0.08);
     --color-text-light: rgba(0, 0, 0, 0.6);
     --color-text-accent-2: #8f5849;
 }
