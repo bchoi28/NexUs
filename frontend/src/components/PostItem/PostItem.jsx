@@ -166,7 +166,7 @@ const PostItem = React.memo(({ post }) => {
                         </div>
                         {commentCount ? (
                             <div className='comment-count-container' onClick={handleOpenComment}>
-                                <div className='comment-count-text'>{commentCount} comment</div>
+                                <div className='comment-count-text'>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</div>
                             </div>
 
                         ) : null}

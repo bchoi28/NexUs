@@ -54,6 +54,7 @@
 
 .comment-item-header {
     display: flex;
+    position: relative;
 }
 
 .comment-names {
@@ -90,6 +91,66 @@
     font-size: 13px;
 }
 
+.comment-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 100;
+    margin-top: 15px;
+    width: 100px;
+    background-color: #fff;
+    border: 0.5px solid var(--color-text-light);
+    border-radius: 8px 0 8px 8px;
+    box-shadow: 0px 0.5px 2px 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.comment-dropdown-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.comment-dropdown-update,
+.comment-dropdown-delete {
+    display: flex;
+    margin-right: auto;
+    width: 100%;
+}
+
+.comment-dropdown-update:hover,
+.comment-dropdown-delete:hover {
+    background-color: var(--color-background-button-hover);
+}
+
+.comment-update-button,
+.comment-delete-button {
+    color: var(--color-text-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+    margin-top: 2px;
+    margin-right: auto;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.comment-update-text,
+.comment-delete-text {
+    color: var(--color-text-main);
+    font-family: var(--primary-font);
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 .comment-headline {
     font-size: 12px;
     margin-top: -4px;
@@ -116,4 +177,24 @@
 .comment-post-button:hover {
     background-color: #004182;
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.comment-update-form {}
+
+.comment-update-input {
+    border: none;
+    font-size: 14px;
+    border-radius: 35px;
+    padding-left: 10px;
+}
+
+.comment-update-buttons {
+    display: flex;
+}
+
+.comment-update-save,
+.comment-update-cancel {
+    font-size: 12px;
+    padding: 5px;
+    background-color: transparent;
 }

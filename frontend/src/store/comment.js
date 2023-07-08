@@ -9,9 +9,20 @@ export const createCommentPost = (comment, postId) => async dispatch => {
     });
     if (res.ok) {
         const data = await res.json();
-        const commentPostId = parseInt(Object.keys(data.comment)[0]);
-        const comment = data.comment[commentPostId];
-        dispatch(receiveCommentPost(postId, commentPostId, comment));
+        const commentId = parseInt(Object.keys(data.comment)[0]);
+        const comment = data.comment[commentId];
+        dispatch(receiveCommentPost(postId, commentId, comment));
+    }
+}
+
+export const updateCommentPost = (comment, postId, commentId) => async dispatch => {
+    const res = await csrfFetch(`api/posts/${postId}/comments/${commentId}`, {
+        method: 'PATCH',
+        body: JSON.stringify(comment)
+    });
+    if (res.ok) {
+        const data = await res.json();
+
     }
 }
 

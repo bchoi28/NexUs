@@ -1,13 +1,12 @@
 import './ProfileDropDown.css';
 import { useRef, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser, setSession } from '../../../store/session';
 import { removeUser } from '../../../store/user';
 
 
 const ProfileDropDown = () => {
-    const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -48,7 +47,7 @@ const ProfileDropDown = () => {
             </button>
 
             {dropdownOpen && (
-                <div className="profile-dropdown-menu">
+                <div className='profile-dropdown-menu'>
                     <div className='profile-dropdown-top-container'>
                         <div className='profile-dropdown-top'>
                             <img className='profile-dropdown-pic' src={profilePhoto} alt="" />
@@ -58,7 +57,7 @@ const ProfileDropDown = () => {
                             </div>
                         </div>
                         <div className='profile-dropdown-view-profile-button-container'>
-                            <NavLink to={`/profile/${currentUser.id}`} className="dropdown-profile-view-button">View Profile</NavLink>
+                            <NavLink to={`/ profile / ${currentUser.id}`} className="dropdown-profile-view-button">View Profile</NavLink>
                         </div>
                     </div>
                     <div className='profile-dropdown-bottom-container'>
