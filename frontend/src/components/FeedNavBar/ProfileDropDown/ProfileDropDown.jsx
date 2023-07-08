@@ -57,7 +57,7 @@ const ProfileDropDown = () => {
                             </div>
                         </div>
                         <div className='profile-dropdown-view-profile-button-container'>
-                            <NavLink to={`/ profile / ${currentUser.id}`} className="dropdown-profile-view-button">View Profile</NavLink>
+                            <NavLink to={`/profile/${currentUser.id}`} className="dropdown-profile-view-button">View Profile</NavLink>
                         </div>
                     </div>
                     <div className='profile-dropdown-bottom-container'>

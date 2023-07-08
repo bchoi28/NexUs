@@ -23,11 +23,11 @@ const FeedNavBar = () => {
                 </div>
 
                 <div className='right-main-nav'>
-                    {/* <div className='icon-container'>
+                    <NavLink to='/feed' className='icon-container'>
                         <i class="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
-                    </div> */}
-                    <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
+                    </NavLink>
+                    {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>
                             <i class="fa-brands fa-linkedin-in main-nav-icons"></i>
                             <span className="icon-text">LinkedIn</span>
@@ -38,7 +38,7 @@ const FeedNavBar = () => {
                             <i class="fa-brands fa-github main-nav-icons"></i>
                             <span className="icon-text">GitHub</span>
                         </div>
-                    </Link>
+                    </Link> */}
                     <ProfileDropDown />
                 </div>
 

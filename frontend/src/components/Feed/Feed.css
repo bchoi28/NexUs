@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-background-canvas);
+    /* background-image: url('../../../public/assets/images/seeds/space.jpg'); */
+    /* background-size: contain; */
 }
 
 /* #main {
@@ -139,13 +141,107 @@
 
 
 .feed-right {
-    /* width: 15%; */
     width: 247px;
-    /* border: 1px solid black; */
+    /* border-radius: 12.8px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.about-developer-container {
+    height: 340px;
+    width: 100%;
+    border-radius: 12.8px;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+}
+
+.about-developer-title {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.about-developer-image {
+    float: left;
+    font-size: 11px;
+    max-height: 90px;
+    max-width: 90px;
+    border-radius: 12.8px;
+    margin-right: 10px;
+}
+
+.about-developer-text {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.connect-icon-container {
+    display: flex;
+}
+
+.connect-icon-nexus-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.connect-icon-nexus {
+    padding-left: 1.5px;
+    /* padding-right: 1px; */
+    padding-bottom: 1px;
+    letter-spacing: -1px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    font-size: 22px;
+    position: relative;
+    bottom: 1px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.connect-icon-nexus:hover {
+    transform: scale(1.1);
+}
+
+.connect-icon-nexus-text {
+    font-size: 10px;
+    color: var(--color-icon);
+    font-weight: 400;
+    position: relative;
+}
+
+.about-project-container {
+    margin-top: 10px;
+    height: 300px;
+    width: 100%;
     background-color: #fff;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-project-technologies-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.technologies-container {
+    margin-top: 10px;
+    align-self: center;
+    border: 1px solid black;
+    width: 160px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: var(--color-text-light);
+    font-size: 13px;
+    line-height: 30px;
 }
 
 .post-index-container {

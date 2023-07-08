@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeUser, getUser, fetchUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser, fetchSessionUser } from '../../store/session';
+import { Link, NavLink } from 'react-router-dom';
 
 const Feed = () => {
 
@@ -47,19 +48,6 @@ const Feed = () => {
     if (!currentUser || !posts) {
         return <h1>Loading Feed...</h1>
     }
-
-    // optional space theme
-
-    // window.addEventListener('scroll', function () {
-    //     var mainElement = document.getElementById('main');
-    //     var scrollPosition = window.scrollY;
-
-    //     if (scrollPosition > 0) {
-    //         mainElement.classList.add('space-effect');
-    //     } else {
-    //         mainElement.classList.remove('space-effect');
-    //     }
-    // });
 
 
     return (
@@ -119,7 +107,49 @@ const Feed = () => {
                     </div>
 
                     <div className='feed-right'>
+                        <div className='about-developer-container'>
+                            <div className='about-developer-title'>About the developer</div>
+                            <img className='about-developer-image' src='assets/images/seeds/developer2.jpeg' alt="developer" />
+                            <p className='about-developer-text'>Brandon Choi is a fullstack engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails.</p>
+                            <p className='about-developer-text'>A former Physical Therapist, Brandon has redirected his passion for helping others towards the field of software engineering!</p>
+                            <div className='about-developer-title'>Connect</div>
+                            <div className='connect-icon-container'>
+                                {/* <div className='connect-icon-nexus-container'>
+                                    <NavLink to='/profile/1' target="_blank" className='connect-icon-nexus'>us</NavLink>
+                                    <p className='connect-icon-nexus-text'>NexUs</p>
+                                </div> */}
+                                <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
+                                    <div className='icon-container'>
+                                        <i class="fa-brands fa-linkedin-in main-nav-icons"></i>
+                                        <span className="icon-text">LinkedIn</span>
+                                    </div>
+                                </Link>
+                                <Link to={{ pathname: 'https://github.com/bchoi28' }} target="_blank">
+                                    <div className='icon-container'>
+                                        <i class="fa-brands fa-github main-nav-icons"></i>
+                                        <span className="icon-text">GitHub</span>
+                                    </div>
+                                </Link>
+                            </div>
 
+                        </div>
+                        <div className='about-project-container'>
+                            <div className='about-developer-title'>About the project</div>
+                            <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for intergalactic professional networking.</p>
+                            <div className='about-project-technologies-title'>Technologies used:</div>
+                            <div className='technologies-container'>
+                                <div>JavaScript</div>
+                                <div>React</div>
+                                <div>Redux</div>
+                                <div>Ruby</div>
+                                <div>Rails</div>
+                                <div>HTML5</div>
+                                <div>CSS3</div>
+                                <div>AWS S3</div>
+                                <div>PostgreSQL</div>
+                                <div>Render</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
