@@ -163,7 +163,7 @@
 }
 
 .comment-post-button {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-alt);
     color: #fff;
     border-radius: 12.8px;
     box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
@@ -186,6 +186,9 @@
     font-size: 14px;
     border-radius: 35px;
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px 0px 0px 0px;
 }
 
 .comment-update-buttons {
@@ -195,6 +198,29 @@
 .comment-update-save,
 .comment-update-cancel {
     font-size: 12px;
-    padding: 5px;
+    padding: 3px 10px;
     background-color: transparent;
+    border-radius: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    margin-right: 5px;
+    margin-top: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in;
+    transition: box-shadow 0.1s ease;
+}
+
+.comment-update-save {
+    background-color: var(--primary-color-alt);
+    color: #fff;
+    transition: background-color 0.1s ease-in;
+}
+
+.comment-update-save:hover {
+    background-color: #004182;
+}
+
+.comment-update-cancel:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.6);
 }

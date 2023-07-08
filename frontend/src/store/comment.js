@@ -22,7 +22,9 @@ export const updateCommentPost = (comment, postId, commentId) => async dispatch 
     });
     if (res.ok) {
         const data = await res.json();
-
+        const commentId = parseInt(Object.keys(data.comment)[0]);
+        const comment = data.comment[commentId];
+        dispatch(receiveCommentPost(postId, commentId, comment));
     }
 }
 
