@@ -3,9 +3,9 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
-import { openModal, closeModal } from '../../store/modal';
+import { openModal } from '../../store/modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { deletePost, getLikeInformation, getCommentInformation, getCommentCount } from '../../store/post';
+import { deletePost, getLikeInformation, getCommentCount } from '../../store/post';
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import Like from '../Like';
@@ -15,7 +15,7 @@ const PostItem = React.memo(({ post }) => {
     // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
-    const { likes, likeCount, likers } = useSelector(getLikeInformation(post.id)) || {};
+    const { likeCount, likers } = useSelector(getLikeInformation(post.id)) || {};
     const commentCount = useSelector(getCommentCount(post.id));
     // const { comments, commentCount, commenters } = useSelector(getCommentInformation(post.id)) || {};
     // const commenters = useSelector(getCommenters(post.id));
@@ -108,11 +108,10 @@ const PostItem = React.memo(({ post }) => {
                 <header className='post-header'>
                     <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
                     <div className='post-names-headline'>
-                        <NavLink className='profile-links' to={`/profile/${post.authorId}`} profileUser={post.author}>
-                            <div className='post-author-names' >{post.author.fName} {post.author.lName}
-                                <span className="post-author-pronouns">({post.author.pronouns})</span>
-                            </div>
+                        <NavLink className='post-author-names' to={`/profile/${post.authorId}`} profileUser={post.author}>
+                            {post.author.fName} {post.author.lName}
                         </NavLink>
+                        <span className="post-author-pronouns">({post.author.pronouns})</span>
                         <div className='post-author-headline' >{post.author.headline}</div>
                         <span className='feed-post-timestamp' >{timeAgo}</span>
                     </div>
@@ -167,7 +166,7 @@ const PostItem = React.memo(({ post }) => {
                         </div>
                         {commentCount ? (
                             <div className='comment-count-container' onClick={handleOpenComment}>
-                                <div className='comment-count-text'>{commentCount} comment</div>
+                                <div className='comment-count-text'>{commentCount} {commentCount === 1 ? 'comment' : 'comments'}</div>
                             </div>
 
                         ) : null}

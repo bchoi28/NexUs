@@ -2,7 +2,8 @@ class Api::CommentsController < ApplicationController
 
     def create
         @post = Post.find(params[:post_id])
-        @comment = @post.comments.build(commenter: current_user)
+        @comment = @post.comments.build(comment_params)
+        @comment.commenter = current_user
 
         if @comment.save
             render :show
@@ -16,6 +17,15 @@ class Api::CommentsController < ApplicationController
         render :index
     end
 
+    def update
+        @comment = Comment.find(params[:id])
+        if @comment.update(comment_params)
+            render :show
+        else 
+            render json: {errors: @comment.errors.full_messages}
+        end
+    end
+
     def destroy
         @comment = Comment.find(params[:id])
 
@@ -24,5 +34,10 @@ class Api::CommentsController < ApplicationController
         else
             render json: {errors: @comment.errors.full_messages}
         end
+    end
+
+    private
+    def comment_params
+        params.require(:comment).permit(:content)
     end
 end

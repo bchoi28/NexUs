@@ -34,14 +34,15 @@
     letter-spacing: -0.5px;
 }
 
-/* .profile-links:hover> :not(.post-author-pronouns) {
-    text-decoration: underline;
-} */
 
 .post-author-names {
     font-weight: 600;
     color: var(--secondary-color);
     font-size: 17px;
+}
+
+.post-author-names:hover {
+    text-decoration: underline;
 }
 
 .post-author-pronouns {
@@ -159,10 +160,10 @@
 }
 
 .like-count-text {
-    margin-top: 2px;
+    margin-top: 3px;
     margin-left: 4px;
     font-size: 12px;
-    color: var(--color-text-light);
+    color: var(--tertiary-color);
 }
 
 .comment-count-container {
@@ -176,7 +177,7 @@
     margin-top: 2px;
     margin-left: 4px;
     font-size: 12px;
-    color: var(--color-text-light);
+    color: var(--tertiary-color);
 }
 
 .post-footer {

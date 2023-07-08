@@ -53,11 +53,11 @@ export const removeLikePost = (postId, likeId) => {
     }
 }
 
-export const receiveCommentPost = (postId, commentId, currentUserId, commenter) => {
+export const receiveCommentPost = (postId, commentId, comment) => {
     debugger
     return {
         type: RECEIVE_COMMENT_POST,
-        postId, commentId, currentUserId, commenter
+        postId, commentId, comment
     }
 }
 
@@ -142,6 +142,12 @@ export const getCommentCount = postId => state => {
         const comments = Object.keys(state.posts[postId].comments);
         const commentCount = comments.length;
         return commentCount;
+    } else return null;
+}
+export const getComments = postId => state => {
+    if (state.posts[postId].comments) {
+        const comments = Object.values(state.posts[postId].comments);
+        return comments;
     } else return null;
 }
 
@@ -233,6 +239,7 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
+    debugger
     switch (action.type) {
         case RECEIVE_POSTS:
             return { ...state, ...action.posts };
@@ -260,6 +267,25 @@ const postsReducer = (state = {}, action) => {
             return {
                 ...state, [action.postId]: {
                     ...state[action.postId], likes: updatedLikes
+                }
+            };
+        case RECEIVE_COMMENT_POST:
+            debugger
+            // const { commentPostId, commentId, comment } = action;
+            const comments = state[action.postId].comments || {};
+            return {
+                ...state, [action.postId]: {
+                    ...state[action.postId], comments: {
+                        ...comments, [action.commentId]: action.comment
+                    }
+                }
+            };
+        case REMOVE_COMMENT_POST:
+            const updatedComments = { ...state[action.postId].comments };
+            delete updatedComments[action.commentId];
+            return {
+                ...state, [action.postId]: {
+                    ...state[action.postId], comments: updatedComments
                 }
             };
         default:
