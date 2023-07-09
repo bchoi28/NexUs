@@ -71,14 +71,13 @@
 .icon-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     transition: transform 0.1s;
 }
 
 .main-nav-icons {
     font-size: 28px;
-    margin: 0 18px;
+    margin: 0 15px;
     color: var(--primary-color);
     text-decoration: none;
     position: relative;

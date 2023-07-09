@@ -112,24 +112,24 @@ const Feed = () => {
                             <img className='about-developer-image' src='assets/images/seeds/developer2.jpeg' alt="developer" />
                             <p className='about-developer-text'>Brandon Choi is a fullstack engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails.</p>
                             <p className='about-developer-text'>A former Physical Therapist, Brandon has redirected his passion for helping others towards the field of software engineering!</p>
-                            <div className='about-developer-title'>Connect</div>
+                            <div className='about-developer-connect-title'>Connect</div>
                             <div className='connect-icon-container'>
-                                {/* <div className='connect-icon-nexus-container'>
-                                    <NavLink to='/profile/1' target="_blank" className='connect-icon-nexus'>us</NavLink>
-                                    <p className='connect-icon-nexus-text'>NexUs</p>
-                                </div> */}
-                                <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
-                                    <div className='icon-container'>
-                                        <i class="fa-brands fa-linkedin-in main-nav-icons"></i>
-                                        <span className="icon-text">LinkedIn</span>
-                                    </div>
-                                </Link>
-                                <Link to={{ pathname: 'https://github.com/bchoi28' }} target="_blank">
-                                    <div className='icon-container'>
-                                        <i class="fa-brands fa-github main-nav-icons"></i>
-                                        <span className="icon-text">GitHub</span>
-                                    </div>
-                                </Link>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
+                                    <span className="icon-text">LinkedIn</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
+                                    <i className="fa-regular fa-address-card main-nav-icons"></i>
+                                    <span className="icon-text">Portfolio</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://github.com/bchoi28' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-github main-nav-icons"></i>
+                                    <span className="icon-text">GitHub</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://wellfound.com/u/brandon-choi-6' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-angellist main-nav-icons"></i>
+                                    <span className="icon-text">AngelList</span>
+                                </NavLink>
                             </div>
 
                         </div>
@@ -138,16 +138,21 @@ const Feed = () => {
                             <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for intergalactic professional networking.</p>
                             <div className='about-project-technologies-title'>Technologies used:</div>
                             <div className='technologies-container'>
-                                <div>JavaScript</div>
-                                <div>React</div>
-                                <div>Redux</div>
-                                <div>Ruby</div>
-                                <div>Rails</div>
-                                <div>HTML5</div>
-                                <div>CSS3</div>
-                                <div>AWS S3</div>
-                                <div>PostgreSQL</div>
-                                <div>Render</div>
+                                <div className='technologies-row'>
+                                    <div>JavaScript</div>
+                                    <div>React</div>
+                                    <div>Redux</div>
+                                </div>
+                                <div className='technologies-row'>
+                                    <div>Ruby</div>
+                                    <div>Rails</div>
+                                    <div>HTML5</div>
+                                </div>
+                                <div className='technologies-row'>
+                                    <div>CSS3</div>
+                                    <div>AWS S3</div>
+                                    <div>PostgreSQL</div>
+                                </div>
                             </div>
                         </div>
                     </div>

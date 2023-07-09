@@ -7,22 +7,7 @@
     /* background-size: contain; */
 }
 
-/* #main {
-    transition: background-color 0.5s;
-}
-
-.scroll-effect {
-    background-color: #000;
-}
-
-.space-effect {
-    background-color: #222;
-} */
-
-
 .feed-navbar-container {
-    /* width: 100%; */
-    /* border: 1px solid black; */
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
@@ -65,7 +50,6 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    /* border: 1px solid black; */
     margin: 0 15px;
     border-radius: 12.8px;
     background-color: #fff;
@@ -148,7 +132,7 @@
 }
 
 .about-developer-container {
-    height: 340px;
+    height: 330px;
     width: 100%;
     border-radius: 12.8px;
     background-color: #fff;
@@ -177,8 +161,17 @@
     margin-bottom: 10px;
 }
 
+.about-developer-connect-title {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 15px
+}
+
 .connect-icon-container {
     display: flex;
+    justify-content: space-around;
 }
 
 .connect-icon-nexus-container {
@@ -229,19 +222,26 @@
 .about-project-technologies-title {
     font-size: 14px;
     font-weight: 500;
+    margin-top: 5px;
 }
 
 .technologies-container {
     margin-top: 10px;
     align-self: center;
-    border: 1px solid black;
-    width: 160px;
+    /* border: 1px solid black; */
+    width: 200px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     flex-wrap: wrap;
     color: var(--color-text-light);
     font-size: 13px;
-    line-height: 30px;
+}
+
+.technologies-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
 }
 
 .post-index-container {
@@ -266,7 +266,7 @@
 
 .feed-post-form-bottom i {
     font-size: 18px;
-    padding: 10px 15px;
+    padding: 10px 20px;
     transition: background-color 0.1s ease-in-out;
 }
 
