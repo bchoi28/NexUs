@@ -130,7 +130,7 @@
     margin: 20px 0 15px 0;
     /* overflow-wrap: normal; */
     white-space: normal;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .post-photo-container {
@@ -148,6 +148,11 @@
     align-items: center;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+.like-count-container:hover .like-count-text {
+    text-decoration: underline;
+    color: var(--tertiary-color);
 }
 
 .like-count-icon {
@@ -178,6 +183,10 @@
     margin-left: 4px;
     font-size: 12px;
     color: var(--tertiary-color);
+}
+
+.comment-count-text:hover {
+    text-decoration: underline;
 }
 
 .post-footer {
@@ -211,11 +220,18 @@
     background-color: var(--color-background-button-hover)
 }
 
+.repost-button-container,
+.send-button-container {
+    cursor: default;
+    position: relative;
+}
+
 .comment-button,
 .repost-button,
 .send-button {
     font-size: 20px;
-    color: var(--primary-color-alt)
+    color: var(--primary-color-alt);
+    position: relative;
 }
 
 .comment-text,
@@ -225,4 +241,20 @@
     /* padding-top: 1px; */
     font-size: 16px;
     color: var(--color-text-light);
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    top: 0px;
+    right: 5px;
+    position: absolute;
+    font-size: 9px;
+}
+
+.repost-button-container:hover .tooltip-text,
+.send-button-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }

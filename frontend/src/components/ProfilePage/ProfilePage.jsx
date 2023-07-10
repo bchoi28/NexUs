@@ -17,42 +17,70 @@ const ProfilePage = () => {
 
     // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
-    const [isTruncated, setIsTruncated] = useState(true);
+    // const [isTruncated, setIsTruncated] = useState(true);
 
     // currentUser = { userObject }
     const currentUser = useSelector(getSessionUser);
 
 
-    const handleReadMoreClick = () => {
-        setIsTruncated(!isTruncated);
-    };
-    const renderTruncatedText = () => {
-        debugger
-        if (!profileUser || !profileUser.about) {
-            return "";
-        } else {
-            const text = profileUser.about.slice(0, 347);
-            return text + (profileUser.about.length > 347 ? "..." : "");
-        }
-    };
+    // const handleReadMoreClick = () => {
+    //     setIsTruncated(!isTruncated);
+    // };
+    // const renderTruncatedText = () => {
+    //     debugger
+    //     if (!profileUser || !profileUser.about) {
+    //         return "";
+    //     } else {
+    //         const text = profileUser.about.slice(0, 347);
+    //         return text;
+    //     }
+    // };
 
     const profileCoverPhoto = profileUser?.coverPhotoUrl;
     const profilePhoto = profileUser?.photoUrl;
 
     const handleEditCoverPhoto = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
         dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileCoverPhoto }))
     }
     const handleEditAbout = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
         dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
     }
 
+    const handleEditExperience = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
+        dispatch(openModal('UpdateExperiencesModal', { about: profileUser.about }))
+    }
+
+    const handleAddExperience = (e) => {
+        e.preventDefault();
+    }
+
+    const handleEditProfile = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
+        const profileInfo = {
+            fName: profileUser.fName,
+            lName: profileUser.lName,
+            headline: profileUser.headline,
+            pronouns: profileUser.pronouns,
+            locationCity: profileUser.locationCity,
+            locationCountryRegion: profileUser.locationCountryRegion
+        }
+        dispatch(openModal('UpdateProfileModal', profileInfo))
+    }
+
     useEffect(() => {
-        debugger
         dispatch(fetchUser(id))
         return () => {
-            debugger
             dispatch(removeUser());
         };
     }, [id])
@@ -69,7 +97,14 @@ const ProfilePage = () => {
 
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
 
-    const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
+    const aboutEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
+    const profileEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
+    const experienceEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditExperience} class="edit-experience-button fa-solid fa-pencil"></i> : null;
+    const experienceAddIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleAddExperience} class="add-experience-button fa-solid fa-plus"></i> : null;
 
 
 
@@ -104,8 +139,7 @@ const ProfilePage = () => {
                                         <div className='profile-intro-connection-count'>500+ alliances</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
-                                        {/* edit
-                                        education */}
+                                        {profileEditIcon}
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +153,27 @@ const ProfilePage = () => {
                                     </div>
                                 </div>
                                 <div className="profile-about-body">
-                                    <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div>
+                                    {/* <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div> */}
+                                    <div>{profileUser.about}</div>
                                 </div>
-                                {profileUser.about?.length > 347 && (
+                                {/* {profileUser.about?.length > 347 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>
                                         {isTruncated ? "see more" : "see less"}
                                     </button>
-                                )}
+                                )} */}
+                            </div>
+
+                            <div className="profile-content-about">
+                                <div className="profile-about-header">
+                                    <div>Experience</div>
+                                    <div>
+                                        {experienceAddIcon}
+                                    </div>
+                                </div>
+                                <div className="profile-about-body">
+                                    <div>{profileUser.about}</div>
+                                </div>
+
                             </div>
 
                         </div>

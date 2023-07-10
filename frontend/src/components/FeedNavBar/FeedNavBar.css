@@ -58,6 +58,7 @@
 
 .feed-nav-logo-us:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .right-main-nav {
@@ -71,14 +72,13 @@
 .icon-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     transition: transform 0.1s;
 }
 
 .main-nav-icons {
     font-size: 28px;
-    margin: 0 18px;
+    margin: 0 15px;
     color: var(--primary-color);
     text-decoration: none;
     position: relative;
@@ -90,13 +90,14 @@
 }
 
 /* .home-icon {
-    font-size: 24px;
+    font-size: 27px;
 } */
 
 
 .icon-container:hover {
     /* color: var(--primary-color); */
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .icon-text {

@@ -19,6 +19,7 @@ const UpdateAboutModal = ({ about }) => {
         e.preventDefault();
         dispatch(closeModal())
         setIsOpen(false);
+        document.body.style.overflow = '';
     }
 
     const handleSubmit = async (e) => {
@@ -31,6 +32,7 @@ const UpdateAboutModal = ({ about }) => {
         await dispatch(updateUser(user));
         dispatch(closeModal())
         setIsOpen(false);
+        document.body.style.overflow = '';
     }
 
     return (
@@ -39,6 +41,7 @@ const UpdateAboutModal = ({ about }) => {
             className='modal-custom about-custom'
             overlayClassName='modal-overlay'
             isOpen={isOpen}
+            onRequestClose={handleClose}
         >
             <form className='update-about-container' onSubmit={handleSubmit}>
                 <header className='update-about-header'>

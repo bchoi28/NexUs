@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :update] do
       resources :posts, only: :index
-      resources :experiences, only: [:create, :index, :show, :update, :destroy]
       collection do
         get 'search', to: 'users#search'
       end

@@ -184,10 +184,13 @@ const PostItem = React.memo(({ post }) => {
                         <button className='repost-button-container' >
                             <i class=" repost-button fa-solid fa-retweet"></i>
                             <p className='repost-text'>Repost</p>
+                            <span class="tooltip-text">coming soon!</span>
                         </button>
                         <button className='send-button-container'>
                             <i class="send-button fa-regular fa-paper-plane"></i>
                             <p className='send-text'>Send</p>
+                            <span class="tooltip-text">coming soon!</span>
+
                         </button>
                     </div>
                     {commentOpen &&

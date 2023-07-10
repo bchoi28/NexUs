@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeUser, getUser, fetchUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser, fetchSessionUser } from '../../store/session';
+import { Link, NavLink } from 'react-router-dom';
 
 const Feed = () => {
 
@@ -48,19 +49,6 @@ const Feed = () => {
         return <h1>Loading Feed...</h1>
     }
 
-    // optional space theme
-
-    // window.addEventListener('scroll', function () {
-    //     var mainElement = document.getElementById('main');
-    //     var scrollPosition = window.scrollY;
-
-    //     if (scrollPosition > 0) {
-    //         mainElement.classList.add('space-effect');
-    //     } else {
-    //         mainElement.classList.remove('space-effect');
-    //     }
-    // });
-
 
     return (
         <>
@@ -97,18 +85,19 @@ const Feed = () => {
                             <div className='feed-post-form-bottom' >
                                 <i class="fa-regular fa-image feed-photo-icon" >
                                     <span className='feed-photo-icon-text' >Photo</span>
+                                    <span class="post-form-tooltip-text">coming soon!</span>
                                 </i>
                                 <i class="fa-solid fa-video feed-video-icon">
                                     <span className='feed-video-icon-text' >Video</span>
-
+                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                                 <i class="fa-regular fa-calendar-plus feed-calendar-icon">
                                     <span className='feed-calendar-icon-text' >Event</span>
-
+                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                                 <i class="fa-solid fa-newspaper feed-article-icon">
                                     <span className='feed-article-icon-text' >Write article</span>
-
+                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                             </div>
                             {/* <PostForm /> */}
@@ -119,7 +108,55 @@ const Feed = () => {
                     </div>
 
                     <div className='feed-right'>
+                        <div className='about-developer-container'>
+                            <div className='about-developer-title'>About the developer</div>
+                            <img className='about-developer-image' src='assets/images/seeds/developer2.jpeg' alt="developer" />
+                            <p className='about-developer-text'>Brandon Choi is a fullstack engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails.</p>
+                            <p className='about-developer-text'>A former Physical Therapist, Brandon has redirected his passion for helping others towards the field of software engineering!</p>
+                            <div className='about-developer-connect-title'>Connect</div>
+                            <div className='connect-icon-container'>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
+                                    <span className="icon-text">LinkedIn</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
+                                    <i className="fa-regular fa-address-card main-nav-icons"></i>
+                                    <span className="icon-text">Portfolio</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://github.com/bchoi28' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-github main-nav-icons"></i>
+                                    <span className="icon-text">GitHub</span>
+                                </NavLink>
+                                <NavLink to={{ pathname: 'https://wellfound.com/u/brandon-choi-6' }} target="_blank" className='icon-container'>
+                                    <i className="fa-brands fa-angellist main-nav-icons"></i>
+                                    <span className="icon-text">AngelList</span>
+                                </NavLink>
+                            </div>
 
+                        </div>
+                        <div className='about-project-container'>
+                            <div className='about-developer-title'>About the project</div>
+                            <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for intergalactic professional networking.</p>
+                            <div className='about-project-technologies-title'>Technologies used:</div>
+                            <div className='technologies-container'>
+                                <div className='technologies-row'>
+                                    <div className='technology-item'><span>JavaScript</span></div>
+                                    <div className='technology-item'><span>React</span></div>
+                                    <div className='technology-item'><span>Redux</span></div>
+                                </div>
+                                <div className='technologies-row'>
+                                    <div className='technology-item'><span>Ruby</span></div>
+                                    <div className='technology-item'><span>Rails</span></div>
+                                    <div className='technology-item'><span>HTML5</span></div>
+                                </div>
+                                <div className='technologies-row'>
+                                    <div className='technology-item'><span>CSS3</span></div>
+                                    <div className='technology-item'><span>AWS S3</span></div>
+                                    <div className='technology-item'><span>PostgreSQL</span></div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 

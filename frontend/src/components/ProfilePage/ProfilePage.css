@@ -80,12 +80,13 @@
     color: var(--primary-color);
     position: relative;
     bottom: 150px;
-    right: 25px;
+    right: 16px;
     border-radius: 50%;
     background-color: #fff;
     /* margin-bottom: 150px; */
     padding: 10px;
     cursor: pointer;
+    /* left: 10px; */
 }
 
 .camera-icon-container {
@@ -143,6 +144,54 @@
     line-height: 1.1;
 }
 
+.edit-profile-info-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 30px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 10px;
+    cursor: pointer;
+}
+
+.edit-profile-info-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.edit-experience-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 10px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 10px;
+    cursor: pointer;
+}
+
+.edit-experience-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.add-experience-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 10px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 11px;
+    cursor: pointer;
+}
+
+.add-experience-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 .profile-intro-location {
     font-size: 13px;
     color: var(--color-text-light);
@@ -181,7 +230,7 @@
 .profile-about-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 25px;
+    padding: 20px 25px 10px 25px;
     font-weight: 600;
 }
 
@@ -192,7 +241,7 @@
     padding: 10px 10px;
     transition: background-color 0.1s ease-in;
     bottom: 8px;
-    left: 4px;
+    left: 10px;
     cursor: pointer;
 }
 

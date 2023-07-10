@@ -26,13 +26,13 @@ require "open-uri"
     user1 = User.create!(
       email: 'demo@user.io',
       password: 'password',
-      fname: 'Melon',
-      lname: 'Usk',
+      fname: 'Chrandon',
+      lname: 'Boi',
       pronouns: 'He/Him',
-      headline: 'Founder @ Nexus | Software Engineer | Physical Therapist',
+      headline: 'Founder @ Nexus | Software Engineer',
       location_country_region: 'USA',
       location_city: 'New York',
-      about: 'Software engineer specializing in intergalactic networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
+      about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
     ).tap do |user|
         file = File.open("frontend/public/assets/images/seeds/melon-usk-circle.png")
         user.photo.attach(
