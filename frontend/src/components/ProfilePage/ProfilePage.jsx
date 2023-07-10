@@ -52,11 +52,15 @@ const ProfilePage = () => {
         dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
     }
 
-    const handleEditExperiences = (e) => {
+    const handleEditExperience = (e) => {
         e.preventDefault();
         document.body.style.overflow = 'hidden'
 
         dispatch(openModal('UpdateExperiencesModal', { about: profileUser.about }))
+    }
+
+    const handleAddExperience = (e) => {
+        e.preventDefault();
     }
 
     const handleEditProfile = (e) => {
@@ -93,9 +97,14 @@ const ProfilePage = () => {
 
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
 
-    const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
-    const profileEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
-    const experienceEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditExperiences} class="edit-experience-button fa-solid fa-pencil"></i> : null;
+    const aboutEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
+    const profileEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
+    const experienceEditIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleEditExperience} class="edit-experience-button fa-solid fa-pencil"></i> : null;
+    const experienceAddIcon = (currentUser.id === parseInt(id)) ?
+        <i onClick={handleAddExperience} class="add-experience-button fa-solid fa-plus"></i> : null;
 
 
 
@@ -158,7 +167,7 @@ const ProfilePage = () => {
                                 <div className="profile-about-header">
                                     <div>Experience</div>
                                     <div>
-                                        {experienceEditIcon}
+                                        {experienceAddIcon}
                                     </div>
                                 </div>
                                 <div className="profile-about-body">

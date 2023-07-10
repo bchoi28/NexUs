@@ -176,6 +176,22 @@
     background-color: rgba(0, 0, 0, 0.08);
 }
 
+.add-experience-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 10px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 11px;
+    cursor: pointer;
+}
+
+.add-experience-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 .profile-intro-location {
     font-size: 13px;
     color: var(--color-text-light);
