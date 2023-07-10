@@ -25,14 +25,24 @@
     padding: 18px;
 }
 
-.update-intro-form-container div {
+.update-intro-form-container div:not(:nth-child(5)) {
     margin: 5px 0px;
     position: relative;
 }
 
+.update-intro-form-container div:nth-child(5) {
+    margin: 17px 0px 5px 0px;
+}
+
+
+
 .required {
     font-size: 10px;
     color: var(--color-text-light);
+}
+
+input:required:invalid {
+    box-shadow: inset 0 0 0 1px red;
 }
 
 .update-intro-pronouns-container {

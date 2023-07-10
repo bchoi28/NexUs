@@ -43,18 +43,25 @@ const UpdateProfileModal = (profileInfo) => {
         e.preventDefault();
         dispatch(closeModal())
         setIsOpen(false);
+        document.body.style.overflow = '';
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // const user = {
-        //     id: currentUser.id,
-        //     about: updatedAbout
-        // }
-        // await dispatch(updateUser(user));
-        // dispatch(closeModal())
-        // setIsOpen(false);
+        const user = {
+            id: currentUser.id,
+            fname: firstName,
+            lname: lastName,
+            pronouns: proNouns,
+            headline: headLine,
+            locationCountryRegion: locationcountryregion,
+            locationCity: locationcity,
+        }
+
+        await dispatch(updateUser(user));
+        dispatch(closeModal())
+        setIsOpen(false);
     }
 
     return (
@@ -62,6 +69,7 @@ const UpdateProfileModal = (profileInfo) => {
             className='modal-custom intro-custom'
             overlayClassName='modal-overlay'
             isOpen={isOpen}
+            onRequestClose={handleClose}
         >
             <div className='update-intro-container'>
                 <header className='update-intro-header'>
@@ -74,28 +82,28 @@ const UpdateProfileModal = (profileInfo) => {
                     <div className='required'>* indicates required</div>
                     <div>
                         <label className='update-intro-label' htmlFor="firstName">First name*</label>
-                        <input className='update-intro-input' id='firstName' type="text" value={firstName} />
+                        <input className='update-intro-input' required id='firstName' type="text" value={firstName} onChange={handlefName} />
                     </div>
                     <div>
                         <label className='update-intro-label' htmlFor="lastName">Last name*</label>
-                        <input className='update-intro-input' id='lastName' type="text" value={lastName} />
+                        <input className='update-intro-input' required id='lastName' type="text" value={lastName} onChange={handlelName} />
                     </div>
                     <div className='update-intro-pronouns-container'>
                         <label className='update-intro-label' htmlFor="pronouns">Pronouns</label>
-                        <input className='update-intro-input' id='pronouns' type="text" value={proNouns} />
+                        <input className='update-intro-input' id='pronouns' type="text" value={proNouns} onChange={handlePronouns} />
                         <label className='update-intro-pronouns-label' htmlFor="pronouns">Let others know how to refer to you.</label>
                     </div>
                     <div className='update-intro-headline-container'>
                         <label className='update-intro-label' htmlFor="headline">Headline*</label>
-                        <input className='update-intro-input' id='headline' type="text" value={headLine} />
+                        <input className='update-intro-input' id='headline' required type="text" value={headLine} onChange={handleHeadline} />
                     </div>
                     <div>
                         <label className='update-intro-label' htmlFor="country/region">Country/Region*</label>
-                        <input className='update-intro-input' id='country/region' type="text" value={locationcountryregion} />
+                        <input className='update-intro-input' id='country/region' required type="text" value={locationcountryregion} onChange={handleLocationCountryRegion} />
                     </div>
                     <div>
                         <label className='update-intro-label' htmlFor="city">City*</label>
-                        <input className='update-intro-input' id='city' type="text" value={locationcity} />
+                        <input className='update-intro-input' id='city' type="text" required value={locationcity} onChange={handleLocationCity} />
                     </div>
                     <button
                         type='submit'

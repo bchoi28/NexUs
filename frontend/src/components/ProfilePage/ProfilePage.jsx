@@ -41,15 +41,28 @@ const ProfilePage = () => {
 
     const handleEditCoverPhoto = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
         dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileCoverPhoto }))
     }
     const handleEditAbout = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
         dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
     }
 
-    const handleUpdateProfile = (e) => {
+    const handleEditExperiences = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
+        dispatch(openModal('UpdateExperiencesModal', { about: profileUser.about }))
+    }
+
+    const handleEditProfile = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
         const profileInfo = {
             fName: profileUser.fName,
             lName: profileUser.lName,
@@ -62,10 +75,8 @@ const ProfilePage = () => {
     }
 
     useEffect(() => {
-        debugger
         dispatch(fetchUser(id))
         return () => {
-            debugger
             dispatch(removeUser());
         };
     }, [id])
@@ -83,7 +94,8 @@ const ProfilePage = () => {
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
 
     const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
-    const profileUpdateIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleUpdateProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
+    const profileEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
+    const experienceEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditExperiences} class="edit-experience-button fa-solid fa-pencil"></i> : null;
 
 
 
@@ -118,7 +130,7 @@ const ProfilePage = () => {
                                         <div className='profile-intro-connection-count'>500+ alliances</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
-                                        {profileUpdateIcon}
+                                        {profileEditIcon}
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +152,19 @@ const ProfilePage = () => {
                                         {isTruncated ? "see more" : "see less"}
                                     </button>
                                 )} */}
+                            </div>
+
+                            <div className="profile-content-about">
+                                <div className="profile-about-header">
+                                    <div>Experience</div>
+                                    <div>
+                                        {experienceEditIcon}
+                                    </div>
+                                </div>
+                                <div className="profile-about-body">
+                                    <div>{profileUser.about}</div>
+                                </div>
+
                             </div>
 
                         </div>

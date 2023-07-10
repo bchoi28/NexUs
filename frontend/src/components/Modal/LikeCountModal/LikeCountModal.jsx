@@ -39,6 +39,7 @@ const LikeCountModal = ({ likers, likeCount }) => {
             className='modal-custom'
             overlayClassName='modal-overlay-like-count'
             isOpen={isOpen}
+            onRequestClose={handleClose}
         >
             <div className='like-count-modal-container'>
                 <div className='like-header-count'>

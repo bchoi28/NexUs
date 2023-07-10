@@ -160,6 +160,22 @@
     background-color: rgba(0, 0, 0, 0.08);
 }
 
+.edit-experience-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 10px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 10px;
+    cursor: pointer;
+}
+
+.edit-experience-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 .profile-intro-location {
     font-size: 13px;
     color: var(--color-text-light);
@@ -198,7 +214,7 @@
 .profile-about-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 25px;
+    padding: 20px 25px 10px 25px;
     font-weight: 600;
 }
 

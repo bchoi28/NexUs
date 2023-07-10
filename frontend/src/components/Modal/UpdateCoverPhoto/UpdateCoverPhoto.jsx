@@ -36,6 +36,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         e.preventDefault();
         dispatch(closeModal())
         setIsOpen(false);
+        document.body.style.overflow = '';
     }
 
     const handleSubmit = (e) => {
@@ -66,6 +67,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
             className='update-cover-photo-custom'
             overlayClassName='modal-overlay'
             isOpen={isOpen}
+            onRequestClose={handleClose}
         >
 
             <form className='update-cover-photo-container' onSubmit={handleSubmit}>
