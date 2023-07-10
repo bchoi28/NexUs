@@ -17,7 +17,11 @@ const FeedNavBar = () => {
     }
 
     const handleHomeClick = () => {
-        history.go(0);
+        if (history.location.pathname === '/feed') {
+            history.go(0);
+        } else {
+            history.push('/feed');
+        }
     };
 
     return (

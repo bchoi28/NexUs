@@ -80,12 +80,13 @@
     color: var(--primary-color);
     position: relative;
     bottom: 150px;
-    right: 25px;
+    right: 16px;
     border-radius: 50%;
     background-color: #fff;
     /* margin-bottom: 150px; */
     padding: 10px;
     cursor: pointer;
+    /* left: 10px; */
 }
 
 .camera-icon-container {
@@ -147,6 +148,16 @@
     margin-left: auto;
     position: relative;
     bottom: 30px;
+    color: var(--primary-color);
+    border-radius: 50%;
+    padding: 10px 10px;
+    transition: background-color 0.1s ease-in;
+    left: 10px;
+    cursor: pointer;
+}
+
+.edit-profile-info-button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 .profile-intro-location {
@@ -198,7 +209,7 @@
     padding: 10px 10px;
     transition: background-color 0.1s ease-in;
     bottom: 8px;
-    left: 4px;
+    left: 10px;
     cursor: pointer;
 }
 
