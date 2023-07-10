@@ -143,6 +143,12 @@
     line-height: 1.1;
 }
 
+.edit-profile-info-button {
+    margin-left: auto;
+    position: relative;
+    bottom: 30px;
+}
+
 .profile-intro-location {
     font-size: 13px;
     color: var(--color-text-light);

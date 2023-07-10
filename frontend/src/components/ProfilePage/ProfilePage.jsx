@@ -17,24 +17,24 @@ const ProfilePage = () => {
 
     // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
-    const [isTruncated, setIsTruncated] = useState(true);
+    // const [isTruncated, setIsTruncated] = useState(true);
 
     // currentUser = { userObject }
     const currentUser = useSelector(getSessionUser);
 
 
-    const handleReadMoreClick = () => {
-        setIsTruncated(!isTruncated);
-    };
-    const renderTruncatedText = () => {
-        debugger
-        if (!profileUser || !profileUser.about) {
-            return "";
-        } else {
-            const text = profileUser.about.slice(0, 347);
-            return text + (profileUser.about.length > 347 ? "..." : "");
-        }
-    };
+    // const handleReadMoreClick = () => {
+    //     setIsTruncated(!isTruncated);
+    // };
+    // const renderTruncatedText = () => {
+    //     debugger
+    //     if (!profileUser || !profileUser.about) {
+    //         return "";
+    //     } else {
+    //         const text = profileUser.about.slice(0, 347);
+    //         return text;
+    //     }
+    // };
 
     const profileCoverPhoto = profileUser?.coverPhotoUrl;
     const profilePhoto = profileUser?.photoUrl;
@@ -46,6 +46,19 @@ const ProfilePage = () => {
     const handleEditAbout = (e) => {
         e.preventDefault();
         dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
+    }
+
+    const handleUpdateProfile = (e) => {
+        e.preventDefault();
+        const profileInfo = {
+            fName: profileUser.fName,
+            lName: profileUser.lName,
+            headline: profileUser.headline,
+            pronouns: profileUser.pronouns,
+            locationCity: profileUser.locationCity,
+            locationCountryRegion: profileUser.locationCountryRegion
+        }
+        dispatch(openModal('UpdateProfileModal', profileInfo))
     }
 
     useEffect(() => {
@@ -70,6 +83,7 @@ const ProfilePage = () => {
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
 
     const aboutEditIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
+    const profileUpdateIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleUpdateProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
 
 
 
@@ -104,8 +118,7 @@ const ProfilePage = () => {
                                         <div className='profile-intro-connection-count'>500+ alliances</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
-                                        {/* edit
-                                        education */}
+                                        {profileUpdateIcon}
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +132,14 @@ const ProfilePage = () => {
                                     </div>
                                 </div>
                                 <div className="profile-about-body">
-                                    <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div>
+                                    {/* <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div> */}
+                                    <div>{profileUser.about}</div>
                                 </div>
-                                {profileUser.about?.length > 347 && (
+                                {/* {profileUser.about?.length > 347 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>
                                         {isTruncated ? "see more" : "see less"}
                                     </button>
-                                )}
+                                )} */}
                             </div>
 
                         </div>

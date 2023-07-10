@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux';
 import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
 import SearchBar from '../SearchBar/SearchBar';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const FeedNavBar = () => {
+
+    const history = useHistory();
 
     const currentUser = useSelector(getSessionUser);
 
@@ -13,20 +16,24 @@ const FeedNavBar = () => {
         return <h1>Loading Nav Bar...</h1>
     }
 
+    const handleHomeClick = () => {
+        history.go(0);
+    };
+
     return (
         <div className='main-nav-container-full'>
             <div className='main-nav-container'>
 
                 <div className='left-main-nav'>
-                    <NavLink to='/feed' className='feed-nav-logo-us'>us</NavLink>
+                    <div className='feed-nav-logo-us' onClick={handleHomeClick}>us</div>
                     <SearchBar />
                 </div>
 
                 <div className='right-main-nav'>
-                    <NavLink to='/feed' className='icon-container'>
+                    <div className='icon-container' onClick={handleHomeClick}>
                         <i class="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
-                    </NavLink>
+                    </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>
                             <i class="fa-brands fa-linkedin-in main-nav-icons"></i>

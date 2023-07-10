@@ -58,6 +58,7 @@
 
 .feed-nav-logo-us:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .right-main-nav {
@@ -96,6 +97,7 @@
 .icon-container:hover {
     /* color: var(--primary-color); */
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .icon-text {
