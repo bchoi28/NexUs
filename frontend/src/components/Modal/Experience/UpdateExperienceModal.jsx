@@ -18,6 +18,8 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [location, setLocation] = useState(experienceInfo.location);
     const [locationType, setLocationType] = useState(experienceInfo.locationType);
 
+    const [currentRoleChecked, setCurrentRoleChecked] = useState(experienceInfo.convertedEndDate === 'Current');
+
     const [startMonth, startYear] = experienceInfo.convertedStartDate.split(' ');
     const [selectedStartMonth, setSelectedStartMonth] = useState(startMonth);
     const [selectedStartYear, setSelectedStartYear] = useState(startYear);
@@ -42,6 +44,10 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     }
     const handleLocationType = (e) => {
         setLocationType(e.target.value);
+    }
+
+    const handleCheckbox = (e) => {
+        setCurrentRoleChecked((prevState) => !prevState);
     }
 
     const handleStartMonth = (e) => {
@@ -101,15 +107,15 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         <button type='button' className='update-modal-close' onClick={handleClose} >X</button>
                     </div>
                 </header>
-                <form className='update-intro-form-container'>
+                <form className='update-experience-form-container'>
                     <div className='required'>* indicates required</div>
                     <div>
                         <label className='update-intro-label' htmlFor="title">Title*</label>
                         <input className='update-intro-input' required id='title' type="text" value={title} onChange={handleTitle} />
                     </div>
-                    <div>
+                    <div className='update-experience-employment-container'>
                         <label className='update-intro-label' htmlFor="employmentType">Employment type</label>
-                        <select className='update-intro-input' id='employmentType' value={employmentType} onChange={handleEmploymentType}>
+                        <select className='update-experience-employment-type update-intro-input' id='employmentType' value={employmentType} onChange={handleEmploymentType}>
                             <option disabled value="">Please select</option>
                             <option value="Full-time">Full-time</option>
                             <option value="Part-time">Part-time</option>
@@ -133,8 +139,15 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         <label className='update-intro-label' htmlFor="locationType">Location type</label>
                         <input className='update-intro-input' id='locationType' required type="text" value={locationType} onChange={handleLocationType} />
                     </div>
-                    <div>
-
+                    <div className='update-experience-checkbox-container'>
+                        <label className='update-experience-checkbox-label' htmlFor='checkbox'>I am currently working in this role</label>
+                        <input
+                            className='update-experience-checkbox-input'
+                            id='checkbox'
+                            type="checkbox"
+                            checked={currentRoleChecked}
+                            onChange={handleCheckbox}
+                        />
                     </div>
                     <div>
                         <label className='update-intro-label' >Start date*</label>
@@ -160,39 +173,30 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                             </select>
                         </div>
                     </div>
-                    {experienceInfo.convertedEndDate === 'Current' ? (
-                        <label>
-                            <input
-                                type="checkbox"
-                                checked={experienceInfo.convertedEndDate === 'Current'}
-                            />I am currently working in this role
-                        </label>
-                    ) : (
+                    <div>
+                        <label className='update-intro-label' htmlFor="endDate">End date*</label>
                         <div>
-                            <label className='update-intro-label' htmlFor="endDate">End date*</label>
-                            <div>
-                                <select value={selectedEndMonth} onChange={handleEndMonth}>
-                                    <option disabled value="">Month</option>
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                </select>
-                                <select value={selectedEndYear} onChange={handleEndYear}>
-                                    <option disabled value="">Year</option>
-                                    {yearOptions}
-                                </select>
-                            </div>
+                            <select value={selectedEndMonth} onChange={handleEndMonth}>
+                                <option disabled value="">Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <select value={selectedEndYear} onChange={handleEndYear}>
+                                <option disabled value="">Year</option>
+                                {yearOptions}
+                            </select>
                         </div>
-                    )}
+                    </div>
                     <div>
                         <label className='update-intro-label' htmlFor="description">Description</label>
                         <input className='update-intro-input' id='description' type="text" value={description} onChange={handleDescription} />

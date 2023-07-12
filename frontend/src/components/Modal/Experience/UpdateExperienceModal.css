@@ -1,0 +1,36 @@
+.update-experience-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+}
+
+.update-experience-form-container div {
+    margin-bottom: 5px;
+}
+
+.update-experience-employment-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.update-experience-employment-type {
+    padding: 6px 1px
+}
+
+.update-experience-checkbox-container {
+    display: flex;
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+.update-experience-checkbox-label {
+    margin-left: 5px;
+    font-size: 12px;
+    width: 100%;
+}
+
+.update-experience-checkbox-input {
+    margin-left: 5px;
+    height: 15px;
+}
