@@ -29,7 +29,7 @@ const Like = ({ postId }) => {
                 </>
             ) : (
                 <>
-                    <i class="unliked-icon fa-regular fa-thumbs-up fa-flip-horizontal"></i>
+                    <i className="unliked-icon fa-regular fa-thumbs-up fa-flip-horizontal"></i>
                     <p className='unliked-text'>Like</p>
                 </>
             )

@@ -43,9 +43,9 @@
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     position: relative;
-    bottom: 12px;
+    bottom: 15px;
     border-bottom: 0.3px solid var(--color-text-light);
     letter-spacing: -0.5px;
     vertical-align: middle;

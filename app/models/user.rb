@@ -24,7 +24,7 @@ require 'open-uri'
 
 class User < ApplicationRecord
     has_secure_password
-    before_validation :generate_default_pic, :generate_default_cover_photo
+    # before_validation :generate_default_pic, :generate_default_cover_photo
 
     validates :email, 
         uniqueness: { message: 'Someone\'s already using that email.' },
@@ -116,19 +116,19 @@ class User < ApplicationRecord
         self.session_token
     end
 
-    def generate_default_pic
-        unless self.photo.attached?
-            file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/default-profile-image-circle.png");
-            self.photo.attach(io: file, filename: "default-profile-image-circle.png")
-        end
-    end
+    # def generate_default_pic
+    #     unless self.photo.attached?
+    #         file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/default-profile-image-circle.png");
+    #         self.photo.attach(io: file, filename: "default-profile-image-circle.png")
+    #     end
+    # end
 
-    def generate_default_cover_photo
-        unless self.cover_photo.attached?
-            file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/badge-background.png")
-            self.cover_photo.attach(io: file, filename: "badge-background.png")
-        end
-    end
+    # def generate_default_cover_photo
+    #     unless self.cover_photo.attached?
+    #         file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/badge-background.png")
+    #         self.cover_photo.attach(io: file, filename: "badge-background.png")
+    #     end
+    # end
 
     private
 

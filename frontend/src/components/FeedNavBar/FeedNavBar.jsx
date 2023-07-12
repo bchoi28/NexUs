@@ -35,18 +35,18 @@ const FeedNavBar = () => {
 
                 <div className='right-main-nav'>
                     <div className='icon-container' onClick={handleHomeClick}>
-                        <i class="fa-solid fa-house main-nav-icons home-icon"></i>
+                        <i className="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
                     </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>
-                            <i class="fa-brands fa-linkedin-in main-nav-icons"></i>
+                            <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
                             <span className="icon-text">LinkedIn</span>
                         </div>
                     </Link>
                     <Link to={{ pathname: 'https://github.com/bchoi28' }} target="_blank">
                         <div className='icon-container'>
-                            <i class="fa-brands fa-github main-nav-icons"></i>
+                            <i className="fa-brands fa-github main-nav-icons"></i>
                             <span className="icon-text">GitHub</span>
                         </div>
                     </Link> */}

@@ -5,8 +5,9 @@ json.user do
   json.set! :fName, @user.fname
   json.set! :lName, @user.lname
   json.experiences do 
-    @user.experiences do |experience|
+    @user.experiences.each do |experience|
       json.set! experience.id do
+        json.id experience.id
         json.title experience.title
         json.employmentType experience.employment_type
         json.companyName experience.company_name

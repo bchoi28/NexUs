@@ -83,21 +83,21 @@ const Feed = () => {
 
                             </div>
                             <div className='feed-post-form-bottom' >
-                                <i class="fa-regular fa-image feed-photo-icon" >
+                                <i className="fa-regular fa-image feed-photo-icon" >
                                     <span className='feed-photo-icon-text' >Photo</span>
-                                    <span class="post-form-tooltip-text">coming soon!</span>
+                                    <span className="post-form-tooltip-text">coming soon!</span>
                                 </i>
-                                <i class="fa-solid fa-video feed-video-icon">
+                                <i className="fa-solid fa-video feed-video-icon">
                                     <span className='feed-video-icon-text' >Video</span>
-                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
+                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
-                                <i class="fa-regular fa-calendar-plus feed-calendar-icon">
+                                <i className="fa-regular fa-calendar-plus feed-calendar-icon">
                                     <span className='feed-calendar-icon-text' >Event</span>
-                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
+                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
-                                <i class="fa-solid fa-newspaper feed-article-icon">
+                                <i className="fa-solid fa-newspaper feed-article-icon">
                                     <span className='feed-article-icon-text' >Write article</span>
-                                    {/* <span class="post-form-tooltip-text">coming soon!</span> */}
+                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                             </div>
                             {/* <PostForm /> */}

@@ -27,10 +27,10 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         } else setPhotoUrl(null);
     };
 
-    const handleRemovePhoto = () => {
-        setPhotoUrl(null);
-        setPhotoFile(null);
-    }
+    // const handleRemovePhoto = () => {
+    //     setPhotoUrl(null);
+    //     setPhotoFile(null);
+    // }
 
     const handleClose = (e) => {
         e.preventDefault();
@@ -46,6 +46,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         if (photoFile) {
             formData.append('user[cover_photo]', photoFile);
         }
+
         dispatch(updateUserPhoto(userId, formData));
         dispatch(closeModal())
         setIsOpen(false);
@@ -56,7 +57,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         photoPreview = (
             <div className='update-cover-photo-preview-container'>
                 <img className='update-cover-photo-preview' src={photoUrl} alt="" />
-                <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button>
+                {/* <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button> */}
             </div>
         )
     }
@@ -81,9 +82,9 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
                 <div className='upload-save-container' >
                     <div className='update-cover-photo-footer'>
                         <div className='update-modal-image-container' >
-                            <label htmlFor="file-input" class="update-file-input-label">
-                                <span class="update-file-input-icon">
-                                    <i class="fa-solid fa-image"></i>
+                            <label htmlFor="file-input" className="update-file-input-label">
+                                <span className="update-file-input-icon">
+                                    <i className="fa-solid fa-image"></i>
                                 </span>
                                 Upload photo
                             </label>

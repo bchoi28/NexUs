@@ -85,6 +85,7 @@ export const updateUser = (user) => async (dispatch) => {
 }
 
 export const updateUserPhoto = (id, formData) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/users/${id}`, {
         method: 'PATCH',
         body: formData,
@@ -94,7 +95,8 @@ export const updateUserPhoto = (id, formData) => async (dispatch) => {
         const data = await res.json();
         const user = data.user;
         // dispatch(receiveUser(user));
-        dispatch(setSession(user))
+        dispatch(setSession(user));
+        dispatch(receiveUser(user));
     }
 
     return res;
@@ -136,6 +138,7 @@ const initialState = {
     searchResults: []
 }
 const userReducer = (state = initialState, action) => {
+    debugger
     switch (action.type) {
         case RECEIVE_USER:
             return { ...state, user: action.user };

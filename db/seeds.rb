@@ -29,7 +29,7 @@ require "open-uri"
       fname: 'Chrandon',
       lname: 'Boi',
       pronouns: 'He/Him',
-      headline: 'Founder @ Nexus | Software Engineer',
+      headline: 'Founder @ Nexus | Software Engineer | Physical Therapist',
       location_country_region: 'USA',
       location_city: 'New York',
       about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
@@ -92,7 +92,7 @@ require "open-uri"
       fname: 'Zark',
       lname: 'Muckerberg',
       pronouns: 'He/Him',
-      headline: 'Meta-Hacker | Robot',
+      headline: 'Co-Founder & CEO @ Meta',
       location_country_region: 'Virtual Reality',
       location_city: 'Metaverse',
       about: 'Diving deep into the realm of the Metaverse, I\'m on a mission to connect the digital universe and shape the future of virtual interactions. As an innovative meta-hacker, I thrive in the depths of cyberspace, exploring new frontiers and redefining the boundaries of human connection.'
@@ -102,7 +102,20 @@ require "open-uri"
         io: File.open(file_path),
         filename: "zark-muckerberg.png"
       )
-    end
+
+      Experience.create!(
+        title: "CEO",
+        employment_type: "Full-time",
+        company_name: "Meta",
+        location: "Silicon Valley",
+        location_type: "Hybrid",
+        start_date: Date.parse("October 2021"),
+        end_date: nil,
+        industry: "Technology",
+        description: "As the CEO of Meta, I lead the company's vision, strategy, and overall direction. I am responsible for driving innovation, overseeing the development of groundbreaking technologies, and ensuring the success of our products and services. Under my leadership, Meta continues to pioneer advancements in virtual reality, augmented reality, and social media. I work closely with our talented teams to shape the future of technology and create new possibilities for connecting people and fostering meaningful experiences worldwide.",
+        user: user
+      )
+      end
 
     post3 = Post.create!(
       author: user2,
@@ -164,42 +177,6 @@ require "open-uri"
     )
 
 
-#   User.create!(
-#   email: 'predator@user.io',
-#   password: 'password',
-#   fname: 'Predator',
-#   lname: 'Yautja',
-#   pronouns: 'They/Them',
-#   headline: 'Honorable Hunter from Yautja Prime',
-#   location_country_region: 'Outer Space',
-#   location_city: 'Predator Ship',
-#   about: 'As a Yautja warrior hailing from the distant planet of Yautja Prime, I am an experienced hunter seeking worthy prey across the universe. Armed with advanced technology and unmatched physical prowess, I have honed my skills over countless hunts. Embracing the Yautja code of honor, I uphold a strict moral compass and respect for formidable adversaries. Join me in the pursuit of worthy challenges and the preservation of Yautja traditions.'
-# ).tap do |user|
-#   user.photo.attach(
-#     io: File.open('path/to/predator_photo.jpg'), # Provide the path to the Predator's photo
-#     filename: 'predator_photo.jpg',
-#     content_type: 'image/jpeg' # Adjust the content type based on the actual file type
-#   )
-# end
-
-  # User.create!(
-  #   email: 'mercury@user.io',
-  #   password: 'password',
-  #   fname: 'Mercury',
-  #   lname: 'Retrograde',
-  #   pronouns: 'They/Them',
-  #   headline: 'Cosmic Communication Specialist',
-  #   location_country_region: 'Universe',
-  #   location_city: 'Celestial Realm',
-  #   about: 'Embracing the cosmic vibes and the occasional retrograde. I specialize in navigating the challenges of celestial communication and ensuring smooth interstellar connections. Let\'s transcend the astrological barriers and create a harmonious network that spans the galaxies.'
-  # ).tap do |user|
-  #   user.photo.attach(
-  #     io: 
-  #     filename:
-  #     content_type:
-  #   )
-  # end
-
   user4 = User.create!(
     email: 'darth@user.io',
     password: 'password',
@@ -220,9 +197,9 @@ require "open-uri"
         employment_type: "Full-time",
         company_name: "Galactic Empire",
         location: "Death Star",
-        location_type: "Office",
-        start_date: Date.new(2000, 1, 1),
-        end_date: Date.new(2010, 12, 31),
+        location_type: "On-site",
+        start_date: Date.parse("January 2000"),
+        end_date: Date.parse("December 2010"),
         industry: "Software Engineering",
         description: "Led a team of Sith developers in building powerful software solutions for the Galactic Empire. Implemented dark side coding techniques and utilized the Force to overcome technical challenges. Achieved significant advancements in Sith software engineering practices.",
         user: user

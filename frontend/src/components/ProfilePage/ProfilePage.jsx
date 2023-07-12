@@ -9,6 +9,7 @@ import ModalRoot from '../Modal/ModalRoot';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { removeUser } from '../../store/user';
 import Login from '../Login/Login';
+import ExperienceItem from '../Experience';
 
 
 const ProfilePage = () => {
@@ -18,6 +19,20 @@ const ProfilePage = () => {
     // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
     // const [isTruncated, setIsTruncated] = useState(true);
+    debugger
+
+    const experiences = profileUser ? Object.values(profileUser.experiences) : null;
+    const sortedExperiences = experiences ? experiences.sort((a, b) => {
+        // if end date is null (current), move it to the front
+        if (!a.endDate) return -1;
+        if (!b.endDate) return 1;
+        // sort by end date in descending order
+        return new Date(b.endDate) - new Date(a.endDate);
+    }) : null;
+
+    const experienceList = sortedExperiences?.map(experience => {
+        return <ExperienceItem key={experience.id} experience={experience} />;
+    });
 
     // currentUser = { userObject }
     const currentUser = useSelector(getSessionUser);
@@ -36,14 +51,14 @@ const ProfilePage = () => {
     //     }
     // };
 
-    const profileCoverPhoto = profileUser?.coverPhotoUrl;
-    const profilePhoto = profileUser?.photoUrl;
+    const profileCoverPhoto = profileUser?.coverPhotoUrl ? profileUser.coverPhotoUrl : '/assets/images/seeds/badge-background.png';
+    const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/badge-background.png';
 
     const handleEditCoverPhoto = (e) => {
         e.preventDefault();
         document.body.style.overflow = 'hidden'
 
-        dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileCoverPhoto }))
+        dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileUser.coverPhotoUrl ? profileUser.coverPhotoUrl : null }))
     }
     const handleEditAbout = (e) => {
         e.preventDefault();
@@ -95,16 +110,16 @@ const ProfilePage = () => {
         return <h1>Loading...</h1>;
     }
 
-    const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} class="fa-solid fa-camera camera-button"></i> : null;
+    const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} className="fa-solid fa-camera camera-button"></i> : null;
 
     const aboutEditIcon = (currentUser.id === parseInt(id)) ?
-        <i onClick={handleEditAbout} class="edit-about-button fa-solid fa-pencil"></i> : null;
+        <i onClick={handleEditAbout} className="edit-about-button fa-solid fa-pencil"></i> : null;
     const profileEditIcon = (currentUser.id === parseInt(id)) ?
-        <i onClick={handleEditProfile} class="edit-profile-info-button fa-solid fa-pencil"></i> : null;
+        <i onClick={handleEditProfile} className="edit-profile-info-button fa-solid fa-pencil"></i> : null;
     const experienceEditIcon = (currentUser.id === parseInt(id)) ?
-        <i onClick={handleEditExperience} class="edit-experience-button fa-solid fa-pencil"></i> : null;
+        <i onClick={handleEditExperience} className="edit-experience-button fa-solid fa-pencil"></i> : null;
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
-        <i onClick={handleAddExperience} class="add-experience-button fa-solid fa-plus"></i> : null;
+        <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
 
 
 
@@ -123,7 +138,7 @@ const ProfilePage = () => {
                             <div className='profile-content-intro' >
                                 <img className='profile-intro-background-image' src={profileCoverPhoto} alt="banner" />
                                 <div className='profile-photo-camera-container'>
-                                    <img className='profile-page-photo' src={profilePhoto} alt="" />
+                                    <img className='profile-page-photo' src={profilePhoto} alt="profile" />
                                     <div className='camera-icon-container'>
                                         {cameraIcon}
                                     </div>
@@ -163,17 +178,14 @@ const ProfilePage = () => {
                                 )} */}
                             </div>
 
-                            <div className="profile-content-about">
+                            <div className="profile-experience-container">
                                 <div className="profile-about-header">
                                     <div>Experience</div>
                                     <div>
                                         {experienceAddIcon}
                                     </div>
                                 </div>
-                                <div className="profile-about-body">
-                                    <div>{profileUser.about}</div>
-                                </div>
-
+                                {experienceList}
                             </div>
 
                         </div>
