@@ -27,7 +27,6 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [endMonth, endYear] = experienceInfo.convertedEndDate.split(' ');
     const [selectedEndMonth, setSelectedEndMonth] = useState(endMonth);
     const [selectedEndYear, setSelectedEndYear] = useState(endYear);
-    debugger
     const [description, setDescription] = useState(experienceInfo.description);
 
     const handleTitle = (e) => {
@@ -135,9 +134,14 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         <label className='update-intro-label' htmlFor="location">Location</label>
                         <input className='update-intro-input' id='location' type="text" value={location} onChange={handleLocation} />
                     </div>
-                    <div>
+                    <div className='update-experience-locationtype-container'>
                         <label className='update-intro-label' htmlFor="locationType">Location type</label>
-                        <input className='update-intro-input' id='locationType' required type="text" value={locationType} onChange={handleLocationType} />
+                        <select className='update-intro-input update-experience-locationtype' id='locationType' required type="text" value={locationType} onChange={handleLocationType}>
+                            <option disabled value="">Please select</option>
+                            <option value="On-site">On-site</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Remote">Remote</option>
+                        </select>
                     </div>
                     <div className='update-experience-checkbox-container'>
                         <label className='update-experience-checkbox-label' htmlFor='checkbox'>I am currently working in this role</label>
