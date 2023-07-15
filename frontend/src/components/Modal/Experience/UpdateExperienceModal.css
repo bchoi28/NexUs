@@ -1,14 +1,29 @@
+.experience-modal {
+    height: 600px;
+    width: 600px;
+    padding-bottom: 30px;
+}
+
+.update-experience-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
 .update-experience-form-container {
     display: flex;
     flex-direction: column;
     padding: 18px;
+    overflow: auto;
+    height: 550px;
 }
 
 .update-experience-form-container div {
     margin-bottom: 5px;
 }
 
-.update-experience-employment-container {
+.update-experience-employment-container,
+.update-experience-description-container {
     display: flex;
     flex-direction: column;
     margin-top: 4px;
@@ -28,7 +43,7 @@
 .update-experience-checkbox-container {
     display: flex;
     font-size: 13px;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 .update-experience-checkbox-label {
@@ -37,11 +52,56 @@
 
 .update-experience-checkbox-input {
     /* display: flex; */
-    margin-left: 10px;
+    margin-left: 1px;
+    margin-right: 5px;
     height: 15px;
     color: var(--color-text-light);
     width: 15px;
     position: relative;
     top: 2px;
     cursor: pointer;
+    border-radius: 12.8px;
 }
+
+.update-experience-year-month-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update-experience-start-month,
+.update-experience-end-month {
+    padding: 5px;
+    font-size: 13px;
+    box-shadow: var(--input-box-shadow);
+    border: none;
+    border-radius: 4px;
+    width: 49%;
+    margin-right: 5px
+}
+
+.update-experience-start-year,
+.update-experience-end-year {
+    padding: 5px;
+    font-size: 13px;
+    box-shadow: var(--input-box-shadow);
+    border: none;
+    border-radius: 4px;
+    width: 49%;
+}
+
+.update-experience-description {
+    height: 80px;
+}
+
+.update-experience-footer {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.delete-experience-button {
+    background-color: none;
+
+}
+
+.delete-experience-button:hover {}
