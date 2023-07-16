@@ -19,6 +19,7 @@ const ExperienceItem = React.memo(({ experience }) => {
     const [employmentType, setEmploymentType] = useState(experience.employmentType);
     const [location, setLocation] = useState(experience.location);
     const [locationType, setLocationType] = useState(experience.locationType);
+    const [industry, setIndustry] = useState(experience.industry);
     const [startDate, setStartDate] = useState(experience.startDate);
     const [endDate, setEndDate] = useState(experience.endDate);
     const [description, setDescription] = useState(experience.description);
@@ -54,7 +55,7 @@ const ExperienceItem = React.memo(({ experience }) => {
         document.body.style.overflow = 'hidden'
         debugger
         const experienceInfo = {
-            title, companyName, employmentType, location, locationType,
+            title, companyName, employmentType, location, locationType, industry,
             convertedStartDate, convertedEndDate, description
         }
 

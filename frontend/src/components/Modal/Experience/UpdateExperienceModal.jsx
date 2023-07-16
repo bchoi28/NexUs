@@ -17,7 +17,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [employmentType, setEmploymentType] = useState(experienceInfo.employmentType);
     const [location, setLocation] = useState(experienceInfo.location);
     const [locationType, setLocationType] = useState(experienceInfo.locationType);
-
+    const [industry, setIndustry] = useState(experienceInfo.industry);
     const [currentRoleChecked, setCurrentRoleChecked] = useState(experienceInfo.convertedEndDate === 'Current');
 
     const [startMonth, startYear] = experienceInfo.convertedStartDate.split(' ');
@@ -43,6 +43,9 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     }
     const handleLocationType = (e) => {
         setLocationType(e.target.value);
+    }
+    const handleIndustry = (e) => {
+        setIndustry(e.target.value);
     }
 
     const handleCheckbox = (e) => {
@@ -79,6 +82,11 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const yearOptions = years.map(year => {
         return <option key={year} value={year}>{year}</option>
     });
+
+    const handleDeleteExperience = (e) => {
+        e.preventDefault();
+
+    }
 
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
@@ -201,12 +209,17 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                             </select>
                         </div>
                     </div>}
+                    <div >
+                        <label className='update-intro-label' htmlFor="industry">Industry*</label>
+                        <input className='update-intro-input' required id='industry' type="text" value={industry} onChange={handleIndustry} />
+                    </div>
                     <div className='update-experience-description-container'>
                         <label className='update-intro-label' htmlFor="description">Description</label>
                         <textarea className='update-intro-input update-experience-description ' id='description' type="text" value={description} onChange={handleDescription} />
                     </div>
                     <div className='update-experience-footer'>
                         <button
+                            onClick={handleDeleteExperience}
                             className='delete-experience-button'
                         >Delete Experience
                         </button>

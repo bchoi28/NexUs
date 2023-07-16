@@ -6,6 +6,8 @@ import { receiveSessionErrors } from './errors';
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const REMOVE_USER = 'users/REMOVE_USER';
 export const SEARCH_USERS = 'users/SEARCH_USERS';
+export const RECEIVE_EXPERIENCE = 'users/RECEIVE_EXPERIENCE';
+export const REMOVE_EXPERIENCE = 'users/REMOVE_EXPERIENCE';
 
 // regular action creators
 
@@ -21,14 +23,28 @@ export const removeUser = () => {
     return {
         type: REMOVE_USER
     }
-}
+};
+
 export const searchUsers = (data) => {
     return {
         type: 'SEARCH_USERS',
         data
     }
-}
+};
 
+export const receiveExperience = (experience) => {
+    return {
+        type: 'RECEIVE_EXPERIENCE',
+        experience
+    }
+};
+
+export const removeExperience = experienceId => {
+    return {
+        type: 'REMOVE_EXPERIENCE',
+        experienceId
+    }
+}
 
 
 // selector to get user object
@@ -146,6 +162,12 @@ const userReducer = (state = initialState, action) => {
             return { ...state, user: null };
         case 'SEARCH_USERS':
             return { ...state, searchResults: action.data };
+        case RECEIVE_EXPERIENCE:
+            const experience = action.experience;
+            const updatedUser = { ...state.user };
+            updatedUser.experiences = { ...updatedUser.experiences, [experience.id]: experience };
+            return { ...state, user: updatedUser };
+        case REMOVE_EXPERIENCE:
         default:
             return state;
     }

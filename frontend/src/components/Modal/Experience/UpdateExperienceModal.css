@@ -1,19 +1,17 @@
 .experience-modal {
     height: 600px;
     width: 600px;
-    padding-bottom: 30px;
 }
 
 .update-experience-container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 30px;
 }
 
 .update-experience-form-container {
     display: flex;
     flex-direction: column;
-    padding: 18px;
+    padding: 18px 18px 5px 18px;
     overflow: auto;
     height: 550px;
 }
@@ -91,17 +89,32 @@
 
 .update-experience-description {
     height: 80px;
+    max-width: 100%;
+    max-height: 150px;
+    min-height: 70px;
 }
 
 .update-experience-footer {
     display: flex;
     justify-content: space-between;
     height: 40px;
+    margin-top: 15px;
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 10px;
 }
 
 .delete-experience-button {
-    background-color: none;
+    background-color: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in;
+    /* margin-top: 5px; */
 
 }
 
-.delete-experience-button:hover {}
+.delete-experience-button:hover {
+    background-color: var(--color-border-light);
+    color: var(--color-text-light)
+}

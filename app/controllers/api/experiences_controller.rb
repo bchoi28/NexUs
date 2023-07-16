@@ -5,7 +5,7 @@ class Api::ExperiencesController < ApplicationController
         @experience.user = current_user
 
         if @experience.save
-            render :show,
+            render :show
         else
             render json: @experience.errors.full_messages, status: 422
         end
