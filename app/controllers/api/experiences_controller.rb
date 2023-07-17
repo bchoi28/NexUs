@@ -12,8 +12,9 @@ class Api::ExperiencesController < ApplicationController
     end
 
     def update
-        debugger
+        # debugger
         @experience = Experience.find(params[:id])
+
         if @experience.update(experience_params)
             render :show
         else

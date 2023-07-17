@@ -5,6 +5,7 @@ import UpdateCoverPhoto from "../UpdateCoverPhoto";
 import LikeCountModal from "../LikeCountModal";
 import UpdateProfileModal from "../UpdateProfileModal";
 import UpdateExperienceModal from "../Experience/UpdateExperienceModal";
+import AddExperienceModal from "../Experience/AddExperienceModal";
 
 const ModalRoot = () => {
     const modalInfo = useSelector(getModalInfo);
@@ -20,10 +21,9 @@ const ModalRoot = () => {
         return <UpdateProfileModal {...modalInfo.modalProps} />
     } else if (modalInfo.modalType === 'UpdateExperienceModal') {
         return <UpdateExperienceModal {...modalInfo.modalProps} />
-    } else {
-        // Render nothing if no modal should be open
-        return null;
-    }
+    } else if (modalInfo.modalType === 'AddExperienceModal') {
+        return <AddExperienceModal {...modalInfo.modalProps} />
+    } else return null;
 }
 
 export default ModalRoot;

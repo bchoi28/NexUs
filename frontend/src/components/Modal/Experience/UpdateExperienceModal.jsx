@@ -1,16 +1,14 @@
 import './UpdateExperienceModal.css';
 import Modal from 'react-modal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeModal } from '../../../store/modal';
-import { useState } from 'react';
-import { updateUser } from '../../../store/user';
+import { useState, useEffect } from 'react';
 import { getSessionUser } from '../../../store/session';
 import { deleteExperience, updateExperience } from '../../../store/experience';
 
 const UpdateExperienceModal = ({ experienceInfo }) => {
 
     const dispatch = useDispatch();
-    const currentUser = useSelector(getSessionUser)
     const experienceId = experienceInfo.experienceId;
     const [isOpen, setIsOpen] = useState(true);
     const [title, setTitle] = useState(experienceInfo.title);
@@ -20,7 +18,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [locationType, setLocationType] = useState(experienceInfo.locationType);
     const [industry, setIndustry] = useState(experienceInfo.industry);
     const [currentRoleChecked, setCurrentRoleChecked] = useState(experienceInfo.convertedEndDate === 'Current');
-
+    debugger
     const [startMonth, startYear] = experienceInfo.convertedStartDate.split(' ');
     const [selectedStartMonth, setSelectedStartMonth] = useState(startMonth);
     const [selectedStartYear, setSelectedStartYear] = useState(startYear);
@@ -91,6 +89,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     }
 
     const formatDateForRails = (month, year) => {
+        debugger
         const monthIndex = new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1;
         const formattedMonth = String(monthIndex).padStart(2, "0");
         return `${year}-${formattedMonth}-01`;
@@ -108,12 +107,19 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
         }
 
         const experience = {
-            title, companyName, employmentType, location, locationType, industry, startDate, endDate
+            title, companyName, employmentType, location, locationType, industry, startDate, endDate, description
         }
 
         await dispatch(updateExperience(experienceId, experience))
         handleClose();
     }
+
+    useEffect(() => {
+        if (!currentRoleChecked && selectedEndMonth === 'Current') {
+            setSelectedEndMonth("");
+            setSelectedEndYear("");
+        }
+    }, [currentRoleChecked]);
 
     return (
         <Modal
@@ -195,7 +201,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                                 <option value="December">December</option>
                             </select>
                             <select value={selectedStartYear} className='update-experience-start-year' onChange={handleStartYear}>
-                                <option disabled value="">Select year</option>
+                                <option disabled value="">Year</option>
                                 {yearOptions}
                             </select>
                         </div>
@@ -236,6 +242,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         <button
                             onClick={handleDeleteExperience}
                             className='delete-experience-button'
+                            type='button'
                         >Delete Experience
                         </button>
                         <button

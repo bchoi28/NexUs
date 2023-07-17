@@ -15,13 +15,14 @@ import ExperienceItem from '../Experience';
 const ProfilePage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-
+    debugger
+    console.log("in profile page");
     // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
     // const [isTruncated, setIsTruncated] = useState(true);
     debugger
 
-    const experiences = profileUser ? Object.values(profileUser.experiences) : null;
+    const experiences = profileUser?.experiences ? Object.values(profileUser.experiences) : null;
     const sortedExperiences = experiences ? experiences.sort((a, b) => {
         // if end date is null (current), move it to the front
         if (!a.endDate) return -1;
@@ -67,15 +68,10 @@ const ProfilePage = () => {
         dispatch(openModal('UpdateAboutModal', { about: profileUser.about }))
     }
 
-    const handleEditExperience = (e) => {
-        e.preventDefault();
-        document.body.style.overflow = 'hidden'
-
-        dispatch(openModal('UpdateExperiencesModal', { about: profileUser.about }))
-    }
-
     const handleAddExperience = (e) => {
         e.preventDefault();
+        document.body.style.overflow = 'hidden'
+        dispatch(openModal('AddExperienceModal'));
     }
 
     const handleEditProfile = (e) => {
@@ -116,12 +112,8 @@ const ProfilePage = () => {
         <i onClick={handleEditAbout} className="edit-about-button fa-solid fa-pencil"></i> : null;
     const profileEditIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleEditProfile} className="edit-profile-info-button fa-solid fa-pencil"></i> : null;
-    const experienceEditIcon = (currentUser.id === parseInt(id)) ?
-        <i onClick={handleEditExperience} className="edit-experience-button fa-solid fa-pencil"></i> : null;
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
-
-
 
     return (
         <>

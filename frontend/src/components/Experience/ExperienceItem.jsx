@@ -8,23 +8,36 @@ import { getUser } from '../../store/user';
 import { openModal } from '../../store/modal';
 import { deleteExperience, updateExperience } from '../../store/experience';
 
-const ExperienceItem = React.memo(({ experience }) => {
-
+const ExperienceItem = ({ experience }) => {
+    debugger
     const { id } = useParams();
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const profileUser = useSelector(getUser);
     const experienceId = experience.id;
 
-    const [title, setTitle] = useState(experience.title);
-    const [companyName, setCompanyName] = useState(experience.companyName);
-    const [employmentType, setEmploymentType] = useState(experience.employmentType);
-    const [location, setLocation] = useState(experience.location);
-    const [locationType, setLocationType] = useState(experience.locationType);
-    const [industry, setIndustry] = useState(experience.industry);
-    const [startDate, setStartDate] = useState(experience.startDate);
-    const [endDate, setEndDate] = useState(experience.endDate);
-    const [description, setDescription] = useState(experience.description);
+    const {
+        title,
+        companyName,
+        employmentType,
+        location,
+        locationType,
+        industry,
+        startDate,
+        endDate,
+        description
+    } = experience;
+
+
+    // const [title, setTitle] = useState(experience.title);
+    // const [companyName, setCompanyName] = useState(experience.companyName);
+    // const [employmentType, setEmploymentType] = useState(experience.employmentType);
+    // const [location, setLocation] = useState(experience.location);
+    // const [locationType, setLocationType] = useState(experience.locationType);
+    // const [industry, setIndustry] = useState(experience.industry);
+    // const [startDate, setStartDate] = useState(experience.startDate);
+    // const [endDate, setEndDate] = useState(experience.endDate);
+    // const [description, setDescription] = useState(experience.description);
     const convertedStartDate = startDate ? new Date(startDate + "T00:00:00").toLocaleDateString('en', { year: 'numeric', month: 'long' }) : '';
     const convertedEndDate = endDate ? new Date(endDate + "T00:00:00").toLocaleDateString('en', { year: 'numeric', month: 'long' }) : 'Current';
 
@@ -74,15 +87,15 @@ const ExperienceItem = React.memo(({ experience }) => {
                 <div className='experience-title'>{title}</div>
                 {experienceEditIcon}
                 <div className='experience-company-employment'>
-                    <div className='experience-company'>{experience.companyName}</div>
-                    <div className='experience-employment-type'>{experience.employmentType}</div>
+                    <div className='experience-company'>{companyName}</div>
+                    <div className='experience-employment-type'>{employmentType}</div>
                 </div>
                 <div className='experience-start-end'> {convertedStartDate} - {convertedEndDate} <span className='experience-duration'>{duration}</span> </div>
-                <div className='experience-location'>{experience.location} <span className='experience-location-type'>{experience.locationType} </span></div>
-                <div className='experience-description'>{experience.description} </div>
+                <div className='experience-location'>{location} <span className='experience-location-type'>{locationType} </span></div>
+                <div className='experience-description'>{description} </div>
             </div>
         </div>
     )
-})
+}
 
 export default ExperienceItem;

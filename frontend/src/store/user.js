@@ -166,7 +166,8 @@ const userReducer = (state = initialState, action) => {
         case RECEIVE_EXPERIENCE:
             const experience = action.experience;
             const updatedUser = { ...state.user };
-            updatedUser.experiences = { ...updatedUser.experiences, [experience.id]: experience };
+            updatedUser.experiences = updatedUser.experiences || {};
+            updatedUser.experiences[experience.id] = experience;
             return { ...state, user: updatedUser };
         case REMOVE_EXPERIENCE:
             const experienceId = action.experienceId;
