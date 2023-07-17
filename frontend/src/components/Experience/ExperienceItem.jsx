@@ -6,6 +6,7 @@ import React from 'react';
 import { getSessionUser } from '../../store/session';
 import { getUser } from '../../store/user';
 import { openModal } from '../../store/modal';
+import { deleteExperience, updateExperience } from '../../store/experience';
 
 const ExperienceItem = React.memo(({ experience }) => {
 
@@ -13,6 +14,7 @@ const ExperienceItem = React.memo(({ experience }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const profileUser = useSelector(getUser);
+    const experienceId = experience.id;
 
     const [title, setTitle] = useState(experience.title);
     const [companyName, setCompanyName] = useState(experience.companyName);
@@ -55,7 +57,7 @@ const ExperienceItem = React.memo(({ experience }) => {
         document.body.style.overflow = 'hidden'
         debugger
         const experienceInfo = {
-            title, companyName, employmentType, location, locationType, industry,
+            experienceId, title, companyName, employmentType, location, locationType, industry,
             convertedStartDate, convertedEndDate, description
         }
 

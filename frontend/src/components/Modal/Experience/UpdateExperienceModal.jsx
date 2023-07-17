@@ -5,12 +5,13 @@ import { closeModal } from '../../../store/modal';
 import { useState } from 'react';
 import { updateUser } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
+import { deleteExperience, updateExperience } from '../../../store/experience';
 
 const UpdateExperienceModal = ({ experienceInfo }) => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser)
-
+    const experienceId = experienceInfo.experienceId;
     const [isOpen, setIsOpen] = useState(true);
     const [title, setTitle] = useState(experienceInfo.title);
     const [companyName, setCompanyName] = useState(experienceInfo.companyName);
@@ -27,6 +28,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [endMonth, endYear] = experienceInfo.convertedEndDate.split(' ');
     const [selectedEndMonth, setSelectedEndMonth] = useState(endMonth);
     const [selectedEndYear, setSelectedEndYear] = useState(endYear);
+
     const [description, setDescription] = useState(experienceInfo.description);
 
     const handleTitle = (e) => {
@@ -70,8 +72,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
         setDescription(e.target.value);
     }
 
-    const handleClose = (e) => {
-        e.preventDefault();
+    const handleClose = () => {
         dispatch(closeModal())
         setIsOpen(false);
         document.body.style.overflow = '';
@@ -85,20 +86,34 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
 
     const handleDeleteExperience = (e) => {
         e.preventDefault();
-
+        dispatch(deleteExperience(experienceInfo.experienceId));
+        handleClose();
     }
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
+    const formatDateForRails = (month, year) => {
+        const monthIndex = new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1;
+        const formattedMonth = String(monthIndex).padStart(2, "0");
+        return `${year}-${formattedMonth}-01`;
+    };
 
-    //     const experience = {
+    const handleUpdateExperience = async (e) => {
+        debugger
+        e.preventDefault();
+        const startDate = formatDateForRails(selectedStartMonth, selectedStartYear);
+        let endDate;
+        if (currentRoleChecked) {
+            endDate = null;
+        } else {
+            endDate = formatDateForRails(selectedEndMonth, selectedEndYear);
+        }
 
-    //     }
+        const experience = {
+            title, companyName, employmentType, location, locationType, industry, startDate, endDate
+        }
 
-    //     await dispatch(updateExperience(experience));
-    //     dispatch(closeModal())
-    //     setIsOpen(false);
-    // }
+        await dispatch(updateExperience(experienceId, experience))
+        handleClose();
+    }
 
     return (
         <Modal
@@ -114,7 +129,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         <button type='button' className='update-modal-close' onClick={handleClose} >X</button>
                     </div>
                 </header>
-                <form className='update-experience-form-container'>
+                <form className='update-experience-form-container' onSubmit={handleUpdateExperience}>
                     <div className='required'>* indicates required</div>
                     <div>
                         <label className='update-intro-label' htmlFor="title">Title*</label>

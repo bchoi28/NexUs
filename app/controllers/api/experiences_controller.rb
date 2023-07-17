@@ -12,8 +12,9 @@ class Api::ExperiencesController < ApplicationController
     end
 
     def update
+        debugger
         @experience = Experience.find(params[:id])
-        if @experience && @experience.update(experience_params)
+        if @experience.update(experience_params)
             render :show
         else
             render json: @experience.errors.full_messages, status: 422

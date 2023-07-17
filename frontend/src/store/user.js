@@ -33,8 +33,9 @@ export const searchUsers = (data) => {
 };
 
 export const receiveExperience = (experience) => {
+    debugger
     return {
-        type: 'RECEIVE_EXPERIENCE',
+        type: RECEIVE_EXPERIENCE,
         experience
     }
 };
@@ -168,6 +169,10 @@ const userReducer = (state = initialState, action) => {
             updatedUser.experiences = { ...updatedUser.experiences, [experience.id]: experience };
             return { ...state, user: updatedUser };
         case REMOVE_EXPERIENCE:
+            const experienceId = action.experienceId;
+            const updateUser = { ...state.user };
+            delete updateUser[experienceId];
+            return { ...state, user: updateUser };
         default:
             return state;
     }

@@ -1,10 +1,10 @@
 import csrfFetch from "./csrf"
 import { receiveExperience, removeExperience } from "./user";
 
-export const createExperience = experienceInfo => async dispatch => {
-    const res = csrfFetch('api/experiences', {
+export const createExperience = experience => async dispatch => {
+    const res = await csrfFetch('/api/experiences', {
         method: 'POST',
-        body: JSON.stringify({ experience: experienceInfo })
+        body: JSON.stringify({ experience: experience })
     });
     if (res.ok) {
         const data = await res.json();
@@ -12,10 +12,10 @@ export const createExperience = experienceInfo => async dispatch => {
     };
 };
 
-export const updateExperience = (experienceId, experienceInfo) => async dispatch => {
-    const res = csrfFetch(`api/experiences/${experienceId}`, {
+export const updateExperience = (experienceId, experience) => async dispatch => {
+    const res = await csrfFetch(`/api/experiences/${experienceId}`, {
         method: 'PATCH',
-        body: JSON.stringify({ experience: experienceInfo })
+        body: JSON.stringify({ experience: experience })
     });
     if (res.ok) {
         const data = await res.json();
@@ -24,7 +24,7 @@ export const updateExperience = (experienceId, experienceInfo) => async dispatch
 };
 
 export const deleteExperience = experienceId => async dispatch => {
-    const res = csrfFetch(`api/experiences/${experienceId}`, {
+    const res = await csrfFetch(`/api/experiences/${experienceId}`, {
         method: 'DELETE'
     })
     if (res.ok) {
