@@ -12,7 +12,7 @@ const FeedNavBar = () => {
     const location = useLocation();
     const currentUser = useSelector(getSessionUser);
     const isFeedPage = location.pathname === '/feed';
-    const isNetworkPage = location.pathname === '/network';
+    const isNetworkPage = location.pathname === '/mynetwork';
 
     if (!currentUser) {
         return <h1>Loading Nav Bar...</h1>
@@ -23,6 +23,14 @@ const FeedNavBar = () => {
             history.go(0);
         } else {
             history.push('/feed');
+        }
+    };
+
+    const handleNetworkClick = () => {
+        if (location.pathname === '/mynetwork') {
+            history.go(0);
+        } else {
+            history.push('/mynetwork');
         }
     };
 
@@ -41,7 +49,7 @@ const FeedNavBar = () => {
                         <i className="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
                     </div>
-                    <div className={`icon-container ${isNetworkPage ? 'active' : ''}`} >
+                    <div className={`icon-container ${isNetworkPage ? 'active' : ''}`} onClick={handleNetworkClick} >
                         <i className="fa-solid fa-user-group main-nav-icons"></i>
                         <span className="icon-text">My Network</span>
                     </div>

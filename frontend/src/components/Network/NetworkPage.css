@@ -1,0 +1,60 @@
+.network-main-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    color: rgba (0, 0, 0, 0.9);
+    justify-content: center;
+    margin-top: 58px;
+    height: 100%;
+    display: flex;
+}
+
+.network-left-container {
+    height: 350px;
+    width: 270px;
+    border-radius: 12.8px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    /* margin: 0px 21px; */
+    background-color: #fff;
+    max-width: 770px;
+    margin-right: 22px;
+}
+
+.manage-network {
+    padding: 10px;
+}
+
+.manage-network-title {
+    margin-left: 4px;
+}
+
+.manage-network-item {
+    margin: 10px 20px;
+}
+
+.network-right-container {
+    height: 100%;
+    width: 550px;
+    max-width: 770px;
+}
+
+.network-invitations-container {
+    height: 300px;
+    width: 100%;
+    border-radius: 12.8px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    /* margin: 0px 21px; */
+    background-color: #fff;
+    max-width: 770px;
+    margin-bottom: 20px;
+}
+
+.network-suggestions-container {
+    height: 350px;
+    width: 100%;
+    border-radius: 12.8px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    /* margin: 0px 21px; */
+    background-color: #fff;
+    max-width: 770px;
+}
