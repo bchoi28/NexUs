@@ -4,8 +4,8 @@ import UpdateAboutModal from "../UpdateAboutModal";
 import UpdateCoverPhoto from "../UpdateCoverPhoto";
 import LikeCountModal from "../LikeCountModal";
 import UpdateProfileModal from "../UpdateProfileModal";
-import UpdateExperienceModal from "../Experience/UpdateExperienceModal";
-import AddExperienceModal from "../Experience/AddExperienceModal";
+import UpdateExperienceModal from "../Experience/UpdateExperienceModal.jsx";
+import AddExperienceModal from "../Experience/AddExperienceModal.jsx";
 
 const ModalRoot = () => {
     const modalInfo = useSelector(getModalInfo);
