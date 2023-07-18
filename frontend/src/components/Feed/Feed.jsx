@@ -136,11 +136,11 @@ const Feed = () => {
                         </div>
                         <div className='about-project-container'>
                             <div className='about-developer-title'>About the project</div>
-                            <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for intergalactic professional networking.</p>
-                            <div className='about-project-technologies-title'>Technologies used:</div>
+                            <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for multiversal professional networking.</p>
+                            {/* <div className='about-project-technologies-title'>Technologies used:</div> */}
                             <div className='technologies-container'>
                                 <div className='technologies-row'>
-                                    <div className='technology-item'><span>JavaScript</span></div>
+                                    <NavLink to={{ pathname: 'https://www.javascript.com/' }} target='_blank' className='technology-item'><span>JavaScript</span></NavLink>
                                     <div className='technology-item'><span>React</span></div>
                                     <div className='technology-item'><span>Redux</span></div>
                                 </div>
@@ -154,7 +154,10 @@ const Feed = () => {
                                     <div className='technology-item'><span>AWS S3</span></div>
                                     <div className='technology-item'><span>PostgreSQL</span></div>
                                 </div>
-
+                            </div>
+                            <div className='feed-about-project-logo-container'>
+                                <div className="splash-nav-logo feed-about-project-logo">Nex<span className='feed-about-project-logo-us'>us</span></div>
+                                <div className='feed-project-text'>NexUs Corporation © 2023</div>
                             </div>
                         </div>
                     </div>
