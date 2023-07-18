@@ -26,7 +26,8 @@
 
 .profile-badge-link {
     text-decoration: none;
-    color: var(--secondary-color);
+    /* color: var(--secondary-color); */
+    color: var(--primary-color-alt);
     font-weight: 500;
     font-size: 17px;
     position: relative;
@@ -35,6 +36,7 @@
 
 .profile-badge-link:hover {
     text-decoration: underline;
+    color: var(--secondary-color);
 }
 
 .profile-badge-headline {
@@ -43,9 +45,9 @@
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     position: relative;
-    bottom: 12px;
+    bottom: 15px;
     border-bottom: 0.3px solid var(--color-text-light);
     letter-spacing: -0.5px;
     vertical-align: middle;

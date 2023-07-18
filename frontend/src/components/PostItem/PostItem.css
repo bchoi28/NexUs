@@ -4,7 +4,7 @@
     height: 100%;
     padding: 10px 20px 15px 20px;
     border: 1px solid black;
-    margin: 10px 15px 0 15px;
+    margin: 0px 15px 10px 15px;
     border-radius: 12.8px;
     background-color: #fff;
     transition: box-shadow 83ms;
@@ -36,13 +36,15 @@
 
 
 .post-author-names {
-    font-weight: 600;
-    color: var(--secondary-color);
+    font-weight: 500;
+    /* color: var(--secondary-color); */
+    color: var(--color-text-main);
     font-size: 17px;
 }
 
 .post-author-names:hover {
     text-decoration: underline;
+    color: var(--secondary-color);
 }
 
 .post-author-pronouns {

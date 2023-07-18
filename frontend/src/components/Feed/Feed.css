@@ -56,7 +56,7 @@
     transition: box-shadow 83ms;
     border: none;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
-    margin-bottom: 9px;
+    margin-bottom: 19px;
 }
 
 .feed-post-form-top {
@@ -258,9 +258,31 @@
     position: relative;
 }
 
+.me-icon-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 4px;
+    width: 70px;
+}
+
+.me-icon-links {
+    font-size: 23px;
+    margin: 2px 15px;
+    color: var(--primary-color);
+    position: relative;
+    top: 2px;
+    transition: color 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+}
+
+.me-icon-container:hover .me-icon-links {
+    transform: scale(1.1);
+}
+
 .about-project-container {
     margin-top: 18px;
-    height: 300px;
+    height: 250px;
     width: 100%;
     background-color: #fff;
     border-radius: 12.8px;
@@ -277,7 +299,8 @@
 }
 
 .technologies-container {
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    margin: 2px auto 15px auto;
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -285,22 +308,60 @@
     color: var(--color-text-light);
     font-size: 10px;
     position: relative;
-    /* right: 5px */
+    text-align: center;
 }
 
 .technologies-row {
     display: flex;
-    justify-content: space-between;
-    margin: 8px;
+    justify-content: center;
+    text-align: center;
+    margin: 2px 8px;
     font-weight: 500;
 }
 
 .technology-item {
-    width: 60px;
+    /* width: 50px; */
     padding: 5px;
-    text-align: center;
+    /* text-align: center; */
+    text-decoration: none;
+    color: var(--color-text-light)
 }
 
 .technology-item:hover {
-    font-weight: 700;
+    text-decoration: underline;
+    color: var(--primary-color-alt)
+}
+
+.feed-about-project-logo-container {
+    display: flex;
+    margin: 0 auto;
+    cursor: default;
+}
+
+.feed-about-project-logo {
+    font-size: 12px;
+    cursor: default;
+}
+
+.feed-about-project-logo-us {
+    font-size: 11px;
+    margin-left: 1.5px;
+    padding-left: 1.5px;
+    padding-right: 2px;
+    padding-bottom: 0.5px;
+    letter-spacing: 0.1px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 3px;
+    position: relative;
+    bottom: 0.5px;
+    cursor: default;
+}
+
+.feed-project-text {
+    font-size: 11px;
+    margin-left: 3.5px;
+    position: relative;
+    top: 0.5px;
 }

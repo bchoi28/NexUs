@@ -178,18 +178,18 @@ const PostItem = React.memo(({ post }) => {
                     <div className='post-footer-buttons'>
                         <Like postId={post.id} />
                         <button className='comment-button-container' onClick={handleOpenComment}>
-                            <i class="comment-button fa-regular fa-comment-dots"></i>
+                            <i className="comment-button fa-regular fa-comment-dots"></i>
                             <p className='comment-text'>Comment</p>
                         </button>
                         <button className='repost-button-container' >
-                            <i class=" repost-button fa-solid fa-retweet"></i>
+                            <i className=" repost-button fa-solid fa-retweet"></i>
                             <p className='repost-text'>Repost</p>
-                            <span class="tooltip-text">coming soon!</span>
+                            <span className="tooltip-text">coming soon!</span>
                         </button>
                         <button className='send-button-container'>
-                            <i class="send-button fa-regular fa-paper-plane"></i>
+                            <i className="send-button fa-regular fa-paper-plane"></i>
                             <p className='send-text'>Send</p>
-                            <span class="tooltip-text">coming soon!</span>
+                            <span className="tooltip-text">coming soon!</span>
 
                         </button>
                     </div>

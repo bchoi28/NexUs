@@ -5,15 +5,17 @@ class Api::ExperiencesController < ApplicationController
         @experience.user = current_user
 
         if @experience.save
-            render :show,
+            render :show
         else
             render json: @experience.errors.full_messages, status: 422
         end
     end
 
     def update
+        # debugger
         @experience = Experience.find(params[:id])
-        if @experience && @experience.update(experience_params)
+
+        if @experience.update(experience_params)
             render :show
         else
             render json: @experience.errors.full_messages, status: 422

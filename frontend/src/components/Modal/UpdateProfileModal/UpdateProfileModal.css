@@ -1,5 +1,5 @@
 .intro-custom {
-    height: 560px
+    height: 530px
 }
 
 .update-intro-container {
@@ -25,7 +25,7 @@
     padding: 18px;
 }
 
-.update-intro-form-container div:not(:nth-child(5)) {
+.update-intro-form-container div:not(:nth-child(1)):not(:nth-child(5)) {
     margin: 5px 0px;
     position: relative;
 }
@@ -34,12 +34,12 @@
     margin: 17px 0px 5px 0px;
 }
 
-
-
 .required {
     font-size: 10px;
     color: var(--color-text-light);
 }
+
+.update-intro-required {}
 
 input:required:invalid {
     box-shadow: inset 0 0 0 1px red;
@@ -56,7 +56,7 @@ input:required:invalid {
 
 .update-intro-pronouns-label {
     position: absolute;
-    bottom: -17px;
+    bottom: -20px;
     left: 0;
     font-size: 13px;
     color: var(--color-text-light);
@@ -80,7 +80,8 @@ input:required:invalid {
     font-size: 12px;
     transition: background-color .1s ease-in-out;
     transition: transform 0.3s ease;
-    margin-right: 13px;
+    margin-right: 0px;
+    margin-top: 13px;
 }
 
 .update-about-save-button:hover {

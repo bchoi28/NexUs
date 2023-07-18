@@ -15,7 +15,7 @@ const Logout = () => {
 
     if (currentUser) {
         return (
-            <div class="logout-container">
+            <div className="logout-container">
                 <div className="logout-logo-container">
                     <div className="logout-logo-nex">Good<span className='logout-logo-us'>bye</span></div>
                 </div>

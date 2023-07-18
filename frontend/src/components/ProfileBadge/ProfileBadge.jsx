@@ -12,16 +12,17 @@ const ProfileBadge = () => {
         return <h1>Loading User...</h1>
     }
 
-    if (!currentUser.coverPhotoUrl) {
-        dispatch(fetchSessionUser(currentUser.id));
-        return <p>...</p>
-    }
+    // if (!currentUser.coverPhotoUrl) {
+    //     dispatch(fetchSessionUser(currentUser.id));
+    //     return <p>...</p>
+    // }
+
 
     return (
         <div className='profile-badge-container'>
-            <img className='badge-background' src={currentUser.coverPhotoUrl} alt="banner" />
+            <img className='badge-background' src={currentUser.coverPhotoUrl ? currentUser.coverPhotoUrl : '/assets/images/seeds/badge-background.png'} alt="banner" />
             <div>
-                <img className='badge-photo' src={currentUser.photoUrl} alt="profile" />
+                <img className='badge-photo' src={currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle'} alt="profile" />
             </div>
             <div>
                 <NavLink className='profile-badge-link' to={`/profile/${currentUser.id}`}>{currentUser.fName} {currentUser.lName}</NavLink>

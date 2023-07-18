@@ -1,5 +1,5 @@
 import './FeedNavBar.css'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
@@ -9,15 +9,17 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 const FeedNavBar = () => {
 
     const history = useHistory();
-
+    const location = useLocation();
     const currentUser = useSelector(getSessionUser);
+    const isFeedPage = location.pathname === '/feed';
+    const isNetworkPage = location.pathname === '/network';
 
     if (!currentUser) {
         return <h1>Loading Nav Bar...</h1>
     }
 
     const handleHomeClick = () => {
-        if (history.location.pathname === '/feed') {
+        if (location.pathname === '/feed') {
             history.go(0);
         } else {
             history.push('/feed');
@@ -34,19 +36,24 @@ const FeedNavBar = () => {
                 </div>
 
                 <div className='right-main-nav'>
-                    <div className='icon-container' onClick={handleHomeClick}>
-                        <i class="fa-solid fa-house main-nav-icons home-icon"></i>
+
+                    <div className={`icon-container ${isFeedPage ? 'active' : ''}`} onClick={handleHomeClick}>
+                        <i className="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
+                    </div>
+                    <div className={`icon-container ${isNetworkPage ? 'active' : ''}`} >
+                        <i className="fa-solid fa-user-group main-nav-icons"></i>
+                        <span className="icon-text">My Network</span>
                     </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>
-                            <i class="fa-brands fa-linkedin-in main-nav-icons"></i>
+                            <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
                             <span className="icon-text">LinkedIn</span>
                         </div>
                     </Link>
                     <Link to={{ pathname: 'https://github.com/bchoi28' }} target="_blank">
                         <div className='icon-container'>
-                            <i class="fa-brands fa-github main-nav-icons"></i>
+                            <i className="fa-brands fa-github main-nav-icons"></i>
                             <span className="icon-text">GitHub</span>
                         </div>
                     </Link> */}

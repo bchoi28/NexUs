@@ -1,0 +1,18 @@
+.update-experience-save-button {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 12.8px;
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    padding: 2px 11px;
+    font-size: 12px;
+    transition: background-color .1s ease-in-out;
+    transition: transform 0.3s ease;
+    margin-right: 0px;
+}
+
+.update-experience-save-button:hover {
+    transform: scale(1.1);
+    background-color: #004182;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}

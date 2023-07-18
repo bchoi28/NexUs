@@ -1,0 +1,159 @@
+.experience-modal {
+    height: 600px;
+    width: 600px;
+}
+
+.update-experience-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-experience-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 17px 31px 0px 20px;
+    overflow: auto;
+    height: 550px;
+}
+
+.required {
+    padding-bottom: 2px;
+}
+
+.update-experience-form-container div:not(.update-date-container) {
+    margin-bottom: 8px;
+}
+
+.update-date-container {
+    margin-top: 2px;
+}
+
+.update-input-title {
+    padding-left: 9px;
+    padding-right: 5px;
+}
+
+.update-experience-employment-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.update-industry-container {}
+
+.update-experience-description-container {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.update-experience-employment-type,
+.update-experience-locationtype {
+    /* padding: 6px 1px */
+}
+
+.update-experience-locationtype-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.update-experience-checkbox-container {
+    display: flex;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.update-experience-checkbox-label {
+    font-size: 13px;
+}
+
+.update-experience-checkbox-input {
+    margin-left: 1px;
+    margin-right: 5px;
+    height: 15px;
+    color: var(--color-text-light);
+    width: 15px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+    border-radius: 12.8px;
+}
+
+.update-experience-year-month-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update-experience-start-month,
+.update-experience-end-month {
+    padding: 4.5px;
+    font-size: 13px;
+    box-shadow: var(--input-box-shadow);
+    border: none;
+    border-radius: 4px;
+    width: 49%;
+    margin-right: 5px;
+}
+
+.update-experience-start-year,
+.update-experience-end-year {
+    padding: 4.5px;
+    font-size: 13px;
+    box-shadow: var(--input-box-shadow);
+    border: none;
+    border-radius: 4px;
+    width: 49%;
+}
+
+.update-experience-description {
+    height: 70px;
+    max-width: 100%;
+    max-height: 150px;
+    min-height: 70px;
+}
+
+.update-experience-footer {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin-top: 15px;
+    border-top: 1px solid var(--color-border-light);
+    padding-top: 10px;
+}
+
+.delete-experience-button {
+    background-color: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in;
+    /* margin-top: 5px; */
+
+}
+
+.delete-experience-button:hover {
+    background-color: var(--color-border-light);
+    color: var(--color-text-light)
+}
+
+.update-experience-save-button {
+    margin-left: auto;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 12.8px;
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    padding: 2px 11px;
+    font-size: 12px;
+    transition: background-color .1s ease-in-out;
+    transition: transform 0.3s ease;
+    margin-right: 0px;
+}
+
+.update-experience-save-button:hover {
+    transform: scale(1.1);
+    background-color: #004182;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}

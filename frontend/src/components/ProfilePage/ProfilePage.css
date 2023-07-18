@@ -16,7 +16,7 @@
     color: rgba (0, 0, 0, 0.9);
     justify-content: center;
     margin-top: 58px;
-    height: 700px
+    height: 100%
 }
 
 .profile-left-container {
@@ -160,31 +160,15 @@
     background-color: rgba(0, 0, 0, 0.08);
 }
 
-.edit-experience-button {
-    margin-left: auto;
-    position: relative;
-    bottom: 10px;
-    color: var(--primary-color);
-    border-radius: 50%;
-    padding: 10px 10px;
-    transition: background-color 0.1s ease-in;
-    left: 10px;
-    cursor: pointer;
-}
-
-.edit-experience-button:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-}
-
 .add-experience-button {
     margin-left: auto;
     position: relative;
-    bottom: 10px;
+    bottom: 8px;
     color: var(--primary-color);
     border-radius: 50%;
     padding: 10px 10px;
     transition: background-color 0.1s ease-in;
-    left: 11px;
+    left: 12px;
     cursor: pointer;
 }
 
@@ -197,8 +181,6 @@
     color: var(--color-text-light);
     position: relative;
     top: 10px
-        /* bottom: 5px; */
-
 }
 
 .profile-intro-connection-count {
@@ -214,6 +196,7 @@
     background-color: #fff;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    height: 600px;
 }
 
 .profile-content-about {
@@ -261,6 +244,18 @@
     font-weight: 500;
 }
 
+.profile-experience-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100%;
+    border-radius: 12.8px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+
 .loading-profile-container {
     display: flex;
     justify-content: center;
@@ -271,5 +266,4 @@
 
 .loading-profile-text {
     text-align: center;
-
 }

@@ -6,6 +6,8 @@ import { receiveSessionErrors } from './errors';
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const REMOVE_USER = 'users/REMOVE_USER';
 export const SEARCH_USERS = 'users/SEARCH_USERS';
+export const RECEIVE_EXPERIENCE = 'users/RECEIVE_EXPERIENCE';
+export const REMOVE_EXPERIENCE = 'users/REMOVE_EXPERIENCE';
 
 // regular action creators
 
@@ -21,14 +23,29 @@ export const removeUser = () => {
     return {
         type: REMOVE_USER
     }
-}
+};
+
 export const searchUsers = (data) => {
     return {
         type: 'SEARCH_USERS',
         data
     }
-}
+};
 
+export const receiveExperience = (experience) => {
+    debugger
+    return {
+        type: RECEIVE_EXPERIENCE,
+        experience
+    }
+};
+
+export const removeExperience = experienceId => {
+    return {
+        type: 'REMOVE_EXPERIENCE',
+        experienceId
+    }
+}
 
 
 // selector to get user object
@@ -85,6 +102,7 @@ export const updateUser = (user) => async (dispatch) => {
 }
 
 export const updateUserPhoto = (id, formData) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/users/${id}`, {
         method: 'PATCH',
         body: formData,
@@ -94,7 +112,8 @@ export const updateUserPhoto = (id, formData) => async (dispatch) => {
         const data = await res.json();
         const user = data.user;
         // dispatch(receiveUser(user));
-        dispatch(setSession(user))
+        dispatch(setSession(user));
+        dispatch(receiveUser(user));
     }
 
     return res;
@@ -136,6 +155,7 @@ const initialState = {
     searchResults: []
 }
 const userReducer = (state = initialState, action) => {
+    debugger
     switch (action.type) {
         case RECEIVE_USER:
             return { ...state, user: action.user };
@@ -143,6 +163,17 @@ const userReducer = (state = initialState, action) => {
             return { ...state, user: null };
         case 'SEARCH_USERS':
             return { ...state, searchResults: action.data };
+        case RECEIVE_EXPERIENCE:
+            const experience = action.experience;
+            const updatedUser = { ...state.user };
+            updatedUser.experiences = updatedUser.experiences || {};
+            updatedUser.experiences[experience.id] = experience;
+            return { ...state, user: updatedUser };
+        case REMOVE_EXPERIENCE:
+            const experienceId = action.experienceId;
+            const updateUser = { ...state.user };
+            delete updateUser[experienceId];
+            return { ...state, user: updateUser };
         default:
             return state;
     }
