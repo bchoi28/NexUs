@@ -14,16 +14,17 @@
     background-color: transparent;
     position: relative;
     z-index: 101;
-    margin-bottom: -14px;
+    margin-bottom: -8.5px;
     margin-left: 13px;
     display: flex;
     flex-direction: column;
+    transition: color 0.1s ease-in-out;
 }
 
-.profile-button:hover,
-.profile-icon-text {
-    transform: scale(1.1);
-    color: var(--primary-color);
+.profile-button:hover .profile-icon-text,
+.profile-button:hover {
+    /* transform: scale(1.1); */
+    color: var(--color-text-main);
 }
 
 .profile-icon-text {
@@ -31,7 +32,7 @@
     color: var(--color-icon);
     font-weight: 400;
     position: relative;
-    bottom: 8px;
+    bottom: 7.5px;
     left: 2px;
     transition: color 0.1s ease-in-out;
 }
@@ -43,13 +44,13 @@
 .down-arrow {
     font-size: 10px;
     position: relative;
-    bottom: 8px;
+    bottom: 7.5px;
     left: 3px
 }
 
 .profile-button-pic {
-    width: 28px;
-    height: 28px;
+    width: 27px;
+    height: 27px;
     transition: transform 0.1s ease-in-out;
     border: 1.5px solid #fff;
     box-shadow: 0 0 0 1px var(--secondary-color);

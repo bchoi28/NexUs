@@ -258,6 +258,28 @@
     position: relative;
 }
 
+.me-icon-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 4px;
+    width: 70px;
+}
+
+.me-icon-links {
+    font-size: 23px;
+    margin: 2px 15px;
+    color: var(--primary-color);
+    position: relative;
+    top: 2px;
+    transition: color 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+}
+
+.me-icon-container:hover .me-icon-links {
+    transform: scale(1.1);
+}
+
 .about-project-container {
     margin-top: 18px;
     height: 250px;

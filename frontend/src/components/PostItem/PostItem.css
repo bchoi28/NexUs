@@ -36,13 +36,15 @@
 
 
 .post-author-names {
-    font-weight: 600;
-    color: var(--secondary-color);
+    font-weight: 500;
+    /* color: var(--secondary-color); */
+    color: var(--color-text-main);
     font-size: 17px;
 }
 
 .post-author-names:hover {
     text-decoration: underline;
+    color: var(--secondary-color);
 }
 
 .post-author-pronouns {

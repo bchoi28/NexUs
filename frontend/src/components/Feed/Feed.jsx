@@ -115,20 +115,20 @@ const Feed = () => {
                             <p className='about-developer-text'>A former Physical Therapist, Brandon has redirected his passion for helping others towards the field of software engineering!</p>
                             <div className='about-developer-connect-title'>Connect</div>
                             <div className='connect-icon-container'>
-                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
-                                    <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='me-icon-container'>
+                                    <i className="fa-brands fa-linkedin-in me-icon-links"></i>
                                     <span className="icon-text">LinkedIn</span>
                                 </NavLink>
-                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='icon-container'>
-                                    <i className="fa-regular fa-address-card main-nav-icons"></i>
+                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='me-icon-container'>
+                                    <i className="fa-regular fa-address-card me-icon-links"></i>
                                     <span className="icon-text">Portfolio</span>
                                 </NavLink>
-                                <NavLink to={{ pathname: 'https://github.com/bchoi28' }} target="_blank" className='icon-container'>
-                                    <i className="fa-brands fa-github main-nav-icons"></i>
+                                <NavLink to={{ pathname: 'https://github.com/bchoi28' }} target="_blank" className='me-icon-container'>
+                                    <i className="fa-brands fa-github me-icon-links"></i>
                                     <span className="icon-text">GitHub</span>
                                 </NavLink>
-                                <NavLink to={{ pathname: 'https://wellfound.com/u/brandon-choi-6' }} target="_blank" className='icon-container'>
-                                    <i className="fa-brands fa-angellist main-nav-icons"></i>
+                                <NavLink to={{ pathname: 'https://wellfound.com/u/brandon-choi-6' }} target="_blank" className='me-icon-container'>
+                                    <i className="fa-brands fa-angellist me-icon-links"></i>
                                     <span className="icon-text">AngelList</span>
                                 </NavLink>
                             </div>
@@ -140,19 +140,19 @@ const Feed = () => {
                             {/* <div className='about-project-technologies-title'>Technologies used:</div> */}
                             <div className='technologies-container'>
                                 <div className='technologies-row'>
-                                    <NavLink to={{ pathname: 'https://www.javascript.com/' }} target='_blank' className='technology-item'><span>JavaScript</span></NavLink>
-                                    <div className='technology-item'><span>React</span></div>
-                                    <div className='technology-item'><span>Redux</span></div>
+                                    <NavLink to={{ pathname: 'https://www.javascript.com' }} target='_blank' className='technology-item'><span>JavaScript</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://react.dev' }} target='_blank' className='technology-item'><span>React</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://redux.js.org' }} target='_blank' className='technology-item'><span>Redux</span></NavLink>
                                 </div>
                                 <div className='technologies-row'>
-                                    <div className='technology-item'><span>Ruby</span></div>
-                                    <div className='technology-item'><span>Rails</span></div>
-                                    <div className='technology-item'><span>HTML5</span></div>
+                                    <NavLink to={{ pathname: 'https://www.ruby-lang.org/en' }} target='_blank' className='technology-item'><span>Ruby</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://rubyonrails.org' }} target='_blank' className='technology-item'><span>Rails</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://developer.mozilla.org/en-US/docs/Web/HTML' }} target='_blank' className='technology-item'><span>HTML5</span></NavLink>
                                 </div>
                                 <div className='technologies-row'>
-                                    <div className='technology-item'><span>CSS3</span></div>
-                                    <div className='technology-item'><span>AWS S3</span></div>
-                                    <div className='technology-item'><span>PostgreSQL</span></div>
+                                    <NavLink to={{ pathname: 'https://developer.mozilla.org/en-US/docs/Web/CSS' }} target='_blank' className='technology-item'><span>CSS3</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://aws.amazon.com/s3' }} target='_blank' className='technology-item'><span>AWS S3</span></NavLink>
+                                    <NavLink to={{ pathname: 'https://www.postgresql.org/' }} target='_blank' className='technology-item'><span>PostgreSQL</span></NavLink>
                                 </div>
                             </div>
                             <div className='feed-about-project-logo-container'>
