@@ -139,7 +139,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                     <div className='required'>* indicates required</div>
                     <div>
                         <label className='update-intro-label' htmlFor="title">Title*</label>
-                        <input className='update-intro-input' required id='title' type="text" value={title} onChange={handleTitle} />
+                        <input className='update-intro-input update-input-title' required id='title' type="text" value={title} onChange={handleTitle} />
                     </div>
                     <div className='update-experience-employment-container'>
                         <label className='update-intro-label' htmlFor="employmentType">Employment type</label>
@@ -157,11 +157,11 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                     </div>
                     <div>
                         <label className='update-intro-label' htmlFor="companyName">Company name*</label>
-                        <input className='update-intro-input' required id='companyName' type="text" value={companyName} onChange={handleCompanyName} />
+                        <input className='update-intro-input update-input-title' required id='companyName' type="text" value={companyName} onChange={handleCompanyName} />
                     </div>
                     <div >
                         <label className='update-intro-label' htmlFor="location">Location</label>
-                        <input className='update-intro-input' id='location' type="text" value={location} onChange={handleLocation} />
+                        <input className='update-intro-input update-input-title' id='location' type="text" value={location} onChange={handleLocation} />
                     </div>
                     <div className='update-experience-locationtype-container'>
                         <label className='update-intro-label' htmlFor="locationType">Location type</label>
@@ -182,8 +182,8 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         />
                         <label className='update-experience-checkbox-label' htmlFor='checkbox'>I am currently working in this role</label>
                     </div>
-                    <div>
-                        <label className='update-intro-label' >Start date*</label>
+                    <div className='update-date-container' >
+                        <label className='update-intro-label update-date-label' >Start date*</label>
                         <div className='update-experience-year-month-container'>
                             <select value={selectedStartMonth} className='update-experience-start-month' onChange={handleStartMonth}>
                                 <option disabled value="">Month</option>
@@ -206,37 +206,38 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                             </select>
                         </div>
                     </div>
-                    {!currentRoleChecked && <div>
-                        <label className='update-intro-label' htmlFor="endDate">End date*</label>
-                        <div className='update-experience-year-month-container'>
-                            <select className='update-experience-end-month' value={selectedEndMonth} onChange={handleEndMonth}>
-                                <option disabled value="">Month</option>
-                                <option value="January">January</option>
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
-                            </select>
-                            <select value={selectedEndYear} className='update-experience-end-year' onChange={handleEndYear}>
-                                <option disabled value="">Year</option>
-                                {yearOptions}
-                            </select>
-                        </div>
-                    </div>}
-                    <div >
+                    {!currentRoleChecked &&
+                        <div className='update-date-container'>
+                            <label className='update-intro-label' htmlFor="endDate">End date*</label>
+                            <div className='update-experience-year-month-container'>
+                                <select className='update-experience-end-month' value={selectedEndMonth} onChange={handleEndMonth}>
+                                    <option disabled value="">Month</option>
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="September">September</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                </select>
+                                <select value={selectedEndYear} className='update-experience-end-year' onChange={handleEndYear}>
+                                    <option disabled value="">Year</option>
+                                    {yearOptions}
+                                </select>
+                            </div>
+                        </div>}
+                    <div className='update-industry-container' >
                         <label className='update-intro-label' htmlFor="industry">Industry*</label>
-                        <input className='update-intro-input' required id='industry' type="text" value={industry} onChange={handleIndustry} />
+                        <input className='update-intro-input update-input-title' required id='industry' type="text" value={industry} onChange={handleIndustry} />
                     </div>
                     <div className='update-experience-description-container'>
                         <label className='update-intro-label' htmlFor="description">Description</label>
-                        <textarea className='update-intro-input update-experience-description ' id='description' type="text" value={description} onChange={handleDescription} />
+                        <textarea className='update-intro-input update-input-title update-experience-description ' id='description' type="text" value={description} onChange={handleDescription} />
                     </div>
                     <div className='update-experience-footer'>
                         <button
@@ -247,7 +248,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
                         </button>
                         <button
                             type='submit'
-                            className='update-about-save-button'>Save
+                            className='update-experience-save-button'>Save
                         </button>
                     </div>
                 </form>

@@ -204,7 +204,7 @@ const AddExperienceModal = () => {
                     <div className='update-experience-footer'>
                         <button
                             type='submit'
-                            className='update-about-save-button'>Save
+                            className='update-experience-save-button'>Save
                         </button>
                     </div>
                 </form>

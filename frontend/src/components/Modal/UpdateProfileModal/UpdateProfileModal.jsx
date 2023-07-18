@@ -79,7 +79,7 @@ const UpdateProfileModal = (profileInfo) => {
                     </div>
                 </header>
                 <form className='update-intro-form-container' onSubmit={handleSubmit}>
-                    <div className='required'>* indicates required</div>
+                    <div className='required update-intro-required'>* indicates required</div>
                     <div>
                         <label className='update-intro-label' htmlFor="firstName">First name*</label>
                         <input className='update-intro-input' required id='firstName' type="text" value={firstName} onChange={handlefName} />
