@@ -152,7 +152,8 @@ export const fetchUsersSearch = (query) => async (dispatch) => {
 
 const initialState = {
     user: null,
-    searchResults: []
+    searchResults: [],
+    potentialConnections: [],
 }
 const userReducer = (state = initialState, action) => {
     debugger

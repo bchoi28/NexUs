@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    def index
+    def potential_connections
         @potential_connections = current_user.potential_connections
         render :index
     end

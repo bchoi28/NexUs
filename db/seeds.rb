@@ -14,11 +14,19 @@ require "open-uri"
   # Unnecessary if using `rails db:seed:replant`
   User.destroy_all
   Post.destroy_all
+  Comment.destroy_all
+  Like.destroy_all
+  Experience.destroy_all
+  Connection.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('posts')
+  ApplicationRecord.connection.reset_pk_sequence!('comments')
+  ApplicationRecord.connection.reset_pk_sequence!('likes')
+  ApplicationRecord.connection.reset_pk_sequence!('experiences')
+  ApplicationRecord.connection.reset_pk_sequence!('connections')
 
   puts "Creating users..."
   # Create one user with an easy to remember email, and password:
@@ -29,7 +37,7 @@ require "open-uri"
       fname: 'Chrandon',
       lname: 'Boi',
       pronouns: 'He/Him',
-      headline: 'Founder @ Nexus | Software Engineer | Physical Therapist',
+      headline: 'Founder @ Nexus | Software Engineer',
       location_country_region: 'USA',
       location_city: 'New York',
       about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
@@ -257,7 +265,7 @@ require "open-uri"
   #   body: "Greetings space explorers! Just discovered a fascinating application of JavaScript in intergalactic travel. By harnessing the power of this universal language, we can optimize spacecraft navigation, calculate warp speeds, and simulate celestial phenomena. Let's dive into the wonders of JavaScript in the cosmic realm!"
   # )
 
-
+  puts "creating likes..."
   post1.likes.create!(liker: user2)
   post1.likes.create!(liker: user3)
   post1.likes.create!(liker: user4)
@@ -270,18 +278,45 @@ require "open-uri"
   post3.likes.create!(liker: user3)
   post3.likes.create!(liker: user4)
 
-  post4.likes.create!(liker: user1)
+  # post4.likes.create!(liker: user1)
   post4.likes.create!(liker: user2)
   post4.likes.create!(liker: user4)
 
   post5.likes.create!(liker: user1)
   post5.likes.create!(liker: user2)
   post5.likes.create!(liker: user3)
+  puts "likes created"
+
+  puts "creating comments..."
   post5.comments.create!(
     commenter: user1,
     content: "Count me in!"
   )
+  post5.comments.create!(
+    commenter: user2,
+    content: "Hi Vader! Please hire me..."
+  )
+  post4.comments.create!(
+    commenter: user1,
+    content: "My thoughts exactly!"
+  )
 
+  puts "comments created"
 
-  puts "Done!"
+  puts "creating connections..."
+  connection1 = Connection.create!(
+    connector: user1, connectee: user2, status: "connected"
+  )
+  connection2 = Connection.create!(
+    connector: user3, connectee: user1, status: "connected"
+  )
+  puts "connections created"
+
+  puts "creating connection requests..."
+  connection3 = Connection.create!(
+    connector: user4, connectee: user1, status: "pending"
+  )
+  puts "connection requests created"
+
+  puts "Seeding Complete!"
 # end
