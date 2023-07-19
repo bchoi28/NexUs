@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
     resources :experiences, only: [:create, :index, :show, :update, :destroy]
     resources :educations, only: [:create, :index, :show, :update, :destroy]
-
+    resources :connections, only: [:create, :index, :destroy]
     resource :session, only: [:show, :create, :destroy]
 
 end
