@@ -13,10 +13,20 @@ class Api::ConnectionsController < ApplicationController
         @user = current_user
         if params[:pending].present?
             @connection_invitations = @user.connection_invitations
-            render :index_invitations
+            render :index_requests
         else
             @connections = @user.connections
             render :index_connections
+        end
+    end
+
+    def update
+        @connection = Connection.find(params[:id])
+
+        if @connection.update(connection_params)
+            render :show
+        else
+            render json: @connection.errors.full_messages, status: 422
         end
     end
 
@@ -25,7 +35,7 @@ class Api::ConnectionsController < ApplicationController
         if @connection && @connection.destroy
             render :show
         else
-            render json:['Connection could not be deleted'], status:422
+            render json: ['Connection could not be deleted'], status:422
         end
     end
 

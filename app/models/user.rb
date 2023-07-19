@@ -65,14 +65,17 @@ class User < ApplicationRecord
         dependent: :destroy
         
     has_many :connections, 
-        ->(user) { where("status = ? AND (connector_id = ? OR connectee_id = ?)", 'connected', user_id, user_id) }, 
+        ->(user) { where("status = ? AND (connector_id = ? OR connectee_id = ?)", 'connected', user.id, user.id) }, 
         class_name: :Connection
 
-    has_many :connection_invitations, 
+    has_many :connection_requests, 
         ->(user) { where(status: 'pending', connectee_id: user_id) }, 
         class_name: :Connection
 
-        
+    def potential_connections
+        User.where.not(id: self.connections.pluck(:connector_id, :connectee_id).flatten).where.not(id: self.id)
+    end
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user&.authenticate(password)

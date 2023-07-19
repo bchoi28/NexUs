@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :posts, only: :index
       collection do
         get 'search', to: 'users#search'
+        get 'potential_connections', to: 'users#potential_connections'
       end
     end
     resources :posts, only: [:create, :index, :show, :update, :destroy] do
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
     end
     resources :experiences, only: [:create, :index, :show, :update, :destroy]
     resources :educations, only: [:create, :index, :show, :update, :destroy]
-    resources :connections, only: [:create, :index, :destroy]
+    resources :connections, only: [:create, :index, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
 
 end

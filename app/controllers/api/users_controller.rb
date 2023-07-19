@@ -11,6 +11,11 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def index
+        @potential_connections = current_user.potential_connections
+        render :index
+    end
+
 
     def create
         @user = User.new(user_params)
