@@ -37,11 +37,8 @@ class User < ApplicationRecord
   
     before_validation :ensure_session_token
 
-    #   come back to flesh these associations out
-
     has_one_attached :photo
     has_one_attached :cover_photo
-
 
     has_many :posts, 
         primary_key: :id,
@@ -67,10 +64,15 @@ class User < ApplicationRecord
         class_name: :Comment,
         dependent: :destroy
         
-    has_many :connections
-    has_many :connection_requests
+    has_many :connections, 
+        ->(user) { where("status = ? AND (connector_id = ? OR connectee_id = ?)", 'connected', user_id, user_id) }, 
+        class_name: :Connection
 
+    has_many :connection_invitations, 
+        ->(user) { where(status: 'pending', connectee_id: user_id) }, 
+        class_name: :Connection
 
+        
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user&.authenticate(password)
