@@ -139,7 +139,7 @@
 }
 
 .dropdown-profile-view-button:hover {
-    box-shadow: 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
+    box-shadow: inset 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
     background-color: var(--color-button-container-secondary-emphasis-hover);
     color: var(--color-button-label-secondary-emphasis-hover);
 }

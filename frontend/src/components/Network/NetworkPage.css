@@ -25,8 +25,14 @@
 }
 
 .manage-network-title {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.manage-invitations-title {
     margin-left: 4px;
     font-size: 16px;
+    padding: 10px;
 }
 
 .manage-network-item {
@@ -60,7 +66,6 @@
 }
 
 .network-invitations-container {
-    height: 300px;
     width: 100%;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
@@ -68,7 +73,7 @@
     background-color: #fff;
     max-width: 770px;
     margin-bottom: 20px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .network-suggestions-container {

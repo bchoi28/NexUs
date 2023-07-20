@@ -3,26 +3,14 @@ import FeedNavBar from '../FeedNavBar';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllConnectionRequests, getConnectionRequests, getConnections } from '../../store/connection';
+import ConnectionRequestItem from './ConnectionRequestItem';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
     const connectionRequests = Object.values(useSelector(getConnectionRequests));
-    console.log(connectionRequests);
     const connectionRequestsList = connectionRequests?.map(connectionRequest => {
-        const connector = connectionRequest.connector;
-        const connectorPhoto = connector.photoUrl ? connector.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
-
-        return (
-            <div key={connector.id}>
-                <img src={connectorPhoto} alt="ally" />
-                <div>{connector.fName}</div>
-                <div>{connector.lName}</div>
-                <div>{connector.headline}</div>
-                <div>{connector.pronouns}</div>
-            </div>
-        )
+        return <ConnectionRequestItem connectionRequest={connectionRequest} key={connectionRequest.connector.id} />
     })
-    console.log(connectionRequestsList);
     const connections = useSelector(getConnections);
     const connectionsCount = connections?.length;
     useEffect(() => {
@@ -89,8 +77,8 @@ const NetworkPage = () => {
                 </div>
                 <div className='network-right-container'>
                     <div className='network-invitations-container'>
-                        <div className='manage-network-title'>Invitations</div>
-                        <div>{loadingRequests}</div>
+                        <div className='manage-invitations-title'>Invitations</div>
+                        {/* <div>{loadingRequests}</div> */}
                         {connectionRequestsList}
                     </div>
                     <div className='network-suggestions-container'>
