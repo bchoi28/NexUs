@@ -90,7 +90,9 @@ const NetworkPage = () => {
                     <div className='network-connections-container'>
                         <div className='manage-invitations-title'>Alliances</div>
                         <div>{loading}</div>
-                        {connectionsList}
+                        <div className='connections-list-container'>
+                            {connectionsList}
+                        </div>
                     </div>
                 </div>
             </div>
