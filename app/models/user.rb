@@ -65,10 +65,25 @@ class User < ApplicationRecord
         dependent: :destroy
         
     has_many :connections, 
-        ->(user) { where("status = ? AND (connector_id = ? OR connectee_id = ?)", 'connected', user.id, user.id) },
-        primary_key: :id,
+        ->(user) { where("status = 'connected' AND (connector_id = :user_id OR connectee_id = :user_id)", user_id: user.id) },
+        primary_key: :id,  
         foreign_key: [:connector_id, :connectee_id],
         class_name: :Connection
+
+    has_many :connections_as_connector, 
+        foreign_key: :connector_id, 
+        class_name: 'Connection'
+    has_many :connections_as_connectee, 
+        foreign_key: :connectee_id, 
+        class_name: 'Connection'
+
+    has_many :connected_users, 
+        through: :connections_as_connector, 
+        source: :connectee
+    has_many :connecting_users, 
+        through: :connections_as_connectee, 
+        source: :connector
+
 
     has_many :connection_requests, 
         ->(user) { where(status: 'pending', connectee_id: user.id) },

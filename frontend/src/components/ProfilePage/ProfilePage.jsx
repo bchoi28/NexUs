@@ -169,7 +169,7 @@ const ProfilePage = () => {
                             </div>
 
                             <div className="profile-experience-container">
-                                <div className="profile-about-header">
+                                <div className="profile-experience-header">
                                     <div>Experience</div>
                                     <div>
                                         {experienceAddIcon}

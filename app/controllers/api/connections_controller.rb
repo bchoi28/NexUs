@@ -15,7 +15,7 @@ class Api::ConnectionsController < ApplicationController
             @connection_requests = @user.connection_requests
             render :index_requests
         else
-            @connections = @user.connections
+            @connected_users = @user.connected_users + @user.connecting_users
             render :index_connections
         end
     end

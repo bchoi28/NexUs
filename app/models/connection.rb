@@ -10,4 +10,5 @@ class Connection < ApplicationRecord
         foreign_key: :connectee_id,
         class_name: :User
 
+
 end

@@ -31,7 +31,6 @@ export const fetchAllConnections = () => async dispatch => {
 export const fetchAllConnectionRequests = () => async dispatch => {
     const res = await csrfFetch('/api/connections?pending=true');
     if (res.ok) {
-        debugger
         const data = await res.json();
         dispatch(receiveConnectionRequests(data.connectionRequests));
     }

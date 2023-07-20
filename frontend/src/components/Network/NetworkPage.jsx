@@ -2,8 +2,9 @@ import './NetworkPage.css';
 import FeedNavBar from '../FeedNavBar';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllConnectionRequests, getConnectionRequests, getConnections } from '../../store/connection';
+import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests, getConnections } from '../../store/connection';
 import ConnectionRequestItem from './ConnectionRequestItem';
+import ConnectionItem from './ConnectionItem';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
@@ -11,10 +12,15 @@ const NetworkPage = () => {
     const connectionRequestsList = connectionRequests?.map(connectionRequest => {
         return <ConnectionRequestItem connectionRequest={connectionRequest} key={connectionRequest.connector.id} />
     })
-    const connections = useSelector(getConnections);
+    const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
+    const connectionsList = connections?.map(connection => {
+        return <ConnectionItem connection={connection} key={connection.user.id} />
+    })
+
     useEffect(() => {
         dispatch(fetchAllConnectionRequests())
+        dispatch(fetchAllConnections());
     }, [])
 
     // if (!connectionRequests.length) {
@@ -25,7 +31,7 @@ const NetworkPage = () => {
     const loading = !connections.length ? <div>Loading connections...</div> : null;
 
     return (
-        <div className='profile-page-container'>
+        <div className='network-page-container'>
             <header className='feed-navbar-container'>
                 <FeedNavBar />
             </header>
@@ -78,11 +84,13 @@ const NetworkPage = () => {
                 <div className='network-right-container'>
                     <div className='network-invitations-container'>
                         <div className='manage-invitations-title'>Invitations</div>
-                        {/* <div>{loadingRequests}</div> */}
+                        <div>{loadingRequests}</div>
                         {connectionRequestsList}
                     </div>
-                    <div className='network-suggestions-container'>
+                    <div className='network-connections-container'>
+                        <div className='manage-invitations-title'>Alliances</div>
                         <div>{loading}</div>
+                        {connectionsList}
                     </div>
                 </div>
             </div>
