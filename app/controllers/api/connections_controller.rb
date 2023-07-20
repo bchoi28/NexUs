@@ -12,7 +12,7 @@ class Api::ConnectionsController < ApplicationController
     def index
         @user = current_user
         if params[:pending].present?
-            @connection_invitations = @user.connection_invitations
+            @connection_requests = @user.connection_requests
             render :index_requests
         else
             @connections = @user.connections

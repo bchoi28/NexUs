@@ -17,6 +17,9 @@ export const receiveConnectionRequests = (connectionRequests) => {
     };
 };
 
+export const getConnectionRequests = state => state.connections.connectionRequests
+export const getConnections = state => state.connections.connections
+
 export const fetchAllConnections = () => async dispatch => {
     const res = await csrfFetch('/api/connections');
     if (res.ok) {
@@ -28,8 +31,9 @@ export const fetchAllConnections = () => async dispatch => {
 export const fetchAllConnectionRequests = () => async dispatch => {
     const res = await csrfFetch('/api/connections?pending=true');
     if (res.ok) {
+        debugger
         const data = await res.json();
-        dispatch(receiveConnectionRequests(data.connection_requests));
+        dispatch(receiveConnectionRequests(data.connectionRequests));
     }
 };
 
@@ -72,13 +76,15 @@ const initialState = {
     connectionRequests: []
 }
 
-const connectionReducer = (state = initialState, action) => {
+const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CONNECTIONS:
+            return { ...state, connections: action.connections };
         case RECEIVE_CONNECTION_REQUESTS:
+            return { ...state, connectionRequests: action.connectionRequests };
         default:
             return state;
     }
 }
 
-export default connectionReducer;
+export default connectionsReducer;

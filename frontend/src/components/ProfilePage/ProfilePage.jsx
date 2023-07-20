@@ -15,12 +15,10 @@ import ExperienceItem from '../Experience';
 const ProfilePage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    debugger
-    console.log("in profile page");
+
     // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
     // const [isTruncated, setIsTruncated] = useState(true);
-    debugger
 
     const experiences = profileUser?.experiences ? Object.values(profileUser.experiences) : null;
     const sortedExperiences = experiences ? experiences.sort((a, b) => {

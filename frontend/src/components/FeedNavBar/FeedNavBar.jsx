@@ -51,6 +51,7 @@ const FeedNavBar = () => {
                     </div>
                     <div className={`icon-container ${isNetworkPage ? 'active' : ''}`} onClick={handleNetworkClick} >
                         <i className="fa-solid fa-user-group main-nav-icons"></i>
+                        {/* <i className="fa-solid fa-people-group main-nav-icons"></i> */}
                         <span className="icon-text">My Network</span>
                     </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">

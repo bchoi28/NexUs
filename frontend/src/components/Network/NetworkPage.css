@@ -10,7 +10,7 @@
 }
 
 .network-left-container {
-    height: 350px;
+    height: 314px;
     width: 270px;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
@@ -26,10 +26,31 @@
 
 .manage-network-title {
     margin-left: 4px;
+    font-size: 16px;
 }
 
 .manage-network-item {
-    margin: 10px 20px;
+    margin: 12px 11px;
+    display: flex;
+    align-items: center;
+}
+
+.manage-network-item i {
+    color: var(--color-text-light);
+    width: 22px;
+    text-align: center;
+}
+
+.manage-network-item>span:first-of-type {
+    color: var(--color-text-light);
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.manage-network-number {
+    margin-left: auto;
+    color: var(--color-text-light);
+    font-size: 14px;
 }
 
 .network-right-container {
@@ -47,6 +68,7 @@
     background-color: #fff;
     max-width: 770px;
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .network-suggestions-container {
