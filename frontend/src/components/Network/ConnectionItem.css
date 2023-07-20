@@ -1,11 +1,7 @@
 .connection-item-container {
     margin: 0 8px;
-    /* height: 300px; */
+    width: 30%;
     padding-bottom: 15px;
-}
-
-.connection-item-container:hover {
-    /* box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0px 0px 4px rgba(0, 0, 0, 0.3); */
 }
 
 .connection-badge {

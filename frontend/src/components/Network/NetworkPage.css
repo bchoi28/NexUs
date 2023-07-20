@@ -71,7 +71,7 @@
 
 .network-right-container {
     height: 100%;
-    width: 550px;
+    width: 570px;
     max-width: 770px;
 }
 
@@ -98,6 +98,6 @@
 
 .connections-list-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 0 10px;
 }

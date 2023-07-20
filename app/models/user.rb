@@ -64,16 +64,16 @@ class User < ApplicationRecord
         class_name: :Comment,
         dependent: :destroy
         
-    has_many :connections, 
-        ->(user) { where("status = 'connected' AND (connector_id = :user_id OR connectee_id = :user_id)", user_id: user.id) },
-        primary_key: :id,  
-        foreign_key: [:connector_id, :connectee_id],
-        class_name: :Connection
+    # has_many :connections, 
+    #     ->(user) { where("status = 'connected' AND (connector_id = :user_id OR connectee_id = :user_id)", user_id: user.id) },
+    #     primary_key: :id,  
+    #     foreign_key: [:connector_id, :connectee_id],
+    #     class_name: :Connection
 
-    has_many :connections_as_connector, 
+    has_many :connections_as_connector, -> {where(status: 'connected')},
         foreign_key: :connector_id, 
         class_name: 'Connection'
-    has_many :connections_as_connectee, 
+    has_many :connections_as_connectee, -> {where(status: 'connected')},
         foreign_key: :connectee_id, 
         class_name: 'Connection'
 
