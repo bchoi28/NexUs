@@ -6,10 +6,25 @@ import { fetchAllConnectionRequests, getConnectionRequests, getConnections } fro
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
-    // const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/badge-background.png';
-    const connectionRequests = useSelector(getConnectionRequests);
-    const connections = useSelector(getConnections);
+    const connectionRequests = Object.values(useSelector(getConnectionRequests));
+    console.log(connectionRequests);
+    const connectionRequestsList = connectionRequests?.map(connectionRequest => {
+        const connector = connectionRequest.connector;
+        const connectorPhoto = connector.photoUrl ? connector.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
+        return (
+            <div key={connector.id}>
+                <img src={connectorPhoto} alt="ally" />
+                <div>{connector.fName}</div>
+                <div>{connector.lName}</div>
+                <div>{connector.headline}</div>
+                <div>{connector.pronouns}</div>
+            </div>
+        )
+    })
+    console.log(connectionRequestsList);
+    const connections = useSelector(getConnections);
+    const connectionsCount = connections?.length;
     useEffect(() => {
         dispatch(fetchAllConnectionRequests())
     }, [])
@@ -18,6 +33,7 @@ const NetworkPage = () => {
     //     return <div>Loading connections...</div>
     // }
 
+    const loadingRequests = !connectionRequests.length ? <div>Loading connections...</div> : null;
     const loading = !connections.length ? <div>Loading connections...</div> : null;
 
     return (
@@ -32,17 +48,17 @@ const NetworkPage = () => {
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-user-group"></i>
                             <span>Alliances</span>
-                            <span className='manage-network-number'>550</span>
+                            <span className='manage-network-number'>{connectionsCount}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-address-book"></i>
                             <span>Contacts</span>
-                            <span className='manage-network-number'>353</span>
+                            <span className='manage-network-number'>13</span>
                         </div>
                         <div className='manage-network-item'>
                             <i class="fa-solid fa-user"></i>
                             <span>Following & Followers</span>
-                            <span className='manage-network-number'>200</span>
+                            <span className='manage-network-number'>20</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-people-group"></i>
@@ -74,6 +90,8 @@ const NetworkPage = () => {
                 <div className='network-right-container'>
                     <div className='network-invitations-container'>
                         <div className='manage-network-title'>Invitations</div>
+                        <div>{loadingRequests}</div>
+                        {connectionRequestsList}
                     </div>
                     <div className='network-suggestions-container'>
                         <div>{loading}</div>

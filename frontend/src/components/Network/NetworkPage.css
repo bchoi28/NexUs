@@ -10,7 +10,7 @@
 }
 
 .network-left-container {
-    height: 314px;
+    height: 330px;
     width: 270px;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
@@ -30,7 +30,7 @@
 }
 
 .manage-network-item {
-    margin: 12px 11px;
+    margin: 14px 11px;
     display: flex;
     align-items: center;
 }

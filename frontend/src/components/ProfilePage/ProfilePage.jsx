@@ -51,7 +51,7 @@ const ProfilePage = () => {
     // };
 
     const profileCoverPhoto = profileUser?.coverPhotoUrl ? profileUser.coverPhotoUrl : '/assets/images/seeds/badge-background.png';
-    const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/badge-background.png';
+    const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/default-profile-image-circle';
 
     const handleEditCoverPhoto = (e) => {
         e.preventDefault();
