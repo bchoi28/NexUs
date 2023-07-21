@@ -56,7 +56,7 @@ export const updateConnection = (connectionId, connection) => async dispatch => 
 
     if (res.ok) {
         const data = await res.json();
-        // dispatch(receiveConnection(data.connection));
+        dispatch(receiveConnections(data.connections));
     }
 };
 

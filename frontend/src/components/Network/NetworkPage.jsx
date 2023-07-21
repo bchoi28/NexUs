@@ -8,9 +8,9 @@ import ConnectionItem from './ConnectionItem';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
-    const connectionRequests = Object.values(useSelector(getConnectionRequests));
-    const connectionRequestsList = connectionRequests?.map(connectionRequest => {
-        return <ConnectionRequestItem connectionRequest={connectionRequest} key={connectionRequest.connector.id} />
+    const connectionRequests = Object.entries(useSelector(getConnectionRequests));
+    const connectionRequestsList = connectionRequests?.map(([id, connectionRequest]) => {
+        return <ConnectionRequestItem id={id} connectionRequest={connectionRequest} key={id} />
     })
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;

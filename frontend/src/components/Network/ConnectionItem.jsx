@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 const ConnectionItem = ({ connection }) => {
     const user = connection.user;
-    const userPhoto = user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
     return (
         <div className='connection-item-container'>
             <div className='connection-badge'>

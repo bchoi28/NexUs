@@ -22,9 +22,10 @@ class Api::ConnectionsController < ApplicationController
 
     def update
         @connection = Connection.find(params[:id])
-
+        @user = current_user
         if @connection.update(connection_params)
-            render :show
+            @connected_users = @user.connected_users + @user.connecting_users
+            render :index_connections
         else
             render json: @connection.errors.full_messages, status: 422
         end
