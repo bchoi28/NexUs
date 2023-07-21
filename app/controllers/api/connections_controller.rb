@@ -21,6 +21,7 @@ class Api::ConnectionsController < ApplicationController
     end
 
     def update
+        debugger
         @connection = Connection.find(params[:id])
         @user = current_user
         if @connection.update(connection_params)

@@ -8,8 +8,9 @@ import ConnectionItem from './ConnectionItem';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
-    const connectionRequests = Object.entries(useSelector(getConnectionRequests));
-    const connectionRequestsList = connectionRequests?.map(([id, connectionRequest]) => {
+    const connectionRequests = useSelector(getConnectionRequests);
+    const entries = connectionRequests?.length ? Object.entries(connectionRequests) : null;
+    const connectionRequestsList = entries?.map(([id, connectionRequest]) => {
         return <ConnectionRequestItem id={id} connectionRequest={connectionRequest} key={id} />
     })
     const connections = Object.values(useSelector(getConnections));
@@ -27,8 +28,8 @@ const NetworkPage = () => {
     //     return <div>Loading connections...</div>
     // }
 
-    const loadingRequests = !connectionRequests.length ? <div>Loading connections...</div> : null;
-    const loading = !connections.length ? <div>Loading connections...</div> : null;
+    const loadingRequests = !connectionRequests ? <div>You have no alliance requests.</div> : null;
+    const loading = !connections ? <div>You have no alliances yet.</div> : null;
 
     return (
         <div className='network-page-container'>

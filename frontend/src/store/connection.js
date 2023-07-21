@@ -49,12 +49,14 @@ export const createConnection = connection => async dispatch => {
 };
 
 export const updateConnection = (connectionId, connection) => async dispatch => {
+    debugger
     const res = await csrfFetch(`/api/connections/${connectionId}`, {
         method: 'PATCH',
         body: JSON.stringify({ connection: connection })
     });
 
     if (res.ok) {
+        debugger
         const data = await res.json();
         dispatch(receiveConnections(data.connections));
     }
