@@ -11,8 +11,9 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    def potential_connections
-        @potential_connections = current_user.potential_connections
+    def other_users
+        user = User.find(params[:user_id])
+        @users = User.where.not(id: user.id)
         render :index
     end
 

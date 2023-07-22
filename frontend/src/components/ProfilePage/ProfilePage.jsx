@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
@@ -7,20 +7,17 @@ import { useParams } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
-import { removeUser } from '../../store/user';
+import { removeUser, getOtherUsers, fetchAllOtherUsers } from '../../store/user';
 import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
-import { fetchAllUserConnections, getConnections } from '../../store/connection';
-
+import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnections } from '../../store/connection';
+import OtherUserItem from './OtherUserItem';
 
 const ProfilePage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    // upon navigating to profile/:id, profileUser will be initially null
     const profileUser = useSelector(getUser)
-    // const [isTruncated, setIsTruncated] = useState(true);
-
     const experiences = profileUser?.experiences ? Object.values(profileUser.experiences) : null;
     const sortedExperiences = experiences ? experiences.sort((a, b) => {
         // if end date is null (current), move it to the front
@@ -34,12 +31,15 @@ const ProfilePage = () => {
         return <ExperienceItem key={experience.id} experience={experience} />;
     });
 
-    // currentUser = { userObject }
-    debugger
     const currentUser = useSelector(getSessionUser);
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
 
+    const otherUsers = useSelector(getOtherUsers);
+    const otherUsersList = otherUsers?.map(otherUser => {
+        return <OtherUserItem user={otherUser} key={otherUser.id} />
+    })
+    // const [isTruncated, setIsTruncated] = useState(true);
 
     // const handleReadMoreClick = () => {
     //     setIsTruncated(!isTruncated);
@@ -94,6 +94,8 @@ const ProfilePage = () => {
     useEffect(() => {
         dispatch(fetchUser(id));
         dispatch(fetchAllUserConnections(id));
+        dispatch(fetchAllOtherUsers(id));
+        dispatch(fetchAllUserConnectionsConnectedPending());
         return () => {
             dispatch(removeUser());
         };
@@ -146,7 +148,7 @@ const ProfilePage = () => {
                                         </div>
                                         <div className='profile-intro-headline'>{profileUser.headline}</div>
                                         <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
-                                        <div className='profile-intro-connection-count'>{connectionsCount} alliances</div>
+                                        <div className='profile-intro-connection-count'>{connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
                                         {profileEditIcon}
@@ -190,7 +192,8 @@ const ProfilePage = () => {
 
 
                     <div className='profile-right-container'>
-                        <div className='profile-right-content'></div>
+                        <div className='profile-right-header'>People also viewed</div>
+                        {otherUsersList}
                     </div>
                 </div>
             </div>

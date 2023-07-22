@@ -1,7 +1,11 @@
-json.array! @potential_connections do |potential_connection|
-  json.id potential_connection.id
-  json.headline potential_connection.headline
-  json.pronouns potential_connection.pronouns
-  json.fName potential_connection.fname
-  json.lName potential_connection.lname
+json.users do
+  json.array! @users do |user|
+    json.id user.id
+    json.headline user.headline
+    json.pronouns user.pronouns
+    json.fName user.fname
+    json.lName user.lname
+    json.location "#{user.location_country_region}, #{user.location_city}"
+    json.photoUrl user.photo.attached? ? user.photo.url : nil
+  end
 end

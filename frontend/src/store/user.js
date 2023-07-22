@@ -8,6 +8,7 @@ export const REMOVE_USER = 'users/REMOVE_USER';
 export const SEARCH_USERS = 'users/SEARCH_USERS';
 export const RECEIVE_EXPERIENCE = 'users/RECEIVE_EXPERIENCE';
 export const REMOVE_EXPERIENCE = 'users/REMOVE_EXPERIENCE';
+export const RECEIVE_OTHER_USERS = 'users/RECEIVE_OTHER_USERS';
 
 // regular action creators
 
@@ -27,10 +28,17 @@ export const removeUser = () => {
 
 export const searchUsers = (data) => {
     return {
-        type: 'SEARCH_USERS',
+        type: SEARCH_USERS,
         data
     }
 };
+
+export const receiveOtherUsers = (users) => {
+    return {
+        type: RECEIVE_OTHER_USERS,
+        users
+    }
+}
 
 export const receiveExperience = (experience) => {
     debugger
@@ -48,9 +56,8 @@ export const removeExperience = experienceId => {
 }
 
 
-// selector to get user object
-// initially the 
 export const getUser = state => state.user.user;
+export const getOtherUsers = state => state.user.otherUsers;
 
 // thunk action creators
 export const signupUser = (user) => async (dispatch) => {
@@ -142,7 +149,6 @@ export const fetchLikersData = (likerId) => async (dispatch) => {
     }
 }
 
-
 export const fetchUsersSearch = (query) => async (dispatch) => {
     const res = await csrfFetch(`api/users/search?query=${query}`);
     const data = await res.json();
@@ -150,10 +156,18 @@ export const fetchUsersSearch = (query) => async (dispatch) => {
     return data;
 };
 
+export const fetchAllOtherUsers = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${userId}/other_users`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receiveOtherUsers(data.users));
+    }
+};
+
 const initialState = {
     user: null,
     searchResults: [],
-    potentialConnections: [],
+    otherUsers: [],
 }
 const userReducer = (state = initialState, action) => {
     debugger
@@ -161,9 +175,11 @@ const userReducer = (state = initialState, action) => {
         case RECEIVE_USER:
             return { ...state, user: action.user };
         case REMOVE_USER:
-            return { ...state, user: null };
-        case 'SEARCH_USERS':
+            return { ...initialState };
+        case SEARCH_USERS:
             return { ...state, searchResults: action.data };
+        case RECEIVE_OTHER_USERS:
+            return { ...state, otherUsers: action.users }
         case RECEIVE_EXPERIENCE:
             const experience = action.experience;
             const updatedUser = { ...state.user };

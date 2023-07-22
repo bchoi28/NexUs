@@ -91,10 +91,6 @@ class User < ApplicationRecord
         foreign_key: :connectee_id,
         class_name: :Connection
 
-    def potential_connections
-        User.where.not(id: self.connections.pluck(:connector_id, :connectee_id).flatten).where.not(id: self.id)
-    end
-
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user&.authenticate(password)
