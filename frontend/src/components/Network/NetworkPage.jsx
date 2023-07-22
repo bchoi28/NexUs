@@ -2,7 +2,7 @@ import './NetworkPage.css';
 import FeedNavBar from '../FeedNavBar';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests, getConnections } from '../../store/connection';
+import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests, getConnections, removeConnections } from '../../store/connection';
 import ConnectionRequestItem from './ConnectionRequestItem';
 import ConnectionItem from './ConnectionItem';
 
@@ -24,6 +24,10 @@ const NetworkPage = () => {
     useEffect(() => {
         dispatch(fetchAllConnectionRequests())
         dispatch(fetchAllConnections());
+
+        return (() => {
+            dispatch(removeConnections())
+        })
     }, [])
 
     // if (!connectionRequests.length) {

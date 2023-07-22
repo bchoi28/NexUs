@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileBadge.css'
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
-import { getConnections } from '../../store/connection';
+import { fetchAllConnections, getConnections } from '../../store/connection';
+import { useEffect } from 'react';
 
 const ProfileBadge = () => {
 
@@ -11,14 +12,13 @@ const ProfileBadge = () => {
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
 
-    if (!currentUser) {
-        return <h1>Loading User...</h1>
-    }
-
-    // if (!currentUser.coverPhotoUrl) {
-    //     dispatch(fetchSessionUser(currentUser.id));
-    //     return <p>...</p>
+    // if (!currentUser) {
+    //     return <h1>Loading User...</h1>
     // }
+
+    useEffect(() => {
+        dispatch(fetchAllConnections());
+    }, [])
 
 
     return (

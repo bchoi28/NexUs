@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get 'search', to: 'users#search'
         get 'potential_connections', to: 'users#potential_connections'
       end
+      get 'fetch_user_connections', on: :member, to: 'connections#fetch_user_connections', as: 'fetch_user_connections'
     end
     resources :posts, only: [:create, :index, :show, :update, :destroy] do
       resources :likes, only: [:create, :destroy]
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     resources :connections, only: [:create, :index, :update, :destroy]
     resource :session, only: [:show, :create, :destroy]
 
-end
+  end
 
   get '*path', to: "static_pages#frontend_index"
 

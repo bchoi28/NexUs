@@ -1,6 +1,7 @@
 import csrfFetch from "./csrf";
 
 export const RECEIVE_CONNECTIONS = 'connections/RECEIVE_CONNECTIONS';
+export const REMOVE_CONNECTIONS = 'connections/REMOVE_CONNECTIONS';
 export const RECEIVE_CONNECTION_REQUESTS = 'connections/RECEIVE_CONNECTION_REQUESTS';
 
 export const receiveConnections = (connections) => {
@@ -17,6 +18,12 @@ export const receiveConnectionRequests = (connectionRequests) => {
     };
 };
 
+export const removeConnections = () => {
+    return {
+        type: REMOVE_CONNECTIONS
+    }
+}
+
 export const getConnectionRequests = state => state.connections.connectionRequests
 export const getConnections = state => state.connections.connections
 
@@ -27,6 +34,15 @@ export const fetchAllConnections = () => async dispatch => {
         dispatch(receiveConnections(data.connections));
     }
 };
+
+export const fetchAllUserConnections = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}/fetch_user_connections`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receiveConnections(data.connections));
+    }
+};
+
 
 export const fetchAllConnectionRequests = () => async dispatch => {
     const res = await csrfFetch('/api/connections?pending=true');
@@ -74,13 +90,15 @@ export const deleteConnection = connectionId => async dispatch => {
 
 const initialState = {
     connections: [],
-    connectionRequests: []
+    connectionRequests: {}
 }
 
 const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CONNECTIONS:
             return { ...state, connections: action.connections };
+        case REMOVE_CONNECTIONS:
+            return { ...state, connections: [] }
         case RECEIVE_CONNECTION_REQUESTS:
             return { ...state, connectionRequests: action.connectionRequests };
         default:

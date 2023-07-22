@@ -10,7 +10,6 @@ class Api::ConnectionsController < ApplicationController
     end
 
     def index
-        # debugger
         @user = current_user
         if params[:pending].present?
             @connection_requests = @user.connection_requests
@@ -21,8 +20,13 @@ class Api::ConnectionsController < ApplicationController
         end
     end
 
+    def fetch_user_connections
+        @user = User.find(params[:id])
+        @connected_users = @user.connected_users + @user.connecting_users
+        render :index_connections
+    end
+
     def update
-        # debugger
         @connection = Connection.find(params[:id])
         @user = current_user
         if @connection.update(connection_params)

@@ -10,6 +10,7 @@ import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { removeUser } from '../../store/user';
 import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
+import { fetchAllUserConnections, getConnections } from '../../store/connection';
 
 
 const ProfilePage = () => {
@@ -34,7 +35,10 @@ const ProfilePage = () => {
     });
 
     // currentUser = { userObject }
+    debugger
     const currentUser = useSelector(getSessionUser);
+    const connections = Object.values(useSelector(getConnections));
+    const connectionsCount = connections?.length;
 
 
     // const handleReadMoreClick = () => {
@@ -88,7 +92,8 @@ const ProfilePage = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchUser(id))
+        dispatch(fetchUser(id));
+        dispatch(fetchAllUserConnections(id));
         return () => {
             dispatch(removeUser());
         };
@@ -141,7 +146,7 @@ const ProfilePage = () => {
                                         </div>
                                         <div className='profile-intro-headline'>{profileUser.headline}</div>
                                         <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
-                                        <div className='profile-intro-connection-count'>500+ alliances</div>
+                                        <div className='profile-intro-connection-count'>{connectionsCount} alliances</div>
                                     </div>
                                     <div className='profile-intro-info-right'>
                                         {profileEditIcon}
