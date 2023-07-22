@@ -72,3 +72,12 @@
     padding: 5px 15px;
     margin-bottom: 10px;
 }
+
+.profile-badge-connections-link {
+    color: var(--color-text-light);
+}
+
+.profile-badge-connections-link:hover {
+    text-decoration: underline;
+    color: var(--secondary-color)
+}

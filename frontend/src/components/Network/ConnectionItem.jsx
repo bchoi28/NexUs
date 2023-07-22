@@ -8,7 +8,7 @@ const ConnectionItem = ({ connection }) => {
             <div className='connection-badge'>
                 <img className='badge-background' src={user.coverPhotoUrl ? user.coverPhotoUrl : '/assets/images/seeds/badge-background.png'} alt="banner" />
                 <div>
-                    <img className='connection-badge-photo' src={user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle'} alt="profile" />
+                    <NavLink to={`profile/${user.id}`} ><img className='connection-badge-photo' src={user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle'} alt="profile" /></NavLink>
                 </div>
                 <div>
                     <NavLink className='connection-profile-badge-link' to={`/profile/${user.id}`}>{user.fName} {user.lName}</NavLink>

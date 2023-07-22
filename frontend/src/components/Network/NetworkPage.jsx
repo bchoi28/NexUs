@@ -9,7 +9,9 @@ import ConnectionItem from './ConnectionItem';
 const NetworkPage = () => {
     const dispatch = useDispatch();
     const connectionRequests = useSelector(getConnectionRequests);
-    const entries = connectionRequests?.length ? Object.entries(connectionRequests) : null;
+    console.log(connectionRequests);
+    const entries = connectionRequests ? Object.entries(connectionRequests) : null;
+    console.log(entries);
     const connectionRequestsList = entries?.map(([id, connectionRequest]) => {
         return <ConnectionRequestItem id={id} connectionRequest={connectionRequest} key={id} />
     })
@@ -28,7 +30,12 @@ const NetworkPage = () => {
     //     return <div>Loading connections...</div>
     // }
 
-    const loadingRequests = !connectionRequests ? <div>You have no alliance requests.</div> : null;
+    const loadingRequests = !connectionRequests ?
+        (<>
+            <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliance requests.</div>
+        </>
+        ) :
+        null;
     const loading = !connections ? <div>You have no alliances yet.</div> : null;
 
     return (
