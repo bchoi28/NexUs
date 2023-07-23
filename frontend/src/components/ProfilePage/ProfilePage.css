@@ -1,16 +1,16 @@
 .profile-page-container {
     display: flex;
     width: 100%;
-    height: 100%;
+    /* height: 100vh; */
     flex-direction: column;
     align-items: center;
     background-color: var(--color-background-canvas);
+    padding-bottom: 20px;
 }
 
 .profile-main-container {
     display: flex;
     width: 100%;
-    /* height: 100%; */
     max-width: 100%;
     /* border: 1px solid black; */
     color: rgba (0, 0, 0, 0.9);
@@ -20,7 +20,7 @@
 }
 
 .profile-left-container {
-    width: 62%;
+    width: 650px;
     border-radius: 12.8px;
     /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08); */
     margin: 0px 21px;
@@ -106,7 +106,7 @@
     position: relative;
     bottom: 100px;
     padding: 0 25px;
-    margin-bottom: -50px;
+    margin-bottom: -70px;
 }
 
 .profile-intro-info-left {
@@ -140,7 +140,7 @@
     font-size: 15px;
     letter-spacing: -0.5px;
     position: relative;
-    bottom: 5px;
+    bottom: 2px;
     line-height: 1.1;
 }
 
@@ -180,7 +180,7 @@
     font-size: 13px;
     color: var(--color-text-light);
     position: relative;
-    top: 10px
+    top: 5px
 }
 
 .profile-intro-connection-count {
@@ -188,15 +188,24 @@
     color: var(--primary-color);
     position: relative;
     font-weight: 500;
-    top: 20px;
+    top: 10px;
 }
 
 .profile-right-container {
-    width: 18%;
+    width: 280px;
+    min-width: 200px;
     background-color: #fff;
     border-radius: 12.8px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
-    height: 600px;
+    height: 100%;
+    padding: 15px 18px 7px 18px;
+}
+
+.profile-right-header {
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 5px;
+    padding-bottom: 6px;
 }
 
 .profile-content-about {
@@ -213,7 +222,7 @@
 .profile-about-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 25px 10px 25px;
+    padding: 22px 25px 10px 25px;
     font-weight: 600;
 }
 
@@ -251,8 +260,15 @@
     height: 100%;
     border-radius: 12.8px;
     margin-top: 10px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+.profile-experience-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 25px 0px 25px;
+    font-weight: 600;
 }
 
 

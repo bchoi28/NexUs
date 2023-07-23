@@ -2,20 +2,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileBadge.css'
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
+import { fetchAllConnections, getConnections } from '../../store/connection';
+import { useEffect } from 'react';
 
 const ProfileBadge = () => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser)
+    const connections = Object.values(useSelector(getConnections));
+    const connectionsCount = connections?.length;
 
-    if (!currentUser) {
-        return <h1>Loading User...</h1>
-    }
-
-    // if (!currentUser.coverPhotoUrl) {
-    //     dispatch(fetchSessionUser(currentUser.id));
-    //     return <p>...</p>
+    // if (!currentUser) {
+    //     return <h1>Loading User...</h1>
     // }
+
+    useEffect(() => {
+        dispatch(fetchAllConnections());
+    }, [])
 
 
     return (
@@ -35,8 +38,12 @@ const ProfileBadge = () => {
                 <div style={{ color: 'var(--primary-color)' }} >20</div>
             </div>
             <div className='profile-connections-count'>
-                <div>Connections</div>
-                <div style={{ color: 'var(--primary-color)' }} >630</div>
+                <NavLink to='/mynetwork' className='profile-badge-connections-link'>
+                    <div>Alliances</div>
+                </NavLink>
+                <NavLink to='/mynetwork'>
+                    <div className='profile-badge-connections-number' style={{ color: 'var(--primary-color)' }} >{connectionsCount}</div>
+                </NavLink>
             </div>
         </div>
     )

@@ -11,6 +11,12 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def other_users
+        user = User.find(params[:user_id])
+        @users = User.where.not(id: user.id)
+        render :index
+    end
+
 
     def create
         @user = User.new(user_params)

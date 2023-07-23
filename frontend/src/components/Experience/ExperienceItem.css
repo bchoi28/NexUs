@@ -1,9 +1,10 @@
 .experience-item-container {
     display: flex;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     margin: 10px 25px;
-    border-bottom: 1px solid var(--color-border-light);
+    border-top: 1px solid var(--color-border-light);
     position: relative;
+    padding-top: 15px
 }
 
 .experience-item-image {
@@ -20,7 +21,7 @@
 .edit-experience-button {
     margin-left: auto;
     position: absolute;
-    top: -10px;
+    top: 10px;
     right: -13px;
     color: var(--primary-color);
     border-radius: 50%;
