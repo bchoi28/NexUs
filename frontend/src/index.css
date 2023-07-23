@@ -181,11 +181,11 @@ body {
     padding-top: 14px;
     padding-bottom: 14px;
     font-size: 16px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.text-input-div:hover,
-.signin-form-text-input-div:hover {
+.signin-form-text-input-div:hover,
+.text-input-div:hover {
     background-color: var(--color-input-container-hover);
     border-color: var(--color-input-container-border-hover);
     box-shadow: 0 0 0 1px var(--color-input-container-border-hover);
@@ -201,7 +201,6 @@ body {
     border: 1px solid transparent;
     cursor: text;
 }
-
 
 .input-helper {
     margin-top: 4px;
