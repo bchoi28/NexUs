@@ -1,10 +1,17 @@
 import csrfFetch from "./csrf";
 
+export const RECEIVE_CONNECTION = 'connections/RECEIVE_CONNECTION';
 export const RECEIVE_CONNECTIONS = 'connections/RECEIVE_CONNECTIONS';
 export const RECEIVE_CONNECTIONS_CONNECTED_PENDING = 'connections/RECEIVE_CONNECTIONS_CONNECTED_PENDING';
 export const REMOVE_CONNECTIONS = 'connections/REMOVE_CONNECTIONS';
 export const RECEIVE_CONNECTION_REQUESTS = 'connections/RECEIVE_CONNECTION_REQUESTS';
 
+export const receiveConnection = (connection) => {
+    return {
+        type: RECEIVE_CONNECTION,
+        connection
+    };
+};
 export const receiveConnections = (connections) => {
     return {
         type: RECEIVE_CONNECTIONS,
@@ -79,7 +86,7 @@ export const createConnection = connection => async dispatch => {
 
     if (res.ok) {
         const data = await res.json();
-        // dispatch(receiveConnection(data.connection));
+        dispatch(receiveConnection(data.connection));
     }
 };
 
@@ -115,8 +122,12 @@ const initialState = {
 
 const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
-        // case RECEIVE_CONNECTION:
-        //     return { ...state.connections, ...state.connections[connection] }
+        case RECEIVE_CONNECTION:
+            return {
+                ...state, connectionsConnectedPending: {
+                    ...state.connectionsConnectedPending, [action.connection.id]: action.connection
+                }
+            }
         case RECEIVE_CONNECTIONS:
             return { ...state, connections: action.connections };
         case RECEIVE_CONNECTIONS_CONNECTED_PENDING:

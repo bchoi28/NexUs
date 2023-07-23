@@ -60,6 +60,7 @@
     color: var(--color-text-light);
     font-weight: 500;
     padding: 0 15px;
+    /* margin-left: 1px; */
 }
 
 .profile-connections-count {
@@ -80,4 +81,8 @@
 .profile-badge-connections-link:hover {
     text-decoration: underline;
     color: var(--secondary-color)
+}
+
+.profile-badge-connections-number {
+    margin-right: 1px;
 }

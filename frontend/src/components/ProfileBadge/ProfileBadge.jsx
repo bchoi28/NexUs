@@ -42,7 +42,7 @@ const ProfileBadge = () => {
                     <div>Alliances</div>
                 </NavLink>
                 <NavLink to='/mynetwork'>
-                    <div style={{ color: 'var(--primary-color)' }} >{connectionsCount}</div>
+                    <div className='profile-badge-connections-number' style={{ color: 'var(--primary-color)' }} >{connectionsCount}</div>
                 </NavLink>
             </div>
         </div>

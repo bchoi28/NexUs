@@ -1,22 +1,28 @@
 import './FeedNavBar.css'
 import { NavLink, Link, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
 import SearchBar from '../SearchBar/SearchBar';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { fetchAllConnectionRequests, getConnectionRequests } from '../../store/connection';
+import { useEffect } from 'react';
 
 const FeedNavBar = () => {
 
     const history = useHistory();
     const location = useLocation();
-    const currentUser = useSelector(getSessionUser);
+    const dispatch = useDispatch();
+    const connectionRequests = Object.values(useSelector(getConnectionRequests));
+    const connectionRequestsCount = connectionRequests?.length;
+    console.log(connectionRequests);
+    console.log(connectionRequestsCount);
     const isFeedPage = location.pathname === '/feed';
     const isNetworkPage = location.pathname === '/mynetwork';
 
-    if (!currentUser) {
-        return <h1>Loading Nav Bar...</h1>
-    }
+    // if (!currentUser) {
+    //     return <h1>Loading Nav Bar...</h1>
+    // }
 
     const handleHomeClick = () => {
         if (location.pathname === '/feed') {
@@ -34,6 +40,10 @@ const FeedNavBar = () => {
         }
     };
 
+    useEffect(() => {
+        dispatch(fetchAllConnectionRequests())
+    }, [])
+
     return (
         <div className='main-nav-container-full'>
             <div className='main-nav-container'>
@@ -45,7 +55,7 @@ const FeedNavBar = () => {
 
                 <div className='right-main-nav'>
 
-                    <div className={`icon-container ${isFeedPage ? 'active' : ''}`} onClick={handleHomeClick}>
+                    <div className={`icon-container-home ${isFeedPage ? 'active' : ''}`} onClick={handleHomeClick}>
                         <i className="fa-solid fa-house main-nav-icons home-icon"></i>
                         <span className="icon-text">Home</span>
                     </div>
@@ -53,6 +63,7 @@ const FeedNavBar = () => {
                         <i className="fa-solid fa-user-group main-nav-icons"></i>
                         {/* <i className="fa-solid fa-people-group main-nav-icons"></i> */}
                         <span className="icon-text">My Network</span>
+                        {connectionRequestsCount > 0 && <span className='connections-request-count-notification'>{connectionRequestsCount}</span>}
                     </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>

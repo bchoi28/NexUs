@@ -52,13 +52,13 @@
 }
 
 .manage-network-item i {
-    color: var(--color-text-light);
+    color: var(--primary-color);
     width: 22px;
     text-align: center;
 }
 
 .manage-network-item>span:first-of-type {
-    color: var(--color-text-light);
+    color: var(--color-text-main);
     margin-left: 15px;
     font-size: 14px;
 }

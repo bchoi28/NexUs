@@ -28,7 +28,6 @@ class Api::ConnectionsController < ApplicationController
     end
 
     def fetch_user_connections_connected_pending
-        debugger
         @user = current_user
         @connections = Connection.where("connector_id = :user_id OR (connectee_id = :user_id AND status = 'connected')", user_id: @user.id)
         render :index_connections_connected_pending

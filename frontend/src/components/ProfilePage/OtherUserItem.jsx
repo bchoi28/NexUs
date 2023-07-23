@@ -2,21 +2,60 @@ import { useDispatch, useSelector } from 'react-redux';
 import './OtherUserItem.css';
 import { NavLink } from 'react-router-dom';
 import { createConnection, getConnections, getConnectionsConnectedPending } from '../../store/connection';
+import { getSessionUser } from '../../store/session';
 
 const OtherUserItem = ({ user }) => {
 
     const dispatch = useDispatch();
+    const currentUser = useSelector(getSessionUser);
     // const connections = Object.values(useSelector(getConnections));
-    const connections = Object.values(getConnectionsConnectedPending)
-    const userId = user.id
-    const isConnected = connections?.some(connection => {
-        return connection.user.id === userId;
-    });
+
+    // const isConnected = connections?.some(connection => {
+    //     return connection.user.id === userId;
+    // });
+    const connections = Object.values(useSelector(getConnectionsConnectedPending));
+    const userId = user.id;
     const profilePhoto = user?.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle';
 
     const handleConnect = () => {
-        const connection = { status: 'pending' }
+        const connection = {
+            status: 'pending',
+            connector_id: currentUser.id,
+            connectee_id: userId
+        }
         dispatch(createConnection(connection))
+    }
+
+    // Find the connection object with the given user ID (either as connector or connectee)
+    const userConnection = connections.find((connection) =>
+        connection.connecteeId === userId || connection.connectorId === userId
+    );
+
+    let buttonContent;
+    if (userConnection) {
+        if (userConnection.status === 'connected') {
+            buttonContent = (
+                <button className='other-user-message-button'>
+                    <i className="fa-solid fa-message"></i>
+                    <span className='other-user-connect-button-text'>Message</span>
+                    <span className='message-button-tooltip'>coming soon!</span>
+                </button>
+            );
+        } else if (userConnection.status === 'pending') {
+            buttonContent = (
+                <button className='other-user-pending-button'>
+                    <i class="fa-solid fa-clock"></i>
+                    <span className='other-user-connect-button-text'>Pending</span>
+                </button>
+            );
+        }
+    } else {
+        buttonContent = (
+            < button className='other-user-connect-button' onClick={handleConnect}>
+                <i className="fa-solid fa-user-plus"></i>
+                <span className='other-user-connect-button-text'>Connect</span>
+            </button>
+        );
     }
 
     return (
@@ -34,18 +73,7 @@ const OtherUserItem = ({ user }) => {
                     </NavLink>
                     <div className='other-user-headline'>{user.headline}</div>
                     <div className='other-user-location'>{user.location}</div>
-                    {isConnected ? (
-                        <button className='other-user-message-button'>
-                            <i className="fa-solid fa-message"></i>
-                            <span className='other-user-connect-button-text'>Message</span>
-                            <span className='message-button-tooltip'>coming soon!</span>
-                        </button>
-                    ) : (
-                        <button className='other-user-connect-button' onClick={handleConnect}>
-                            <i className="fa-solid fa-user-plus"></i>
-                            <span className='other-user-connect-button-text'>Connect</span>
-                        </button>
-                    )}
+                    {buttonContent}
                 </div>
             </div>
         </>
