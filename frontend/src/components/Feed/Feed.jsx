@@ -100,7 +100,6 @@ const Feed = () => {
                                     {/* <span className="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                             </div>
-                            {/* <PostForm /> */}
                         </div>
                         <div className='post-index-container'>
                             <PostIndex />
