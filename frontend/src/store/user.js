@@ -27,6 +27,7 @@ export const removeUser = () => {
 };
 
 export const searchUsers = (data) => {
+    debugger
     return {
         type: SEARCH_USERS,
         data
@@ -150,10 +151,14 @@ export const fetchLikersData = (likerId) => async (dispatch) => {
 }
 
 export const fetchUsersSearch = (query) => async (dispatch) => {
-    const res = await csrfFetch(`api/users/search?query=${query}`);
-    const data = await res.json();
-    dispatch(searchUsers(data));
-    return data;
+    debugger
+    const res = await csrfFetch(`/api/users/search?query=${query}`);
+    if (res.ok) {
+        debugger
+        const data = await res.json();
+        dispatch(searchUsers(data));
+    }
+    // return data;
 };
 
 export const fetchAllOtherUsers = (userId) => async (dispatch) => {

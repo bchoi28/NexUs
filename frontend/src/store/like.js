@@ -31,7 +31,6 @@ import { fetchPost, receiveLikePost, removeLikePost } from './post';
 
 // thunk action creators
 export const createLikePost = (postId, currentUserId) => async (dispatch) => {
-    debugger
     const res = await csrfFetch(`/api/posts/${postId}/likes`, {
         method: 'POST'
     });
@@ -46,7 +45,6 @@ export const createLikePost = (postId, currentUserId) => async (dispatch) => {
 }
 
 export const deleteLikePost = (postId, likeId) => async (dispatch) => {
-    debugger
     const res = await csrfFetch(`/api/posts/${postId}/likes/${likeId}`, {
         method: 'DELETE'
     });

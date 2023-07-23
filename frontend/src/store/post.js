@@ -91,7 +91,6 @@ export const getLikeStatus = (postId, currentUserId) => state => {
 }
 
 export const getLikeId = (postId, currentUserId) => state => {
-    debugger
     if (state.posts[postId].likes) {
         const currentPostLikes = state.posts[postId].likes;
         const likeKeys = Object.keys(currentPostLikes);

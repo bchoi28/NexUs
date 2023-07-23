@@ -25,6 +25,7 @@ const PostItem = React.memo(({ post }) => {
     const [commentOpen, setCommentOpen] = useState(false);
 
     const handleDropDownStatus = () => {
+        debugger
         setDropDownOpen(!dropDownOpen);
     };
 

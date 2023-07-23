@@ -31,7 +31,7 @@
 
 .search-icon {
     position: absolute;
-    top: 57%;
+    top: 60%;
     left: 20px;
     transform: translateY(-65%);
     border: none;
@@ -42,13 +42,18 @@
 
 .search-results {
     position: absolute;
-    top: 42px;
+    top: 39.5px;
     left: 10px;
     width: 400px;
     max-height: 200px;
     background-color: #fff;
     border-radius: 5px;
     z-index: 10;
+}
+
+.search-results:hover {
+    border: 1px solid var(--color-text-light);
+    border-top: none;
 }
 
 .link-headline {
@@ -63,7 +68,7 @@
 .search-link {
     font-weight: bold;
     white-space: nowrap;
-    color: var(--primary-color);
+    color: var(--color-text-main);
     font-size: 15px;
     margin-left: 5px;
 }
@@ -75,5 +80,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-left: 8px;
-    margin-top: 2px;
+    margin-top: 3px;
 }

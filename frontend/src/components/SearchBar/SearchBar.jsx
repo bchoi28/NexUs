@@ -8,14 +8,17 @@ import { NavLink } from 'react-router-dom';
 const SearchBar = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [query, setQuery] = useState('');
+    const [search, setSearch] = useState('');
     const searchResults = useSelector(state => state.user.searchResults);
+    const [showResults, setShowResults] = useState(false);
 
     const handleInputChange = (e) => {
-        setQuery(e.target.value);
+        debugger
+        setSearch(e.target.value);
         if (e.target.value !== '') {
             dispatch(fetchUsersSearch(e.target.value));
-        }
+            setShowResults(true);
+        } else setShowResults(false);
     };
 
     // const handleSubmit = async (e) => {
@@ -29,8 +32,9 @@ const SearchBar = () => {
     // }
 
     const handleSubmit = (e) => {
+        debugger
         e.preventDefault();
-        if (searchResults.length > 0) {
+        if (showResults && searchResults.length > 0) {
             history.push(`/profile/${searchResults[0].id}`);
         }
     };
@@ -39,22 +43,22 @@ const SearchBar = () => {
     return (
         <div className='search-bar-container'>
             <form className='search-bar-form' onSubmit={handleSubmit}>
-                <i className="fa-solid fa-magnifying-glass search-icon"></i>
+                <i className="fa-solid fa-magnifying-glass search-icon" onClick={handleSubmit}></i>
                 <input
                     type="text"
-                    value={query}
+                    value={search}
                     onChange={handleInputChange}
                     placeholder="Search"
                     className='search-bar-input'
                 />
             </form>
             <div className='search-results'>
-                {searchResults.map(user => (
-                    <div className='link-headline' key={user.id}>
-                        <NavLink className='search-link' to={`/profile/${user.id}`}>{user.fName} {user.lName} </NavLink>
+                {showResults ? searchResults.map(user => (
+                    <NavLink to={`/profile/${user.id}`} className='link-headline' key={user.id}>
+                        <div className='search-link' >{user.fName} {user.lName} </div>
                         <span className='search-headline' >{user.headline}</span>
-                    </div>
-                ))}
+                    </NavLink>
+                )) : null}
             </div>
         </div>
     );

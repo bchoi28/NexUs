@@ -22,7 +22,6 @@ const PostForm = () => {
     return (
         <div className='create-post-form'>
             <div className='create-post-form-top'>
-                <img src="" alt="profile picture" />
                 <button className='create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                 <Modal
