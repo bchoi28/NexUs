@@ -13,8 +13,9 @@ const FeedNavBar = () => {
     const history = useHistory();
     const location = useLocation();
     const dispatch = useDispatch();
-    const connectionRequests = Object.values(useSelector(getConnectionRequests));
-    const connectionRequestsCount = connectionRequests?.length;
+    const connectionRequests = useSelector(getConnectionRequests);
+    const values = connectionRequests ? Object.values(connectionRequests) : null;
+    const connectionRequestsCount = values?.length;
     console.log(connectionRequests);
     console.log(connectionRequestsCount);
     const isFeedPage = location.pathname === '/feed';

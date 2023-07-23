@@ -35,14 +35,14 @@ const ConnectionRequestItem = ({ connectionRequest, id }) => {
         <>
             {ignored ? (
                 <div className='request-container'>
-                    <NavLink to={`profile/${connector.id}`}><img className='request-photo' src={connectorPhoto} alt="ally" /></NavLink>
+                    <NavLink to={`profile/${connector.id}`}><img className='request-photo' src={connectorPhoto} alt="profile" /></NavLink>
                     <div className='request-info'>
                         <div className='request-headline'>Alliance declined</div>
                     </div>
                 </div>) :
                 accepted ? (
                     <div className='request-container'>
-                        <NavLink to={`profile/${connector.id}`}><img className='request-photo' src={connectorPhoto} alt="ally" /></NavLink>
+                        <NavLink to={`profile/${connector.id}`}><img className='request-photo' src={connectorPhoto} alt="profile" /></NavLink>
                         <div className='request-info'>
                             <div className='request-headline'>You have formed an alliance with {connector.fName}!</div>
                         </div>
