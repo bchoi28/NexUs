@@ -175,7 +175,6 @@ const initialState = {
     otherUsers: [],
 }
 const userReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case RECEIVE_USER:
             return { ...state, user: action.user };

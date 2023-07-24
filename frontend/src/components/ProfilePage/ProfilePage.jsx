@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
@@ -12,10 +13,12 @@ import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
 import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnections } from '../../store/connection';
 import OtherUserItem from './OtherUserItem';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfilePage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const profileUser = useSelector(getUser)
     const experiences = profileUser?.experiences ? Object.values(profileUser.experiences) : null;
@@ -32,6 +35,9 @@ const ProfilePage = () => {
     });
 
     const currentUser = useSelector(getSessionUser);
+    if (!currentUser) {
+        history.push('/login');
+    }
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
 
@@ -91,25 +97,35 @@ const ProfilePage = () => {
         dispatch(openModal('UpdateProfileModal', profileInfo))
     }
 
+
     useEffect(() => {
-        dispatch(fetchUser(id));
-        dispatch(fetchAllUserConnections(id));
-        dispatch(fetchAllOtherUsers(id));
-        dispatch(fetchAllUserConnectionsConnectedPending());
+        if (currentUser) {
+            dispatch(fetchUser(id));
+            dispatch(fetchAllUserConnections(id));
+            dispatch(fetchAllOtherUsers(id));
+            dispatch(fetchAllUserConnectionsConnectedPending());
+        }
         return () => {
             dispatch(removeUser());
         };
     }, [id])
 
-    if (!profileUser) {
+    if (!currentUser || !profileUser) {
         return <Login />
     }
 
-    if (!currentUser) {
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        dispatch(fetchSessionUser(currentUser.id))
-        return <h1>Loading...</h1>;
-    }
+
+    // if (!currentUser) {
+    //     debugger
+    //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    //     dispatch(fetchSessionUser(currentUser.id))
+    //     return <h1>Loading...</h1>;
+    // }
+
+
+    // if (!currentUser) {
+    //     // return <Redirect to='/' />
+    // }
 
     const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} className="fa-solid fa-camera camera-button"></i> : null;
 

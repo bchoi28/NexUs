@@ -11,6 +11,7 @@ import { removeUser, getUser, fetchUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser, fetchSessionUser } from '../../store/session';
 import { Link, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Feed = () => {
 
@@ -26,16 +27,16 @@ const Feed = () => {
         setModalIsOpen(false);
         document.body.style.overflow = '';
     }
-
+    debugger
     const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
 
 
     useEffect(() => {
-        if (!currentUser || !currentUser.photoUrl) {
-            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-            dispatch(fetchSessionUser(currentUser.id));
-        }
+        // if (!currentUser || !currentUser.photoUrl) {
+        //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        //     dispatch(fetchSessionUser(currentUser.id));
+        // }
         if (!posts) {
             dispatch(fetchPosts());
         }
@@ -45,8 +46,8 @@ const Feed = () => {
     }, [])
 
 
-    if (!currentUser || !posts) {
-        return <h1>Loading Feed...</h1>
+    if (!currentUser) {
+        return <Redirect to='/login' />
     }
 
 

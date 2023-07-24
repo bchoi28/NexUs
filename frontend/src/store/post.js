@@ -19,6 +19,7 @@ export const receivePost = (post) => {
     }
 };
 export const receivePosts = (posts) => {
+    debugger
     return {
         type: RECEIVE_POSTS,
         posts: posts
@@ -39,7 +40,6 @@ export const removePosts = () => {
 }
 
 export const receiveLikePost = (postId, likeId, currentUserId, liker) => {
-    debugger
     return {
         type: RECEIVE_LIKE_POST,
         postId, likeId, currentUserId, liker
@@ -54,7 +54,6 @@ export const removeLikePost = (postId, likeId) => {
 }
 
 export const receiveCommentPost = (postId, commentId, comment) => {
-    debugger
     return {
         type: RECEIVE_COMMENT_POST,
         postId, commentId, comment
@@ -167,11 +166,13 @@ export const getCommentInformation = postId => state => {
 
 // thunk action creators
 export const fetchPosts = () => async (dispatch) => {
+    debugger
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const data = await res.json();
         const posts = data.posts;
         dispatch(receivePosts(posts));
+        debugger
         // receivePosts([ {postObj1}, {postObj2}, ...] )
     }
 };
@@ -238,7 +239,6 @@ export const deletePost = (postId) => async (dispatch) => {
 
 // postsReducer
 const postsReducer = (state = {}, action) => {
-    debugger
     switch (action.type) {
         case RECEIVE_POSTS:
             return { ...state, ...action.posts };
@@ -269,7 +269,6 @@ const postsReducer = (state = {}, action) => {
                 }
             };
         case RECEIVE_COMMENT_POST:
-            debugger
             // const { commentPostId, commentId, comment } = action;
             const comments = state[action.postId].comments || {};
             return {

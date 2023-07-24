@@ -7,6 +7,7 @@ import { removeSessionErrors } from '../../store/errors';
 import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { loginRequest, loginSuccess } from '../../store/ui';
+import { fetchPosts } from '../../store/post';
 
 const SignInForm = () => {
 
@@ -47,17 +48,21 @@ const SignInForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(fetchPosts())
         dispatch(loginUser({ email, password }))
     }
 
     const handleDemo = async (e) => {
         e.preventDefault();
+        dispatch(fetchPosts())
         dispatch(loginRequest());
         await dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
         dispatch(loginSuccess());
     }
 
     if (currentUser) {
+        debugger
+        dispatch(fetchPosts())
         return <Redirect to='/feed' />
     }
 

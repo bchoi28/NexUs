@@ -43,11 +43,11 @@ const SplashSignInForm = () => {
         history.push('/signup')
     }
 
-    const currentUser = useSelector(getSessionUser);
-    if (currentUser) {
-        dispatch(fetchPosts());
-        return <Redirect to='/feed' />
-    }
+    // const currentUser = useSelector(getSessionUser);
+    // if (currentUser) {
+    //     dispatch(fetchPosts());
+    //     return <Redirect to='/feed' />
+    // }
 
     return (
         <>

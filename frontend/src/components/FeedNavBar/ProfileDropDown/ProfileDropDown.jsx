@@ -2,8 +2,8 @@ import './ProfileDropDown.css';
 import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchSessionUser, getSessionUser, setSession } from '../../../store/session';
-import { removeUser } from '../../../store/user';
+import { getSessionUser } from '../../../store/session';
+import Login from '../../Login';
 
 
 const ProfileDropDown = () => {
@@ -29,6 +29,10 @@ const ProfileDropDown = () => {
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
+
+    if (!currentUser) {
+        return <Login />
+    }
 
     const profilePhoto = currentUser.photoUrl;
     // if (!profilePhoto) {

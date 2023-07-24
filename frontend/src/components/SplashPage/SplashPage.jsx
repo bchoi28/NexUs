@@ -3,13 +3,16 @@ import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
 // import spaceImage from '../../images/space.jpg';
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { getUiState } from "../../store/ui";
-import LoadingLogo from "../LoadingLogo";
 import Login from "../Login/Login";
+import { getSessionUser } from "../../store/session";
+import { fetchPosts } from "../../store/post";
 
 const SplashPage = () => {
-
+    const dispatch = useDispatch();
+    const currentUser = useSelector(getSessionUser);
     const [showSpace, setShowSpace] = useState(false);
 
     const toggleSpace = (e) => {
@@ -18,7 +21,14 @@ const SplashPage = () => {
 
     const loading = useSelector(getUiState);
     if (loading) {
+        debugger
         return <Login />
+    }
+
+    if (currentUser) {
+        debugger
+        dispatch(fetchPosts());
+        return <Redirect to='/feed' />
     }
 
     return (

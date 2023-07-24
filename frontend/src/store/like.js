@@ -35,7 +35,6 @@ export const createLikePost = (postId, currentUserId) => async (dispatch) => {
         method: 'POST'
     });
     if (res.ok) {
-        debugger
         const data = await res.json();
         const likeId = parseInt(Object.keys(data.like)[0]);
         const liker = data.like[likeId].liker;

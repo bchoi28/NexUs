@@ -1,17 +1,24 @@
 import './NetworkPage.css';
 import FeedNavBar from '../FeedNavBar';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests, getConnections, removeConnections } from '../../store/connection';
 import ConnectionRequestItem from './ConnectionRequestItem';
 import ConnectionItem from './ConnectionItem';
+import { getSessionUser } from '../../store/session';
+import { useHistory } from 'react-router-dom';
+import Login from '../Login';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory()
+    debugger
+    const currentUser = useSelector(getSessionUser);
+    if (!currentUser) {
+        history.push('/login');
+    }
     const connectionRequests = useSelector(getConnectionRequests);
-    console.log(connectionRequests);
     const entries = connectionRequests ? Object.entries(connectionRequests) : null;
-    console.log(entries);
     const connectionRequestsList = entries?.map(([id, connectionRequest]) => {
         return <ConnectionRequestItem id={id} connectionRequest={connectionRequest} key={id} />
     })
@@ -22,16 +29,25 @@ const NetworkPage = () => {
     })
 
     useEffect(() => {
-        dispatch(fetchAllConnectionRequests())
-        dispatch(fetchAllConnections());
-
+        debugger
+        if (currentUser) {
+            debugger
+            dispatch(fetchAllConnectionRequests())
+            dispatch(fetchAllConnections());
+        }
         return (() => {
+            debugger
             dispatch(removeConnections())
         })
     }, [])
 
     // if (!connectionRequests.length) {
     //     return <div>Loading connections...</div>
+    // }
+
+    // if (!currentUser || !connectionRequests) {
+    //     debugger
+    //     return <Login />
     // }
 
     const loadingRequests = !connectionRequests ?
@@ -62,7 +78,7 @@ const NetworkPage = () => {
                             <span className='manage-network-number'>13</span>
                         </div>
                         <div className='manage-network-item'>
-                            <i class="fa-solid fa-user"></i>
+                            <i className="fa-solid fa-user"></i>
                             <span>Following & Followers</span>
                             <span className='manage-network-number'>20</span>
                         </div>
