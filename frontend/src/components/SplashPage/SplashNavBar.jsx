@@ -7,7 +7,7 @@ const SplashNavBar = () => {
             <div className="splash-nav-logo">Nex<span className='logo-us'>us</span></div>
             <div className="splash-nav-links">
                 <NavLink className="btn-md btn-tertiary" to='/signup'>Join now</NavLink>
-                <NavLink className="btn-md btn-secondary-emphasis" to='/login'>Sign in</NavLink>
+                <NavLink className="btn-md btn-secondary-emphasis splash-sign" to='/login'>Sign in</NavLink>
             </div>
         </div>
     )

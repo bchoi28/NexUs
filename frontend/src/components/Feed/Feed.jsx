@@ -12,6 +12,7 @@ import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser, fetchSessionUser } from '../../store/session';
 import { Link, NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import Login from '../Login';
 
 const Feed = () => {
 
@@ -30,6 +31,7 @@ const Feed = () => {
     debugger
     const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
+    const profilePhoto = currentUser.photoUrl;
 
 
     useEffect(() => {
@@ -47,9 +49,10 @@ const Feed = () => {
 
 
     if (!currentUser) {
+        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        dispatch(fetchSessionUser(currentUser.id));
         return <Redirect to='/login' />
     }
-
 
     return (
         <>
@@ -64,13 +67,13 @@ const Feed = () => {
                 <div className='feed-container'>
 
                     <div className='feed-left'>
-                        <ProfileBadge currentUser={currentUser} />
+                        <ProfileBadge user={currentUser} />
                     </div>
 
                     <div className='feed-middle'>
                         <div className='feed-post-form-container'>
                             <div className='feed-post-form-top'>
-                                {currentUser && <img className='feed-user-profile-pic' src={currentUser.photoUrl} alt="profile" />}
+                                {currentUser && <img className='feed-user-profile-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />}
                                 <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                                 {modalIsOpen &&

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import './Logout.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getSessionUser, logoutUser } from "../../store/session";
-import LoadingLogo from "../LoadingLogo";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const Logout = () => {

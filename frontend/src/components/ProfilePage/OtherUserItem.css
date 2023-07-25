@@ -44,6 +44,10 @@
     font-weight: 500;
 }
 
+/* .other-user-names::after {
+    content: '\2022  ';
+} */
+
 .other-user-pronouns {
     font-size: 12px;
     color: var(--color-text-light);
@@ -81,7 +85,9 @@
     background-color: transparent;
     transition: background-color 0.1s ease-in-out;
     transition: box-shadow 0.1s ease-in-out;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .other-user-connect-button:hover {
@@ -92,6 +98,12 @@
 
 .other-user-connect-button-text {
     margin-left: 6px;
+}
+
+.other-user-connect-button-text-connect {
+    margin-left: 6px;
+    position: relative;
+    top: 1px;
 }
 
 .other-user-message-button {
@@ -108,9 +120,11 @@
     background-color: transparent;
     transition: background-color 0.1s ease-in-out;
     transition: box-shadow 0.1s ease-in-out;
-    align-items: center;
     position: relative;
     cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .message-button-tooltip {
@@ -152,6 +166,8 @@
     transition: background-color 0.1s ease-in-out;
     transition: box-shadow 0.1s ease-in-out;
     align-items: center;
+    display: flex;
+    justify-content: center;
     position: relative;
     cursor: default;
 }

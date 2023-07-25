@@ -111,7 +111,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
                     {emailErrors.length > 0 && emailErrors.map((error, i) => (
                         <div className='signup-input-helper' key={i}>{error}</div>
                     ))}
-
                     <label className='input-label' htmlFor="password">Password (6 or more characters)</label>
                     <input
                         className='password'

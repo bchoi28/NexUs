@@ -38,6 +38,7 @@ export const getSessionUser = state => state.session.user;
 // thunk action creator
 
 export const fetchSessionUser = (userId) => async (dispatch) => {
+    debugger
     const res = await csrfFetch(`/api/users/${userId}`);
     if (res.ok) {
         const data = await res.json();
@@ -47,6 +48,7 @@ export const fetchSessionUser = (userId) => async (dispatch) => {
 }
 
 export const loginUser = (user) => async (dispatch) => {
+    debugger
     const payload = { user: user }
     const res = await csrfFetch('/api/session', {
         method: 'POST',
@@ -131,7 +133,6 @@ export const storeCurrentUser = (user) => {
 
 
 // sessionReducer
-
 const defaultUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
 const sessionReducer = (initialState = { user: defaultUser }, action) => {

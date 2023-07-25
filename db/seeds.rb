@@ -45,7 +45,8 @@ require "open-uri"
         file = File.open("frontend/public/assets/images/seeds/melon-usk-circle.png")
         user.photo.attach(
           io: file,
-          filename: "melon-usk-circle.png"
+          filename: "melon-usk-circle.png",
+          content_type: "image/png"
       )
       puts "demo-user created"
 
@@ -108,7 +109,8 @@ require "open-uri"
       file_path = "frontend/public/assets/images/seeds/zark-muckerberg.png"
       user.photo.attach(
         io: File.open(file_path),
-        filename: "zark-muckerberg.png"
+        filename: "zark-muckerberg.png",
+        content_type: "image/png"
       )
 
       Experience.create!(
@@ -149,7 +151,8 @@ require "open-uri"
     ).tap do |user|
       user.photo.attach(
         io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/alien-xenomorph.png"),
-        filename: "alien-xenomorph.png"
+        filename: "alien-xenomorph.png",
+        content_type: "image/png"
       )
 
       Experience.create!(
@@ -198,7 +201,8 @@ require "open-uri"
   ).tap do |user|
       user.photo.attach(
         io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/darth-vader.png"),
-        filename: "darth-vader.png"
+        filename: "darth-vader.png",
+        content_type: "image/png"
       )
       Experience.create!(
         title: "Lead Sith Developer",

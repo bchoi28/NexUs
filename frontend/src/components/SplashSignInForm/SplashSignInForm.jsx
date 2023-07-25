@@ -55,24 +55,22 @@ const SplashSignInForm = () => {
                 <form className='splash-signin-form' onSubmit={handleSubmit}>
 
                     <label className='input-label' htmlFor="email">Email</label>
-                    <div className='text-input-div'>
-                        <input className='text-input' id="email" type="text" value={email} onChange={handleEmail} />
-                    </div>
+                    <input className='text-input-div' id="email" type="text" value={email} onChange={handleEmail} />
+                    {/* <div className='text-input-div'></div> */}
                     <p className='input-helper'>
                         {emailError && emailError.length !== 0 && <div>{emailError}</div>}
                     </p>
 
                     <label className='input-label' htmlFor="password">Password</label>
-                    <div className='text-input-div' >
-                        <input className='text-input' id="password" type="password" value={password} onChange={handlePassword} />
-                    </div>
+                    <input className='text-input-div' id="password" type="password" value={password} onChange={handlePassword} />
+                    {/* <div className='text-input-div' ></div> */}
 
                     <p className='input-helper'>
                         {passwordError && passwordError.length !== 0 && <div>{passwordError}</div>}
                     </p>
 
                     <button type='submit' className='btn-primary signin-btn btn-md'>Sign in</button>
-                </form>
+                </form >
 
                 <div className='signin-form-divider left-right-divider'>
                     <p className='signin-form-divider-text'>or</p>
@@ -85,7 +83,7 @@ const SplashSignInForm = () => {
                 <button className='btn-secondary btn-md join-now-btn' onClick={handleJoin}>
                     New to NexUs? Join now
                 </button>
-            </div>
+            </div >
         </>
     )
 }

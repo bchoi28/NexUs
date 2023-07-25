@@ -54,11 +54,17 @@ const ProfileDropDown = () => {
                 <div className='profile-dropdown-menu'>
                     <div className='profile-dropdown-top-container'>
                         <div className='profile-dropdown-top'>
-                            <img className='profile-dropdown-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="" />
-                            <div className='profile-dropdown-info'>
-                                <div className='profile-dropdown-names'>{currentUser.fName} {currentUser.lName}</div>
-                                <div className='profile-dropdown-headline'>{currentUser.headline}</div>
-                            </div>
+                            <img className='profile-dropdown-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
+                            {currentUser.headline ? (
+                                <div className='profile-dropdown-info'>
+                                    <div className='profile-dropdown-names'>{currentUser.fName} {currentUser.lName}</div>
+                                    <div className='profile-dropdown-headline'>{currentUser.headline}</div>
+                                </div>
+                            ) : (
+                                <div className='profile-dropdown-info-placeholder'>
+                                    <div className='profile-dropdown-names'>{currentUser.fName} {currentUser.lName}</div>
+                                    <div className='profile-dropdown-headline-placeholder'>no headline yet</div>
+                                </div>)}
                         </div>
                         <div className='profile-dropdown-view-profile-button-container'>
                             <NavLink to={`/profile/${currentUser.id}`} className="dropdown-profile-view-button">View Profile</NavLink>

@@ -4,7 +4,7 @@ import './SignInPage.css';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { getUiState } from '../../store/ui';
-import LoadingLogo from '../LoadingLogo';
+import Login from '../Login';
 
 const SignInPage = () => {
 
@@ -16,7 +16,7 @@ const SignInPage = () => {
         history.push('/')
     }
     if (loading) {
-        return <LoadingLogo />
+        return <Login />
     } else {
         return (
             <div className='signin-page-container'>

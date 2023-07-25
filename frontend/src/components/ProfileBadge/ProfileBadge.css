@@ -8,6 +8,77 @@
     background-color: #fff;
 }
 
+.profile-badge-loading-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12.8px;
+    /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08); */
+    background-color: var(--background-color-canvas);
+}
+
+.badge-loading-circle-container {
+    text-align: center;
+    margin: 55px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.badge-loading-circle {
+    width: 45px;
+    height: 45px;
+    border-right: 4px solid #ffffff;
+    border-radius: 100%;
+    animation: spinRight 800ms linear infinite;
+
+    &:before,
+    &:after {
+        content: '';
+        width: 6vmax;
+        height: 6vmax;
+        display: block;
+        position: absolute;
+        top: calc(50% - 3vmax);
+        left: calc(50% - 3vmax);
+        border-left: 3px solid #ffffff;
+        border-radius: 100%;
+        animation: spinLeft 800ms linear infinite;
+    }
+
+    &:after {
+        width: 4vmax;
+        height: 4vmax;
+        top: calc(50% - 2vmax);
+        left: calc(50% - 2vmax);
+        border: 0;
+        border-right: 2px solid #ffffff;
+        animation: none;
+    }
+}
+
+@keyframes spinLeft {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes spinRight {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
 .badge-background {
     border-radius: 12.8px 12.8px 0 0;
     height: 60px;
@@ -84,5 +155,5 @@
 }
 
 .profile-badge-connections-number {
-    margin-right: 1px;
+    /* margin-right: 1px; */
 }

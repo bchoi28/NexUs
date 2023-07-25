@@ -15,7 +15,7 @@ const OtherUserItem = ({ user }) => {
     // });
     const connections = Object.values(useSelector(getConnectionsConnectedPending));
     const userId = user.id;
-    const profilePhoto = user?.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle';
+    const profilePhoto = user?.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
     const handleConnect = () => {
         const connection = {
@@ -45,7 +45,7 @@ const OtherUserItem = ({ user }) => {
             buttonContent = (
                 <button className='other-user-pending-button'>
                     <i class="fa-solid fa-clock"></i>
-                    <span className='other-user-connect-button-text'>Pending</span>
+                    <span className='other-user-connect-button-text-connect'>Pending</span>
                 </button>
             );
         }
@@ -53,7 +53,7 @@ const OtherUserItem = ({ user }) => {
         buttonContent = (
             < button className='other-user-connect-button' onClick={handleConnect}>
                 <i className="fa-solid fa-user-plus"></i>
-                <span className='other-user-connect-button-text'>Connect</span>
+                <span className='other-user-connect-button-text-connect'>Connect</span>
             </button>
         );
     }
@@ -68,11 +68,15 @@ const OtherUserItem = ({ user }) => {
                     <NavLink className='other-user-link' to={`/profile/${user.id}`} >
                         <div className='other-user-names-pronouns'>
                             <div className='other-user-names'>{user.fName} {user.lName}</div>
-                            <div className='other-user-pronouns'>{user.pronouns}</div>
+                            {user.pronouns ? (
+                                <div className='other-user-pronouns'>{user.pronouns}</div>
+                            ) : (
+                                <div></div>
+                            )}
                         </div>
                     </NavLink>
-                    <div className='other-user-headline'>{user.headline}</div>
-                    <div className='other-user-location'>{user.location}</div>
+                    <div className='other-user-headline'>{user.headline ? user.headline : 'no headline added'}</div>
+                    <div className='other-user-location'>{user.location.length > 3 ? user.location : ``}</div>
                     {buttonContent}
                 </div>
             </div>

@@ -50,13 +50,8 @@ const NetworkPage = () => {
     //     return <Login />
     // }
 
-    const loadingRequests = !connectionRequests ?
-        (<>
-            <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliance requests.</div>
-        </>
-        ) :
-        null;
-    const loading = !connections ? <div>You have no alliances yet.</div> : null;
+    const loadingRequests = !connectionRequests ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliance requests.</div> : null;
+    const loadingConnections = !connectionsCount ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliances.</div> : null;
 
     return (
         <div className='network-page-container'>
@@ -117,7 +112,7 @@ const NetworkPage = () => {
                     </div>
                     <div className='network-connections-container'>
                         <div className='manage-invitations-title'>Alliances</div>
-                        <div>{loading}</div>
+                        <div>{loadingConnections}</div>
                         <div className='connections-list-container'>
                             {connectionsList}
                         </div>

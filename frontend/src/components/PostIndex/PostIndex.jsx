@@ -21,23 +21,8 @@ const PostIndex = () => {
     if (posts.length === 0) {
         // return <div className='loading-posts'>loading posts...</div>
         return (
-            <div className='loading-line-container'>
-                <div className='loading-line'>
-                    <div className='loading-line'>
-                        <div className='loading-line'>
-                            <div className='loading-line'>
-                                <div className='loading-line'>
-                                    <div className='loading-line'></div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+            <div className='loading-posts'>
+                <div className='loading-circle'></div>
             </div>
         )
     }

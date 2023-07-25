@@ -37,3 +37,7 @@
     display: flex;
     align-items: center;
 }
+
+.splash-sign {
+    margin-left: 2px;
+}

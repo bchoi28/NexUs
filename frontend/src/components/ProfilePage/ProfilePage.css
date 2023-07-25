@@ -136,6 +136,11 @@
     margin-left: 4px;
 }
 
+.profile-intro-pronouns::before {
+    content: '\2022  ';
+
+}
+
 .profile-intro-headline {
     font-size: 15px;
     letter-spacing: -0.5px;
@@ -174,6 +179,15 @@
 
 .add-experience-button:hover {
     background-color: rgba(0, 0, 0, 0.08);
+}
+
+.no-experiences-added {
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: 13px;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    margin-top: 8px;
 }
 
 .profile-intro-location {
@@ -217,6 +231,7 @@
     margin-top: 10px;
     padding-bottom: 10px;
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    min-height: 70px;
 }
 
 .profile-about-header {
@@ -262,6 +277,7 @@
     margin-top: 10px;
     /* padding-bottom: 10px; */
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+    min-height: 70px;
 }
 
 .profile-experience-header {

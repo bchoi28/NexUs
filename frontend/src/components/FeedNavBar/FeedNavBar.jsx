@@ -18,8 +18,6 @@ const FeedNavBar = () => {
     const connectionRequests = useSelector(getConnectionRequests);
     const values = connectionRequests ? Object.values(connectionRequests) : null;
     const connectionRequestsCount = values?.length;
-    console.log(connectionRequests);
-    console.log(connectionRequestsCount);
     const isFeedPage = location.pathname === '/feed';
     const isNetworkPage = location.pathname === '/mynetwork';
 

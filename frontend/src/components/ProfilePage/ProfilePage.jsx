@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
@@ -61,7 +61,7 @@ const ProfilePage = () => {
     // };
 
     const profileCoverPhoto = profileUser?.coverPhotoUrl ? profileUser.coverPhotoUrl : '/assets/images/seeds/badge-background.png';
-    const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/default-profile-image-circle';
+    const profilePhoto = profileUser?.photoUrl ? profileUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
     const handleEditCoverPhoto = (e) => {
         e.preventDefault();
@@ -160,11 +160,19 @@ const ProfilePage = () => {
                                     <div className='profile-intro-info-left'>
                                         <div className='profile-intro-name-pronouns'>
                                             <div className='profile-intro-name'>{profileUser.fName} {profileUser.lName}</div>
-                                            <div className='profile-intro-pronouns'>({profileUser.pronouns})</div>
+                                            {profileUser.pronouns ? (
+                                                <div className='profile-intro-pronouns'>{profileUser.pronouns}</div>
+                                            ) : (
+                                                null
+                                            )}
                                         </div>
                                         <div className='profile-intro-headline'>{profileUser.headline}</div>
-                                        <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
-                                        <div className='profile-intro-connection-count'>{connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}</div>
+                                        {profileUser.locationCity ? (
+                                            <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
+                                        ) : null}
+                                        <NavLink to='/mynetwork'>
+                                            <div className='profile-intro-connection-count'>{connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}</div>
+                                        </NavLink>
                                     </div>
                                     <div className='profile-intro-info-right'>
                                         {profileEditIcon}
@@ -182,7 +190,7 @@ const ProfilePage = () => {
                                 </div>
                                 <div className="profile-about-body">
                                     {/* <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div> */}
-                                    <div>{profileUser.about}</div>
+                                    <div>{profileUser.about ? profileUser.about : <div style={{ fontStyle: 'italic', color: 'var(--color-text-light)' }}>no bio added</div>}</div>
                                 </div>
                                 {/* {profileUser.about?.length > 347 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>
@@ -198,6 +206,8 @@ const ProfilePage = () => {
                                         {experienceAddIcon}
                                     </div>
                                 </div>
+                                {!experienceList && <div className='no-experiences-added'>no experiences added</div>}
+
                                 {experienceList}
                             </div>
 

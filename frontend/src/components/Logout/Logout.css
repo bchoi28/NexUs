@@ -1,15 +1,19 @@
 .logout-container {
     /* ... previous styles ... */
     background: #fff;
-    animation: loadingAnimation 1s linear 1;
+    animation: logoutAnimation 1s linear 1;
     height: 100vh;
     width: 100vw;
     display: flex;
 }
 
-@keyframes loadingAnimation {
+@keyframes logoutAnimation {
     0% {
         background-color: #000;
+    }
+
+    25% {
+        background-color: #122E50;
     }
 
     50% {
@@ -23,7 +27,7 @@
 
 .logout-logo-container {
     margin: auto;
-    /* animation: loadingAnimation 4s linear infinite; */
+    margin-top: 30%
 }
 
 

@@ -1,12 +1,11 @@
 .loading-page-container {
-    background: #fff;
-    animation: loadingAnimation 2s linear 1;
+    animation: loginAnimation 3s linear 1;
     height: 100vh;
     width: 100vw;
     display: flex;
 }
 
-@keyframes loadingAnimation {
+@keyframes loginAnimation {
     0% {
         background-color: #fff;
     }
@@ -15,146 +14,23 @@
         background-color: var(--primary-color);
     }
 
+    75% {
+        background-color: #122E50;
+    }
+
     100% {
         background-color: #000;
     }
 }
 
 .loading-logo-container {
-    position: absolute;
-    top: 400px;
-    right: 600px
-        /* animation: loadingAnimation 4s linear infinite; */
-}
-
-.loading-line-container {
-    height: 300px;
-    width: 300px;
-    /* border: 1px solid black; */
+    /* position: absolute; */
+    /* top: 400px;
+    right: 600px */
+    /* animation: loadingAnimation 4s linear infinite; */
     margin: auto;
-    text-align: center;
+    margin-top: 30%;
 }
-
-.loading-line {
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    height: 90%;
-    font-size: 10px;
-    font-family: arial;
-    width: 90%;
-    margin: auto auto;
-    border-radius: 50%;
-    border-right: 2px solid rgba(0, 0, 0, 0.8);
-    animation: spinning 20s linear infinite;
-}
-
-@keyframes spinning {
-    0% {
-        transform: rotate(0deg);
-        border-right: 5px solid rgba(0, 0, 0, 0.6);
-    }
-
-    5% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    10% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    15% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    20% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    25% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    30% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    35% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    40% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    45% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    50% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    55% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    60% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    65% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    70% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    75% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    80% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    85% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    90% {
-        border-right-color: rgba(0, 0, 0, 0.6)
-    }
-
-    95% {
-        border-right-color: rgba(0, 0, 0, 0.4)
-    }
-
-    100% {
-        transform: rotate(360deg);
-        border-right: 5px solid rgba(0, 0, 0, 0.6);
-    }
-}
-
-/* 
-@keyframes loadingAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        transform: translateY(-100%);
-        background-position: 0% 50%;
-    }
-
-    100% {
-        background-position: 100% 50%;
-    }
-} */
 
 
 .loading-logo-nex {
