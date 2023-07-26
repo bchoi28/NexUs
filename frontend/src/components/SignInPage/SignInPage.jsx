@@ -1,20 +1,29 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SignInForm from './SignInForm';
 import './SignInPage.css';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { getUiState } from '../../store/ui';
 import Login from '../Login';
+import { useEffect } from 'react';
+import { removeSessionErrors } from '../../store/errors';
 
 const SignInPage = () => {
 
     const history = useHistory();
+    const dispatch = useDispatch();
     const loading = useSelector(getUiState);
 
     const handleClick = (e) => {
         e.preventDefault();
         history.push('/')
     }
+
+    useEffect(() => {
+        dispatch(removeSessionErrors())
+
+    }, []);
+
     if (loading) {
         return <Login />
     } else {

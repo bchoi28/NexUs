@@ -12,7 +12,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
 
     const dispatch = useDispatch();
-    const currentUser = useSelector(getSessionUser)
 
     const errors = useSelector(state => Object.values(state.errors));
 
@@ -54,7 +53,7 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginRequest())
+        // dispatch(loginRequest())
 
         const formErrors = validate(email, password);
         if (Object.values(formErrors).some(value => value !== '')) {

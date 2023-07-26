@@ -31,9 +31,9 @@ const SignUpPage = () => {
         setFormStep(2);
     }
 
-    const handleNameForm = async ({ fname, lname }) => {
+    const handleNameForm = async ({ fname, lname, headline }) => {
         // setUserObject({ ...userObject, fname, lname })
-        const res = await dispatch(signupUser({ ...userObject, fname, lname }))
+        const res = await dispatch(signupUser({ ...userObject, fname, lname, headline }))
 
         if (res.ok) {
             history.push('/feed')

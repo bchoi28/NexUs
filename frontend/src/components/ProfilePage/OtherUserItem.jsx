@@ -75,7 +75,7 @@ const OtherUserItem = ({ user }) => {
                             )}
                         </div>
                     </NavLink>
-                    <div className='other-user-headline'>{user.headline ? user.headline : 'no headline added'}</div>
+                    <div className='other-user-headline'>{user.headline ? user.headline : ''}</div>
                     <div className='other-user-location'>{user.location.length > 3 ? user.location : ``}</div>
                     {buttonContent}
                 </div>

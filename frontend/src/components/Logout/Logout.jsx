@@ -9,7 +9,9 @@ const Logout = () => {
     const currentUser = useSelector(getSessionUser)
 
     useEffect(() => {
-        dispatch(logoutUser());
+        setTimeout(() => {
+            dispatch(logoutUser());
+        }, 1500);
     })
 
     if (currentUser) {

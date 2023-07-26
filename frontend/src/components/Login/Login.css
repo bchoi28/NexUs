@@ -1,5 +1,5 @@
 .loading-page-container {
-    animation: loginAnimation 3s linear 1;
+    animation: loginAnimation 2s linear 1;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -10,12 +10,16 @@
         background-color: #fff;
     }
 
-    50% {
+    30% {
         background-color: var(--primary-color);
     }
 
-    75% {
+    50% {
         background-color: #122E50;
+    }
+
+    90% {
+        background-color: #000;
     }
 
     100% {

@@ -25,6 +25,7 @@ const SplashPage = () => {
     }
 
     if (currentUser) {
+        debugger
         dispatch(fetchPosts());
         return <Redirect to='/feed' />
     }
