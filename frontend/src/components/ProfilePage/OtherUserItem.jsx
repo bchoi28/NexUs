@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './OtherUserItem.css';
 import { NavLink } from 'react-router-dom';
-import { createConnection, getConnections, getConnectionsConnectedPending } from '../../store/connection';
+import { createConnection, getConnectionsConnectedPending } from '../../store/connection';
 import { getSessionUser } from '../../store/session';
 
 const OtherUserItem = ({ user }) => {
@@ -37,7 +37,7 @@ const OtherUserItem = ({ user }) => {
             buttonContent = (
                 <button className='other-user-message-button'>
                     <i className="fa-solid fa-message"></i>
-                    <span className='other-user-connect-button-text'>Message</span>
+                    <span className='other-user-connect-button-text-connect'>Message</span>
                     <span className='message-button-tooltip'>coming soon!</span>
                 </button>
             );

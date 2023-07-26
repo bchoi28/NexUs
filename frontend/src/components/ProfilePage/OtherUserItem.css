@@ -96,6 +96,19 @@
     /* color: var(--color-button-label-secondary-emphasis-hover); */
 }
 
+.other-user-connect-button i,
+.other-user-message-button i {
+    position: relative;
+    top: 0.5px;
+}
+
+.other-user-pending-button i {
+    position: relative;
+    top: 0.5px;
+    margin-left: -3px;
+    padding-right: 1.5px;
+}
+
 .other-user-connect-button-text {
     margin-left: 6px;
 }
@@ -103,7 +116,7 @@
 .other-user-connect-button-text-connect {
     margin-left: 6px;
     position: relative;
-    top: 1px;
+    top: 0.5px;
 }
 
 .other-user-message-button {

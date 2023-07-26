@@ -1,13 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
 import { useParams, NavLink } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
-import { fetchSessionUser, getSessionUser } from '../../store/session';
+import { getSessionUser } from '../../store/session';
 import { removeUser, getOtherUsers, fetchAllOtherUsers } from '../../store/user';
 import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
@@ -41,7 +40,7 @@ const ProfilePage = () => {
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
 
-    const otherUsers = useSelector(getOtherUsers);
+    const otherUsers = useSelector(getOtherUsers).filter(user => user.id !== currentUser.id);
     const otherUsersList = otherUsers?.map(otherUser => {
         return <OtherUserItem user={otherUser} key={otherUser.id} />
     })

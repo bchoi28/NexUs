@@ -15,7 +15,6 @@ const ProfileBadge = ({ user }) => {
     const connectionsCount = connections?.length;
 
     useEffect(() => {
-        debugger
         if (!currentUser || !currentUser.photoUrl) {
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
             dispatch(fetchSessionUser(currentUser.id));
@@ -24,9 +23,8 @@ const ProfileBadge = ({ user }) => {
             dispatch(fetchAllConnections());
         }
     }, [])
-    debugger
+
     if (!currentUser) {
-        debugger
         return (
             <div className='profile-badge-loading-container'>
                 <div className='badge-loading-circle-container'>
@@ -36,10 +34,11 @@ const ProfileBadge = ({ user }) => {
         )
     }
     const profilePhoto = currentUser.photoUrl;
+    const coverPhoto = currentUser.coverPhotoUrl;
 
     return (
         <div className='profile-badge-container'>
-            <img className='badge-background' src={currentUser.coverPhotoUrl ? currentUser.coverPhotoUrl : '/assets/images/seeds/badge-background.png'} alt="banner" />
+            <img className='badge-background' src={coverPhoto ? coverPhoto : '/assets/images/seeds/badge-background.png'} alt="banner" />
             <div>
                 <img className='badge-photo' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
             </div>
@@ -51,7 +50,7 @@ const ProfileBadge = ({ user }) => {
             </div>
             <div className='profile-view-count'>
                 <div>Who's viewed your profile</div>
-                <div style={{ color: 'var(--primary-color)' }} >0</div>
+                <div style={{ color: 'var(--primary-color)' }} >{currentUser.id > 5 ? `0` : `18`}</div>
             </div>
             <div className='profile-connections-count'>
                 <NavLink to='/mynetwork' className='profile-badge-connections-link'>
