@@ -159,7 +159,11 @@ const Feed = () => {
                                 </div>
                             </div>
                             <div className='feed-about-project-logo-container'>
-                                <div className="splash-nav-logo feed-about-project-logo">Nex<span className='feed-about-project-logo-us'>us</span></div>
+                                <div className="splash-nav-logo feed-about-project-logo">Nex
+                                </div>
+                                <div className='feed-about-project-logo-us'>
+                                    <span>us</span>
+                                </div>
                                 <div className='feed-project-text'>NexUs Corporation © 2023</div>
                             </div>
                         </div>
