@@ -51,10 +51,14 @@
 
 .liker-item-container {
     display: flex;
-    margin: 0 10px 10px 10px;
-    padding-top: 10px;
+    margin: 0 0 10px 0;
+    padding: 10px 10px 0px 10px;
     border-top: 0.3px solid var(--color-border-light);
     cursor: pointer;
+}
+
+.liker-item-container:hover {
+    background-color: var(--color-background-button-hover)
 }
 
 .liker-item-photo {
