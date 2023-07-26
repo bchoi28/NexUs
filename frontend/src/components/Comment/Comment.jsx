@@ -35,10 +35,12 @@ const Comment = ({ postId }) => {
         document.getElementById('comment-input').value = '';
     }
 
+    const currentUserPhoto = currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
+
     return (
         <div className='post-footer-comment-container'>
             <div className='comment-form-container'>
-                <img className='comment-form-user-photo' src={currentUser.photoUrl} alt="profile" />
+                <img className='comment-form-user-photo' src={currentUserPhoto} alt="profile" />
                 <input id='comment-input' type="text" className='comment-create-form' onChange={handleChangeContent} placeholder='Add a comment...' />
                 {showButton && <button className='comment-post-button' onClick={handlePostComment}>Post</button>}
             </div>

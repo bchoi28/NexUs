@@ -101,7 +101,6 @@ const PostItem = React.memo(({ post }) => {
     }
 
     const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
-
     return (
         <>
             <div className='post-item-container'>

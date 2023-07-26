@@ -25,11 +25,6 @@ const Logout = () => {
     } else {
         return <Redirect to='/login' />
     }
-    // if (currentUser) {
-    //     return <LoadingLogo />
-    // } else {
-    //     return <Redirect to='/login' />
-    // }
 }
 
 export default Logout;
