@@ -70,22 +70,19 @@ input:required:invalid {
     border-radius: 4px;
 }
 
-.update-about-save-button {
-    margin-left: auto;
-    background-color: var(--primary-color);
+.update-profile-save-button {
+    background-color: var(--primary-color-alt);
     color: #fff;
     border-radius: 12.8px;
     box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
-    padding: 2px 11px;
+    /* margin: 10px auto 0px auto; */
+    margin: 10px 0 0 auto;
+    padding: 5px 15px;
     font-size: 12px;
-    transition: background-color .1s ease-in-out;
-    transition: transform 0.3s ease;
-    margin-right: 0px;
-    margin-top: 13px;
+    transition: background-color .2s ease-in-out;
 }
 
-.update-about-save-button:hover {
-    transform: scale(1.1);
+.update-profile-save-button:hover {
     background-color: #004182;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 }

@@ -46,12 +46,14 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
 
     let photoPreview = null;
     if (photoUrl) photoPreview = <img className='post-photo-preview' src={photoUrl} alt="" />;
+    const authorPhoto = currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
+
 
     return (
 
         <form className='post-modal-container' onSubmit={handleSubmit}>
             <header className='post-modal-header'>
-                <img className='post-modal-user-pic' src={currentUser.photoUrl} alt="profile" />
+                <img className='post-modal-user-pic' src={authorPhoto} alt="profile" />
                 <div className='post-modal-name-headline' >
                     <div className='post-modal-user-name'>{currentUser.fName} {currentUser.lName} </div>
                     <div className='post-modal-user-headline'>{currentUser.headline}</div>

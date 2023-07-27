@@ -97,7 +97,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
                         </div>
                         <button
                             type='submit'
-                            className='update-about-save-button'>Save
+                            className='cover-photo-save-button'>Save
                         </button>
                     </div>
                 </div>

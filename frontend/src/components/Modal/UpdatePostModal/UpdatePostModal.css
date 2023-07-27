@@ -129,15 +129,15 @@
 
 .update-file-input-icon i {
     font-size: 35px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease-in-out;
     color: var(--primary-color);
 }
 
 .update-file-input-icon i:hover {
     transform: scale(1.1);
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2); */
     padding: 1px 2px;
-    border-radius: 2px;
+    /* border-radius: 2px; */
     /* Add box shadow effect on hover */
 }
 
