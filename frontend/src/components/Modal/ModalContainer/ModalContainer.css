@@ -12,6 +12,20 @@
     border-radius: 10px;
 }
 
+.post-modal-custom {
+    width: 500px;
+    max-height: 700px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    top: 32px;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    /* overflow-y: auto; */
+}
+
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.75);
     position: fixed;

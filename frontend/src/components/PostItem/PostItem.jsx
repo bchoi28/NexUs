@@ -100,17 +100,19 @@ const PostItem = React.memo(({ post }) => {
         setCommentOpen(!commentOpen);
     }
 
+    const authorPhoto = post.author.photoUrl ? post.author.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
+
     const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
     return (
         <>
             <div className='post-item-container'>
                 <header className='post-header'>
-                    <img className='post-profile-pic' src={post.author.photoUrl} alt="profile" />
+                    <img className='post-profile-pic' src={authorPhoto} alt="profile" />
                     <div className='post-names-headline'>
                         <NavLink className='post-author-names' to={`/profile/${post.authorId}`} profileUser={post.author}>
                             {post.author.fName} {post.author.lName}
                         </NavLink>
-                        <span className="post-author-pronouns">({post.author.pronouns})</span>
+                        <span className="post-author-pronouns">{post.author.pronouns ? (post.author.pronouns) : null}</span>
                         <div className='post-author-headline' >{post.author.headline}</div>
                         <span className='feed-post-timestamp' >{timeAgo}</span>
                     </div>

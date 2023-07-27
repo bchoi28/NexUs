@@ -80,6 +80,7 @@ const Feed = () => {
                                     <ModalContainer
                                         isOpen={modalIsOpen}
                                         onRequestClose={handleCloseModal}
+                                        isPost={true}
                                     >
                                         <ModalSwitch modalType='createPost' handleClose={handleCloseModal} currentUser={currentUser} />
                                     </ModalContainer>

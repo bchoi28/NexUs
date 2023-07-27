@@ -1,16 +1,13 @@
 import './CreatePostModal.css'
 import { useState } from 'react';
 import { createPost } from '../../../store/post';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../store/user';
+import { useDispatch } from 'react-redux';
 
 const CreatePostModal = ({ handleClose, currentUser }) => {
     // handleClose = () => {setModalIsOpen(false)}
     // passed from ModalContainer->ModalSwitch->PostModal
 
     const dispatch = useDispatch();
-    // const user = useSelector(getUser);
-    // subscribes post modal to current user
 
     const [body, setBody] = useState('')
     const [photoFile, setPhotoFile] = useState(null);
