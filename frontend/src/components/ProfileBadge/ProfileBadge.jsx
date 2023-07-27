@@ -8,7 +8,6 @@ import Login from '../Login';
 
 const ProfileBadge = ({ user }) => {
 
-    debugger
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser)
     const connections = Object.values(useSelector(getConnections));

@@ -28,7 +28,6 @@ const Feed = () => {
         setModalIsOpen(false);
         document.body.style.overflow = '';
     }
-    debugger
     const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
     const profilePhoto = currentUser.photoUrl;

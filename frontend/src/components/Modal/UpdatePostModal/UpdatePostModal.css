@@ -109,7 +109,7 @@
 
 .update-modal-footer {
     display: flex;
-    border-top: 0.5px solid var(--color-text-light);
+    border-top: 1.5px solid var(--color-border-light);
     /* padding: 20px 10px; */
     margin: 10px 1px;
     padding-top: 15px;
@@ -155,7 +155,7 @@
 }
 
 .update-modal-update-button {
-    margin-left: auto;
+    /* margin-left: auto;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 12.8px;
@@ -164,11 +164,14 @@
     font-size: 12px;
     transition: background-color .1s ease-in-out;
     transition: transform 0.3s ease;
-    margin-right: 13px;
+    margin-right: 13px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 12.8px;
 }
 
 .update-modal-update-button:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     background-color: #004182;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 }

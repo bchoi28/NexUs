@@ -30,16 +30,15 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     // updates a post
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         formData.append('post[body]', body);
         const id = post.id;
-        // formData.append('post[id]', post.id)
         if (photoFile) {
             formData.append('post[photo]', photoFile);
+            dispatch(updatePost(id, formData))
+        } else {
+            dispatch(updatePost(id, formData, !photoFile))
         }
-
-        dispatch(updatePost(id, formData))
         handleClose();
     }
 
@@ -95,7 +94,7 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
                         accept='image/*'
                         onChange={handleFile} />
                 </div>
-                <button className='update-modal-update-button'>Edit Post</button>
+                <button className='post-modal-post-button update-modal-update-button'>Edit Post</button>
             </div>
         </form>
     )

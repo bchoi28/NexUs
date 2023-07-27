@@ -209,9 +209,10 @@ export const createPost = (formData) => async (dispatch) => {
     }
 };
 
-export const updatePost = (id, formData) => async (dispatch) => {
+export const updatePost = (id, formData, removePhoto) => async (dispatch) => {
     // const payload = { post: post }
-    const res = await csrfFetch(`/api/posts/${id}`, {
+    const queryParams = removePhoto ? '?remove_photo=true' : '';
+    const res = await csrfFetch(`/api/posts/${id}/${queryParams}`, {
         method: 'PATCH',
         // headers: {
         //     'Content-Type': 'application/json'
