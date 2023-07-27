@@ -60,14 +60,12 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
                 </div>
             </header>
             <div className='post-modal-body-container'>
-                <div className='post-modal-content'>
-                    <textarea
-                        className='post-modal-body-input'
-                        onChange={handleBody}
-                        placeholder='What do you want to talk about?'>
-                    </textarea>
-                    {photoPreview}
-                </div>
+                <textarea
+                    className='post-modal-body-input'
+                    onChange={handleBody}
+                    placeholder='What do you want to talk about?'>
+                </textarea>
+                {photoPreview}
             </div>
             <div className='post-modal-footer'>
                 <div className='post-modal-image-container' >

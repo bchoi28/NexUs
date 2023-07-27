@@ -102,7 +102,7 @@ const PostItem = React.memo(({ post }) => {
 
     const authorPhoto = post.author.photoUrl ? post.author.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
-    const postPhoto = post.photoUrl ? <img className='post-photo-container' src={post.photoUrl} alt="post" /> : null
+    const postPhoto = post.photoUrl ? <img src={post.photoUrl} alt="post" /> : null
     return (
         <>
             <div className='post-item-container'>
@@ -112,7 +112,7 @@ const PostItem = React.memo(({ post }) => {
                         <NavLink className='post-author-names' to={`/profile/${post.authorId}`} profileUser={post.author}>
                             {post.author.fName} {post.author.lName}
                         </NavLink>
-                        <span className="post-author-pronouns">{post.author.pronouns ? (post.author.pronouns) : null}</span>
+                        <span className="post-author-pronouns">{post.author.pronouns ? `(${post.author.pronouns})` : null}</span>
                         <div className='post-author-headline' >{post.author.headline}</div>
                         <span className='feed-post-timestamp' >{timeAgo}</span>
                     </div>
@@ -147,6 +147,7 @@ const PostItem = React.memo(({ post }) => {
                         <ModalContainer
                             isOpen={modalIsOpen}
                             onRequestClose={handleCloseModal}
+                            isPost={true}
                         >
                             <ModalSwitch modalType='updatePost' handleClose={handleCloseModal} post={post} currentUser={currentUser} />
                         </ModalContainer>
