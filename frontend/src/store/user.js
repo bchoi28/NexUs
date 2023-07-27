@@ -109,11 +109,12 @@ export const updateUser = (user) => async (dispatch) => {
     return res;
 }
 
-export const updateUserPhoto = (id, formData) => async (dispatch) => {
+export const updateUserPhoto = (id, formData, removePhoto) => async (dispatch) => {
     debugger
-    const res = await csrfFetch(`/api/users/${id}`, {
+    const queryParams = removePhoto ? '?remove_photo=true' : '';
+    const res = await csrfFetch(`/api/users/${id}/${queryParams}`, {
         method: 'PATCH',
-        body: formData,
+        body: formData
     });
 
     if (res.ok) {

@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { closeModal } from '../../../store/modal';
-import { updateUserPhoto } from '../../../store/user';
+import { updateUser, updateUserPhoto } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
 
 
@@ -27,10 +27,10 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         } else setPhotoUrl(null);
     };
 
-    // const handleRemovePhoto = () => {
-    //     setPhotoUrl(null);
-    //     setPhotoFile(null);
-    // }
+    const handleRemovePhoto = () => {
+        setPhotoUrl(null);
+        setPhotoFile(null);
+    }
 
     const handleClose = (e) => {
         e.preventDefault();
@@ -41,13 +41,14 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        debugger
         const formData = new FormData();
         if (photoFile) {
             formData.append('user[cover_photo]', photoFile);
+            dispatch(updateUserPhoto(userId, formData));
+        } else {
+            dispatch(updateUserPhoto(userId, formData, !photoFile));
         }
-
-        dispatch(updateUserPhoto(userId, formData));
         dispatch(closeModal())
         setIsOpen(false);
     }
@@ -57,7 +58,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         photoPreview = (
             <div className='update-cover-photo-preview-container'>
                 <img className='update-cover-photo-preview' src={photoUrl} alt="" />
-                {/* <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button> */}
+                <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button>
             </div>
         )
     }

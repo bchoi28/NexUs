@@ -214,10 +214,6 @@ export const updatePost = (id, formData, removePhoto) => async (dispatch) => {
     const queryParams = removePhoto ? '?remove_photo=true' : '';
     const res = await csrfFetch(`/api/posts/${id}/${queryParams}`, {
         method: 'PATCH',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // im already doing this in my custom csrfFetch
         body: formData
     });
     if (res.ok) {
