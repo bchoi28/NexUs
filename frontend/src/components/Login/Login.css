@@ -46,7 +46,7 @@
 .loading-logo-us {
     margin-left: 3px;
     padding-left: 1.5px;
-    padding-right: 4px;
+    padding-right: 3.5px;
     letter-spacing: -1px;
     background-color: var(--primary-color);
     color: #ffffff;
@@ -55,10 +55,11 @@
     font-size: 26px;
     height: 30px;
     position: relative;
+    top: 1px;
 }
 
 
 .loading-logo-us span {
     position: relative;
-    bottom: 6px;
+    bottom: 5px;
 }

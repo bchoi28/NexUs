@@ -35,10 +35,9 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        debugger
         @user = User.find(params[:id])
-        if params[:remove_photo] == 'true'
-            @user.cover_photo.purge
+        if params[:user][:remove_photo] == 'true'
+            @user.cover_photo.purge_later
         end
 
         if @user.update(user_params)

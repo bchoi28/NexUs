@@ -22,7 +22,7 @@ function App() {
         <Route exact path='/logout'><Logout /></Route>
         <Route exact path='/profile/:id' ><ProfilePage /></Route>
         <Route exact path='/mynetwork' ><NetworkPage /></Route>
-        <Route exact path='/mynetwork1' ><Logout /></Route>
+        <Route exact path='/mynetwork1' ><Login /></Route>
         <Route path='*'><Redirect to='/feed' /></Route>
       </Switch>
     </>

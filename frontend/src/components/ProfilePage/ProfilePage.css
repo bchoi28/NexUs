@@ -203,6 +203,11 @@
     position: relative;
     font-weight: 500;
     top: 10px;
+    width: 70px;
+}
+
+.connection-count-message-button-container {
+    display: flex;
 }
 
 .profile-right-container {

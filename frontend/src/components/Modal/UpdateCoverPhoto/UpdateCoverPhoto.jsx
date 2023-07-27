@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { closeModal } from '../../../store/modal';
-import { updateUser, updateUserPhoto } from '../../../store/user';
+import { updateUserPhoto } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
 
 
@@ -41,16 +41,15 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        debugger
         const formData = new FormData();
         if (photoFile) {
             formData.append('user[cover_photo]', photoFile);
             dispatch(updateUserPhoto(userId, formData));
         } else {
-            dispatch(updateUserPhoto(userId, formData, !photoFile));
+            formData.append('user[remove_photo]', 'true');
+            dispatch(updateUserPhoto(userId, formData));
         }
-        dispatch(closeModal())
-        setIsOpen(false);
+        handleClose();
     }
 
     let photoPreview = null;

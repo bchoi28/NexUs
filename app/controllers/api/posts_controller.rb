@@ -49,7 +49,7 @@ class Api::PostsController < ApplicationController
         @post = Post.find(params[:id])
         if @post
             if params[:remove_photo] == 'true'
-                @post.photo.purge
+                @post.photo.purge_later
                 @post.update(post_params)
             else
                 @post.update(post_params)
