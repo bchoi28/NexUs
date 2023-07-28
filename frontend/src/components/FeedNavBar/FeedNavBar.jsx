@@ -14,7 +14,6 @@ const FeedNavBar = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
-    debugger
     const connectionRequests = useSelector(getConnectionRequests);
     const values = connectionRequests ? Object.values(connectionRequests) : null;
     const connectionRequestsCount = values?.length;

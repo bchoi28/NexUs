@@ -27,10 +27,10 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         } else setPhotoUrl(null);
     };
 
-    // const handleRemovePhoto = () => {
-    //     setPhotoUrl(null);
-    //     setPhotoFile(null);
-    // }
+    const handleRemovePhoto = () => {
+        setPhotoUrl(null);
+        setPhotoFile(null);
+    }
 
     const handleClose = (e) => {
         e.preventDefault();
@@ -41,15 +41,15 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         if (photoFile) {
             formData.append('user[cover_photo]', photoFile);
+            dispatch(updateUserPhoto(userId, formData));
+        } else {
+            formData.append('user[remove_photo]', 'true');
+            dispatch(updateUserPhoto(userId, formData));
         }
-
-        dispatch(updateUserPhoto(userId, formData));
-        dispatch(closeModal())
-        setIsOpen(false);
+        handleClose();
     }
 
     let photoPreview = null;
@@ -57,7 +57,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         photoPreview = (
             <div className='update-cover-photo-preview-container'>
                 <img className='update-cover-photo-preview' src={photoUrl} alt="" />
-                {/* <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button> */}
+                <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button>
             </div>
         )
     }
@@ -97,7 +97,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
                         </div>
                         <button
                             type='submit'
-                            className='update-about-save-button'>Save
+                            className='cover-photo-save-button'>Save
                         </button>
                     </div>
                 </div>

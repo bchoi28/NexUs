@@ -28,12 +28,10 @@
 }
 
 .loading-logo-container {
-    /* position: absolute; */
-    /* top: 400px;
-    right: 600px */
-    /* animation: loadingAnimation 4s linear infinite; */
     margin: auto;
-    margin-top: 30%;
+    margin-top: 220px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -43,20 +41,25 @@
     letter-spacing: -1px;
     font-size: 29px;
     font-weight: 200;
-    cursor: pointer;
 }
 
 .loading-logo-us {
     margin-left: 3px;
     padding-left: 1.5px;
-    padding-right: 5px;
-    padding-bottom: 1px;
+    padding-right: 3.5px;
     letter-spacing: -1px;
     background-color: var(--primary-color);
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     font-size: 26px;
+    height: 30px;
     position: relative;
-    bottom: 1px
+    top: 1px;
+}
+
+
+.loading-logo-us span {
+    position: relative;
+    bottom: 5px;
 }

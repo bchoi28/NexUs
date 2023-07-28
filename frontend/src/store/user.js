@@ -113,7 +113,7 @@ export const updateUserPhoto = (id, formData) => async (dispatch) => {
     debugger
     const res = await csrfFetch(`/api/users/${id}`, {
         method: 'PATCH',
-        body: formData,
+        body: formData
     });
 
     if (res.ok) {

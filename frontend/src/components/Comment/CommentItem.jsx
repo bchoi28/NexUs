@@ -84,11 +84,11 @@ const CommentItem = React.memo(({ comment, postId }) => {
 
     return (
         <div className='comment-item-container' key={comment.id}>
-            <img className='comment-form-user-photo' src={commenter.photoUrl} alt="commenter" />
+            <img className='comment-form-user-photo' src={commenter.photoUrl ? commenter.photoUrl : '/assets/images/seeds/default-profile-image-circle.png'} alt="commenter" />
             <div className='comment-item-info'>
                 <div className='comment-item-header'>
                     <NavLink to={`/profile/${commenter.id}`} className='comment-names'> {commenter.fName} {commenter.lName}</NavLink>
-                    <div className='comment-pronouns'> ({commenter.pronouns}) </div>
+                    <div className='comment-pronouns'> {commenter.pronouns ? `(${commenter.pronouns})` : ''} </div>
                     <span className='comment-timestamp' >{timeAgo}</span>
                     {isCurrentUserComment && <div className='comment-edit-button' ref={dropdownRef} onClick={toggleDropdown}>...</div>
                     }

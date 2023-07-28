@@ -42,6 +42,20 @@ export const removeConnections = () => {
 export const getConnectionRequests = state => state.connections.connectionRequests
 export const getConnections = state => state.connections.connections
 export const getConnectionsConnectedPending = state => state.connections.connectionsConnectedPending;
+export const getConnectedStatus = state => {
+    debugger
+    if (state.user.user) {
+        const currentUserId = state.session.user.id;
+        const profileUserId = state.user.user.id;
+
+        const connection = Object.values(state.connections.connectionsConnectedPending).find(connection => {
+            return (connection.connectorId === currentUserId && connection.connecteeId === profileUserId) || (connection.connecteeId === currentUserId && connection.connectorId === profileUserId);
+        });
+
+        return connection ? connection.status : 'connect';
+    } else return null;
+}
+
 
 export const fetchAllConnections = () => async dispatch => {
     const res = await csrfFetch('/api/connections');

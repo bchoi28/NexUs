@@ -96,6 +96,25 @@
     /* color: var(--color-button-label-secondary-emphasis-hover); */
 }
 
+.other-user-connect-button i {
+    position: relative;
+    top: 0.5px;
+}
+
+.other-user-message-button i {
+    position: relative;
+    margin-right: 1px;
+    top: 0.5px;
+    right: 0.5px;
+}
+
+.other-user-pending-button i {
+    position: relative;
+    top: 0.5px;
+    margin-left: -3px;
+    padding-right: 1.5px;
+}
+
 .other-user-connect-button-text {
     margin-left: 6px;
 }
@@ -103,23 +122,35 @@
 .other-user-connect-button-text-connect {
     margin-left: 6px;
     position: relative;
-    top: 1px;
+    /* top: 1px; */
+    /* margin-top: 1.5px; */
+    align-self: center;
+    text-align: center;
+}
+
+.other-user-connect-button-text-pending {
+    margin-left: 6px;
+    /* position: relative;
+    top: 1.5px; */
+    margin-top: 1.5px;
+    align-self: center;
+    text-align: center;
 }
 
 .other-user-message-button {
     margin-top: 7px;
     width: 120px;
     padding: 3px 10px;
-    color: var(--primary-color);
+    color: #fff;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     border-radius: 35px;
     border: 1.5px solid var(--primary-color);
     /* display: flex; */
-    background-color: transparent;
+    background-color: var(--primary-color-alt);
     transition: background-color 0.1s ease-in-out;
-    transition: box-shadow 0.1s ease-in-out;
+    /* transition: box-shadow 0.2s ease-in-out; */
     position: relative;
     cursor: default;
     display: flex;
@@ -147,25 +178,25 @@
 .other-user-message-button:hover,
 .other-user-pending-button:hover {
     box-shadow: inset 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
-    background-color: var(--color-button-container-secondary-emphasis-hover);
+    background-color: #004182;
 }
-
 
 .other-user-pending-button {
     margin-top: 7px;
     width: 120px;
     padding: 3px 10px;
-    color: var(--color-text-light);
+    color: #fff;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     border-radius: 35px;
     border: 1.5px solid var(--primary-color);
     /* display: flex; */
-    background-color: transparent;
+    background-color: var(--primary-color-alt);
     transition: background-color 0.1s ease-in-out;
-    transition: box-shadow 0.1s ease-in-out;
+    /* transition: box-shadow 0.2s ease-in-out; */
     align-items: center;
+    /* text-align: center; */
     display: flex;
     justify-content: center;
     position: relative;

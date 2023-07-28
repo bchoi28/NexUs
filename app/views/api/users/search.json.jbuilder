@@ -3,4 +3,5 @@ json.array! @users do |user|
     json.fName user.fname
     json.lName user.lname
     json.headline user.headline
+    json.photoUrl user.photo.attached? ? user.photo.url : nil
 end

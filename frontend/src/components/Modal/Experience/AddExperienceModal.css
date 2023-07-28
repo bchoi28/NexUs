@@ -1,18 +1,17 @@
 .update-experience-save-button {
-    margin-left: auto;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 12.8px;
     box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
-    padding: 2px 11px;
+    padding: 5px 10px;
+    /* margin: 5px; */
     font-size: 12px;
-    transition: background-color .1s ease-in-out;
-    transition: transform 0.3s ease;
-    margin-right: 0px;
+    transition: background-color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    margin-left: auto;
 }
 
 .update-experience-save-button:hover {
-    transform: scale(1.1);
     background-color: #004182;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 }

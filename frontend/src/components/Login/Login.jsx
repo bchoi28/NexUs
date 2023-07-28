@@ -6,7 +6,10 @@ const Login = () => {
     return (
         <div className='loading-page-container'>
             <div className="loading-logo-container">
-                <div className="loading-logo-nex">Nex<span className='loading-logo-us'>us</span></div>
+                <div className="loading-logo-nex">Nex</div>
+                <div className='loading-logo-us'>
+                    <span>us</span>
+                </div>
             </div>
         </div>
     )

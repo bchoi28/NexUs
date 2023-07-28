@@ -1,5 +1,5 @@
 .update-cover-photo-custom {
-    width: 500px;
+    width: 600px;
     height: 300px;
     position: relative;
     margin: 0 auto;
@@ -49,4 +49,28 @@
 
 .update-cover-photo-footer {
     display: flex;
+    padding-top: 2px;
+    height: 35px;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+
+
+.cover-photo-save-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 12.8px;
+    box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
+    padding: 5px 10px;
+    /* margin: 5px; */
+    font-size: 12px;
+    transition: background-color .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+    margin-left: auto;
+    margin-right: 14px;
+}
+
+.cover-photo-save-button:hover {
+    background-color: #004182;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 }

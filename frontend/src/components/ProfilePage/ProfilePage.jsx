@@ -1,17 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import './ProfilePage.css';
 import { fetchUser, getUser } from '../../store/user';
 import FeedNavBar from '../FeedNavBar';
 import { useParams, NavLink } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
-import { fetchSessionUser, getSessionUser } from '../../store/session';
+import { getSessionUser } from '../../store/session';
 import { removeUser, getOtherUsers, fetchAllOtherUsers } from '../../store/user';
 import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
-import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnections } from '../../store/connection';
+import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnectedStatus, getConnections, createConnection } from '../../store/connection';
 import OtherUserItem from './OtherUserItem';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -39,9 +38,12 @@ const ProfilePage = () => {
         history.push('/login');
     }
     const connections = Object.values(useSelector(getConnections));
+    const connectionStatus = useSelector(getConnectedStatus);
+    console.log(connectionStatus);
+    // const connectedStatus = connections.some(connection => connection.user.id === currentUser.id)
     const connectionsCount = connections?.length;
 
-    const otherUsers = useSelector(getOtherUsers);
+    const otherUsers = useSelector(getOtherUsers).filter(user => user.id !== currentUser.id);
     const otherUsersList = otherUsers?.map(otherUser => {
         return <OtherUserItem user={otherUser} key={otherUser.id} />
     })
@@ -97,6 +99,15 @@ const ProfilePage = () => {
         dispatch(openModal('UpdateProfileModal', profileInfo))
     }
 
+    const handleConnect = () => {
+        const connection = {
+            status: 'pending',
+            connector_id: currentUser.id,
+            connectee_id: profileUser.Id
+        }
+        dispatch(createConnection(connection))
+    }
+
 
     useEffect(() => {
         if (currentUser) {
@@ -136,6 +147,38 @@ const ProfilePage = () => {
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
 
+    debugger
+    let buttonContent;
+    if (currentUser.id != id && connectionStatus) {
+        if (connectionStatus === 'connected') {
+            buttonContent = (
+                <button className='other-user-message-button'>
+                    <i className="fa-regular fa-paper-plane"></i>
+                    <span className='other-user-connect-button-text-connect'>Message</span>
+                    <span className='message-button-tooltip'>coming soon!</span>
+                </button>
+            );
+        } else if (connectionStatus === 'pending') {
+            buttonContent = (
+                <button className='other-user-pending-button'>
+                    {/* <i className="fa-solid fa-clock"></i> */}
+                    <i className="fa-solid fa-user-check"></i>
+
+                    <span className='other-user-connect-button-text-pending'>Pending</span>
+                </button>
+            );
+        } else if (connectionStatus === 'connect') {
+            buttonContent = (
+                < button className='other-user-connect-button' onClick={handleConnect}>
+                    <i className="fa-solid fa-user-plus"></i>
+                    <span className='other-user-connect-button-text-connect'>Connect</span>
+                </button>
+            );
+        }
+    } else {
+        buttonContent = null;
+    }
+
     return (
         <>
             <ModalRoot />
@@ -168,11 +211,22 @@ const ProfilePage = () => {
                                         </div>
                                         <div className='profile-intro-headline'>{profileUser.headline}</div>
                                         {profileUser.locationCity ? (
-                                            <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
-                                        ) : null}
-                                        <NavLink to='/mynetwork'>
-                                            <div className='profile-intro-connection-count'>{connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}</div>
-                                        </NavLink>
+                                            <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion}</div>
+                                        ) : <span className='profile-intro-location' style={{ fontStyle: 'italic' }}>location unknown</span>}
+                                        <div className='connection-count-message-button-container'>
+                                            {id === currentUser.id ? (
+                                                <NavLink className='profile-intro-connection-count' to='/mynetwork'>
+                                                    {connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}
+                                                </NavLink>
+                                            ) : (
+                                                <div className='profile-intro-connection-count'>
+                                                    {connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className='profile-connection-button'>
+                                            {buttonContent}
+                                        </div>
                                     </div>
                                     <div className='profile-intro-info-right'>
                                         {profileEditIcon}

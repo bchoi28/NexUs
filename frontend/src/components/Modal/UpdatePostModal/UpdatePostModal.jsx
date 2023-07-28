@@ -30,16 +30,15 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     // updates a post
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         formData.append('post[body]', body);
         const id = post.id;
-        // formData.append('post[id]', post.id)
         if (photoFile) {
             formData.append('post[photo]', photoFile);
+            dispatch(updatePost(id, formData))
+        } else {
+            dispatch(updatePost(id, formData, !photoFile))
         }
-
-        dispatch(updatePost(id, formData))
         handleClose();
     }
 
@@ -57,12 +56,13 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
             </div>
         )
     }
+    const authorPhoto = currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
     return (
 
         <form className='update-modal-container' onSubmit={handleSubmit}>
             <header className='update-modal-header'>
-                <img className='update-modal-user-pic' src={currentUser.photoUrl} alt="profile" />
+                <img className='update-modal-user-pic' src={authorPhoto} alt="profile" />
                 <div className='post-modal-name-headline' >
                     <div className='update-modal-user-name'>{currentUser.fName} {currentUser.lName} </div>
                     <div className='update-modal-user-headline'>{currentUser.headline}</div>
@@ -71,7 +71,7 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
                     <button className='update-modal-close' onClick={handleClose} >X</button>
                 </div>
             </header>
-            <div className='update-modal-body-container'>
+            <div className='post-modal-body-container'>
                 <textarea
                     className='update-modal-body-input'
                     onChange={handleBody}
@@ -94,7 +94,7 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
                         accept='image/*'
                         onChange={handleFile} />
                 </div>
-                <button className='update-modal-update-button'>Edit Post</button>
+                <button className='post-modal-post-button update-modal-update-button'>Edit Post</button>
             </div>
         </form>
     )

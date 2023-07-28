@@ -87,7 +87,8 @@ body {
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
     color: var(--reset-font-black);
-    background-color: transparent;
+    background-color: var(--color-background-canvas);
+    height: 100vh;
 }
 
 .btn-primary {

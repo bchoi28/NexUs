@@ -47,7 +47,13 @@ class Api::PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        if @post && @post.update(post_params)
+        if @post
+            if params[:remove_photo] == 'true'
+                @post.photo.purge_later
+                @post.update(post_params)
+            else
+                @post.update(post_params)
+            end
             render :show
         else
             render json: @post.errors.full_messages, status: 422

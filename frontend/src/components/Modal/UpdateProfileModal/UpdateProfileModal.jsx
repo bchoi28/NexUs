@@ -107,7 +107,7 @@ const UpdateProfileModal = (profileInfo) => {
                     </div>
                     <button
                         type='submit'
-                        className='update-about-save-button'>Save
+                        className='update-profile-save-button'>Save
                     </button>
                 </form>
 

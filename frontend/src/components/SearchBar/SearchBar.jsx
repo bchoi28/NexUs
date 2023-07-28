@@ -55,6 +55,7 @@ const SearchBar = () => {
             <div className='search-results'>
                 {showResults ? searchResults.map(user => (
                     <NavLink to={`/profile/${user.id}`} className='link-headline' key={user.id}>
+                        <img className='search-result-photo' src={user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
                         <div className='search-link' >{user.fName} {user.lName} </div>
                         <span className='search-headline' >{user.headline}</span>
                     </NavLink>
