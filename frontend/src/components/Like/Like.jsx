@@ -4,7 +4,7 @@ import { createLikePost, deleteLikePost } from '../../store/like';
 import './Like.css';
 import { getSessionUser } from '../../store/session';
 
-const Like = ({ postId }) => {
+const Like = ({ postId, setCommentOpen }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const currentUserId = currentUser.id;
@@ -14,8 +14,8 @@ const Like = ({ postId }) => {
     const handleLike = () => {
         if (!liked) {
             dispatch(createLikePost(postId, currentUserId));
+            setCommentOpen(true);
         } else {
-            debugger
             dispatch(deleteLikePost(postId, likeId));
         }
     };

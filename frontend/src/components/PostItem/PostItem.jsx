@@ -178,7 +178,7 @@ const PostItem = React.memo(({ post }) => {
                 )}
                 <div className='post-footer'>
                     <div className='post-footer-buttons'>
-                        <Like postId={post.id} />
+                        <Like postId={post.id} setCommentOpen={setCommentOpen} />
                         <button className='comment-button-container' onClick={handleOpenComment}>
                             <i className="comment-button fa-regular fa-comment-dots"></i>
                             <p className='comment-text'>Comment</p>
