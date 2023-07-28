@@ -44,7 +44,7 @@ const OtherUserItem = ({ user }) => {
         } else if (userConnection.status === 'pending') {
             buttonContent = (
                 <button className='other-user-pending-button'>
-                    <i className="fa-solid fa-clock"></i>
+                    <i className="fa-solid fa-user-check"></i>
                     <span className='other-user-connect-button-text-connect'>Pending</span>
                 </button>
             );
