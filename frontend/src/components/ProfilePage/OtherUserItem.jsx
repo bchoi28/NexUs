@@ -36,7 +36,7 @@ const OtherUserItem = ({ user }) => {
         if (userConnection.status === 'connected') {
             buttonContent = (
                 <button className='other-user-message-button'>
-                    <i className="fa-solid fa-message"></i>
+                    <i className="fa-solid fa-paper-plane"></i>
                     <span className='other-user-connect-button-text-connect'>Message</span>
                     <span className='message-button-tooltip'>coming soon!</span>
                 </button>
@@ -44,7 +44,7 @@ const OtherUserItem = ({ user }) => {
         } else if (userConnection.status === 'pending') {
             buttonContent = (
                 <button className='other-user-pending-button'>
-                    <i class="fa-solid fa-clock"></i>
+                    <i className="fa-solid fa-clock"></i>
                     <span className='other-user-connect-button-text-connect'>Pending</span>
                 </button>
             );

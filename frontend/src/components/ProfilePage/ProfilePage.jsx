@@ -147,12 +147,13 @@ const ProfilePage = () => {
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
 
+    debugger
     let buttonContent;
-    if (connectionStatus) {
+    if (currentUser.id != id && connectionStatus) {
         if (connectionStatus === 'connected') {
             buttonContent = (
                 <button className='other-user-message-button'>
-                    <i className="fa-solid fa-message"></i>
+                    <i className="fa-regular fa-paper-plane"></i>
                     <span className='other-user-connect-button-text-connect'>Message</span>
                     <span className='message-button-tooltip'>coming soon!</span>
                 </button>
@@ -160,8 +161,10 @@ const ProfilePage = () => {
         } else if (connectionStatus === 'pending') {
             buttonContent = (
                 <button className='other-user-pending-button'>
-                    <i class="fa-solid fa-clock"></i>
-                    <span className='other-user-connect-button-text-connect'>Pending</span>
+                    {/* <i className="fa-solid fa-clock"></i> */}
+                    <i className="fa-solid fa-user-check"></i>
+
+                    <span className='other-user-connect-button-text-pending'>Pending</span>
                 </button>
             );
         } else if (connectionStatus === 'connect') {
@@ -172,6 +175,8 @@ const ProfilePage = () => {
                 </button>
             );
         }
+    } else {
+        buttonContent = null;
     }
 
     return (
@@ -206,12 +211,20 @@ const ProfilePage = () => {
                                         </div>
                                         <div className='profile-intro-headline'>{profileUser.headline}</div>
                                         {profileUser.locationCity ? (
-                                            <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion} </div>
-                                        ) : null}
+                                            <div className='profile-intro-location'>{profileUser.locationCity}, {profileUser.locationCountryRegion}</div>
+                                        ) : <span className='profile-intro-location' style={{ fontStyle: 'italic' }}>location unknown</span>}
                                         <div className='connection-count-message-button-container'>
-                                            <NavLink className='profile-intro-connection-count' to='/mynetwork'>
-                                                {connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}
-                                            </NavLink>
+                                            {id === currentUser.id ? (
+                                                <NavLink className='profile-intro-connection-count' to='/mynetwork'>
+                                                    {connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}
+                                                </NavLink>
+                                            ) : (
+                                                <div className='profile-intro-connection-count'>
+                                                    {connectionsCount} {connectionsCount === 1 ? 'alliance' : 'alliances'}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className='profile-connection-button'>
                                             {buttonContent}
                                         </div>
                                     </div>

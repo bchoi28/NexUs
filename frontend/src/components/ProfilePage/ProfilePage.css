@@ -106,7 +106,7 @@
     position: relative;
     bottom: 100px;
     padding: 0 25px;
-    margin-bottom: -70px;
+    margin-bottom: -85px;
 }
 
 .profile-intro-info-left {
@@ -147,6 +147,7 @@
     position: relative;
     bottom: 2px;
     line-height: 1.1;
+    margin-right: auto;
 }
 
 .edit-profile-info-button {
@@ -194,7 +195,8 @@
     font-size: 13px;
     color: var(--color-text-light);
     position: relative;
-    top: 5px
+    top: 4px;
+    margin-right: auto;
 }
 
 .profile-intro-connection-count {
@@ -202,12 +204,22 @@
     color: var(--primary-color);
     position: relative;
     font-weight: 500;
-    top: 10px;
+    /* top: 10px; */
+    bottom: 0px;
     width: 70px;
+    margin-bottom: 1px;
 }
 
 .connection-count-message-button-container {
     display: flex;
+    padding: 1px;
+    margin: 1px;
+    margin-top: 7px;
+}
+
+.profile-connection-button {
+    position: relative;
+    bottom: 3px;
 }
 
 .profile-right-container {
