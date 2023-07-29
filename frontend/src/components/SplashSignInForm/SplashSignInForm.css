@@ -46,7 +46,7 @@
     background-color: transparent;
     color: #3c4043;
     font-size: 14px;
-    transition: background-color .218s, border-color .218s;
+    transition: background-color .2s, border-color .2s;
 }
 
 .demo-btn:hover {

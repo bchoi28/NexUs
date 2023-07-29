@@ -95,6 +95,7 @@ body {
     box-shadow: 0 0 0 1px var(--color-button-container-primary-border);
     background-color: var(--color-button-container-primary);
     color: var(--color-button-label-primary);
+    transition: background-color .2s;
 }
 
 .btn-primary:hover {
@@ -113,6 +114,7 @@ body {
     box-shadow: 0 0 0 1px var(--color-button-container-secondary-border);
     background-color: var(--color-button-container-secondary);
     color: var(--color-button-label-secondary);
+    transition: background-color .2s;
 }
 
 .btn-secondary:hover {
