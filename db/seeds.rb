@@ -38,7 +38,7 @@ require "open-uri"
       lname: 'Boi',
       pronouns: 'He/Him',
       headline: 'Founder @ Nexus | Software Engineer',
-      location_country_region: 'USA',
+      location_country_region: 'Earth-001',
       location_city: 'New York',
       about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
     ).tap do |user|
@@ -150,7 +150,7 @@ require "open-uri"
       lname: 'Xenomorph',
       pronouns: 'It',
       headline: 'Intergalactic Network Engineer',
-      location_country_region: 'Extraterrestrial',
+      location_country_region: 'Earth-X99',
       location_city: 'LV-426',
       about: 'Specializing in interstellar communication and networking. As an extraterrestrial being, I bring a unique perspective to the world of technology. I am dedicated to building the infrastructure that connects star systems and enables seamless communication across the cosmos. Join me in advancing intergalactic connectivity and exploring new frontiers.'
     ).tap do |user|
@@ -200,7 +200,7 @@ require "open-uri"
     lname: 'Cohi',
     pronouns: 'He/Him',
     headline: 'CEO, Death Star 1 & 2',
-    location_country_region: 'Galactic Empire',
+    location_country_region: 'Earth-202',
     location_city: 'Death Star',
     about: 'Harnessing the power of the Force to code in the dark side. As a Sith Lord and software engineer, I bring balance to the digital realm. Join me on the dark side of development and together we shall rule the galaxy of software engineering.'
   ).tap do |user|
@@ -236,7 +236,7 @@ require "open-uri"
     lname: 'Hico',
     pronouns: 'They/Them',
     headline: 'Head of Magical AI at Hogwarts School of Witchcraft and Wizardry',
-    location_country_region: 'United Kingdom',
+    location_country_region: 'Earth-UK88',
     location_city: 'Hogwarts',
     about: 'Blending the magic of Hogwarts with the power of artificial intelligence. As a witch/wizard and software engineer, I\'m at the intersection of magic and machine learning. Join me in creating enchanting algorithms and charming neural networks.'
   ).tap do |user|
@@ -269,9 +269,9 @@ require "open-uri"
   password: 'password',
   fname: 'Brando',
   lname: 'Cho',
-  pronouns: 'He/Him',
+  pronouns: 'Ken/Ken',
   headline: 'CTO at DreamHouse Tech Inc',
-  location_country_region: 'United States',
+  location_country_region: 'Earth-008',
   location_city: 'Barbieland',
   about: 'Revolutionizing the dollhouse industry with cutting-edge tech. As a software engineer and toy figure, I\'m making DreamHouse the smartest house around. Join me in transforming toys into tech wonders.'
   ).tap do |user|
@@ -299,6 +299,46 @@ require "open-uri"
     body: "We're on the lookout for innovative engineers who can help bring DreamHouse to the next level. Experience in AI and IoT is a must. Let's make playtime more exciting with tech! #ToyTech #DreamHouseHiring #AI #IoT"
   )
 
+  user7 = User.create!(
+  email: 'brandinachai@cybernet.io',
+  password: 'password',
+  fname: 'Brandina',
+  lname: 'Chai',
+  pronouns: 'She/Her',
+  headline: 'Lead Software Engineer at QuantumCyber Tech',
+  location_country_region: 'Earth-49028',
+  location_city: 'Quarkonia',
+  about: 'Pushing the boundaries of technology and reality at QuantumCyber. As a software engineer and avid sci-fi enthusiast, I\'m working on fusing the worlds of coding and quantum physics. Join me in exploring the unknown realms of tech.'
+  ).tap do |user|
+    user.photo.attach(
+      io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo8.jpg"),
+      filename: "demo8.jpg",
+      content_type: "image/jpg"
+    )
+    Experience.create!(
+      title: "Lead Software Engineer",
+      employment_type: "Full-time",
+      company_name: "QuantumCyber Tech Inc",
+      location: "Quarkonia",
+      location_type: "On-site",
+      start_date: Date.parse("March 2016"),
+      end_date: nil,
+      industry: "Quantum Computing",
+      description: "Navigating the frontiers of quantum computing at QuantumCyber. Leading efforts to synthesize quantum mechanics and software engineering. Transforming QuantumCyber into a visionary in the tech industry.",
+      user: user
+    )
+    end
+
+  post8 = Post.create!(
+    author: user7,
+    body: "Did you know that the multiverse isn't just a concept of science fiction? It's real, and we've unlocked its secrets with the power of JavaScript. At QuantumCyber, we're using the principles of code to explore parallel universes. Stay tuned for more exciting updates! #Multiverse #JavaScript #QuantumComputing"
+  ).tap do |post|
+      post.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/multiverse.jpg"),
+        filename: "multiverse.jpg"
+      )
+  end
+
   puts "finished creating users and their experiences"
 
   puts "creating likes..."
@@ -324,6 +364,12 @@ require "open-uri"
 
   post6.likes.create!(liker: user5)
   post6.likes.create!(liker: user6)
+
+  post7.likes.create!(liker: user1)
+
+  post8.likes.create!(liker: user4)
+  post8.likes.create!(liker: user5)
+  post8.likes.create!(liker: user6)
 
   puts "likes created"
 
@@ -365,6 +411,12 @@ require "open-uri"
   connection7 = Connection.create!(
     connector: user5, connectee: user6, status: "connected"
   )
+  connection12 = Connection.create!(
+    connector: user7, connectee: user3, status: "connected"
+  )
+  connection13 = Connection.create!(
+    connector: user7, connectee: user2, status: "connected"
+  )
   puts "connections created"
 
   puts "creating connection requests..."
@@ -376,6 +428,9 @@ require "open-uri"
   )
   connection10 = Connection.create!(
     connector: user2, connectee: user6, status: "pending"
+  )
+  connection11 = Connection.create!(
+    connector: user7, connectee: user1, status: "pending"
   )
   puts "connection requests created"
 

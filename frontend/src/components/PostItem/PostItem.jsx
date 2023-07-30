@@ -123,17 +123,13 @@ const PostItem = React.memo(({ post }) => {
                         }
                         {dropDownOpen &&
                             <div className='post-dropdown-menu'>
-                                <div
-                                    className='post-delete-button'
-                                    onClick={handleDeletePost}
-                                >
-                                    <i className=" delete-button fa-regular fa-trash-can"></i>
-                                </div>
-                                <div
-                                    className='post-update-button'
-                                    onClick={handleOpenModal}
-                                >
-                                    <i className=" edit-button fa-solid fa-pencil"></i>
+                                <div className='comment-dropdown-container'>
+                                    <div className='comment-dropdown-update' onClick={handleOpenModal}>
+                                        <i className=" comment-update-button fa-solid fa-pencil"><span className='comment-update-text'>Edit</span></i>
+                                    </div>
+                                    <div onClick={handleDeletePost} className='comment-dropdown-delete'>
+                                        <i className=" comment-delete-button fa-regular fa-trash-can"><span className='comment-delete-text'>Delete</span></i>
+                                    </div>
                                 </div>
                             </div>
                         }
