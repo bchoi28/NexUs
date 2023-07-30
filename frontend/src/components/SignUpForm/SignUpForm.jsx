@@ -1,15 +1,14 @@
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './SignUpForm.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, getSessionUser } from '../../store/session';
+import { loginUser } from '../../store/session';
 import { loginRequest } from '../../store/ui';
 import { removeSessionErrors } from '../../store/errors';
 import { fetchPosts } from '../../store/post';
 
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
-
 
     const dispatch = useDispatch();
 
@@ -53,7 +52,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // dispatch(loginRequest())
 
         const formErrors = validate(email, password);
         if (Object.values(formErrors).some(value => value !== '')) {
@@ -84,12 +82,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
         }
     }, [])
 
-    // if (currentUser) {
-    //     debugger
-    //     dispatch(fetchPosts())
-    //     return <Redirect to='/feed' />
-    // }
-
     return (
         <>
 
@@ -102,7 +94,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
                         type="text"
                         id='email'
                         value={email}
-                        // name='email'
                         onChange={handleEmail} />
 
                     {finalErrors && <div className='signup-input-helper'>{finalErrors.email}</div>}
@@ -116,7 +107,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
                         type="text"
                         id='password'
                         value={password}
-                        // name='password'
                         onChange={handlePassword} />
 
                     {finalErrors && <div className='signup-input-helper'>{finalErrors.password}</div>}

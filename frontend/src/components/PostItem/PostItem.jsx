@@ -12,13 +12,10 @@ import Like from '../Like';
 import Comment from '../Comment';
 
 const PostItem = React.memo(({ post }) => {
-    // const { id, body, created_at, authorId } = post;
     const dispatch = useDispatch();
     const dropdownRef = useRef(null);
     const { likeCount, likers } = useSelector(getLikeInformation(post.id)) || {};
     const commentCount = useSelector(getCommentCount(post.id));
-    // const { comments, commentCount, commenters } = useSelector(getCommentInformation(post.id)) || {};
-    // const commenters = useSelector(getCommenters(post.id));
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [dropDownOpen, setDropDownOpen] = useState(false);

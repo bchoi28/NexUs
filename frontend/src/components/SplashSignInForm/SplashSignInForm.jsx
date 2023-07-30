@@ -1,12 +1,10 @@
 import './SplashSignInForm.css'
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getSessionUser, loginUser } from '../../store/session';
+import { loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { loginRequest } from '../../store/ui';
-import { fetchPosts } from '../../store/post';
 
 const SplashSignInForm = () => {
 
@@ -42,12 +40,6 @@ const SplashSignInForm = () => {
         dispatch(removeSessionErrors())
         history.push('/signup')
     }
-
-    // const currentUser = useSelector(getSessionUser);
-    // if (currentUser) {
-    //     dispatch(fetchPosts());
-    //     return <Redirect to='/feed' />
-    // }
 
     return (
         <>

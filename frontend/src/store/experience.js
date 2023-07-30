@@ -13,13 +13,13 @@ export const createExperience = experience => async dispatch => {
 };
 
 export const updateExperience = (experienceId, experience) => async dispatch => {
-    debugger
+
     const res = await csrfFetch(`/api/experiences/${experienceId}`, {
         method: 'PATCH',
         body: JSON.stringify({ experience: experience })
     });
     if (res.ok) {
-        debugger
+
         const data = await res.json();
         dispatch(receiveExperience(data.experience));
     };

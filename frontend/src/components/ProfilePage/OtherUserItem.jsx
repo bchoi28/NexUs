@@ -8,11 +8,6 @@ const OtherUserItem = ({ user }) => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
-    // const connections = Object.values(useSelector(getConnections));
-
-    // const isConnected = connections?.some(connection => {
-    //     return connection.user.id === userId;
-    // });
     const connections = Object.values(useSelector(getConnectionsConnectedPending));
     const userId = user.id;
     const profilePhoto = user?.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';

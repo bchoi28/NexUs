@@ -9,7 +9,7 @@ import { openModal } from '../../store/modal';
 import { deleteExperience, updateExperience } from '../../store/experience';
 
 const ExperienceItem = ({ experience }) => {
-    debugger
+
     const { id } = useParams();
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
@@ -28,16 +28,6 @@ const ExperienceItem = ({ experience }) => {
         description
     } = experience;
 
-
-    // const [title, setTitle] = useState(experience.title);
-    // const [companyName, setCompanyName] = useState(experience.companyName);
-    // const [employmentType, setEmploymentType] = useState(experience.employmentType);
-    // const [location, setLocation] = useState(experience.location);
-    // const [locationType, setLocationType] = useState(experience.locationType);
-    // const [industry, setIndustry] = useState(experience.industry);
-    // const [startDate, setStartDate] = useState(experience.startDate);
-    // const [endDate, setEndDate] = useState(experience.endDate);
-    // const [description, setDescription] = useState(experience.description);
     const convertedStartDate = startDate ? new Date(startDate + "T00:00:00").toLocaleDateString('en', { year: 'numeric', month: 'long' }) : '';
     const convertedEndDate = endDate ? new Date(endDate + "T00:00:00").toLocaleDateString('en', { year: 'numeric', month: 'long' }) : 'Current';
 
@@ -68,7 +58,7 @@ const ExperienceItem = ({ experience }) => {
     const handleEditExperience = (e) => {
         e.preventDefault();
         document.body.style.overflow = 'hidden'
-        debugger
+
         const experienceInfo = {
             experienceId, title, companyName, employmentType, location, locationType, industry,
             convertedStartDate, convertedEndDate, description

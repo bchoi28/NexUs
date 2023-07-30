@@ -13,7 +13,6 @@ const SearchBar = () => {
     const [showResults, setShowResults] = useState(false);
 
     const handleInputChange = (e) => {
-        debugger
         setSearch(e.target.value);
         if (e.target.value !== '') {
             dispatch(fetchUsersSearch(e.target.value));
@@ -21,24 +20,12 @@ const SearchBar = () => {
         } else setShowResults(false);
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     if (query !== '') {
-    //         const users = await dispatch(fetchUsersSearch(query));
-    //         if (users && users.length > 1) {
-    //             history.push(`/profile/${users[0].id}`);
-    //         }
-    //     }
-    // }
-
     const handleSubmit = (e) => {
-        debugger
         e.preventDefault();
         if (showResults && searchResults.length > 0) {
             history.push(`/profile/${searchResults[0].id}`);
         }
     };
-
 
     return (
         <div className='search-bar-container'>

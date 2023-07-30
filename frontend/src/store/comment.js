@@ -2,7 +2,7 @@ import csrfFetch from "./csrf";
 import { receiveCommentPost, removeCommentPost } from "./post";
 
 export const createCommentPost = (comment, postId) => async dispatch => {
-    debugger
+
     const res = await csrfFetch(`api/posts/${postId}/comments`, {
         method: 'POST',
         body: JSON.stringify(comment)
@@ -29,7 +29,7 @@ export const updateCommentPost = (comment, postId, commentId) => async dispatch 
 }
 
 export const deleteCommentPost = (postId, commentId) => async (dispatch) => {
-    debugger
+
     const res = await csrfFetch(`/api/posts/${postId}/comments/${commentId}`, {
         method: 'DELETE'
     });

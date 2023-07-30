@@ -1,11 +1,8 @@
 import './NameForm.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { signupUser } from '../../store/user';
 
 const NameForm = ({ onSubmit }) => {
-
-    // const dispatch = useDispatch();
 
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
@@ -43,14 +40,12 @@ const NameForm = ({ onSubmit }) => {
             return
         }
 
-
         const userObjectStep2 = {
             fname: fname,
             lname: lname,
             headline: headline
         }
         onSubmit(userObjectStep2)
-
     }
 
     return (

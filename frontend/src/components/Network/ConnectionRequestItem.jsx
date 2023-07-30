@@ -1,13 +1,11 @@
 import './ConnectionRequestItem.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { updateConnection } from '../../store/connection';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ConnectionRequestItem = ({ connectionRequest, id }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const connector = connectionRequest.connector;
     const connectionId = id;
     const connectorPhoto = connector.photoUrl ? connector.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
@@ -15,7 +13,7 @@ const ConnectionRequestItem = ({ connectionRequest, id }) => {
     const [ignored, setIgnored] = useState(false);
 
     const handleAccept = () => {
-        debugger
+
         const connection = { status: 'connected' }
         dispatch(updateConnection(connectionId, connection));
         setAccepted(true);
@@ -26,10 +24,6 @@ const ConnectionRequestItem = ({ connectionRequest, id }) => {
         dispatch(updateConnection(connectionId, connection));
         setIgnored(true);
     }
-
-    // const handleLink = () => {
-    //     history.push(`/profile/${connector.id}`)
-    // }
 
     return (
         <>

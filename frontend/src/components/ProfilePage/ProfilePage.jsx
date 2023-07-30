@@ -39,7 +39,6 @@ const ProfilePage = () => {
     }
     const connections = Object.values(useSelector(getConnections));
     const connectionStatus = useSelector(getConnectedStatus);
-    // const connectedStatus = connections.some(connection => connection.user.id === currentUser.id)
     const connectionsCount = connections?.length;
 
     const otherUsers = useSelector(getOtherUsers).filter(user => user.id !== currentUser.id);
@@ -52,7 +51,7 @@ const ProfilePage = () => {
     //     setIsTruncated(!isTruncated);
     // };
     // const renderTruncatedText = () => {
-    //     debugger
+    //     
     //     if (!profileUser || !profileUser.about) {
     //         return "";
     //     } else {
@@ -130,19 +129,6 @@ const ProfilePage = () => {
     if (!currentUser || !profileUser) {
         return <Login />
     }
-
-
-    // if (!currentUser) {
-    //     debugger
-    //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    //     dispatch(fetchSessionUser(currentUser.id))
-    //     return <h1>Loading...</h1>;
-    // }
-
-
-    // if (!currentUser) {
-    //     // return <Redirect to='/' />
-    // }
 
     const cameraIcon1 = (currentUser.id === parseInt(id)) ? <i onClick={handleEditPhoto} className="fa-solid fa-camera camera-button"></i> : null;
     const cameraIcon2 = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} className="fa-solid fa-camera camera-button-2"></i> : null;

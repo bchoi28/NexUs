@@ -10,7 +10,7 @@ class Api::ConnectionsController < ApplicationController
     end
 
     def index
-        # debugger
+        # 
         @user = current_user
         if params[:pending].present?
             @connection_requests = @user.connection_requests

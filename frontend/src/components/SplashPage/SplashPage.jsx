@@ -1,7 +1,6 @@
 import SplashSignInForm from "../SplashSignInForm";
 import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
-// import spaceImage from '../../images/space.jpg';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -14,7 +13,7 @@ const SplashPage = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const [showSpace, setShowSpace] = useState(false);
-    debugger
+
     const toggleSpace = (e) => {
         setShowSpace(prevState => !prevState)
     };

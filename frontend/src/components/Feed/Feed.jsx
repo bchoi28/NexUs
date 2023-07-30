@@ -18,7 +18,6 @@ const Feed = () => {
 
     const dispatch = useDispatch();
 
-    // we need to pass these 2 in wherever we render ModalContainer
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
@@ -32,9 +31,8 @@ const Feed = () => {
     const posts = useSelector(getPosts)
     const profilePhoto = currentUser.photoUrl;
 
-
     useEffect(() => {
-        // if (!currentUser || !currentUser.photoUrl) {
+        // if (!currentUser) {
         //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         //     dispatch(fetchSessionUser(currentUser.id));
         // }
@@ -143,7 +141,6 @@ const Feed = () => {
                         <div className='about-project-container'>
                             <div className='about-developer-title'>About the project</div>
                             <p className='about-developer-text'>NexUs is a fullstack LinkedIn clone developed for multiversal professional networking.</p>
-                            {/* <div className='about-project-technologies-title'>Technologies used:</div> */}
                             <div className='technologies-container'>
                                 <div className='technologies-row'>
                                     <NavLink to={{ pathname: 'https://www.javascript.com' }} target='_blank' className='technology-item'><span>JavaScript</span></NavLink>
