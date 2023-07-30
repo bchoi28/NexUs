@@ -142,13 +142,29 @@ export const getCommentInformation = postId => state => {
 }
 
 // thunk action creators
-export const fetchPosts = () => async (dispatch) => {
+// export const fetchPosts = () => async (dispatch) => {
 
-    const res = await csrfFetch('/api/posts');
+//     const res = await csrfFetch('/api/posts');
+//     if (res.ok) {
+//         const data = await res.json();
+//         const posts = data.posts;
+//         dispatch(receivePosts(posts));
+//     }
+// };
+
+export const fetchPosts = (page = 1) => async (dispatch) => {
+    debugger
+    const res = await csrfFetch(`/api/posts?page=${page}`);
     if (res.ok) {
         const data = await res.json();
         const posts = data.posts;
         dispatch(receivePosts(posts));
+        debugger
+        return data.hasMorePosts;
+    } else {
+        debugger
+        // throw new Error('Failed to fetch posts');
+        console.error('Failed to fetch posts');
     }
 };
 
@@ -213,6 +229,7 @@ const postsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_POSTS:
             return { ...state, ...action.posts };
+        // return { ...state, posts: [...state.posts, ...action.posts] };
         case RECEIVE_POST:
             return { ...state, [action.post.id]: action.post };
         case REMOVE_POST:

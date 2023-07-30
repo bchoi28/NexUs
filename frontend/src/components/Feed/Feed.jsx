@@ -18,6 +18,7 @@ const Feed = () => {
 
     const dispatch = useDispatch();
 
+    // const [page, setPage] = useState(1);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
         setModalIsOpen(true);
