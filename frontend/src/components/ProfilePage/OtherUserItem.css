@@ -3,7 +3,7 @@
     display: flex;
     padding: 15px 0;
     /* border-bottom: 1px solid var(--color-border-light); */
-    border-top: 1px solid var(--color-border-light)
+    border-top: 1.5px solid var(--color-border-light)
 }
 
 .other-user-photo {
@@ -13,6 +13,7 @@
     min-height: 50px;
     /* border: 2px solid #fff; */
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .other-user-link {
@@ -90,7 +91,8 @@
     justify-content: center;
 }
 
-.other-user-connect-button:hover {
+.other-user-connect-button:hover,
+.other-user-pending-button:hover {
     box-shadow: inset 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
     background-color: var(--color-button-container-secondary-emphasis-hover);
     /* color: var(--color-button-label-secondary-emphasis-hover); */
@@ -175,8 +177,7 @@
     opacity: 1;
 }
 
-.other-user-message-button:hover,
-.other-user-pending-button:hover {
+.other-user-message-button:hover {
     box-shadow: inset 0 0 0 0.5px var(--color-button-container-secondary-emphasis-border);
     background-color: #004182;
 }
@@ -186,13 +187,15 @@
     width: 120px;
     padding: 3px 10px;
     color: #fff;
+    color: var(--color-text-light);
+    /* color: var(--color-text-main); */
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     border-radius: 35px;
     border: 1.5px solid var(--primary-color);
     /* display: flex; */
-    background-color: var(--primary-color-alt);
+    background-color: transparent;
     transition: background-color 0.1s ease-in-out;
     /* transition: box-shadow 0.2s ease-in-out; */
     align-items: center;

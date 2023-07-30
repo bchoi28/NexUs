@@ -1,23 +1,11 @@
 import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
-import { receiveUser, removeUser } from './user';
+import { removeUser } from './user';
 import { removePosts } from './post';
 import { loginSuccess, logoutSuccess } from './ui';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
-
-// export const setSession = (userData) => {
-//     let user = null;
-//     if (userData) {
-//         const { id, email, fName, lName } = userData;
-//         user = { id, email, fName, lName };
-//     }
-//     return {
-//         type: SET_SESSION,
-//         user: user
-//     };
-// };
 
 export const setSession = (user) => {
     return {
@@ -36,9 +24,7 @@ export const removeSession = () => {
 export const getSessionUser = state => state.session.user;
 
 // thunk action creator
-
 export const fetchSessionUser = (userId) => async (dispatch) => {
-    debugger
     const res = await csrfFetch(`/api/users/${userId}`);
     if (res.ok) {
         const data = await res.json();
@@ -48,7 +34,6 @@ export const fetchSessionUser = (userId) => async (dispatch) => {
 }
 
 export const loginUser = (user) => async (dispatch) => {
-    debugger
     const payload = { user: user }
     const res = await csrfFetch('/api/session', {
         method: 'POST',
@@ -56,18 +41,13 @@ export const loginUser = (user) => async (dispatch) => {
     });
     if (res.ok) {
         const data = await res.json();
-        // right here it triggers a re-render 
-        // of my SplashSignInForm???
         dispatch(setSession(data.user));
-        // dispatch(receiveUser(data.user));
         storeCurrentUser(data.user);
         dispatch(loginSuccess());
     } else {
         const data = await res.json();
         dispatch(receiveSessionErrors(data.errors))
-        // receiveSessionErrors(['error', null]) receives an array of errors
     }
-
     return res;
 }
 
@@ -82,30 +62,6 @@ export const logoutUser = () => async (dispatch) => {
     dispatch(removePosts());
     dispatch(logoutSuccess())
 }
-// i moved this to user.js
-
-// export const signup = (user) => async (dispatch) => {
-
-//     const payload = { user: user }
-//     const res = await csrfFetch('/api/users', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(payload)
-//     })
-//     if (res.ok) {
-//         const data = await res.json();
-//         storeCurrentUser(data.user);
-//         dispatch(setSession(data.user));
-//     } else {
-//         const data = await res.json();
-//         // data.errors => ex.['Email Please enter a valid email address.', 'error2']
-//         dispatch(receiveSessionErrors(data.errors))
-//     }
-
-//     return res;
-// }
 
 export const restoreSession = () => async (dispatch) => {
     const res = await csrfFetch('/api/session');
@@ -125,12 +81,7 @@ const storeCSRFToken = (res) => {
 export const storeCurrentUser = (user) => {
     if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
     else sessionStorage.removeItem('currentUser');
-    // if you pass in null, it removes the key currentUser entirely
 }
-
-
-
-
 
 // sessionReducer
 const defaultUser = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -142,7 +93,6 @@ const sessionReducer = (initialState = { user: defaultUser }, action) => {
     switch (action.type) {
         case SET_SESSION:
             return { ...nextState, user: action.user }
-        // nextState['user'] = action.user;
         case REMOVE_SESSION:
             return { ...nextState, user: null }
         default:

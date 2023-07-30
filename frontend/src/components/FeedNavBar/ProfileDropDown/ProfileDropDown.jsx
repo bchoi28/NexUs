@@ -5,13 +5,11 @@ import { NavLink } from 'react-router-dom';
 import { getSessionUser } from '../../../store/session';
 import Login from '../../Login';
 
-
 const ProfileDropDown = () => {
     const dropdownRef = useRef(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const currentUser = useSelector(getSessionUser);
-
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -35,10 +33,6 @@ const ProfileDropDown = () => {
     }
 
     const profilePhoto = currentUser.photoUrl;
-    // if (!profilePhoto) {
-    //     dispatch(fetchSessionUser(currentUser.id))
-    //     return <p>...</p>
-    // }
 
     return (
         <div className="profile-dropdown">

@@ -1,5 +1,5 @@
 import './FeedNavBar.css'
-import { NavLink, Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
@@ -19,10 +19,6 @@ const FeedNavBar = () => {
     const connectionRequestsCount = values?.length;
     const isFeedPage = location.pathname === '/feed';
     const isNetworkPage = location.pathname === '/mynetwork';
-
-    // if (!currentUser) {
-    //     return <h1>Loading Nav Bar...</h1>
-    // }
 
     const handleHomeClick = () => {
         if (location.pathname === '/feed') {
@@ -65,18 +61,17 @@ const FeedNavBar = () => {
                         <span className="icon-text">My Network</span>
                         {connectionRequestsCount > 0 && <span className='connections-request-count-notification'>{connectionRequestsCount}</span>}
                     </div>
-                    {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
-                        <div className='icon-container'>
-                            <i className="fa-brands fa-linkedin-in main-nav-icons"></i>
-                            <span className="icon-text">LinkedIn</span>
-                        </div>
-                    </Link>
-                    <Link to={{ pathname: 'https://github.com/bchoi28' }} target="_blank">
-                        <div className='icon-container'>
-                            <i className="fa-brands fa-github main-nav-icons"></i>
-                            <span className="icon-text">GitHub</span>
-                        </div>
-                    </Link> */}
+                    <div className="icon-container-messaging">
+                        <i className="fa-solid fa-comment-dots fa-flip-horizontal main-nav-icons"></i>
+                        <span className="icon-text">Messaging</span>
+                        <span className="nav-bar-tooltip-text">coming soon!</span>
+
+                    </div>
+                    <div className="icon-container-jobs">
+                        <i className="fa-solid fa-briefcase main-nav-icons"></i>
+                        <span className="icon-text">Jobs</span>
+                        <span className="nav-bar-tooltip-text">coming soon!</span>
+                    </div>
                     <ProfileDropDown />
                 </div>
 

@@ -67,6 +67,7 @@
     margin-left: auto;
     top: 1px;
     margin-right: 40px;
+    justify-content: space-evenly;
 }
 
 
@@ -83,7 +84,7 @@
 }
 
 .icon-container-home {
-    width: 60px;
+    width: 70px;
 }
 
 
@@ -131,7 +132,45 @@
     cursor: pointer;
 }
 
+.icon-container-jobs,
+.icon-container-messaging {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 4px;
+    width: 70px;
+    position: relative;
+}
 
+.icon-container-messaging:hover .main-nav-icons,
+.icon-container-messaging:hover .icon-text {
+    color: var(--color-text-main);
+    cursor: default;
+}
+
+.icon-container-jobs:hover .main-nav-icons,
+.icon-container-jobs:hover .icon-text {
+    color: var(--color-text-main);
+    cursor: default;
+}
+
+.nav-bar-tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    bottom: -15px;
+    right: 5px;
+    position: absolute;
+    font-size: 9px;
+    font-family: var(--primary-font);
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.icon-container-messaging:hover .nav-bar-tooltip-text,
+.icon-container-jobs:hover .nav-bar-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 
 
 /* .linkedin-main-nav {

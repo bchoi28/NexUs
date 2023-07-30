@@ -11,15 +11,11 @@ const PostIndex = () => {
     const reversedPosts = [...posts].reverse();
     const postItems = reversedPosts.map(post => <PostItem key={post.id} post={post} />)
 
-    // const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
-    // const postItems = posts.reverse().map(post => <PostItem key={post.id} post={post} />)
-
     useEffect(() => {
         dispatch(fetchPosts());
     }, [dispatch])
 
     if (posts.length === 0) {
-        // return <div className='loading-posts'>loading posts...</div>
         return (
             <div className='loading-posts'>
                 <div className='loading-circle'></div>

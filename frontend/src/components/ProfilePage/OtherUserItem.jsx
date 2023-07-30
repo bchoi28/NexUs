@@ -8,11 +8,6 @@ const OtherUserItem = ({ user }) => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
-    // const connections = Object.values(useSelector(getConnections));
-
-    // const isConnected = connections?.some(connection => {
-    //     return connection.user.id === userId;
-    // });
     const connections = Object.values(useSelector(getConnectionsConnectedPending));
     const userId = user.id;
     const profilePhoto = user?.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
@@ -44,7 +39,7 @@ const OtherUserItem = ({ user }) => {
         } else if (userConnection.status === 'pending') {
             buttonContent = (
                 <button className='other-user-pending-button'>
-                    <i className="fa-solid fa-user-check"></i>
+                    <i className="fa-solid fa-user-clock"></i>
                     <span className='other-user-connect-button-text-connect'>Pending</span>
                 </button>
             );

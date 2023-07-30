@@ -59,14 +59,14 @@ const AddExperienceModal = () => {
     });
 
     const formatDateForRails = (month, year) => {
-        debugger
+
         const monthIndex = new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1;
         const formattedMonth = String(monthIndex).padStart(2, "0");
         return `${year}-${formattedMonth}-01`;
     };
 
     const handleCreateExperience = async (e) => {
-        debugger
+
         e.preventDefault();
         const startDate = formatDateForRails(selectedStartMonth, selectedStartYear);
         let endDate;

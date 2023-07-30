@@ -61,6 +61,7 @@
 
 .search-results> :last-child {
     border-radius: 0 0 5px 5px;
+
 }
 
 .link-headline {
@@ -81,8 +82,12 @@
 
 .search-result-photo {
     height: 22px;
+    /* min-height: 22px; */
     width: 22px;
+    min-width: 22px;
     margin-left: 1px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .search-link {

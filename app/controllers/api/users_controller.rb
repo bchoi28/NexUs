@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password'] + [:photo] + [:cover_photo]
 
     def show
-        # debugger
         @user = User.find(params[:id])
         if params[:likers].present?
             render :likers
@@ -36,8 +35,11 @@ class Api::UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if params[:user][:remove_photo] == 'true'
+        if params[:user][:remove_cover_photo] == 'true'
             @user.cover_photo.purge_later
+        end
+        if params[:user][:remove_photo] == 'true'
+            @user.photo.purge_later
         end
 
         if @user.update(user_params)

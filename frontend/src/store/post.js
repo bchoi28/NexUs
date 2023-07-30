@@ -112,28 +112,6 @@ export const getLikeInformation = postId => state => {
     } else return null;
 }
 
-// export const getLikeCount = postId => state => {
-//     if (state.posts[postId].likes) {
-//         const likeCount = Object.keys(state.posts[postId].likes).length;
-//         return likeCount;
-//     } else return null;
-// }
-
-// export const getLikes = postId => state => {
-//     if (state.posts[postId].likes) {
-//         const likes = Object.values(state.posts[postId].likes);
-//         return likes;
-//     } else return null;
-// }
-
-// export const getLikers = postId => state => {
-//     if (state.posts[postId].likes) {
-//         const likes = Object.values(state.posts[postId].likes);
-//         const likers = likes.map(like => like.liker);
-//         return likers;
-//     } else return null;
-// }
-
 export const getCommentCount = postId => state => {
     if (state.posts[postId].comments) {
         const comments = Object.keys(state.posts[postId].comments);
@@ -165,14 +143,12 @@ export const getCommentInformation = postId => state => {
 
 // thunk action creators
 export const fetchPosts = () => async (dispatch) => {
-    debugger
+
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const data = await res.json();
         const posts = data.posts;
         dispatch(receivePosts(posts));
-        debugger
-        // receivePosts([ {postObj1}, {postObj2}, ...] )
     }
 };
 
@@ -227,7 +203,6 @@ export const deletePost = (postId) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });
-    // const post = await res.json();
     if (res.ok) {
         dispatch(removePost(postId))
     }
@@ -256,7 +231,6 @@ const postsReducer = (state = {}, action) => {
                 }
             }
         case REMOVE_LIKE_POST:
-            // const { postId, likeId } = action;
             const updatedLikes = { ...state[action.postId].likes };
             delete updatedLikes[action.likeId];
             return {
@@ -265,7 +239,6 @@ const postsReducer = (state = {}, action) => {
                 }
             };
         case RECEIVE_COMMENT_POST:
-            // const { commentPostId, commentId, comment } = action;
             const comments = state[action.postId].comments || {};
             return {
                 ...state, [action.postId]: {

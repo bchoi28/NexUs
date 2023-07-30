@@ -23,7 +23,6 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [formStep, setFormStep] = useState(1);
     const [userObject, setUserObject] = useState({});
-    // const loading = useSelector(getUiState);
 
 
     const handleSignup = ({ email, password }) => {
@@ -53,10 +52,6 @@ const SignUpPage = () => {
         dispatch(fetchPosts());
         return <Redirect to='/feed' />
     };
-
-    // if (loading) {
-    //     return <Login />
-    // }
 
     return (
         <div className='signup-page-container'>

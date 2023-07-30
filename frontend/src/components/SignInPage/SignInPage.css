@@ -37,21 +37,13 @@
 
 .signin-page-join-btn {
     background-color: rgba(0, 0, 0, 0);
-    border: 0;
     box-sizing: border-box;
     color: #0073b1;
     font-size: 20px;
     font-weight: 600;
-    /* height: 32px; */
-    /* line-height: 32px; */
     overflow: hidden;
     outline-width: 2px;
-    /* padding: 5px 9px; */
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
+    padding: 5px 10px;
     text-decoration: none;
     transition-duration: 167ms;
     transition-property: background-color, color, -webkit-box-shadow;
@@ -60,10 +52,12 @@
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
     vertical-align: middle;
     z-index: 0;
-    color: var(--color-action, #0a66c2) !important;
-    border-radius: 28px !important;
+    color: var(--color-action, #0a66c2);
+    border-radius: 24px;
     position: relative;
-    display: inline-block
+    display: inline-block;
+    bottom: 1px;
+    left: 1px;
 }
 
 .signin-page-join-btn:hover {

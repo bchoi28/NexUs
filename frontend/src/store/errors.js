@@ -1,6 +1,3 @@
-
-// import csrfFetch from "./csrf";
-
 export const RECEIVE_SESSION_ERRORS = 'session/RECEIVE_SESSION_ERRORS';
 export const REMOVE_SESSION_ERRORS = 'session/REMOVE_SESSION_ERRORS';
 
@@ -19,7 +16,6 @@ export const removeSessionErrors = () => {
 
 const initialState = {};
 const errorsReducer = (state = initialState, action) => {
-    // const newState = { ...state };
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
             return action.errors

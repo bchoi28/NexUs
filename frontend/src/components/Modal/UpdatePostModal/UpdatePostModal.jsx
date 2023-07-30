@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../store/user';
 
 const UpdatePostModal = ({ handleClose, post, currentUser }) => {
-    // handleClose = () => {setModalIsOpen(false)}
-    // passed from ModalContainer->ModalSwitch->PostModal
     const dispatch = useDispatch();
-    // const user = useSelector(getUser);
-    // subscribes post modal to current user
     const [body, setBody] = useState(post.body)
     const [photoFile, setPhotoFile] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(post.photoUrl);
@@ -27,7 +23,6 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
         } else setPhotoUrl(null);
     };
 
-    // updates a post
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();

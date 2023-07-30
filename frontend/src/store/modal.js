@@ -17,13 +17,11 @@ export const closeModal = () => {
 
 export const getModalInfo = (state) => state.modal;
 
-// initial state
 const initialState = {
     modalType: null,
     modalProps: {}
 };
 
-// reducer
 const modalReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'OPEN_MODAL':

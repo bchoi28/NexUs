@@ -18,7 +18,7 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     const [locationType, setLocationType] = useState(experienceInfo.locationType);
     const [industry, setIndustry] = useState(experienceInfo.industry);
     const [currentRoleChecked, setCurrentRoleChecked] = useState(experienceInfo.convertedEndDate === 'Current');
-    debugger
+
     const [startMonth, startYear] = experienceInfo.convertedStartDate.split(' ');
     const [selectedStartMonth, setSelectedStartMonth] = useState(startMonth);
     const [selectedStartYear, setSelectedStartYear] = useState(startYear);
@@ -89,14 +89,14 @@ const UpdateExperienceModal = ({ experienceInfo }) => {
     }
 
     const formatDateForRails = (month, year) => {
-        debugger
+
         const monthIndex = new Date(Date.parse(`${month} 1, ${year}`)).getMonth() + 1;
         const formattedMonth = String(monthIndex).padStart(2, "0");
         return `${year}-${formattedMonth}-01`;
     };
 
     const handleUpdateExperience = async (e) => {
-        debugger
+
         e.preventDefault();
         const startDate = formatDateForRails(selectedStartMonth, selectedStartYear);
         let endDate;

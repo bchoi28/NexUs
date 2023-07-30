@@ -19,10 +19,11 @@
     width: 100%;
 }
 
-.update-cover-photo-header {
+.update-photo-header {
     display: flex;
-    padding: 10px;
-    border-bottom: 0.5px solid var(--color-text-light);
+    padding: 12px;
+    /* padding-top: 12px */
+    border-bottom: 1px solid var(--color-border-light);
     height: 50px
 }
 
@@ -42,10 +43,10 @@
     margin-top: 20px
 }
 
-.update-cover-photo-preview-close {
+.update-profile-photo-preview-close {
     position: absolute;
     top: 10px;
-    right: 11px;
+    right: 200px;
     font-weight: 400;
     border-radius: 50%;
     padding: 4px 5.5px 2px 5.5px;
@@ -57,7 +58,7 @@
     color: #fff
 }
 
-.update-cover-photo-preview-close:hover {
+.update-profile-photo-preview-close:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
 

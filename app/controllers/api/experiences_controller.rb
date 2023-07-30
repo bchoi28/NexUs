@@ -12,7 +12,7 @@ class Api::ExperiencesController < ApplicationController
     end
 
     def update
-        # debugger
+        # 
         @experience = Experience.find(params[:id])
 
         if @experience.update(experience_params)

@@ -38,16 +38,21 @@ require "open-uri"
       lname: 'Boi',
       pronouns: 'He/Him',
       headline: 'Founder @ Nexus | Software Engineer',
-      location_country_region: 'USA',
+      location_country_region: 'Earth-001',
       location_city: 'New York',
       about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
     ).tap do |user|
-        file = File.open("frontend/public/assets/images/seeds/melon-usk-circle.png")
+        file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo1.jpg")
         user.photo.attach(
           io: file,
-          filename: "melon-usk-circle.png",
+          filename: "demo1.jpg",
+          content_type: "image/jpg"
+        )
+        user.cover_photo.attach(
+          io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo_cover.png"),
+          filename: "demo_cover.png",
           content_type: "image/png"
-      )
+        )
       puts "demo-user created"
 
       Experience.create!(
@@ -98,19 +103,19 @@ require "open-uri"
     user2 = User.create!(
       email: 'zark@user.io',
       password: 'password',
-      fname: 'Zark',
-      lname: 'Muckerberg',
+      fname: 'Nodnarb',
+      lname: 'Iohc',
       pronouns: 'He/Him',
       headline: 'Co-Founder & CEO @ Meta',
       location_country_region: 'Virtual Reality',
       location_city: 'Metaverse',
       about: 'Diving deep into the realm of the Metaverse, I\'m on a mission to connect the digital universe and shape the future of virtual interactions. As an innovative meta-hacker, I thrive in the depths of cyberspace, exploring new frontiers and redefining the boundaries of human connection.'
     ).tap do |user|
-      file_path = "frontend/public/assets/images/seeds/zark-muckerberg.png"
+      file_path = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo6.jpg")
       user.photo.attach(
-        io: File.open(file_path),
-        filename: "zark-muckerberg.png",
-        content_type: "image/png"
+        io: file_path,
+        filename: "demo6.jpg",
+        content_type: "image/jpg"
       )
 
       Experience.create!(
@@ -145,7 +150,7 @@ require "open-uri"
       lname: 'Xenomorph',
       pronouns: 'It',
       headline: 'Intergalactic Network Engineer',
-      location_country_region: 'Extraterrestrial',
+      location_country_region: 'Earth-X99',
       location_city: 'LV-426',
       about: 'Specializing in interstellar communication and networking. As an extraterrestrial being, I bring a unique perspective to the world of technology. I am dedicated to building the infrastructure that connects star systems and enables seamless communication across the cosmos. Join me in advancing intergalactic connectivity and exploring new frontiers.'
     ).tap do |user|
@@ -161,8 +166,8 @@ require "open-uri"
         company_name: "Weyland-Yutani Corporation",
         location: "LV-426",
         location_type: "Research Facility",
-        start_date: Date.parse("January 1550"),
-        end_date: Date.parse("March 1600"),
+        start_date: Date.parse("January 1925"),
+        end_date: Date.parse("March 2000"),
         industry: "Extraterrestrial Biology",
         description: "Engaged in groundbreaking research on the Xenomorph species for the Weyland-Yutani Corporation. Conducted extensive studies to unravel the mysterious life cycle, behavior, and genetic makeup of the species. Analyzed their unique adaptation capabilities and developed advanced containment protocols. Contributed to the corporation's pursuit of harnessing the Xenomorph's potential for commercial and scientific applications.",
         user: user
@@ -174,8 +179,8 @@ require "open-uri"
         company_name: "United Galactic Exterminators",
         location: "Various Spacecraft",
         location_type: "Interstellar",
-        start_date: Date.parse("June 2175"),
-        end_date: Date.parse("December 2180"),
+        start_date: Date.parse("June 2000"),
+        end_date: Date.parse("December 2020"),
         industry: "Alien Infestation Management",
         description: "Specialized in handling extraterrestrial infestations, specifically the Xenomorph species, aboard spacecraft. Led extermination teams in identifying, containing, and eradicating Xenomorph threats. Developed innovative strategies to minimize collateral damage and protect crew members. Collaborated with spacecraft engineers to enhance vessel designs and security measures against future infestations.",
         user: user
@@ -191,18 +196,18 @@ require "open-uri"
   user4 = User.create!(
     email: 'darth@user.io',
     password: 'password',
-    fname: 'Darth',
-    lname: 'Vader, Lord',
+    fname: 'Danbron',
+    lname: 'Cohi',
     pronouns: 'He/Him',
     headline: 'CEO, Death Star 1 & 2',
-    location_country_region: 'Galactic Empire',
+    location_country_region: 'Earth-202',
     location_city: 'Death Star',
     about: 'Harnessing the power of the Force to code in the dark side. As a Sith Lord and software engineer, I bring balance to the digital realm. Join me on the dark side of development and together we shall rule the galaxy of software engineering.'
   ).tap do |user|
       user.photo.attach(
-        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/darth-vader.png"),
-        filename: "darth-vader.png",
-        content_type: "image/png"
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo5.jpg"),
+        filename: "demo5.jpg",
+        content_type: "image/jpg"
       )
       Experience.create!(
         title: "Lead Sith Developer",
@@ -223,51 +228,118 @@ require "open-uri"
       body: "Seeking a skilled Sith Lord for a senior software engineering position. Must have experience in building Death Star-level applications and knowledge of dark side development techniques. Embrace the power of the dark side and take your career to the next level! #SeniorSoftwareEngineer #SithLordHiring #DarkSideDevelopment"
     )
 
-# User.create!(
-#   email: 'babygroot@user.io',
-#   password: 'password',
-#   fname: 'Baby',
-#   lname: 'Groot',
-#   pronouns: 'He/Him',
-#   headline: 'Adventurous Sapling from Outer Space',
-#   location_country_region: 'Galaxy',
-#   location_city: 'Knowhere',
-#   about: 'I am Baby Groot, a lovable and adventurous sapling hailing from the cosmos. Despite my small size, I possess immense courage and a special connection with nature. Join me on cosmic journeys as I dance to the beats of the galaxy, spreading joy and defeating villains with my friends from the Guardians of the Galaxy.'
-# ).tap do |user|
-#   user.photo.attach(
-#     io: File.open('path/to/baby_groot_photo.jpg'), # Provide the path to Baby Groot's photo
-#     filename: 'baby_groot_photo.jpg',
-#     content_type: 'image/jpeg' # Adjust the content type based on the actual file type
-#   )
-# end
 
+  user5 = User.create!(
+    email: 'nardbon@hogwarts.io',
+    password: 'password',
+    fname: 'Nardbon',
+    lname: 'Hico',
+    pronouns: 'They/Them',
+    headline: 'Head of Magical AI at Hogwarts School of Witchcraft and Wizardry',
+    location_country_region: 'Earth-UK88',
+    location_city: 'Hogwarts',
+    about: 'Blending the magic of Hogwarts with the power of artificial intelligence. As a witch/wizard and software engineer, I\'m at the intersection of magic and machine learning. Join me in creating enchanting algorithms and charming neural networks.'
+  ).tap do |user|
+      user.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo4.jpg"),
+        filename: "demo4.jpg",
+        content_type: "image/jpg"
+      )
+      Experience.create!(
+        title: "Lead Magical AI Engineer",
+        employment_type: "Full-time",
+        company_name: "Hogwarts School of Witchcraft and Wizardry",
+        location: "Hogwarts",
+        location_type: "On-site",
+        start_date: Date.parse("January 2010"),
+        end_date: Date.parse("December 2020"),
+        industry: "Artificial Intelligence",
+        description: "Led the development of magical AI solutions at Hogwarts. Implemented spell-binding machine learning models and utilized charm-infused algorithms to create unique magical experiences. Pushed the boundaries of what's possible at the intersection of magic and technology.",
+        user: user
+      )
+    end
 
+  post6 = Post.create!(
+    author: user5,
+    body: "Seeking an experienced witch/wizard for a magical AI engineer position. Must have experience in creating charm-infused algorithms and a deep understanding of magical machine learning techniques. Step into the enchanting world of magical AI and take your career to new magical heights! #AIEngineer #HogwartsHiring #MagicalAI"
+  )
 
+  user6 = User.create!(
+  email: 'barbieken@dreamhouse.io',
+  password: 'password',
+  fname: 'Brando',
+  lname: 'Cho',
+  pronouns: 'Ken/Ken',
+  headline: 'CTO at DreamHouse Tech Inc',
+  location_country_region: 'Earth-008',
+  location_city: 'Barbieland',
+  about: 'Revolutionizing the dollhouse industry with cutting-edge tech. As a software engineer and toy figure, I\'m making DreamHouse the smartest house around. Join me in transforming toys into tech wonders.'
+  ).tap do |user|
+      user.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo3.jpg"),
+        filename: "demo3.jpg",
+        content_type: "image/jpg"
+      )
+      Experience.create!(
+        title: "Chief Technology Officer",
+        employment_type: "Full-time",
+        company_name: "DreamHouse Tech Inc",
+        location: "Barbieland",
+        location_type: "On-site",
+        start_date: Date.parse("January 2015"),
+        end_date: nil,
+        industry: "Toy Technology",
+        description: "Leading the tech revolution at DreamHouse. Spearheading initiatives to create smart dollhouses integrated with advanced AI and IoT technologies. Turning DreamHouse into a leading name in the toy tech industry.",
+        user: user
+      )
+    end
 
+  post7 = Post.create!(
+    author: user6,
+    body: "We're on the lookout for innovative engineers who can help bring DreamHouse to the next level. Experience in AI and IoT is a must. Let's make playtime more exciting with tech! #ToyTech #DreamHouseHiring #AI #IoT"
+  )
 
-#   # More users
-#   10.times do 
-#     User.create!({
-#       username: Faker::Internet.unique.username(specifier: 3),
-#       email: Faker::Internet.unique.email,
-#       password: 'password'
-#     }) 
-#   end
+  user7 = User.create!(
+  email: 'brandinachai@cybernet.io',
+  password: 'password',
+  fname: 'Brandina',
+  lname: 'Chai',
+  pronouns: 'She/Her',
+  headline: 'Lead Software Engineer at QuantumCyber Tech',
+  location_country_region: 'Earth-49028',
+  location_city: 'Quarkonia',
+  about: 'Pushing the boundaries of technology and reality at QuantumCyber. As a software engineer and avid sci-fi enthusiast, I\'m working on fusing the worlds of coding and quantum physics. Join me in exploring the unknown realms of tech.'
+  ).tap do |user|
+    user.photo.attach(
+      io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo8.jpg"),
+      filename: "demo8.jpg",
+      content_type: "image/jpg"
+    )
+    Experience.create!(
+      title: "Lead Software Engineer",
+      employment_type: "Full-time",
+      company_name: "QuantumCyber Tech Inc",
+      location: "Quarkonia",
+      location_type: "On-site",
+      start_date: Date.parse("March 2016"),
+      end_date: nil,
+      industry: "Quantum Computing",
+      description: "Navigating the frontiers of quantum computing at QuantumCyber. Leading efforts to synthesize quantum mechanics and software engineering. Transforming QuantumCyber into a visionary in the tech industry.",
+      user: user
+    )
+    end
 
-  # Post.create!(
-  #   author_id: 1,
-  #   body: "Attention cosmic graduates! I have successfully completed my Intergalactic Academy training, and now I'm ready to embark on my cosmic coding journey. Seeking interstellar opportunities to apply my skills and contribute to groundbreaking space projects. Let's take coding to new frontiers!"
-  # )
+  post8 = Post.create!(
+    author: user7,
+    body: "Did you know that the multiverse isn't just a concept of science fiction? It's real, and we've unlocked its secrets with the power of JavaScript. At QuantumCyber, we're using the principles of code to explore parallel universes. Stay tuned for more exciting updates! #Multiverse #JavaScript #QuantumComputing"
+  ).tap do |post|
+      post.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/multiverse.jpg"),
+        filename: "multiverse.jpg"
+      )
+  end
 
-  # Post.create!(
-  #   author_id: 1,
-  #   body: "Calling all interstellar job seekers! I'm on the lookout for an out-of-this-world career opportunity. With my stellar skills in space engineering and cosmic problem-solving, I'm ready to make an impact. Reach out if you have any cosmic job openings or if you're interested in intergalactic talent!"
-  # )
-
-  # Post.create!(
-  #   author_id: 1,
-  #   body: "Greetings space explorers! Just discovered a fascinating application of JavaScript in intergalactic travel. By harnessing the power of this universal language, we can optimize spacecraft navigation, calculate warp speeds, and simulate celestial phenomena. Let's dive into the wonders of JavaScript in the cosmic realm!"
-  # )
+  puts "finished creating users and their experiences"
 
   puts "creating likes..."
   post1.likes.create!(liker: user2)
@@ -289,6 +361,16 @@ require "open-uri"
   post5.likes.create!(liker: user1)
   post5.likes.create!(liker: user2)
   post5.likes.create!(liker: user3)
+
+  post6.likes.create!(liker: user5)
+  post6.likes.create!(liker: user6)
+
+  post7.likes.create!(liker: user1)
+
+  post8.likes.create!(liker: user4)
+  post8.likes.create!(liker: user5)
+  post8.likes.create!(liker: user6)
+
   puts "likes created"
 
   puts "creating comments..."
@@ -314,11 +396,41 @@ require "open-uri"
   connection2 = Connection.create!(
     connector: user3, connectee: user1, status: "connected"
   )
+  connection3 = Connection.create!(
+    connector: user5, connectee: user2, status: "connected"
+  )
+  connection4 = Connection.create!(
+    connector: user2, connectee: user3, status: "connected"
+  )
+  connection5 = Connection.create!(
+    connector: user3, connectee: user4, status: "connected"
+  )
+  connection6 = Connection.create!(
+    connector: user4, connectee: user5, status: "connected"
+  )
+  connection7 = Connection.create!(
+    connector: user5, connectee: user6, status: "connected"
+  )
+  connection12 = Connection.create!(
+    connector: user7, connectee: user3, status: "connected"
+  )
+  connection13 = Connection.create!(
+    connector: user7, connectee: user2, status: "connected"
+  )
   puts "connections created"
 
   puts "creating connection requests..."
-  connection3 = Connection.create!(
+  connection8 = Connection.create!(
     connector: user4, connectee: user1, status: "pending"
+  )
+  connection9 = Connection.create!(
+    connector: user1, connectee: user6, status: "pending"
+  )
+  connection10 = Connection.create!(
+    connector: user2, connectee: user6, status: "pending"
+  )
+  connection11 = Connection.create!(
+    connector: user7, connectee: user1, status: "pending"
   )
   puts "connection requests created"
 

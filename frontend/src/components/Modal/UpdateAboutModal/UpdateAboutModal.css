@@ -10,10 +10,15 @@
 .update-about-header {
     display: flex;
     padding: 10px;
-    border-bottom: 0.5px solid var(--color-text-light);
+    border-bottom: 1px solid var(--color-border-light);
 }
 
-.update-about-title {}
+.update-about-title {
+    /* position: relative;
+    top: 3px;
+    left: 3px; */
+    padding: 2px 3px;
+}
 
 .about-subheading {
     font-size: 12px;

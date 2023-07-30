@@ -61,7 +61,7 @@ const SignInForm = () => {
     }
 
     if (currentUser) {
-        debugger
+
         dispatch(fetchPosts())
         return <Redirect to='/feed' />
     }

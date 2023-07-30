@@ -1,7 +1,6 @@
 import SplashSignInForm from "../SplashSignInForm";
 import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
-// import spaceImage from '../../images/space.jpg';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -25,13 +24,12 @@ const SplashPage = () => {
     }
 
     if (currentUser) {
-        debugger
         dispatch(fetchPosts());
         return <Redirect to='/feed' />
     }
 
     return (
-        <>
+        <div className="splash-container">
             <nav className="splash-nav-container">
                 <SplashNavBar />
             </nav>
@@ -40,22 +38,28 @@ const SplashPage = () => {
                     <div className="splash-page-section-1-left">
                         <h1 className="splash-title-1">
                             Welcome to your
-                            <span className="toggle-space" onMouseEnter={toggleSpace} onMouseLeave={toggleSpace}>
-                                {showSpace ? ' intergalactic ' : ' professional '}
-                            </span>
+                            <div className="toggle-space" onMouseEnter={toggleSpace} onMouseLeave={toggleSpace} >
+                                <span >
+                                    {showSpace ? ' multiversal ' : ' professional '}
+                                </span>
+                            </div>
                             community
                         </h1>
                         <SplashSignInForm />
                     </div>
                     <div className="splash-page-section-1-right">
                         <img
-                            className="splash-image"
+                            className={`splash-image-1 ${showSpace ? 'hide' : 'show'}`}
                             src='https://nexus-seeds.s3.amazonaws.com/nexus-images/splash.svg'
-                            alt="Welcome to your professional community" />
+                            alt="splash" />
+                        <img
+                            className={`splash-image-2 ${showSpace ? 'show' : 'hide'}`}
+                            src='/assets/images/seeds/splash3.JPG'
+                            alt="splash" />
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

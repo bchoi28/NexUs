@@ -43,7 +43,7 @@ export const getConnectionRequests = state => state.connections.connectionReques
 export const getConnections = state => state.connections.connections
 export const getConnectionsConnectedPending = state => state.connections.connectionsConnectedPending;
 export const getConnectedStatus = state => {
-    debugger
+
     if (state.user.user) {
         const currentUserId = state.session.user.id;
         const profileUserId = state.user.user.id;
@@ -74,10 +74,10 @@ export const fetchAllUserConnections = (userId) => async dispatch => {
 };
 
 export const fetchAllUserConnectionsConnectedPending = () => async dispatch => {
-    debugger
+
     const res = await csrfFetch('/api/connections/fetch_user_connections_connected_pending');
     if (res.ok) {
-        debugger
+
         const data = await res.json();
         dispatch(receiveConnectionsConnectedPending(data.connections));
     }
@@ -105,27 +105,23 @@ export const createConnection = connection => async dispatch => {
 };
 
 export const updateConnection = (connectionId, connection) => async dispatch => {
-    debugger
+
     const res = await csrfFetch(`/api/connections/${connectionId}`, {
         method: 'PATCH',
         body: JSON.stringify({ connection: connection })
     });
 
     if (res.ok) {
-        debugger
+
         const data = await res.json();
         dispatch(receiveConnections(data.connections));
     }
 };
 
 export const deleteConnection = connectionId => async dispatch => {
-    const res = await csrfFetch(`/api/connections/${connectionId}`, {
+    await csrfFetch(`/api/connections/${connectionId}`, {
         method: 'DELETE'
     });
-
-    if (res.ok) {
-        // dispatch(removeConnection(connectionId));
-    }
 };
 
 const initialState = {

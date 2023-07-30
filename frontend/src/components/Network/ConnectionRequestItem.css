@@ -11,6 +11,8 @@
     height: 50px;
     width: 50px;
     cursor: pointer;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .request-info {

@@ -4,9 +4,6 @@ import { createPost } from '../../../store/post';
 import { useDispatch } from 'react-redux';
 
 const CreatePostModal = ({ handleClose, currentUser }) => {
-    // handleClose = () => {setModalIsOpen(false)}
-    // passed from ModalContainer->ModalSwitch->PostModal
-
     const dispatch = useDispatch();
 
     const [body, setBody] = useState('')
@@ -26,7 +23,6 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
         } else setPhotoUrl(null);
     };
 
-    // creates a post
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -37,7 +33,6 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
         }
 
         dispatch(createPost(formData))
-        // dispatch(createPost('body': body, 'photo': photoFile))
         handleClose();
     }
 

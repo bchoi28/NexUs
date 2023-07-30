@@ -1,18 +1,17 @@
 import './NetworkPage.css';
 import FeedNavBar from '../FeedNavBar';
 import { useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests, getConnections, removeConnections } from '../../store/connection';
 import ConnectionRequestItem from './ConnectionRequestItem';
 import ConnectionItem from './ConnectionItem';
 import { getSessionUser } from '../../store/session';
 import { useHistory } from 'react-router-dom';
-import Login from '../Login';
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
     const history = useHistory()
-    debugger
+
     const currentUser = useSelector(getSessionUser);
     if (!currentUser) {
         history.push('/login');
@@ -29,26 +28,17 @@ const NetworkPage = () => {
     })
 
     useEffect(() => {
-        debugger
+
         if (currentUser) {
-            debugger
+
             dispatch(fetchAllConnectionRequests())
             dispatch(fetchAllConnections());
         }
         return (() => {
-            debugger
+
             dispatch(removeConnections())
         })
     }, [])
-
-    // if (!connectionRequests.length) {
-    //     return <div>Loading connections...</div>
-    // }
-
-    // if (!currentUser || !connectionRequests) {
-    //     debugger
-    //     return <Login />
-    // }
 
     const loadingRequests = !connectionRequests ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliance requests.</div> : null;
     const loadingConnections = !connectionsCount ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliances.</div> : null;
@@ -70,37 +60,37 @@ const NetworkPage = () => {
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-address-book"></i>
                             <span>Contacts</span>
-                            <span className='manage-network-number'>13</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '13'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-user"></i>
                             <span>Following & Followers</span>
-                            <span className='manage-network-number'>20</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '20'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-people-group"></i>
                             <span>Groups</span>
-                            <span className='manage-network-number'>9</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '9'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-calendar-days"></i>
                             <span>Events</span>
-                            <span className='manage-network-number'>2</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '2'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-file-lines"></i>
                             <span>Pages</span>
-                            <span className='manage-network-number'>65</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '60'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-newspaper"></i>
                             <span>Newsletters</span>
-                            <span className='manage-network-number'>4</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '4'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-hashtag"></i>
                             <span>Hashtags</span>
-                            <span className='manage-network-number'>7</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '7'}</span>
                         </div>
                     </div>
                 </div>
