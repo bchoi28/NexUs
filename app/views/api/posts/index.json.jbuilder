@@ -44,3 +44,4 @@ json.posts do
         end
     end
 end
+json.hasMorePosts @has_more_posts
