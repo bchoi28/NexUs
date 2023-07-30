@@ -38,6 +38,9 @@ const Feed = () => {
         //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         //     dispatch(fetchSessionUser(currentUser.id));
         // }
+        dispatch(fetchSessionUser(currentUser.id));
+
+
         if (!posts) {
             dispatch(fetchPosts());
         }

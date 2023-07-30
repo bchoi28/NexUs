@@ -16,7 +16,8 @@
     border-radius: 50%;
     /* margin-top: 6px; */
     position: relative;
-    bottom: 4px
+    bottom: 4px;
+    object-fit: cover;
 }
 
 .post-modal-name-headline {

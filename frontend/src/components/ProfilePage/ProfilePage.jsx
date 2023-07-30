@@ -6,7 +6,7 @@ import FeedNavBar from '../FeedNavBar';
 import { useParams, NavLink } from 'react-router-dom';
 import { openModal } from '../../store/modal';
 import ModalRoot from '../Modal/ModalRoot';
-import { getSessionUser } from '../../store/session';
+import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { removeUser, getOtherUsers, fetchAllOtherUsers } from '../../store/user';
 import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
@@ -39,7 +39,6 @@ const ProfilePage = () => {
     }
     const connections = Object.values(useSelector(getConnections));
     const connectionStatus = useSelector(getConnectedStatus);
-    console.log(connectionStatus);
     // const connectedStatus = connections.some(connection => connection.user.id === currentUser.id)
     const connectionsCount = connections?.length;
 
@@ -70,6 +69,12 @@ const ProfilePage = () => {
         document.body.style.overflow = 'hidden'
 
         dispatch(openModal('UpdateCoverPhoto', { profileCoverPhoto: profileUser.coverPhotoUrl ? profileUser.coverPhotoUrl : null }))
+    }
+    const handleEditPhoto = (e) => {
+        e.preventDefault();
+        document.body.style.overflow = 'hidden'
+
+        dispatch(openModal('UpdatePhoto', { profilePhoto: profileUser.photoUrl ? profileUser.photoUrl : null }))
     }
     const handleEditAbout = (e) => {
         e.preventDefault();
@@ -103,13 +108,14 @@ const ProfilePage = () => {
         const connection = {
             status: 'pending',
             connector_id: currentUser.id,
-            connectee_id: profileUser.Id
+            connectee_id: id
         }
         dispatch(createConnection(connection))
     }
 
 
     useEffect(() => {
+        dispatch(fetchSessionUser(currentUser.id));
         if (currentUser) {
             dispatch(fetchUser(id));
             dispatch(fetchAllUserConnections(id));
@@ -138,7 +144,8 @@ const ProfilePage = () => {
     //     // return <Redirect to='/' />
     // }
 
-    const cameraIcon = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} className="fa-solid fa-camera camera-button"></i> : null;
+    const cameraIcon1 = (currentUser.id === parseInt(id)) ? <i onClick={handleEditPhoto} className="fa-solid fa-camera camera-button"></i> : null;
+    const cameraIcon2 = (currentUser.id === parseInt(id)) ? <i onClick={handleEditCoverPhoto} className="fa-solid fa-camera camera-button-2"></i> : null;
 
     const aboutEditIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleEditAbout} className="edit-about-button fa-solid fa-pencil"></i> : null;
@@ -147,7 +154,6 @@ const ProfilePage = () => {
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
 
-    debugger
     let buttonContent;
     if (currentUser.id != id && connectionStatus) {
         if (connectionStatus === 'connected') {
@@ -161,8 +167,7 @@ const ProfilePage = () => {
         } else if (connectionStatus === 'pending') {
             buttonContent = (
                 <button className='other-user-pending-button'>
-                    {/* <i className="fa-solid fa-clock"></i> */}
-                    <i className="fa-solid fa-user-check"></i>
+                    <i className="fa-solid fa-user-clock"></i>
 
                     <span className='other-user-connect-button-text-pending'>Pending</span>
                 </button>
@@ -196,7 +201,10 @@ const ProfilePage = () => {
                                 <div className='profile-photo-camera-container'>
                                     <img className='profile-page-photo' src={profilePhoto} alt="profile" />
                                     <div className='camera-icon-container'>
-                                        {cameraIcon}
+                                        {cameraIcon1}
+                                    </div>
+                                    <div className='camera-icon-container'>
+                                        {cameraIcon2}
                                     </div>
                                 </div>
                                 <div className='profile-intro-info' >
@@ -242,9 +250,9 @@ const ProfilePage = () => {
                                         {aboutEditIcon}
                                     </div>
                                 </div>
-                                <div className="profile-about-body">
+                                <div className={`profile-about-body ${!profileUser.about ? 'border-none' : ''}`}>
                                     {/* <div>{isTruncated ? renderTruncatedText() : profileUser.about}</div> */}
-                                    <div>{profileUser.about ? profileUser.about : <div style={{ fontStyle: 'italic', color: 'var(--color-text-light)' }}>no bio added</div>}</div>
+                                    <div>{profileUser.about ? profileUser.about : <div className='border-none' style={{ fontStyle: 'italic', color: 'var(--color-text-light)' }}>no bio added</div>}</div>
                                 </div>
                                 {/* {profileUser.about?.length > 347 && (
                                     <button className='see-more-button' onClick={handleReadMoreClick}>

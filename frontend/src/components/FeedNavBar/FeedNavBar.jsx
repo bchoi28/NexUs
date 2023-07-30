@@ -65,6 +65,17 @@ const FeedNavBar = () => {
                         <span className="icon-text">My Network</span>
                         {connectionRequestsCount > 0 && <span className='connections-request-count-notification'>{connectionRequestsCount}</span>}
                     </div>
+                    <div className="icon-container-messaging">
+                        <i className="fa-solid fa-comment-dots fa-flip-horizontal main-nav-icons"></i>
+                        <span className="icon-text">Messaging</span>
+                        <span className="nav-bar-tooltip-text">coming soon!</span>
+
+                    </div>
+                    <div className="icon-container-jobs">
+                        <i className="fa-solid fa-briefcase main-nav-icons"></i>
+                        <span className="icon-text">Jobs</span>
+                        <span className="nav-bar-tooltip-text">coming soon!</span>
+                    </div>
                     {/* <Link to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank">
                         <div className='icon-container'>
                             <i className="fa-brands fa-linkedin-in main-nav-icons"></i>

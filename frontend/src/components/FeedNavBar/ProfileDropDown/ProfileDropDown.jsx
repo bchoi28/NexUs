@@ -11,7 +11,6 @@ const ProfileDropDown = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const currentUser = useSelector(getSessionUser);
-
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };

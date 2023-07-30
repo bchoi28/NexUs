@@ -92,6 +92,7 @@
     position: relative;
     bottom: 35px;
     border: 1px solid #fff;
+    object-fit: cover;
 }
 
 .profile-badge-link {

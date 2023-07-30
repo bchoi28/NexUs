@@ -70,37 +70,37 @@ const NetworkPage = () => {
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-address-book"></i>
                             <span>Contacts</span>
-                            <span className='manage-network-number'>13</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '13'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-user"></i>
                             <span>Following & Followers</span>
-                            <span className='manage-network-number'>20</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '20'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-people-group"></i>
                             <span>Groups</span>
-                            <span className='manage-network-number'>9</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '9'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-calendar-days"></i>
                             <span>Events</span>
-                            <span className='manage-network-number'>2</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '2'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-file-lines"></i>
                             <span>Pages</span>
-                            <span className='manage-network-number'>65</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '60'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-newspaper"></i>
                             <span>Newsletters</span>
-                            <span className='manage-network-number'>4</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '4'}</span>
                         </div>
                         <div className='manage-network-item'>
                             <i className="fa-solid fa-hashtag"></i>
                             <span>Hashtags</span>
-                            <span className='manage-network-number'>7</span>
+                            <span className='manage-network-number'>{currentUser.id > 5 ? '0' : '7'}</span>
                         </div>
                     </div>
                 </div>

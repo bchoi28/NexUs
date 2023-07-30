@@ -14,7 +14,7 @@ const SplashPage = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const [showSpace, setShowSpace] = useState(false);
-
+    debugger
     const toggleSpace = (e) => {
         setShowSpace(prevState => !prevState)
     };

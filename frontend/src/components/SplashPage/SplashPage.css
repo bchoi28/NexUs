@@ -79,16 +79,19 @@
     display: block;
     z-index: 1;
     border-radius: 5%;
+    /* opacity: 1; */
 }
 
 .hide {
     opacity: 0;
     transition: opacity 1s;
+    /* animation: fadeOut 1s; */
 }
 
 .show {
     opacity: 1;
     transition: opacity 1s;
+    animation: fadeIn 1s;
 }
 
 .splash-image-2 {
@@ -99,7 +102,7 @@
     top: 1px;
     left: 0;
     border-radius: 5%;
-    animation: fadeIn 1s;
+    /* opacity: 0; */
 }
 
 @keyframes fadeIn {

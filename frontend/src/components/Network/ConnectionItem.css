@@ -1,6 +1,6 @@
 .connection-item-container {
-    margin: 0 8px;
-    width: 31%;
+    margin: 0 5px;
+    flex-basis: 31%;
     padding-bottom: 15px;
 }
 
@@ -34,6 +34,7 @@
     bottom: 35px;
     border: 1px solid #fff;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .connection-profile-badge-link {
@@ -42,7 +43,10 @@
     font-weight: 500;
     font-size: 17px;
     position: relative;
-    bottom: 21px
+    bottom: 21px;
+    text-align: center;
+    margin: auto;
+    justify-self: center;
 }
 
 .connection-profile-badge-link:hover {

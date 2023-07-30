@@ -8,15 +8,15 @@ const ConnectionItem = ({ connection }) => {
             <div className='connection-badge'>
                 <img className='badge-background' src={user.coverPhotoUrl ? user.coverPhotoUrl : '/assets/images/seeds/badge-background.png'} alt="banner" />
                 <div>
-                    <NavLink to={`profile/${user.id}`} ><img className='connection-badge-photo' src={user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle'} alt="profile" /></NavLink>
+                    <NavLink to={`profile/${user.id}`} ><img className='connection-badge-photo' src={user.photoUrl ? user.photoUrl : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" /></NavLink>
                 </div>
-                <div>
-                    <NavLink className='connection-profile-badge-link' to={`/profile/${user.id}`}>{user.fName} {user.lName}</NavLink>
-                </div>
+                <NavLink to={`/profile/${user.id}`}>
+                    <div className='connection-profile-badge-link' >{user.fName} {user.lName}</div>
+                </NavLink>
                 <div>
                     <div className='connection-profile-badge-headline' >{user.headline}</div>
                 </div>
-                <div className='connection-location'>{user.location}</div>
+                <div className='connection-location'>{user.location.length > 2 ? user.location : ''}</div>
             </div>
         </div>
     )

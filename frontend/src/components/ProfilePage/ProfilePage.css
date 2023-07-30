@@ -74,9 +74,23 @@
     border: 2px solid #fff;
     margin-left: 22px;
     /* box-shadow: 0px 0x 0px 1px rgba(0, 0, 0, 0.08); */
+    object-fit: cover;
 }
 
 .camera-button {
+    color: var(--primary-color);
+    position: absolute;
+    bottom: 222px;
+    left: 130px;
+    /* right: 100px; */
+    border-radius: 50%;
+    background-color: #fff;
+    /* background-color: transparent; */
+    padding: 10px;
+    cursor: pointer;
+}
+
+.camera-button-2 {
     color: var(--primary-color);
     position: relative;
     bottom: 150px;
@@ -95,7 +109,8 @@
     /* margin-bottom: 10px; */
 }
 
-.camera-button:hover {
+.camera-button:hover,
+.camera-button-2:hover {
     color: var(--secondary-color);
 }
 
@@ -205,9 +220,10 @@
     position: relative;
     font-weight: 500;
     /* top: 10px; */
-    bottom: 0px;
+    bottom: -1px;
     width: 70px;
     margin-bottom: 1px;
+    left: -1px;
 }
 
 .connection-count-message-button-container {
@@ -254,7 +270,7 @@
 .profile-about-header {
     display: flex;
     justify-content: space-between;
-    padding: 22px 25px 10px 25px;
+    padding: 22px 25px 3px 25px;
     font-weight: 600;
 }
 
@@ -274,10 +290,17 @@
 }
 
 .profile-about-body {
-    padding: 0 25px;
+    /* padding: 12px 25px; */
+    margin: 0 25px 10px 25px;
+    padding-top: 9px;
     font-size: 13px;
-    padding-bottom: 10px;
+    border-top: 1px solid var(--color-border-light);
 }
+
+.border-none {
+    border: none;
+}
+
 
 .see-more-button {
     background-color: #fff;

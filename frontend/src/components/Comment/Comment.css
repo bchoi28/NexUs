@@ -9,9 +9,10 @@
 }
 
 .comment-form-user-photo {
-    height: 45px;
+    height: 40px;
     width: 45px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .comment-create-form {

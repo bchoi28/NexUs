@@ -1,4 +1,4 @@
-import './UpdateCoverPhoto.css'
+import './UpdatePhoto.css'
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { updateUserPhoto } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
 
 
-const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
+const UpdatePhoto = ({ profilePhoto }) => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser)
@@ -15,7 +15,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     const [photoFile, setPhotoFile] = useState(null);
-    const [photoUrl, setPhotoUrl] = useState(profileCoverPhoto);
+    const [photoUrl, setPhotoUrl] = useState(profilePhoto);
 
     const handleFile = (e) => {
         const file = e.currentTarget.files[0];
@@ -39,14 +39,13 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         document.body.style.overflow = '';
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         const formData = new FormData();
         if (photoFile) {
-            formData.append('user[cover_photo]', photoFile);
+            formData.append('user[photo]', photoFile);
             dispatch(updateUserPhoto(userId, formData));
         } else {
-            formData.append('user[remove_cover_photo]', 'true');
+            formData.append('user[remove_photo]', 'true');
             dispatch(updateUserPhoto(userId, formData));
         }
         handleClose();
@@ -57,7 +56,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         photoPreview = (
             <div className='update-cover-photo-preview-container'>
                 <img className='update-cover-photo-preview' src={photoUrl} alt="" />
-                <button className='update-cover-photo-preview-close' onClick={handleRemovePhoto}>X</button>
+                <button className='update-profile-photo-preview-close' onClick={handleRemovePhoto}>X</button>
             </div>
         )
     }
@@ -72,8 +71,8 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         >
 
             <form className='update-cover-photo-container' onSubmit={handleSubmit}>
-                <header className='update-cover-photo-header'>
-                    <div className='update-about-title'>Add a background</div>
+                <header className='update-photo-header'>
+                    <div className='update-about-title'>Add a profile picture</div>
                     <div className='update-modal-close-container'>
                         <button type='button' className='update-modal-close' onClick={handleClose} >X</button>
                     </div>
@@ -107,4 +106,4 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
     )
 }
 
-export default UpdateCoverPhoto;
+export default UpdatePhoto;
