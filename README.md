@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-transparent.png" alt="logo" /></a>
+  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-new.png" alt="logo" /></a>
 </p>
 <p align="center">
   <span style="font-weight: bold">NexUs&trade;</span>: Connect with Yourself
