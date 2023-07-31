@@ -195,7 +195,7 @@
 
 .about-developer-title {
     font-size: 16px;
-    color: var(--primary-color-alt);
+    color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -216,7 +216,7 @@
 
 .about-developer-connect-title {
     font-size: 16px;
-    color: var(--primary-color-alt);
+    color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 15px

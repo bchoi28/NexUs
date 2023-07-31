@@ -45,7 +45,7 @@ const FeedNavBar = () => {
             <div className='main-nav-container'>
 
                 <div className='left-main-nav'>
-                    <div className='feed-nav-logo-us' onClick={handleHomeClick}>us</div>
+                    <img className='feed-nav-logo-us' onClick={handleHomeClick} src="/assets/images/seeds/logo-us-white.png" alt="logo" />
                     <SearchBar />
                 </div>
 

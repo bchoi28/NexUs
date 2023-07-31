@@ -98,7 +98,7 @@
 .profile-badge-link {
     text-decoration: none;
     /* color: var(--secondary-color); */
-    color: var(--primary-color-alt);
+    color: var(--primary-color);
     font-weight: 500;
     font-size: 17px;
     position: relative;
