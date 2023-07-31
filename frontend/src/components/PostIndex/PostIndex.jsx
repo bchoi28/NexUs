@@ -10,6 +10,8 @@ const PostIndex = () => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasMorePosts, setHasMorePosts] = useState(true);
+
     const observerTarget = useRef(null);
 
     const posts = useSelector(getPosts);
@@ -26,15 +28,19 @@ const PostIndex = () => {
                 dispatch(fetchPosts(page))
                     .then((hasMorePosts) => {
                         setIsLoading(false);
-                        setPage(prevPage => prevPage + 1);
-                        if (!hasMorePosts) setIsLoading(false);
+                        if (hasMorePosts) {
+                            setPage(prevPage => prevPage + 1);
+                        } else {
+                            setHasMorePosts(false);
+                        }
+                        // if (!hasMorePosts) setIsLoading(false);
                     })
                     .catch((error) => {
                         setIsLoading(false);
                         console.log(error);
                     });
             }
-        }, { threshold: 1 });
+        }, { threshold: 0.5 });
         if (observerTarget.current) observer.observe(observerTarget.current);
 
         return () => observer.disconnect();
@@ -43,13 +49,14 @@ const PostIndex = () => {
     return (
         <div className='post-items-container'>
             {postItems}
-            < div ref={observerTarget}></div>
+            <div className='observer' ref={observerTarget}></div>
 
             {isLoading && (
                 <div className='loading-posts'>
                     <div className='loading-circle'></div>
                 </div>
             )}
+
         </div >
     )
 }

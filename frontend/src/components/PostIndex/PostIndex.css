@@ -67,3 +67,7 @@
         transform: rotate(0deg);
     }
 }
+
+.observer {
+    margin: 10px;
+}
