@@ -18,19 +18,42 @@
     cursor: pointer;
 }
 
-.logo-us {
-    margin-left: 3px;
-    padding-left: 1.5px;
-    padding-right: 4px;
-    padding-bottom: 1px;
-    letter-spacing: -1px;
-    background-color: var(--primary-color);
-    color: #ffffff;
+.logo-nexus-container {
+    display: flex;
+    align-items: center;
+}
+
+.splash-nav-logo-nex {
+    color: var(--primary-color);
     font-family: 'Montserrat', sans-serif;
+    letter-spacing: -1px;
+    font-size: 29px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.logo-us-container {
+    margin-left: 3px;
+    background-color: var(--primary-color);
     border-radius: 5px;
-    font-size: 26px;
     position: relative;
-    bottom: 1px
+    height: 30px;
+    width: 34px;
+    position: relative;
+    top: 1px;
+    text-align: center;
+    padding-right: 1px;
+    /* padding-bottom: 31px; */
+}
+
+.logo-us-text {
+    font-size: 27px;
+    letter-spacing: -1px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    bottom: 7px;
+    right: 1px;
 }
 
 .splash-nav-links {

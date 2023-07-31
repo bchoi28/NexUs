@@ -16,9 +16,13 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        # debugger
         page = params[:page].to_i || 1
         per_page = 2
+
+        @posts = Post.includes(:author, :likes, :comments).order(updated_at: :desc).paginate(page: page, per_page: per_page)
+        @has_more_posts = @posts.total_pages > page
+        render :index
+
         # if params[:user_id].present? 
         #     user = User.find(params[:user_id])
         #     # @posts = user.posts.order(created_at: :desc)
@@ -30,18 +34,7 @@ class Api::PostsController < ApplicationController
         #     # @posts = Post.includes(:author).order(created_at: :desc)
         #     # renders all of the posts (recent at top)
         # end
-
-        @posts = Post.includes(:author, :likes, :comments).order(updated_at: :desc).paginate(page: page, per_page: per_page)
-        @has_more_posts = @posts.total_pages > page
-        render :index
     end
-
-    # custom index to get all posts from one user
-    # def index_of_user
-    #     user = User.find(params[:user_id])
-    #     @posts = user.posts
-    #     render :index
-    # end
 
     def show
         @post = Post.find(params[:id])
