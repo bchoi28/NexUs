@@ -73,6 +73,10 @@
     object-fit: cover;
 }
 
+/* .feed-user-profile-pic:hover {
+    box-shadow: 0 0 0 1px var(--secondary-color);
+} */
+
 .feed-create-post-button {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.6);

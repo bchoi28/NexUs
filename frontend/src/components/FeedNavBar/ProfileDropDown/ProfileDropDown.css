@@ -42,13 +42,17 @@
 .profile-button-pic {
     width: 26px;
     height: 26.5px;
-    transition: transform 0.1s ease-in-out;
-    border: 1.5px solid #fff;
-    box-shadow: 0 0 0 1px var(--secondary-color);
+    transition: box-shadow 0.1s ease;
+    border: 1px solid #fff;
+    /* box-shadow: 0 0 0 1px var(--secondary-color); */
     border-radius: 50%;
     position: relative;
     top: 1px;
     object-fit: cover;
+}
+
+.profile-button:hover .profile-button-pic {
+    box-shadow: 0 0 0 1px var(--secondary-color);
 }
 
 .profile-dropdown-menu {

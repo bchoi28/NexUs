@@ -73,7 +73,7 @@ const Feed = () => {
                     <div className='feed-middle'>
                         <div className='feed-post-form-container'>
                             <div className='feed-post-form-top'>
-                                {currentUser && <img className='feed-user-profile-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />}
+                                <NavLink to={`/profile/${currentUser.id}`} ><img className='feed-user-profile-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" /></NavLink>
                                 <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                                 {modalIsOpen &&

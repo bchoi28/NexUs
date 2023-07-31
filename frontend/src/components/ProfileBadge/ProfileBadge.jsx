@@ -38,9 +38,9 @@ const ProfileBadge = ({ user }) => {
     return (
         <div className='profile-badge-container'>
             <img className='badge-background' src={coverPhoto ? coverPhoto : '/assets/images/seeds/badge-background.png'} alt="banner" />
-            <div>
+            <NavLink to={`/profile/${currentUser.id}`}>
                 <img className='badge-photo' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
-            </div>
+            </NavLink>
             <div>
                 <NavLink className='profile-badge-link' to={`/profile/${currentUser.id}`}>{currentUser.fName} {currentUser.lName}</NavLink>
             </div>
