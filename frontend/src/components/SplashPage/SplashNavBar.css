@@ -9,6 +9,24 @@
     max-width: 1128px;
 }
 
+.splash-logo {
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.splash-logo:hover {
+    transform: scale(1.05);
+}
+
+.splash-page {
+    width: 103px;
+    height: 41.5px;
+    position: relative;
+    bottom: 1px;
+    right: 1.5px;
+}
+
 .splash-nav-logo {
     color: var(--primary-color);
     font-family: 'Montserrat', sans-serif;

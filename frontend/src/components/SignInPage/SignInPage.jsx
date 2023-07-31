@@ -14,7 +14,7 @@ const SignInPage = () => {
     const dispatch = useDispatch();
     const loading = useSelector(getUiState);
 
-    const handleClick = (e) => {
+    const handleLogo = (e) => {
         e.preventDefault();
         history.push('/')
     }
@@ -30,12 +30,9 @@ const SignInPage = () => {
         return (
             <div className='signin-page-container'>
                 <header className='signin-page-header'>
-                    <div
-                        className="signin-nav-logo"
-                        onClick={handleClick}
-                    >Nex
-                        <span className='logo-us'>us</span></div>
-                    {/* change this to image/logo later */}
+                    <div onClick={handleLogo} className="signup-nav-logo">
+                        <img className='splash-logo' src='/assets/images/seeds/logo-canvas.png' alt='logo' />
+                    </div>
                 </header>
                 <footer className='signin-page-footer'>
                     <div>New to NexUs?</div>

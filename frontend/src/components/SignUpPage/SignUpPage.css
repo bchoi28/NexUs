@@ -10,11 +10,6 @@
 }
 
 .signup-nav-logo {
-    color: var(--primary-color);
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: -1px;
-    font-size: 29px;
-    font-weight: 200;
     margin: 26.5px 0 0 76px;
     cursor: pointer
 }

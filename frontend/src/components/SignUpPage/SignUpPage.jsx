@@ -55,10 +55,12 @@ const SignUpPage = () => {
 
     return (
         <div className='signup-page-container'>
-            <header className='sigup-page-header'>
-                <div onClick={handleLogo} className="signup-nav-logo">Nex<span className='signup-logo-us'>us</span></div>
+            <div className='signup-page-header'>
+                <div onClick={handleLogo} className="signup-nav-logo">
+                    <img className='splash-logo' src='/assets/images/seeds/logo-canvas.png' alt='logo' />
+                </div>
                 <div className='signup-title'>Make the most of your professional life</div>
-            </header>
+            </div>
             <div className='signup-page-main-container'>
                 {formStep === 1 && <SignUpForm onSubmit={handleSignup} email={email} setEmail={setEmail} />}
                 {formStep === 2 && <NameForm onSubmit={handleNameForm} />}

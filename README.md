@@ -1,12 +1,9 @@
 <p align="center">
-  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-transparent.png" alt="logo" /></a>
+  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-canvas.png" width="400" alt="logo" /></a>
 </p>
 <p align="center">
-  <span style="font-weight: bold">NexUs&trade;</span>: Connect with Yourself
+  <a href="https://nexus-zblj.onrender.com" target="_blank"><span style="font-weight: bold; color: #0a66c2">NexUs&trade;</span > <span style="color: white">: Connect with Yourself</span></a>
 </p>
-
-[Live Site](https://nexus-zblj.onrender.com)
-
 
 # Table of Contents
 * [Background and Overview](#background-and-overview)
@@ -17,6 +14,8 @@
 
 
 # Background and Overview
+
+Welcome to NexUs, an inter-universal professional networking social-media application based on the popular website LinkedIn. Connect with others AND yourself from 
 
 * Languages: JavaScript, HTML5, CSS3
 * Frontend: React-Redux
