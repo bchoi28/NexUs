@@ -7,12 +7,11 @@ import ModalContainer from '../Modal/ModalContainer';
 import ModalSwitch from '../Modal/ModalContainer/ModalSwitch';
 import ModalRoot from '../Modal/ModalRoot';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeUser, getUser, fetchUser } from '../../store/user';
+import { removeUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser, fetchSessionUser } from '../../store/session';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import Login from '../Login';
 
 const Feed = () => {
 

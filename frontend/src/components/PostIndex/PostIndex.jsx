@@ -18,7 +18,6 @@ const PostIndex = () => {
     // const postItems = posts.map(post => <PostItem key={post.id} post={post} />)
 
     useEffect(() => {
-        debugger
         const observer = new IntersectionObserver((entries) => {
             const first = entries[0];
             if (first.isIntersecting) {
@@ -26,7 +25,6 @@ const PostIndex = () => {
 
                 dispatch(fetchPosts(page))
                     .then((hasMorePosts) => {
-                        debugger
                         setIsLoading(false);
                         setPage(prevPage => prevPage + 1);
                         if (!hasMorePosts) setIsLoading(false);
@@ -41,16 +39,6 @@ const PostIndex = () => {
 
         return () => observer.disconnect();
     }, [dispatch, page])
-
-    // if (posts.length === 0) {
-    //     return (
-    //         <div className='loading-posts'>
-    //             <div className='loading-circle'></div>
-    //         </div>
-    //     )
-    // }
-
-
 
     return (
         <div className='post-items-container'>
