@@ -6,11 +6,10 @@ import Logout from "./components/Logout";
 import Feed from "./components/Feed";
 import ProfilePage from "./components/ProfilePage";
 import NetworkPage from './components/Network/NetworkPage';
-import Login from './components/Login';
 import { Redirect } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-
 
   return (
     <>
@@ -18,12 +17,13 @@ function App() {
         <Route exact path="/"><SplashPage /></Route>
         <Route exact path='/signup'><SignUpPage /></Route>
         <Route exact path='/login'><SignInPage /></Route>
-        <Route exact path='/feed'><Feed /></Route>
-        <Route exact path='/logout'><Logout /></Route>
-        <Route exact path='/profile/:id' ><ProfilePage /></Route>
-        <Route exact path='/mynetwork' ><NetworkPage /></Route>
-        <Route exact path='/mynetwork1' ><Login /></Route>
-        <Route path='*'><Redirect to='/feed' /></Route>
+        <ProtectedRoute exact path="/feed" component={Feed} />
+
+        {/* <Route exact path='/feed'><Feed /></Route> */}
+        <ProtectedRoute exact path='/logout'><Logout /></ProtectedRoute>
+        <ProtectedRoute exact path='/profile/:id' ><ProfilePage /></ProtectedRoute>
+        <ProtectedRoute exact path='/mynetwork' ><NetworkPage /></ProtectedRoute>
+        <ProtectedRoute path='*'><Redirect to='/feed' /></ProtectedRoute>
       </Switch>
     </>
   );

@@ -6,7 +6,8 @@ import { fetchAllConnectionRequests, fetchAllConnections, getConnectionRequests,
 import ConnectionRequestItem from './ConnectionRequestItem';
 import ConnectionItem from './ConnectionItem';
 import { getSessionUser } from '../../store/session';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+
 
 const NetworkPage = () => {
     const dispatch = useDispatch();
@@ -39,6 +40,12 @@ const NetworkPage = () => {
             dispatch(removeConnections())
         })
     }, [])
+
+    if (!currentUser) {
+        // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        // dispatch(fetchSessionUser(currentUser.id));
+        return <Redirect to='/login' />
+    }
 
     const loadingRequests = !connectionRequests ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliance requests.</div> : null;
     const loadingConnections = !connectionsCount ? <div className='request-container' style={{ fontSize: '14px', color: 'var(--color-text-light)' }}>You have no alliances.</div> : null;

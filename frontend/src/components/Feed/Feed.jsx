@@ -29,16 +29,9 @@ const Feed = () => {
     }
     const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
-    const profilePhoto = currentUser.photoUrl;
+    const profilePhoto = currentUser?.photoUrl;
 
     useEffect(() => {
-        // if (!currentUser) {
-        //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        //     dispatch(fetchSessionUser(currentUser.id));
-        // }
-        dispatch(fetchSessionUser(currentUser.id));
-
-
         if (!posts) {
             dispatch(fetchPosts());
         }
@@ -49,8 +42,8 @@ const Feed = () => {
 
 
     if (!currentUser) {
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        dispatch(fetchSessionUser(currentUser.id));
+        // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        // dispatch(fetchSessionUser(currentUser.id));
         return <Redirect to='/login' />
     }
 
