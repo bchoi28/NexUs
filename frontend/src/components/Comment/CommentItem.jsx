@@ -52,6 +52,7 @@ const CommentItem = React.memo(({ comment, postId }) => {
 
     const handleUpdateFormVisibility = () => {
         setUpdateFormVisible((prevUpdateFormVisibility) => !prevUpdateFormVisibility);
+        setContent(comment.content);
     }
 
     const handleChangeUpdateContent = (e) => {

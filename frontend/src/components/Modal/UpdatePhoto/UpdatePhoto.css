@@ -1,5 +1,5 @@
 .update-photo-custom {
-    width: 350px;
+    width: 400px;
     height: 300px;
     position: relative;
     margin: 0 auto;
@@ -36,11 +36,11 @@
 .update-cover-photo-preview {
     height: 150px;
     /* display: flex; */
-    max-height: 400px;
-    max-width: 500px;
+    max-height: 250px;
+    max-width: 300px;
     /* justify-self: center; */
     margin: auto;
-    margin-top: 20px
+    margin-top: 20px;
 }
 
 .update-profile-photo-preview-close {

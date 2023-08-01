@@ -9,9 +9,8 @@ import ModalRoot from '../Modal/ModalRoot';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
-import { getSessionUser, fetchSessionUser } from '../../store/session';
+import { getSessionUser } from '../../store/session';
 import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Feed = () => {
 
@@ -39,13 +38,6 @@ const Feed = () => {
             dispatch(removeUser());
         }
     }, [])
-
-
-    if (!currentUser) {
-        // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        // dispatch(fetchSessionUser(currentUser.id));
-        return <Redirect to='/login' />
-    }
 
     return (
         <>

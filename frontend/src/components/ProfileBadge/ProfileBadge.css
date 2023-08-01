@@ -34,8 +34,7 @@
     border-radius: 100%;
     animation: spinRight 800ms linear infinite;
 
-    &:before,
-    &:after {
+    &:before {
         content: '';
         width: 6vmax;
         height: 6vmax;

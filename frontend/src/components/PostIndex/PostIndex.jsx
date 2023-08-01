@@ -33,7 +33,6 @@ const PostIndex = () => {
                         } else {
                             setHasMorePosts(false);
                         }
-                        // if (!hasMorePosts) setIsLoading(false);
                     })
                     .catch((error) => {
                         setIsLoading(false);

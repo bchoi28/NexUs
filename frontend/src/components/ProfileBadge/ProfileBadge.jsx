@@ -13,7 +13,7 @@ const ProfileBadge = ({ user }) => {
     const currentUser = useSelector(getSessionUser)
     const connections = Object.values(useSelector(getConnections));
     const connectionsCount = connections?.length;
-    const [Loading, setLoading] = useState(true);
+    // const [Loading, setLoading] = useState(true);
 
     useEffect(() => {
         dispatch(fetchSessionUser(currentUser.id));
@@ -25,20 +25,20 @@ const ProfileBadge = ({ user }) => {
         if (currentUser) {
             dispatch(fetchAllConnections());
         }
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
+        // setTimeout(() => {
+        //     setLoading(false);
+        // }, 500);
     }, [])
 
-    if (Loading) {
-        return (
-            <div className='profile-badge-loading-container'>
-                <div className='badge-loading-circle-container'>
-                    <div className='badge-loading-circle'></div>
-                </div>
-            </div>
-        )
-    }
+    // if (Loading) {
+    //     return (
+    //         <div className='profile-badge-loading-container'>
+    //             <div className='badge-loading-circle-container'>
+    //                 <div className='badge-loading-circle'></div>
+    //             </div>
+    //         </div>
+    //     )
+    // }
     const profilePhoto = currentUser.photoUrl;
     const coverPhoto = currentUser.coverPhotoUrl;
 
