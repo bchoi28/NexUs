@@ -1,6 +1,7 @@
 import csrfFetch from './csrf';
 import { storeCurrentUser, setSession, loginUser } from './session';
 import { receiveSessionErrors } from './errors';
+import { notLoading } from './ui';
 
 export const RECEIVE_USER = 'users/RECEIVE_USER';
 export const REMOVE_USER = 'users/REMOVE_USER';
@@ -110,6 +111,7 @@ export const updateUserPhoto = (id, formData) => async (dispatch) => {
         const user = data.user;
         dispatch(setSession(user));
         dispatch(receiveUser(user));
+        dispatch(notLoading());
     }
 
     return res;
@@ -138,7 +140,6 @@ export const fetchLikersData = (likerId) => async (dispatch) => {
 export const fetchUsersSearch = (query) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/search?query=${query}`);
     if (res.ok) {
-
         const data = await res.json();
         dispatch(searchUsers(data));
     }

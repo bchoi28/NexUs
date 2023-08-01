@@ -49,6 +49,47 @@
     position: relative;
     top: 1px;
     object-fit: cover;
+    background-color: #fff;
+}
+
+.loading-button-pic {
+    width: 26px;
+    height: 26.5px;
+    transition: box-shadow 0.1s ease;
+    border: 1px solid var(--secondary-color);
+    /* box-shadow: 0 0 0 1px var(--secondary-color); */
+    border-radius: 50%;
+    position: relative;
+    top: 1px;
+    /* object-fit: cover; */
+    background-color: #fff;
+}
+
+.loading-button-pic>div {
+    margin: auto;
+    position: relative;
+    top: 7px;
+}
+
+.dropdown-loading-circle-container {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    height: 10px;
+    width: 10px;
+}
+
+.dropdown-loading-circle {
+    width: 45%;
+    height: 45%;
+    border-right: 1px solid var(--primary-color);
+    border-radius: 100%;
+    animation: spinRight 800ms linear infinite;
 }
 
 .profile-button:hover .profile-button-pic {

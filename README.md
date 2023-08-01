@@ -40,11 +40,64 @@ Upon sign-up/sign-in, a user can update profile demographics and photos (see [AW
 
 ### Posts/Comments/Likes
 
+![post](/frontend/public/assets/images/seeds/postgif.gif)
+
+
 Users can utilize full CRUD functionality for posts, comments, and likes, with update/delete restricted to only the logged-in user's content. Posts are rendered on the feed page using infinite scroll/lazy loading technology.
 
 ### Alliances
 
-Users can form professional alliances across the multiverse by sending/accepting alliance requests to other users. A user will be able to message another once an alliance has been formed (see [WebSocket](#websocket-api)).
+![alliance](/frontend/public/assets/images/seeds/alliancegif.gif)
+
+Users can form professional alliances across the multiverse by sending/accepting alliance requests to/from other users. There are 4 different conditions to be accounted for when conditionally rendering the connect button on any user's profile page, each with their specific styling and function.
+
+    // custom selector to get the connection status between current user and profile user
+    export const getConnectedStatus = state => {
+        if (!state.user.user) return null;
+
+        const currentUserId = state.session.user.id;
+        const profileUserId = state.user.user.id;
+
+        // filter through the connections to find only those relevent to the two users
+        const connection = Object.values(state.connections.connectionsAll).find
+            (connection => {
+                return (connection.connectorId === currentUserId 
+                && connection.connecteeId === profileUserId)
+                    || (connection.connecteeId === currentUserId 
+                    && connection.connectorId === profileUserId);
+            });
+
+        return connection ? connection.status : 'connect';
+    }
+
+Connection button is conditionally rendered based on what is received from the selector. If the profile page is the current user's, then no button is displayed.
+
+    let buttonContent = null;
+    if (currentUser.id !== parseInt(id) && connectionStatus) {
+        if (connectionStatus === 'connected') {
+            buttonContent = (
+                <button className='other-user-message-button'>
+                    <i className="fa-regular fa-paper-plane"></i>
+                    <span className='other-user-connect-button-text-connect'>Message</span>
+                    <span className='message-button-tooltip'>coming soon!</span>
+                </button>
+            );
+        } else if (connectionStatus === 'pending') {
+            buttonContent = (
+                <button className='other-user-pending-button'>
+                    <i className="fa-solid fa-user-clock"></i>
+                    <span className='other-user-connect-button-text-pending'>Pending</span>
+                </button>
+            );
+        } else if (connectionStatus === 'connect') {
+            buttonContent = (
+                < button className='other-user-connect-button' onClick={handleConnect}>
+                    <i className="fa-solid fa-user-plus"></i>
+                    <span className='other-user-connect-button-text-connect'>Connect</span>
+                </button>
+            );
+        }
+    }
 
 ### Experiences
 
@@ -56,7 +109,7 @@ Users can utilize a search bar with auto-complete implementation to find users a
 
 ### AWS
 
-NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, ensuring seamless storage, retrieval, and updates. A reliable and secure solution, S3 empowers users to effortlessly share and manage their visual content within the platform.
+NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, ensuring seamless storage, retrieval, and updates. To optimize performance, the default profile/cover photo images are stored in the local directory and displayed until a user uploads an image.
 
 # Future Functionalities
 
@@ -66,11 +119,15 @@ NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, e
 #### Expanded Post Functionality
 * Users will be able to repost others' posts and embed videos on their posts.
 
-## About Me
+# About Me
+
+<img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
+I am a fullstack software engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails. As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering!
+
+^ me (from the Multiverse)
 
 
-
-## Thanks for Reading!
+# Thanks for Reading!
 
 The core features of <span style="color: #0a66c2">**NexUs&trade;**</span> were produced as a result of a 14 day full-stack solo project. What are you waiting for? Enter the Nexusverse <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >here</a>!
 

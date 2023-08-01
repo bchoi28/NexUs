@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getSessionUser } from '../../../store/session';
 import Login from '../../Login';
+import { getUiState } from '../../../store/ui';
 
 const ProfileDropDown = () => {
     const dropdownRef = useRef(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
+    const loading = useSelector(getUiState);
     const currentUser = useSelector(getSessionUser);
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -37,7 +39,16 @@ const ProfileDropDown = () => {
     return (
         <div className="profile-dropdown">
             <button ref={dropdownRef} onClick={toggleDropdown} className="profile-button">
-                <img className='profile-button-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
+                {loading ? (
+                    <div className='loading-button-pic'>
+                        <div className='dropdown-loading-circle'></div>
+                        {/* </div> */}
+                        {/* // <div className='dropdown-loading-circle-container'> */}
+                    </div>
+                ) : (
+                    <img className='profile-button-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
+
+                )}
                 <div className='me-arrow'>
                     <span className="profile-icon-text">Me</span>
                     <span className="down-arrow">&#9660;</span>

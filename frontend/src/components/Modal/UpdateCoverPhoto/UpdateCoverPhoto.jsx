@@ -32,8 +32,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
         setPhotoFile(null);
     }
 
-    const handleClose = (e) => {
-        e.preventDefault();
+    const handleClose = () => {
         dispatch(closeModal())
         setIsOpen(false);
         document.body.style.overflow = '';

@@ -48,12 +48,22 @@
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08);
 }
 
+.profile-cover-photo-container {
+    height: 170px;
+    padding-top: 2px;
+}
+
 .profile-intro-background-image {
     border-radius: 12.8px 12.8px 0 0;
     width: 100%;
+    object-fit: cover;
+    height: 90%;
+    margin: auto;
     position: relative;
+    /* max-width: 500px;
+    max-height: 200px; */
     bottom: 1.5px;
-    height: 170px;
+    /* height: 170px; */
     /* box-shadow: 0px 0x 0px 1px rgba(0, 0, 0, 0.08); */
 }
 
@@ -72,9 +82,29 @@
     position: relative;
     bottom: 110px;
     border: 2px solid #fff;
+    background-color: #fff;
     margin-left: 22px;
     /* box-shadow: 0px 0x 0px 1px rgba(0, 0, 0, 0.08); */
     object-fit: cover;
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0.2s;
+    transition: opacity 0.2s;
+}
+
+.loading-page-photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 110px;
+    border: 1px solid var(--secondary-color);
+    margin-left: 22px;
+    background-color: #fff;
+}
+
+.loading-page-photo>div {
+    margin: auto
 }
 
 .camera-button {
@@ -93,7 +123,7 @@
 .camera-button-2 {
     color: var(--primary-color);
     position: relative;
-    bottom: 150px;
+    bottom: 155px;
     right: 16px;
     border-radius: 50%;
     background-color: #fff;

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { closeModal } from '../../../store/modal';
 import { updateUserPhoto } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
+import { loading } from '../../../store/ui';
 
 
 const UpdatePhoto = ({ profilePhoto }) => {
@@ -32,14 +33,14 @@ const UpdatePhoto = ({ profilePhoto }) => {
         setPhotoFile(null);
     }
 
-    const handleClose = (e) => {
-        e.preventDefault();
+    const handleClose = () => {
         dispatch(closeModal())
         setIsOpen(false);
         document.body.style.overflow = '';
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        // e.preventDefault();
         const formData = new FormData();
         if (photoFile) {
             formData.append('user[photo]', photoFile);
@@ -48,6 +49,7 @@ const UpdatePhoto = ({ profilePhoto }) => {
             formData.append('user[remove_photo]', 'true');
             dispatch(updateUserPhoto(userId, formData));
         }
+        dispatch(loading())
         handleClose();
     }
 
@@ -64,7 +66,7 @@ const UpdatePhoto = ({ profilePhoto }) => {
     return (
         <Modal
 
-            className='update-cover-photo-custom'
+            className='update-photo-custom'
             overlayClassName='modal-overlay'
             isOpen={isOpen}
             onRequestClose={handleClose}

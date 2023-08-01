@@ -36,8 +36,18 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
         handleClose();
     }
 
+    const handleRemovePhoto = () => {
+        setPhotoUrl(null);
+        setPhotoFile(null);
+    }
+
     let photoPreview = null;
-    if (photoUrl) photoPreview = <img className='post-photo-preview' src={photoUrl} alt="" />;
+    if (photoUrl) photoPreview = (
+        <div className='update-photo-preview-container'>
+            <img className='update-photo-preview' src={photoUrl} alt="preview" />
+            <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button>
+        </div>
+    )
     const authorPhoto = currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
 

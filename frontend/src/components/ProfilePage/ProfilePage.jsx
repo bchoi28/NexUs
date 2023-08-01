@@ -13,12 +13,15 @@ import ExperienceItem from '../Experience';
 import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnectedStatus, getConnections, createConnection } from '../../store/connection';
 import OtherUserItem from './OtherUserItem';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { getUiState } from '../../store/ui';
 
 const ProfilePage = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const loading = useSelector(getUiState);
+    debugger
     const profileUser = useSelector(getUser)
     const experiences = profileUser?.experiences ? Object.values(profileUser.experiences) : null;
     const sortedExperiences = experiences ? experiences.sort((a, b) => {
@@ -140,8 +143,8 @@ const ProfilePage = () => {
     const experienceAddIcon = (currentUser.id === parseInt(id)) ?
         <i onClick={handleAddExperience} className="add-experience-button fa-solid fa-plus"></i> : null;
 
-    let buttonContent;
-    if (currentUser.id != id && connectionStatus) {
+    let buttonContent = null;
+    if (currentUser.id !== parseInt(id) && connectionStatus) {
         if (connectionStatus === 'connected') {
             buttonContent = (
                 <button className='other-user-message-button'>
@@ -154,7 +157,6 @@ const ProfilePage = () => {
             buttonContent = (
                 <button className='other-user-pending-button'>
                     <i className="fa-solid fa-user-clock"></i>
-
                     <span className='other-user-connect-button-text-pending'>Pending</span>
                 </button>
             );
@@ -166,8 +168,6 @@ const ProfilePage = () => {
                 </button>
             );
         }
-    } else {
-        buttonContent = null;
     }
 
     return (
@@ -183,9 +183,19 @@ const ProfilePage = () => {
 
                         <div className='profile-left-content'>
                             <div className='profile-content-intro' >
-                                <img className='profile-intro-background-image' src={profileCoverPhoto} alt="banner" />
+                                <div className='profile-cover-photo-container'>
+                                    <img className='profile-intro-background-image' src={profileCoverPhoto} alt="banner" />
+                                </div>
                                 <div className='profile-photo-camera-container'>
-                                    <img className='profile-page-photo' src={profilePhoto} alt="profile" />
+                                    {loading ? (
+                                        <div className='loading-page-photo'>
+                                            <div className='loading-posts'>
+                                                <div className='loading-circle'></div>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <img className='profile-page-photo' src={profilePhoto} alt="profile" />
+                                    )}
                                     <div className='camera-icon-container'>
                                         {cameraIcon1}
                                     </div>
