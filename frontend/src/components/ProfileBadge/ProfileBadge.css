@@ -8,6 +8,43 @@
     background-color: #fff;
 }
 
+.skeleton-badge-container {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12.8px;
+    /* background-image: linear-gradient(180deg, #f8f9fb 25%, #ececec 37%, #f8f9fb 63%); */
+    /* background-size: 100% 200%; */
+    /* animation: shimmer 1.5s infinite; */
+}
+
+.skeleton-name {
+    width: 115px;
+    height: 10px;
+    background-color: #f8f9fb;
+    position: relative;
+    bottom: 15px;
+}
+
+.skeleton-headline {
+    width: 85px;
+    height: 10px;
+    background-color: #f8f9fb;
+    position: relative;
+}
+
+/* @keyframes shimmer {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: 0% -200%;
+    }
+} */
+
 .profile-badge-loading-container {
     width: 100%;
     display: flex;
@@ -84,6 +121,13 @@
     width: 100%;
 }
 
+.skeleton-background {
+    border-radius: 12.8px 12.8px 0 0;
+    height: 60px;
+    width: 100%;
+    /* background-color: #eef3f8 */
+}
+
 .badge-photo {
     height: 70px;
     width: 70px;
@@ -93,6 +137,18 @@
     object-fit: cover;
     transition: box-shadow 0.1s ease;
     border: 1px solid #fff;
+}
+
+.skeleton-photo {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 33px;
+    /* object-fit: cover; */
+    transition: box-shadow 0.1s ease;
+    /* border: 1px solid #fff; */
+    background-color: #f8f9fb;
 }
 
 .badge-photo:hover {

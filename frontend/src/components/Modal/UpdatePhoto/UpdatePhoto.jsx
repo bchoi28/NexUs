@@ -57,7 +57,7 @@ const UpdatePhoto = ({ profilePhoto }) => {
     if (photoUrl) {
         photoPreview = (
             <div className='update-cover-photo-preview-container'>
-                <img className='update-cover-photo-preview' src={photoUrl} alt="" />
+                <img className='update-profile-photo-preview' src={photoUrl} alt="" />
                 <button className='update-profile-photo-preview-close' onClick={handleRemovePhoto}>X</button>
             </div>
         )

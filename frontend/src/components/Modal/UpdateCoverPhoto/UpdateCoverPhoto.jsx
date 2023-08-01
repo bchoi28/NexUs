@@ -78,7 +78,7 @@ const UpdateCoverPhoto = ({ profileCoverPhoto }) => {
                     </div>
                 </header>
                 {photoPreview}
-                <div className='upload-save-container' >
+                <div className='upload-cover-save-container' >
                     <div className='update-cover-photo-footer'>
                         <div className='update-modal-image-container' >
                             <label htmlFor="file-input" className="update-file-input-label">

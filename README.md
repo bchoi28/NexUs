@@ -35,6 +35,9 @@ Enter the <a href="https://nexus-zblj.onrender.com" target="_blank" style="color
 
 ### Profiles
 
+![splash](/frontend/public/assets/images/seeds/splashgif.gif)
+
+
 From the splash, users have the option to sign-up as a new user, or login as a demo user. NexUs's authentication process is complete with custom error handling and a multi-step sign-up form very similar to LinkedIn's. 
 Upon sign-up/sign-in, a user can update profile demographics and photos (see [AWS](#aws)).
 
@@ -45,11 +48,34 @@ Upon sign-up/sign-in, a user can update profile demographics and photos (see [AW
 
 Users can utilize full CRUD functionality for posts, comments, and likes, with update/delete restricted to only the logged-in user's content. Posts are rendered on the feed page using infinite scroll/lazy loading technology.
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const first = entries[0];
+            if (first.isIntersecting) {
+                setIsLoading(true);
+                dispatch(fetchPosts(page))
+                    .then((hasMorePosts) => {
+                        setIsLoading(false);
+                        if (hasMorePosts) {
+                            setPage(prevPage => prevPage + 1);
+                        }
+                    })
+                    .catch((error) => {
+                        setIsLoading(false);
+                        setError(error.message);
+                    });
+            }
+        }, { threshold: 0.5 });
+        if (observerTarget.current) observer.observe(observerTarget.current);
+        return () => observer.disconnect();
+    }, [dispatch, page])
+
+
 ### Alliances
 
 ![alliance](/frontend/public/assets/images/seeds/alliancegif.gif)
 
-Users can form professional alliances across the multiverse by sending/accepting alliance requests to/from other users. There are 4 different conditions to be accounted for when conditionally rendering the connect button on any user's profile page, each with their specific styling and function.
+Users can form professional alliances across the multiverse by sending/accepting alliance requests to/from other users. There are 4 different conditions to be accounted for when conditionally rendering the connect button on any user's profile page, each with its specific styling and function.
 
     // custom selector to get the connection status between current user and profile user
     export const getConnectedStatus = state => {
@@ -101,13 +127,21 @@ Connection button is conditionally rendered based on what is received from the s
 
 ### Experiences
 
+![experience](/frontend/public/assets/images/seeds/experiencegif.gif)
+
+
 Users can add, view, update, or delete experiences displayed on their profile pages. 
 
 ### Search
 
+![search](/frontend/public/assets/images/seeds/searchgif.gif)
+
 Users can utilize a search bar with auto-complete implementation to find users across NexUs.
 
 ### AWS
+
+![aws](/frontend/public/assets/images/seeds/awsgif.gif)
+
 
 NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, ensuring seamless storage, retrieval, and updates. To optimize performance, the default profile/cover photo images are stored in the local directory and displayed until a user uploads an image.
 
@@ -122,10 +156,11 @@ NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, e
 # About Me
 
 <img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
-I am a fullstack software engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails. As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering!
+I am a fullstack software engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails. 
+As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering!
 
-^ me (from the Multiverse)
-
+<br>
+<br>
 
 # Thanks for Reading!
 
@@ -136,7 +171,3 @@ The core features of <span style="color: #0a66c2">**NexUs&trade;**</span> were p
 <p align="center">
   <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-canvas.png" width="400" alt="logo" /></a>
 </p>
-
-
-
-<!-- ![interaction](frontend/src/assets/gif7-interaction.gif) -->

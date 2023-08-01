@@ -4,20 +4,17 @@ import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { fetchAllConnections, getConnections } from '../../store/connection';
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { getPosts } from '../../store/post';
 
 const ProfileBadge = ({ user }) => {
 
     const dispatch = useDispatch();
-    // const isLoading = useSelector(getUiState);
     const currentUser = useSelector(getSessionUser)
     const connections = Object.values(useSelector(getConnections));
+    const posts = useSelector(getPosts);
     const connectionsCount = connections?.length;
-    // const [Loading, setLoading] = useState(true);
-
     useEffect(() => {
         dispatch(fetchSessionUser(currentUser.id));
-        // dispatch(loading());
         if (!currentUser || !currentUser.photoUrl) {
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
             dispatch(fetchSessionUser(currentUser.id));
@@ -25,20 +22,18 @@ const ProfileBadge = ({ user }) => {
         if (currentUser) {
             dispatch(fetchAllConnections());
         }
-        // setTimeout(() => {
-        //     setLoading(false);
-        // }, 500);
     }, [])
 
-    // if (Loading) {
-    //     return (
-    //         <div className='profile-badge-loading-container'>
-    //             <div className='badge-loading-circle-container'>
-    //                 <div className='badge-loading-circle'></div>
-    //             </div>
-    //         </div>
-    //     )
-    // }
+    if (posts.length === 0) {
+        return (
+            <div className='skeleton-badge-container'>
+                <div className='skeleton-background'></div>
+                <div className='skeleton-photo'></div>
+                <div className='skeleton-name'></div>
+                <div className='skeleton-headline'></div>
+            </div >
+        )
+    }
     const profilePhoto = currentUser.photoUrl;
     const coverPhoto = currentUser.coverPhotoUrl;
 
