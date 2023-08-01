@@ -10,6 +10,7 @@
     flex-direction: column;
     min-height: calc(100vh - 76px - 50px);
     /* background-image: url('../../images/space.jpg'); */
+    background-color: #fff;
 
 }
 
@@ -96,10 +97,10 @@
 
 .splash-image-2 {
     width: 700px;
-    height: 480px;
+    height: 477px;
     z-index: 1;
     position: absolute;
-    top: 1px;
+    top: 3px;
     left: 0;
     border-radius: 5%;
     /* opacity: 0; */

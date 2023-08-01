@@ -9,9 +9,8 @@ import ModalRoot from '../Modal/ModalRoot';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
-import { getSessionUser, fetchSessionUser } from '../../store/session';
+import { getSessionUser } from '../../store/session';
 import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Feed = () => {
 
@@ -29,16 +28,9 @@ const Feed = () => {
     }
     const currentUser = useSelector(getSessionUser);
     const posts = useSelector(getPosts)
-    const profilePhoto = currentUser.photoUrl;
+    const profilePhoto = currentUser?.photoUrl;
 
     useEffect(() => {
-        // if (!currentUser) {
-        //     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        //     dispatch(fetchSessionUser(currentUser.id));
-        // }
-        dispatch(fetchSessionUser(currentUser.id));
-
-
         if (!posts) {
             dispatch(fetchPosts());
         }
@@ -46,13 +38,6 @@ const Feed = () => {
             dispatch(removeUser());
         }
     }, [])
-
-
-    if (!currentUser) {
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        dispatch(fetchSessionUser(currentUser.id));
-        return <Redirect to='/login' />
-    }
 
     return (
         <>
@@ -73,7 +58,7 @@ const Feed = () => {
                     <div className='feed-middle'>
                         <div className='feed-post-form-container'>
                             <div className='feed-post-form-top'>
-                                {currentUser && <img className='feed-user-profile-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />}
+                                <NavLink to={`/profile/${currentUser.id}`} ><img className='feed-user-profile-pic' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" /></NavLink>
                                 <button className='feed-create-post-button' onClick={handleOpenModal}>Start a post</button>
 
                                 {modalIsOpen &&

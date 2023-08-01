@@ -150,7 +150,7 @@ export const fetchPosts = (page = 1) => async (dispatch) => {
         dispatch(receivePosts(posts));
         return data.hasMorePosts;
     } else {
-        console.error('Failed to fetch posts');
+        throw new Error('Failed to fetch posts');
     }
 };
 

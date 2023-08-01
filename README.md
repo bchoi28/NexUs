@@ -1,120 +1,173 @@
 <p align="center">
-  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-transparent.png" alt="logo" /></a>
+  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-canvas.png" width="400" alt="logo" /></a>
 </p>
 <p align="center">
-  <span style="font-weight: bold">NexUs&trade;</span>: Connect with Yourself
+  <a href="https://nexus-zblj.onrender.com" target="_blank"><span style="font-weight: bold; color: #0a66c2">NexUs&trade;</span> <span style="color: #f3f2ef">: Connect with Yourself</span></a>
 </p>
-
-[Live Site](https://nexus-zblj.onrender.com)
-
 
 # Table of Contents
 * [Background and Overview](#background-and-overview)
 * [MVP Features](#mvp-features)
-  * [Itinerary Curation: CRUD](#itinerary-curation-create-read-update-destroy)
+  * [Profile](#profile)
+  * [Posts/Comments/Likes](#postscommentslikes)
+  * [Alliances](#alliances)
+  * [Experiences](#experiences)
+  * [Search](#search)
 * [Future Functionalities](#future-functionalities)
 * [The Developer](#about-me)
 
-
 # Background and Overview
+
+Welcome to <span style="font-weight: bold; color: #0a66c2">NexUs&trade;</span> , an inter-universal professional networking social-media application based on the popular website LinkedIn. Connect with others AND yourself/yourselves from across the Multiverse! NexUs was carefully designed with an intuitive and user-friendly interface, ensuring a seamless user experience while navigating the app.
+
+Enter the <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >Nexusverse</a>!
+
+#### Technologies Used
 
 * Languages: JavaScript, HTML5, CSS3
 * Frontend: React-Redux
 * Backend: Ruby on Rails
 * Database: PostgresQL
+* Photo Storage: AWS S3
 * Hosting: Render
 
 # MVP Features
 
-## Itinerary Curation: <span style="font-size: small;">`CREATE` `READ` `UPDATE` `DESTROY`</span>
+### Profiles
 
-Right from the splash, <span style="color: #fccd89;">**itinerator&trade;**</span> users start their personalized journey. 
-
-![splash](frontend/src/assets/gif1-splash.gif)
-
-Users can select an unlimited amount of activites, name the itinerary, and save it.
-
-![save](frontend/src/assets/gif2-save.gif)
-
-Users can update/destroy their saved itinerary immediately, or from the splash page.
-
-![update](frontend/src/assets/gif3-update.gif)
-
-## Google Maps API
-
-<span style="color: #fccd89;">**itinerator&trade;**</span> utilizes Google Maps API to explore an endless amount of options based on real-time data provided by Google Maps on an interactive and intuitive map interface. Activity recommendations are generated through a combination of 4 methods:
-
-* #### Generation by Preferred Type
-
-Upon clicking a preferred type icon, 3 new activities will be suggested. If <span style="color: #fccd89;">**itinerator&trade;**</span> cannot find 3 suitable activities of preferred type within a 500m radius, it will continue to increment its search radius by 500m until it does before displaying them to the user.
-
-![preferred-type](frontend/src/assets/gif4-preferred-type.gif)
-
-* #### Generation by Previous Type
-
-While creating an itinerary, upon selecting a generated suggestion, the map centers over that selected activity and generates 3 new suggestions based on that activity's type. Of course, users can choose their own type if they prefer.
-
-* #### Generation by Randomized Type
-
-While updating an itinerary, upon selecting a generated activity suggestion, the map centers around that selected activity and performs a nearbySearch, generating 3 new suggestions of a randomized type.
-
-![randomized-type](frontend/src/assets/gif5-randomized-type.gif)
-
-* #### Generation by Map Interaction
-
-Upon dragging the map to a new location, <span style="color: #fccd89;">**itinerator&trade;**</span> dynamically performs a new search, generating 3 new activities.
-
-![map-interaction](frontend/src/assets/gif6-map-interaction.gif)
-
-## Community Interaction (Like & Comment): <span style="font-size: small;">`CREATE` `READ` `UPDATE` `DESTROY`</span>
-
-Upon saving a personalized itinerary, other users will be able to view, like, and comment on the itinerary. These interactive features facilitate meaningful interactions within the community, fostering a sense of connection among <span style="color: #fccd89;">**itinerator&trade;**</span> users.
-
-![interaction](frontend/src/assets/gif7-interaction.gif)
-
-## Future Functionalities
-
-#### Expanded Search Capability
-* Users will be able to utilize a search bar during the itinerary creation process to search by any desired keyword.
-* Users will have the option to view the next 3 activities if they did not like any of the first set of suggestions.
-
-## About Me
-
-<div>
-<img src="frontend/src/assets/itineratorPlaneLow.png" alt="Custom Bullet" width="30" style="vertical-align: middle; margin-right: 10px;"/> 
-    Flex Lead: <a target="_blank" href="https://github.com/bchoi28">Brandon Choi</a>
-</div>
+![splash](/frontend/public/assets/images/seeds/splashgif.gif)
 
 
-## Thanks for Reading!
+From the splash, users have the option to sign-up as a new user, or login as a demo user. NexUs's authentication process is complete with custom error handling and a multi-step sign-up form very similar to LinkedIn's. 
+Upon sign-up/sign-in, a user can update profile demographics and photos (see [AWS](#aws)).
 
-<span style="color: #fccd89;">**itinerator&trade;**</span> was brought to fruition from a 4-day sprint. We hope you enjoy our app, have fun, and safe travels. Bon voyage! 
+### Posts/Comments/Likes
+
+![post](/frontend/public/assets/images/seeds/postgif.gif)
+
+
+Users can utilize full CRUD functionality for posts, comments, and likes, with update/delete restricted to only the logged-in user's content. Posts are rendered on the feed page using infinite scroll/lazy loading technology.
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const first = entries[0];
+            if (first.isIntersecting) {
+                setIsLoading(true);
+                dispatch(fetchPosts(page))
+                    .then((hasMorePosts) => {
+                        setIsLoading(false);
+                        if (hasMorePosts) {
+                            setPage(prevPage => prevPage + 1);
+                        }
+                    })
+                    .catch((error) => {
+                        setIsLoading(false);
+                        setError(error.message);
+                    });
+            }
+        }, { threshold: 0.5 });
+        if (observerTarget.current) observer.observe(observerTarget.current);
+        return () => observer.disconnect();
+    }, [dispatch, page])
+
+
+### Alliances
+
+![alliance](/frontend/public/assets/images/seeds/alliancegif.gif)
+
+Users can form professional alliances across the multiverse by sending/accepting alliance requests to/from other users. There are 4 different conditions to be accounted for when conditionally rendering the connect button on any user's profile page, each with its specific styling and function.
+
+    // custom selector to get the connection status between current user and profile user
+    export const getConnectedStatus = state => {
+        if (!state.user.user) return null;
+
+        const currentUserId = state.session.user.id;
+        const profileUserId = state.user.user.id;
+
+        // filter through the connections to find only those relevent to the two users
+        const connection = Object.values(state.connections.connectionsAll).find
+            (connection => {
+                return (connection.connectorId === currentUserId 
+                && connection.connecteeId === profileUserId)
+                    || (connection.connecteeId === currentUserId 
+                    && connection.connectorId === profileUserId);
+            });
+
+        return connection ? connection.status : 'connect';
+    }
+
+Connection button is conditionally rendered based on what is received from the selector. If the profile page is the current user's, then no button is displayed.
+
+    let buttonContent = null;
+    if (currentUser.id !== parseInt(id) && connectionStatus) {
+        if (connectionStatus === 'connected') {
+            buttonContent = (
+                <button className='other-user-message-button'>
+                    <i className="fa-regular fa-paper-plane"></i>
+                    <span className='other-user-connect-button-text-connect'>Message</span>
+                    <span className='message-button-tooltip'>coming soon!</span>
+                </button>
+            );
+        } else if (connectionStatus === 'pending') {
+            buttonContent = (
+                <button className='other-user-pending-button'>
+                    <i className="fa-solid fa-user-clock"></i>
+                    <span className='other-user-connect-button-text-pending'>Pending</span>
+                </button>
+            );
+        } else if (connectionStatus === 'connect') {
+            buttonContent = (
+                < button className='other-user-connect-button' onClick={handleConnect}>
+                    <i className="fa-solid fa-user-plus"></i>
+                    <span className='other-user-connect-button-text-connect'>Connect</span>
+                </button>
+            );
+        }
+    }
+
+### Experiences
+
+![experience](/frontend/public/assets/images/seeds/experiencegif.gif)
+
+
+Users can add, view, update, or delete experiences displayed on their profile pages. 
+
+### Search
+
+![search](/frontend/public/assets/images/seeds/searchgif.gif)
+
+Users can utilize a search bar with auto-complete implementation to find users across NexUs.
+
+### AWS
+
+![aws](/frontend/public/assets/images/seeds/awsgif.gif)
+
+
+NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, ensuring seamless storage, retrieval, and updates. To optimize performance, the default profile/cover photo images are stored in the local directory and displayed until a user uploads an image.
+
+# Future Functionalities
+
+#### WebSocket API
+* Users will be able to carry private conversations with their alliances utilizing WebSocket API.
+
+#### Expanded Post Functionality
+* Users will be able to repost others' posts and embed videos on their posts.
+
+# About Me
+
+<img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
+I am a fullstack software engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails. 
+As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering!
+
+<br>
+<br>
+
+# Thanks for Reading!
+
+The core features of <span style="color: #0a66c2">**NexUs&trade;**</span> were produced as a result of a 14 day full-stack solo project. What are you waiting for? Enter the Nexusverse <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >here</a>!
 
 <br>
 
 <p align="center">
-  <img src="frontend/src/assets/itineratorLogoMain.png" alt="itinerator logo"
-  width="300" />
+  <a href="https://nexus-zblj.onrender.com" target="_blank" ><img class="hello" src="frontend/public/assets/images/seeds/logo-canvas.png" width="400" alt="logo" /></a>
 </p>
-
-# NexUs - Intergalactic Professional Networking
-
-Welcome to NexUs, a LinkedIn clone designed for those who wish to take their professional networking intergalactic. This full-stack project combines Ruby on Rails on the backend with React and Redux on the frontend to provide a comprehensive networking platform.
-
-## Features
-- User registration and authentication
-- User profiles with customizable information
-- Posts for sharing professional updates and insights
-- Like functionality for engaging with posts and comments
-- File uploads for adding images to posts
-- Intuitive user interface for seamless navigation and interaction
-- Profile search bar with autofill functionality
-
-## Technologies Used
-- Ruby on Rails: Backend framework for building robust APIs and managing data
-- React: JavaScript library for building interactive user interfaces
-- Redux: State management library for managing application state
-- PostgreSQL: Relational database for storing application data
-- CSS: Styling and design of the user interface
-- AWS S3: Cloud storage for uploading and serving user images
-

@@ -4,16 +4,17 @@ import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
 import { fetchAllConnections, getConnections } from '../../store/connection';
 import { useEffect } from 'react';
-import Login from '../Login';
+import { getPosts } from '../../store/post';
 
 const ProfileBadge = ({ user }) => {
 
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser)
     const connections = Object.values(useSelector(getConnections));
+    const posts = useSelector(getPosts);
     const connectionsCount = connections?.length;
-
     useEffect(() => {
+        dispatch(fetchSessionUser(currentUser.id));
         if (!currentUser || !currentUser.photoUrl) {
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
             dispatch(fetchSessionUser(currentUser.id));
@@ -23,13 +24,14 @@ const ProfileBadge = ({ user }) => {
         }
     }, [])
 
-    if (!currentUser) {
+    if (posts.length === 0) {
         return (
-            <div className='profile-badge-loading-container'>
-                <div className='badge-loading-circle-container'>
-                    <div className='badge-loading-circle'></div>
-                </div>
-            </div>
+            <div className='skeleton-badge-container'>
+                <div className='skeleton-background'></div>
+                <div className='skeleton-photo'></div>
+                <div className='skeleton-name'></div>
+                <div className='skeleton-headline'></div>
+            </div >
         )
     }
     const profilePhoto = currentUser.photoUrl;
@@ -38,9 +40,9 @@ const ProfileBadge = ({ user }) => {
     return (
         <div className='profile-badge-container'>
             <img className='badge-background' src={coverPhoto ? coverPhoto : '/assets/images/seeds/badge-background.png'} alt="banner" />
-            <div>
+            <NavLink to={`/profile/${currentUser.id}`}>
                 <img className='badge-photo' src={profilePhoto ? profilePhoto : '/assets/images/seeds/default-profile-image-circle.png'} alt="profile" />
-            </div>
+            </NavLink>
             <div>
                 <NavLink className='profile-badge-link' to={`/profile/${currentUser.id}`}>{currentUser.fName} {currentUser.lName}</NavLink>
             </div>

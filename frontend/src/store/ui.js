@@ -3,7 +3,19 @@ export const LOGIN_REQUEST = 'ui/LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'ui/LOGIN_SUCCESS';
 export const LOGOUT_REQUEST = 'ui/LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'ui/LOGOUT_SUCCESS';
+export const LOADING = 'ui/LOADING';
+export const NOT_LOADING = 'ui/NOT_LOADING';
 
+export const loading = () => {
+    return {
+        type: LOADING
+    }
+}
+export const notLoading = () => {
+    return {
+        type: NOT_LOADING
+    }
+}
 export const loginRequest = () => {
     return {
         type: LOGIN_REQUEST
@@ -37,6 +49,10 @@ const uiReducer = (state = initialState, action) => {
         case LOGOUT_REQUEST:
             return { loading: true }
         case LOGOUT_SUCCESS:
+            return { loading: false }
+        case LOADING:
+            return { loading: true }
+        case NOT_LOADING:
             return { loading: false }
         default:
             return state;

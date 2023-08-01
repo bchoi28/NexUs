@@ -11,8 +11,7 @@ const SplashNavBar = () => {
         <div className="splash-nav-bar-main">
             {/* <div className="splash-nav-logo" onClick={handleLogo}>Nex<span className='logo-us'>us</span></div> */}
             <div className='logo-nexus-container' onClick={handleLogo}>
-                <div className="splash-nav-logo-nex">Nex</div>
-                <div className='logo-us-container'><span className='logo-us-text'>us</span></div>
+                <img className='splash-logo splash-page' src='/assets/images/seeds/logo-new.png' alt='logo' />
             </div>
             <div className="splash-nav-links">
                 <NavLink className="btn-md btn-tertiary" to='/signup'>Join now</NavLink>

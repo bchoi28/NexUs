@@ -42,10 +42,10 @@ require "open-uri"
       location_city: 'New York',
       about: 'Software engineer specializing in multiversal networking. Building the digital infrastructure that connects star systems and enables seamless communication across the cosmos. Seeking to push the boundaries of technology and redefine interstellar connectivity. Join me in creating a network that spans galaxies and fuels the exploration of the universe.'
     ).tap do |user|
-        file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo1.jpg")
+        file = URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/demo2.jpg")
         user.photo.attach(
           io: file,
-          filename: "demo1.jpg",
+          filename: "demo2.jpg",
           content_type: "image/jpg"
         )
         user.cover_photo.attach(

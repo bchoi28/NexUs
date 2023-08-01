@@ -2,7 +2,7 @@ import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
 import { removeUser } from './user';
 import { removePosts } from './post';
-import { loginSuccess, logoutSuccess } from './ui';
+import { loginSuccess, logoutSuccess, notLoading } from './ui';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -30,6 +30,7 @@ export const fetchSessionUser = (userId) => async (dispatch) => {
         const data = await res.json();
         const user = data.user;
         dispatch(setSession(user));
+        // dispatch(notLoading());
     }
 }
 

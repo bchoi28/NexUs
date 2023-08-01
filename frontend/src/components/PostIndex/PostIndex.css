@@ -10,21 +10,20 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
 
 .loading-circle {
     width: 8vmax;
     height: 8vmax;
-    border-right: 4px solid #ffffff;
+    border-right: 4px solid var(--primary-color);
     border-radius: 100%;
     animation: spinRight 800ms linear infinite;
 
-    &:before,
-    &:after {
+    &::before {
         content: '';
         width: 6vmax;
         height: 6vmax;
@@ -32,12 +31,12 @@
         position: absolute;
         top: calc(50% - 3vmax);
         left: calc(50% - 3vmax);
-        border-left: 3px solid #ffffff;
+        border-left: 3px solid var(--primary-color);
         border-radius: 100%;
         animation: spinLeft 800ms linear infinite;
     }
 
-    &:after {
+    &::after {
         width: 4vmax;
         height: 4vmax;
         top: calc(50% - 2vmax);
@@ -66,4 +65,8 @@
     to {
         transform: rotate(0deg);
     }
+}
+
+.observer {
+    margin: 10px;
 }

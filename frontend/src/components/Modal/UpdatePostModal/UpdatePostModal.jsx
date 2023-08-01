@@ -46,7 +46,7 @@ const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     if (photoUrl) {
         photoPreview = (
             <div className='update-photo-preview-container'>
-                <img className='update-photo-preview' src={photoUrl} alt="" />
+                <img className='update-photo-preview' src={photoUrl} alt="preview" />
                 <button className='update-photo-preview-close' onClick={handleRemovePhoto}>X</button>
             </div>
         )

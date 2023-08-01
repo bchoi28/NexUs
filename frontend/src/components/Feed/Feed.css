@@ -73,6 +73,10 @@
     object-fit: cover;
 }
 
+/* .feed-user-profile-pic:hover {
+    box-shadow: 0 0 0 1px var(--secondary-color);
+} */
+
 .feed-create-post-button {
     background-color: transparent;
     color: rgba(0, 0, 0, 0.6);
@@ -195,7 +199,7 @@
 
 .about-developer-title {
     font-size: 16px;
-    color: var(--primary-color-alt);
+    color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -216,7 +220,7 @@
 
 .about-developer-connect-title {
     font-size: 16px;
-    color: var(--primary-color-alt);
+    color: var(--primary-color);
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 15px

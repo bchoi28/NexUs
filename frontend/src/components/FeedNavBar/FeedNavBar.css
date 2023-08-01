@@ -29,18 +29,18 @@
     /* align-self: left; */
     vertical-align: middle;
     position: relative;
-    top: 1px;
+    /* top: 1px; */
     cursor: pointer;
     transition: transform 0.2s;
     display: flex;
 }
 
 
-.feed-nav-logo-us {
-    /* margin-left: 3px; */
-    /* margin-right: auto; */
+/* .feed-nav-logo-us {
+    margin-left: 3px;
+    margin-right: auto;
     padding-left: 1.5px;
-    /* padding-top: 2px; */
+    padding-top: 2px;
     padding-right: 3.75px;
     padding-bottom: 1px;
     letter-spacing: -1px;
@@ -54,6 +54,12 @@
     line-height: 1.2;
     text-decoration: none;
     transition: transform 0.2s;
+} */
+
+.feed-nav-logo-us {
+    height: 30px;
+    width: 31px;
+    transition: transform 0.2s ease;
 }
 
 .feed-nav-logo-us:hover {
