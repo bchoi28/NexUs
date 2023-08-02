@@ -48,20 +48,17 @@ const SignInForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(fetchPosts())
+        dispatch(fetchPosts());
+        dispatch(loginRequest());
         dispatch(loginUser({ email, password }))
     }
 
-    const handleDemo = async (e) => {
-        e.preventDefault();
-        dispatch(fetchPosts())
+    const handleDemo = () => {
         dispatch(loginRequest());
-        await dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
-        dispatch(loginSuccess());
+        dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
     }
 
     if (currentUser) {
-
         dispatch(fetchPosts())
         return <Redirect to='/feed' />
     }

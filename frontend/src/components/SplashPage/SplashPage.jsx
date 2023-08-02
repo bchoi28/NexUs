@@ -20,11 +20,12 @@ const SplashPage = () => {
 
     const loading = useSelector(getUiState);
     if (loading) {
+        dispatch(fetchPosts());
         return <Login />
     }
 
     if (currentUser) {
-        dispatch(fetchPosts());
+        // dispatch(fetchPosts());
         return <Redirect to='/feed' />
     }
 

@@ -27,6 +27,7 @@ const SplashSignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        dispatch(loginRequest());
         dispatch(loginUser({ email, password }))
     }
 

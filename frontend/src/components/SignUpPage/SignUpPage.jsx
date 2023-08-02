@@ -9,12 +9,15 @@ import { removeSessionErrors } from '../../store/errors';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { getSessionUser } from '../../store/session';
 import { fetchPosts } from '../../store/post';
+import { getUiState } from '../../store/ui';
+import Login from '../Login';
 
 
 const SignUpPage = () => {
     const currentUser = useSelector(getSessionUser)
     const history = useHistory();
     const dispatch = useDispatch();
+    const loading = useSelector(getUiState)
 
     const handleLogo = () => {
         history.push('/');
@@ -48,10 +51,15 @@ const SignUpPage = () => {
         }
     }, [])
 
-    if (currentUser) {
-        dispatch(fetchPosts());
-        return <Redirect to='/feed' />
-    };
+    // if (currentUser) {
+    //     dispatch(fetchPosts());
+    //     return <Redirect to='/feed' />
+    // };
+
+    if (loading) {
+        dispatch(fetchPosts())
+        return <Login />
+    }
 
     return (
         <div className='signup-page-container'>

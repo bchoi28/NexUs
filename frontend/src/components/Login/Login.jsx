@@ -1,8 +1,6 @@
 import './Login.css';
 
-
 const Login = () => {
-
     return (
         <div className='loading-page-container'>
             <div className="loading-logo-container">

@@ -13,9 +13,7 @@ import { getSessionUser } from '../../store/session';
 import { NavLink } from 'react-router-dom';
 
 const Feed = () => {
-
     const dispatch = useDispatch();
-
     // const [page, setPage] = useState(1);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {

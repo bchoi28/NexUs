@@ -1,19 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './SignUpForm.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../store/session';
+import { getSessionUser, loginUser } from '../../store/session';
 import { loginRequest } from '../../store/ui';
 import { removeSessionErrors } from '../../store/errors';
 import { fetchPosts } from '../../store/post';
-
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
 
     const dispatch = useDispatch();
 
     const errors = useSelector(state => Object.values(state.errors));
-
+    const currentUser = useSelector(getSessionUser);
     const emailErrors = errors.filter(error => error.toLowerCase().includes("email"));
     const passwordErrors = errors.filter(error => error.toLowerCase().includes("password"));
 
@@ -81,6 +80,11 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
             setPassword('');
         }
     }, [])
+
+    if (currentUser) {
+        dispatch(fetchPosts());
+        return <Redirect to='/feed' />
+    };
 
     return (
         <>

@@ -8,6 +8,7 @@ import ProfilePage from "./components/ProfilePage";
 import NetworkPage from './components/Network/NetworkPage';
 import { Redirect } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
+import Login from './components/Login';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <ProtectedRoute exact path='/logout' component={Logout}></ProtectedRoute>
         <ProtectedRoute exact path='/profile/:id' component={ProfilePage}></ProtectedRoute>
         <ProtectedRoute exact path='/mynetwork' component={NetworkPage}></ProtectedRoute>
+        <ProtectedRoute exact path='/mynetwork1' component={Login}></ProtectedRoute>
         <ProtectedRoute path='*'><Redirect to='/feed' /></ProtectedRoute>
       </Switch>
     </>
