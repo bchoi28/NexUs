@@ -12,21 +12,21 @@ require "open-uri"
 # ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
-  # User.destroy_all
-  # Post.destroy_all
-  # Comment.destroy_all
-  # Like.destroy_all
-  # Experience.destroy_all
-  # Connection.destroy_all
+  Like.destroy_all
+  Connection.destroy_all
+  Experience.destroy_all
+  Comment.destroy_all
+  Post.destroy_all
+  User.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
-  # ApplicationRecord.connection.reset_pk_sequence!('users')
-  # ApplicationRecord.connection.reset_pk_sequence!('posts')
-  # ApplicationRecord.connection.reset_pk_sequence!('comments')
-  # ApplicationRecord.connection.reset_pk_sequence!('likes')
-  # ApplicationRecord.connection.reset_pk_sequence!('experiences')
-  # ApplicationRecord.connection.reset_pk_sequence!('connections')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('posts')
+  ApplicationRecord.connection.reset_pk_sequence!('comments')
+  ApplicationRecord.connection.reset_pk_sequence!('likes')
+  ApplicationRecord.connection.reset_pk_sequence!('experiences')
+  ApplicationRecord.connection.reset_pk_sequence!('connections')
 
   puts "Creating users..."
   # Create one user with an easy to remember email, and password:
