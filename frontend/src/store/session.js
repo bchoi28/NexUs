@@ -1,7 +1,7 @@
 import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
 import { removeUser } from './user';
-import { removePosts } from './post';
+import { fetchPosts, removePosts } from './post';
 import { loginRequest, loginSuccess, logoutSuccess } from './ui';
 import { removeConnections } from './connection';
 
@@ -46,6 +46,7 @@ export const loginUser = (user) => async (dispatch) => {
         const data = await res.json();
         dispatch(setSession(data.user));
         storeCurrentUser(data.user);
+        dispatch(fetchPosts());
         setTimeout(() => {
             dispatch(loginSuccess());
         }, 2000);

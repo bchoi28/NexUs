@@ -1,7 +1,7 @@
 import SignUpForm from '../SignUpForm';
 import NameForm from './NameForm';
 import './SignUpPage.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,12 +9,13 @@ import { removeSessionErrors } from '../../store/errors';
 import { fetchPosts } from '../../store/post';
 import { getUiState } from '../../store/ui';
 import Login from '../Login';
-
+import { getSessionUser } from '../../store/session';
 
 const SignUpPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const loading = useSelector(getUiState)
+    const currentUser = useSelector(getSessionUser);
 
     const handleLogo = () => {
         history.push('/');
@@ -23,7 +24,6 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('');
     const [formStep, setFormStep] = useState(1);
     const [userObject, setUserObject] = useState({});
-
 
     const handleSignup = ({ email, password }) => {
         setUserObject({ email, password });
@@ -43,15 +43,17 @@ const SignUpPage = () => {
     }
     useEffect(() => {
         return () => {
-            dispatch(fetchPosts());
             dispatch(removeSessionErrors())
         }
     }, [dispatch])
 
     if (loading) {
-        dispatch(fetchPosts())
         return <Login />
     }
+
+    if (currentUser) {
+        return <Redirect to='/feed' />
+    };
 
     return (
         <div className='signup-page-container'>

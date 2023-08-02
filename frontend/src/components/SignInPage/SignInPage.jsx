@@ -26,13 +26,10 @@ const SignInPage = () => {
     }, [dispatch]);
 
     if (loading) {
-        dispatch(fetchPosts())
         return <Login />
     }
 
     if (currentUser) {
-        debugger
-        // dispatch(fetchPosts())
         return <Redirect to='/feed' />
     }
 

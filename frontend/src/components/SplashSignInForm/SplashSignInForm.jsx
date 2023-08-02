@@ -5,6 +5,7 @@ import { loginDemo, loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
 import { loginRequest } from '../../store/ui';
+import { fetchPosts } from '../../store/post';
 
 const SplashSignInForm = () => {
 
@@ -28,11 +29,11 @@ const SplashSignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // dispatch(loginRequest());
         dispatch(loginUser({ email, password }))
     }
 
     const handleDemo = () => {
+        dispatch(fetchPosts());
         dispatch(loginRequest());
         dispatch(loginDemo({ email: 'demo@user.io', password: 'password' }))
     }
