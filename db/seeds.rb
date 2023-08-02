@@ -374,7 +374,7 @@ require "open-uri"
   # post6.likes.create!(liker: user2, likeable: post6)
   # post6.likes.create!(liker: user6, likeable: post6)
 
-  Like.create(liker_id: user1.id, likeable_id: post7.id, likeable_type: 'Post')
+  Like.create(user_id: user1.id, likeable_id: post7.id, likeable_type: 'Post')
 
   # post8.likes.create!(liker: user4, likeable: post8)
   # post8.likes.create!(liker: user5, likeable: post8)

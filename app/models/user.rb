@@ -53,7 +53,7 @@ class User < ApplicationRecord
         dependent: :destroy
         
     has_many :likes,
-        foreign_key: :liker_id,
+        foreign_key: :user_id,
         class_name: :Like,
         dependent: :destroy
 
