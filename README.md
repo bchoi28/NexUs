@@ -13,7 +13,7 @@
   * [Alliances](#alliances)
   * [Experiences](#experiences)
   * [Search](#search)
-  * [Aws](#aws)
+  * [AWS](#aws)
 * [Future Functionalities](#future-functionalities)
 * [The Developer](#about-me)
 
