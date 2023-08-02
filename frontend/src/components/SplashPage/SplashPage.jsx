@@ -2,15 +2,13 @@ import SplashSignInForm from "../SplashSignInForm";
 import SplashNavBar from "./SplashNavBar";
 import './SplashPage.css';
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getUiState } from "../../store/ui";
 import Login from "../Login/Login";
 import { getSessionUser } from "../../store/session";
-import { fetchPosts } from "../../store/post";
 
 const SplashPage = () => {
-    const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
     const [showSpace, setShowSpace] = useState(false);
 
@@ -20,12 +18,10 @@ const SplashPage = () => {
 
     const loading = useSelector(getUiState);
     if (loading) {
-        dispatch(fetchPosts());
         return <Login />
     }
 
     if (currentUser) {
-        // dispatch(fetchPosts());
         return <Redirect to='/feed' />
     }
 

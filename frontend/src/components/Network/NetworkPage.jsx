@@ -36,7 +36,6 @@ const NetworkPage = () => {
             dispatch(fetchAllConnections());
         }
         return (() => {
-
             dispatch(removeConnections())
         })
     }, [dispatch])
