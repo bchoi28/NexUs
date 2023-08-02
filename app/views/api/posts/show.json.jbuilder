@@ -4,14 +4,14 @@ json.post do
   json.likes do
       @post.likes.each do |like|
         json.set! like.id do
-            json.likerId like.user_id
+            json.likerId like.liker_id
             json.liker do
-                json.id like.user_id
-                json.fName like.user.fname
-                json.lName like.user.lname
-                json.headline like.user.headline
-                json.pronouns like.user.pronouns
-                json.photoUrl like.user.photo.url
+                json.id like.liker_id
+                json.fName like.liker.fname
+                json.lName like.liker.lname
+                json.headline like.liker.headline
+                json.pronouns like.liker.pronouns
+                json.photoUrl like.liker.photo.url
             end
         end
       end
@@ -21,7 +21,7 @@ json.post do
         json.set! comment.id do
             json.extract! comment, :id, :content, :created_at
             json.commenter do
-                json.id comment.commenter.id
+                json.id comment.commenter_id
                 json.fName comment.commenter.fname
                 json.lName comment.commenter.lname
                 json.headline comment.commenter.headline

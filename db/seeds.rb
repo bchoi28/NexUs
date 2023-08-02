@@ -12,12 +12,12 @@ require "open-uri"
 # ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
-  Like.destroy_all
-  Connection.destroy_all
-  Experience.destroy_all
-  Comment.destroy_all
-  Post.destroy_all
-  User.destroy_all
+  # User.destroy_all
+  # Like.destroy_all
+  # Connection.destroy_all
+  # Experience.destroy_all
+  # Comment.destroy_all
+  # Post.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -352,35 +352,35 @@ require "open-uri"
   puts "finished creating users and their experiences"
 
   puts "creating likes..."
-  # post1.likes.create!(liker: user2, likeable: post1)
-  # post1.likes.create!(liker: user3, likeable: post1)
-  # post1.likes.create!(liker: user4, likeable: post1)
+  post1.likes.create!(liker: user2)
+  post1.likes.create!(liker: user3)
+  post1.likes.create!(liker: user4)
   
-  # post2.likes.create!(liker: user2, likeable: post2)
-  # post2.likes.create!(liker: user3, likeable: post2)
-  # post2.likes.create!(liker: user4, likeable: post2)
+  post2.likes.create!(liker: user2)
+  post2.likes.create!(liker: user3)
+  post2.likes.create!(liker: user4)
 
-  # post3.likes.create!(liker: user1, likeable: post3)
-  # post3.likes.create!(liker: user3, likeable: post3)
-  # post3.likes.create!(liker: user4, likeable: post3)
+  post3.likes.create!(liker: user1)
+  post3.likes.create!(liker: user3)
+  post3.likes.create!(liker: user4)
 
-  # post4.likes.create!(liker: user2, likeable: post4)
-  # post4.likes.create!(liker: user4, likeable: post4)
+  post4.likes.create!(liker: user2)
+  post4.likes.create!(liker: user4)
 
-  # post5.likes.create!(liker: user1, likeable: post5)
-  # post5.likes.create!(liker: user2, likeable: post5)
-  # post5.likes.create!(liker: user3, likeable: post5)
+  post5.likes.create!(liker: user1)
+  post5.likes.create!(liker: user2)
+  post5.likes.create!(liker: user3)
 
-  # post6.likes.create!(liker: user2, likeable: post6)
-  # post6.likes.create!(liker: user6, likeable: post6)
+  post6.likes.create!(liker: user2)
+  post6.likes.create!(liker: user6)
 
-  Like.create(user_id: user1.id, likeable_id: post7.id, likeable_type: 'Post')
+  # Like.create(user_id: user1.id, likeable_id: post7.id, likeable_type: 'Post')
 
-  # post8.likes.create!(liker: user4, likeable: post8)
-  # post8.likes.create!(liker: user5, likeable: post8)
-  # post8.likes.create!(liker: user6, likeable: post8)
+  post8.likes.create!(liker: user4)
+  post8.likes.create!(liker: user5)
+  post8.likes.create!(liker: user6)
 
-  # post9.likes.create!(liker: user6, likeable: post9)
+  post9.likes.create!(liker: user6)
 
   puts "likes created"
 
