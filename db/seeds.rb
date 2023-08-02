@@ -352,35 +352,35 @@ require "open-uri"
   puts "finished creating users and their experiences"
 
   puts "creating likes..."
-  post1.likes.create!(liker: user2)
-  post1.likes.create!(liker: user3)
-  post1.likes.create!(liker: user4)
+  post1.likes.create!(liker: user2, likeable: post1)
+  post1.likes.create!(liker: user3, likeable: post1)
+  post1.likes.create!(liker: user4, likeable: post1)
   
-  post2.likes.create!(liker: user2)
-  post2.likes.create!(liker: user3)
-  post2.likes.create!(liker: user4)
+  post2.likes.create!(liker: user2, likeable: post2)
+  post2.likes.create!(liker: user3, likeable: post2)
+  post2.likes.create!(liker: user4, likeable: post2)
 
-  post3.likes.create!(liker: user1)
-  post3.likes.create!(liker: user3)
-  post3.likes.create!(liker: user4)
+  post3.likes.create!(liker: user1, likeable: post3)
+  post3.likes.create!(liker: user3, likeable: post3)
+  post3.likes.create!(liker: user4, likeable: post3)
 
-  post4.likes.create!(liker: user2)
-  post4.likes.create!(liker: user4)
+  post4.likes.create!(liker: user2, likeable: post4)
+  post4.likes.create!(liker: user4, likeable: post4)
 
-  post5.likes.create!(liker: user1)
-  post5.likes.create!(liker: user2)
-  post5.likes.create!(liker: user3)
+  post5.likes.create!(liker: user1, likeable: post5)
+  post5.likes.create!(liker: user2, likeable: post5)
+  post5.likes.create!(liker: user3, likeable: post5)
 
-  post6.likes.create!(liker: user2)
-  post6.likes.create!(liker: user6)
+  post6.likes.create!(liker: user2, likeable: post6)
+  post6.likes.create!(liker: user6, likeable: post6)
 
-  post7.likes.create!(liker: user1)
+  post7.likes.create!(liker: user1, likeable: post7)
 
-  post8.likes.create!(liker: user4)
-  post8.likes.create!(liker: user5)
-  post8.likes.create!(liker: user6)
+  post8.likes.create!(liker: user4, likeable: post8)
+  post8.likes.create!(liker: user5, likeable: post8)
+  post8.likes.create!(liker: user6, likeable: post8)
 
-  post9.likes.create!(liker: user6)
+  post9.likes.create!(liker: user6, likeable: post9)
 
   puts "likes created"
 
