@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { fetchPosts } from '../../store/post';
 import { getUiState } from '../../store/ui';
 import Login from '../Login';
 import { getSessionUser } from '../../store/session';

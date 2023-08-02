@@ -7,7 +7,6 @@ import Login from '../Login';
 import { useEffect } from 'react';
 import { removeSessionErrors } from '../../store/errors';
 import { getSessionUser } from '../../store/session';
-import { fetchPosts } from '../../store/post';
 
 const SignInPage = () => {
 
