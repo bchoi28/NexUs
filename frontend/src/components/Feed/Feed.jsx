@@ -35,7 +35,7 @@ const Feed = () => {
         return () => {
             dispatch(removeUser());
         }
-    }, [])
+    }, [dispatch])
 
     return (
         <>

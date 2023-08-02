@@ -1,12 +1,10 @@
 import './SignInForm.css'
 import { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import { getSessionUser, loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { getUser } from '../../store/user';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { loginRequest, loginSuccess } from '../../store/ui';
+import { loginRequest } from '../../store/ui';
 import { fetchPosts } from '../../store/post';
 
 const SignInForm = () => {
@@ -39,7 +37,7 @@ const SignInForm = () => {
             setEmail('');
             setPassword('');
         }
-    }, [])
+    }, [dispatch])
 
     // if (sessionStorage.getItem('currentUser')) {
     //     history.push('/feed')

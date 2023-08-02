@@ -39,7 +39,7 @@ const NetworkPage = () => {
 
             dispatch(removeConnections())
         })
-    }, [])
+    }, [dispatch])
 
     if (!currentUser) {
         // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));

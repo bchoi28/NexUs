@@ -6,15 +6,12 @@ import { useState, useEffect } from 'react';
 import { signupUser } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import { getSessionUser } from '../../store/session';
 import { fetchPosts } from '../../store/post';
 import { getUiState } from '../../store/ui';
 import Login from '../Login';
 
 
 const SignUpPage = () => {
-    const currentUser = useSelector(getSessionUser)
     const history = useHistory();
     const dispatch = useDispatch();
     const loading = useSelector(getUiState)
@@ -49,12 +46,7 @@ const SignUpPage = () => {
             dispatch(fetchPosts());
             dispatch(removeSessionErrors())
         }
-    }, [])
-
-    // if (currentUser) {
-    //     dispatch(fetchPosts());
-    //     return <Redirect to='/feed' />
-    // };
+    }, [dispatch])
 
     if (loading) {
         dispatch(fetchPosts())

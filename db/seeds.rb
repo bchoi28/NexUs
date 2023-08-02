@@ -339,6 +339,16 @@ require "open-uri"
       )
   end
 
+  post9 = Post.create!(
+      author: user1,
+      body: "Look at this cool logo I made for my app!"
+  ).tap do |post|
+      post.photo.attach(
+        io: URI.open("https://nexus-seeds.s3.amazonaws.com/nexus-images/logo-us-white.png"),
+        filename: "logo-us-white.png"
+      )
+  end
+
   puts "finished creating users and their experiences"
 
   puts "creating likes..."
@@ -354,7 +364,6 @@ require "open-uri"
   post3.likes.create!(liker: user3)
   post3.likes.create!(liker: user4)
 
-  # post4.likes.create!(liker: user1)
   post4.likes.create!(liker: user2)
   post4.likes.create!(liker: user4)
 
@@ -362,7 +371,7 @@ require "open-uri"
   post5.likes.create!(liker: user2)
   post5.likes.create!(liker: user3)
 
-  post6.likes.create!(liker: user5)
+  post6.likes.create!(liker: user2)
   post6.likes.create!(liker: user6)
 
   post7.likes.create!(liker: user1)
@@ -370,6 +379,8 @@ require "open-uri"
   post8.likes.create!(liker: user4)
   post8.likes.create!(liker: user5)
   post8.likes.create!(liker: user6)
+
+  post9.likes.create!(liker: user6)
 
   puts "likes created"
 

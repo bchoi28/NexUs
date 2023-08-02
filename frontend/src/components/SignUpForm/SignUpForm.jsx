@@ -16,7 +16,6 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
     const emailErrors = errors.filter(error => error.toLowerCase().includes("email"));
     const passwordErrors = errors.filter(error => error.toLowerCase().includes("password"));
 
-
     const [password, setPassword] = useState('');
     const [finalErrors, setFinalErrors] = useState({})
 
@@ -79,7 +78,7 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
             setEmail('');
             setPassword('');
         }
-    }, [])
+    }, [dispatch])
 
     if (currentUser) {
         dispatch(fetchPosts());

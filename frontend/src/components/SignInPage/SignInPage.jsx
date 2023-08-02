@@ -21,7 +21,7 @@ const SignInPage = () => {
 
     useEffect(() => {
         dispatch(removeSessionErrors())
-    }, []);
+    }, [dispatch]);
 
     if (loading) {
         return <Login />

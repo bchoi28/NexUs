@@ -13,6 +13,7 @@ const ProfileBadge = ({ user }) => {
     const connections = Object.values(useSelector(getConnections));
     const posts = useSelector(getPosts);
     const connectionsCount = connections?.length;
+
     useEffect(() => {
         dispatch(fetchSessionUser(currentUser.id));
         if (!currentUser || !currentUser.photoUrl) {
@@ -22,7 +23,7 @@ const ProfileBadge = ({ user }) => {
         if (currentUser) {
             dispatch(fetchAllConnections());
         }
-    }, [])
+    }, [dispatch])
 
     if (posts.length === 0) {
         return (

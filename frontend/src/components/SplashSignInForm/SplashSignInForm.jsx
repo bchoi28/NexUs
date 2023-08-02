@@ -21,8 +21,8 @@ const SplashSignInForm = () => {
     const handlePassword = (e) => setPassword(e.target.value);
 
     useEffect(() => {
-        return () => dispatch(removeSessionErrors())
-    }, [])
+        dispatch(removeSessionErrors())
+    }, [dispatch])
 
 
     const handleSubmit = async (e) => {
