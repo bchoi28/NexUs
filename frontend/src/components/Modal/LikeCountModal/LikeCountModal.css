@@ -52,7 +52,7 @@
 .liker-item-container {
     display: flex;
     margin: 0 0 0 0;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 25px;
     margin-left: -14px;
     margin-right: -14.5px;
     border-top: 0.3px solid var(--color-border-light);
@@ -61,7 +61,7 @@
 }
 
 .liker-item-container:hover {
-    background-color: var(--color-background-button-hover)
+    background-color: var(--color-background-button-hover);
 }
 
 .liker-item-photo {
