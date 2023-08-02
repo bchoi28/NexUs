@@ -18,11 +18,9 @@ function App() {
         <Route exact path='/signup'><SignUpPage /></Route>
         <Route exact path='/login'><SignInPage /></Route>
         <ProtectedRoute exact path="/feed" component={Feed} />
-
-        {/* <Route exact path='/feed'><Feed /></Route> */}
-        <ProtectedRoute exact path='/logout'><Logout /></ProtectedRoute>
-        <ProtectedRoute exact path='/profile/:id' ><ProfilePage /></ProtectedRoute>
-        <ProtectedRoute exact path='/mynetwork' ><NetworkPage /></ProtectedRoute>
+        <ProtectedRoute exact path='/logout' component={Logout}></ProtectedRoute>
+        <ProtectedRoute exact path='/profile/:id' component={ProfilePage}></ProtectedRoute>
+        <ProtectedRoute exact path='/mynetwork' component={NetworkPage}></ProtectedRoute>
         <ProtectedRoute path='*'><Redirect to='/feed' /></ProtectedRoute>
       </Switch>
     </>

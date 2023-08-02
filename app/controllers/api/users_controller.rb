@@ -3,10 +3,14 @@ class Api::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        if params[:likers].present?
-            render :likers
+        if @user
+            if params[:likers].present?
+                render :likers
+            else
+                render :show
+            end
         else
-            render :show
+            render json: {error: 'User not found'}, status: 404
         end
     end
 

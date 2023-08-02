@@ -13,12 +13,13 @@
   * [Alliances](#alliances)
   * [Experiences](#experiences)
   * [Search](#search)
+  * [Aws](#aws)
 * [Future Functionalities](#future-functionalities)
 * [The Developer](#about-me)
 
 # Background and Overview
 
-Welcome to <span style="font-weight: bold; color: #0a66c2">NexUs&trade;</span> , an inter-universal professional networking social-media application based on the popular website LinkedIn. Connect with others AND yourself/yourselves from across the Multiverse! NexUs was carefully designed with an intuitive and user-friendly interface, ensuring a seamless user experience while navigating the app.
+Join <span style="font-weight: bold; color: #0a66c2">NexUs&trade;</span> , the inter-universal professional networking social-media application based on the popular website LinkedIn. Connect with others AND yourself/yourselves from across the Multiverse! Create a stellar profile, forge intergalactic alliances, and share captivating content. Empowering professionals to build their network beyond boundaries, NexUs takes networking to new frontiers.
 
 Enter the <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >Nexusverse</a>!
 
@@ -156,15 +157,16 @@ NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, e
 # About Me
 
 <img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
-I am a fullstack software engineer proficient in JavaScript, React/Redux, Ruby, and Ruby on Rails. 
-As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering!
+I am a fullstack software engineer proficient with a strong interest in creating seamless and intuitive user experiences. 
+As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering.
+Connect with me on <a href="https://linkedin.com/in/brandonchoi28" target="_blank"  >LinkedIn!</a>
 
 <br>
 <br>
 
 # Thanks for Reading!
 
-The core features of <span style="color: #0a66c2">**NexUs&trade;**</span> were produced as a result of a 14 day full-stack solo project. What are you waiting for? Enter the Nexusverse <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >here</a>!
+The core features of <span>**NexUs&trade;**</span> were produced as a result of a 14 day full-stack solo project. What are you waiting for? Enter the Nexusverse <a href="https://nexus-zblj.onrender.com" target="_blank" style="color: #0a66c2" >here</a>!
 
 <br>
 

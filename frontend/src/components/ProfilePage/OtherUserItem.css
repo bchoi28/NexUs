@@ -28,7 +28,7 @@
 .other-user-info {
     display: flex;
     flex-direction: column;
-    margin-left: 6px;
+    margin-left: 12px;
 }
 
 .other-user-info>div {

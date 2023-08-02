@@ -20,10 +20,11 @@
 }
 
 .profile-left-container {
-    width: 650px;
+    /* width: 650px; */
+    width: 745px;
     border-radius: 12.8px;
     /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08); */
-    margin: 0px 21px;
+    margin: 0px 21px 0px 0px;
     background-color: var(--color-background-canvas);
     max-width: 770px;
 }
@@ -269,7 +270,7 @@
 }
 
 .profile-right-container {
-    width: 280px;
+    width: 282px;
     min-width: 200px;
     background-color: #fff;
     border-radius: 12.8px;

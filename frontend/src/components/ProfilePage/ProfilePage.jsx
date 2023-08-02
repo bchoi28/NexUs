@@ -12,7 +12,7 @@ import Login from '../Login/Login';
 import ExperienceItem from '../Experience';
 import { fetchAllUserConnections, fetchAllUserConnectionsConnectedPending, getConnectedStatus, getConnections, createConnection } from '../../store/connection';
 import OtherUserItem from './OtherUserItem';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 import { getUiState } from '../../store/ui';
 
 const ProfilePage = () => {
@@ -36,6 +36,9 @@ const ProfilePage = () => {
     });
 
     const currentUser = useSelector(getSessionUser);
+    if (profileUser === 'notFound') {
+        history.push('/feed');
+    }
     if (!currentUser) {
         history.push('/login');
     }

@@ -16,6 +16,7 @@ const PostItem = React.memo(({ post }) => {
     const dropdownRef = useRef(null);
     const { likeCount, likers } = useSelector(getLikeInformation(post.id)) || {};
     const commentCount = useSelector(getCommentCount(post.id));
+    const currentUser = useSelector(getSessionUser)
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -36,6 +37,7 @@ const PostItem = React.memo(({ post }) => {
     };
 
     useEffect(() => {
+        dispatch(fetchSessionUser(currentUser.id))
         const handleClickOutside = (e) => {
             if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
                 setDropDownOpen(false);
@@ -48,8 +50,6 @@ const PostItem = React.memo(({ post }) => {
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
-
-    const currentUser = useSelector(getSessionUser)
 
     if (!currentUser) {
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));

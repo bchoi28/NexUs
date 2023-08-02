@@ -123,6 +123,8 @@ export const fetchUser = (userId) => async (dispatch) => {
         const data = await res.json();
         const user = data.user;
         dispatch(receiveUser(user));
+    } else {
+        dispatch(receiveUser('notFound'));
     }
 }
 
