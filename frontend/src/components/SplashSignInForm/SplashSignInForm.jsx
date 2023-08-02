@@ -1,7 +1,7 @@
 import './SplashSignInForm.css'
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { loginUser } from '../../store/session';
+import { loginDemo, loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
 import { loginRequest } from '../../store/ui';
@@ -21,20 +21,20 @@ const SplashSignInForm = () => {
     const handlePassword = (e) => setPassword(e.target.value);
 
     useEffect(() => {
-        dispatch(removeSessionErrors())
+        dispatch(removeSessionErrors());
+        return () => dispatch(removeSessionErrors());
     }, [dispatch])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginRequest());
+        // dispatch(loginRequest());
         dispatch(loginUser({ email, password }))
     }
 
-    const handleDemo = (e) => {
-        e.preventDefault();
+    const handleDemo = () => {
         dispatch(loginRequest());
-        dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
+        dispatch(loginDemo({ email: 'demo@user.io', password: 'password' }))
     }
 
     const handleJoin = () => {

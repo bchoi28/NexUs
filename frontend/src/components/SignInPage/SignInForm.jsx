@@ -1,6 +1,6 @@
 import './SignInForm.css'
 import { useState, useEffect } from 'react';
-import { getSessionUser, loginUser } from '../../store/session';
+import { getSessionUser, loginDemo, loginUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeSessionErrors } from '../../store/errors';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
@@ -11,7 +11,7 @@ const SignInForm = () => {
 
     const dispatch = useDispatch();
     // const history = useHistory();
-    const currentUser = useSelector(getSessionUser)
+    // const currentUser = useSelector(getSessionUser)
     // const loading = useSelector(getUiState);
 
     const [email, setEmail] = useState('')
@@ -46,20 +46,20 @@ const SignInForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(fetchPosts());
-        dispatch(loginRequest());
+        // dispatch(fetchPosts());
+        // dispatch(loginRequest());
         dispatch(loginUser({ email, password }))
     }
 
     const handleDemo = () => {
         dispatch(loginRequest());
-        dispatch(loginUser({ email: 'demo@user.io', password: 'password' }))
+        dispatch(loginDemo({ email: 'demo@user.io', password: 'password' }))
     }
 
-    if (currentUser) {
-        dispatch(fetchPosts())
-        return <Redirect to='/feed' />
-    }
+    // if (currentUser) {
+    //     dispatch(fetchPosts())
+    //     return <Redirect to='/feed' />
+    // }
 
     return (
         <div className='signin-form-container'>

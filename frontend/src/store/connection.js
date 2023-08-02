@@ -146,7 +146,7 @@ const connectionsReducer = (state = initialState, action) => {
         case RECEIVE_CONNECTIONS_CONNECTED_PENDING:
             return { ...state, connectionsConnectedPending: action.connections };
         case REMOVE_CONNECTIONS:
-            return { ...state, connections: [] }
+            return initialState;
         case RECEIVE_CONNECTION_REQUESTS:
             return { ...state, connectionRequests: action.connectionRequests };
         default:

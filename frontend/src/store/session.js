@@ -2,7 +2,8 @@ import csrfFetch from './csrf';
 import { receiveSessionErrors } from './errors';
 import { removeUser } from './user';
 import { removePosts } from './post';
-import { loginSuccess, logoutSuccess } from './ui';
+import { loginRequest, loginSuccess, logoutSuccess } from './ui';
+import { removeConnections } from './connection';
 
 export const SET_SESSION = 'session/SET_SESSION';
 export const REMOVE_SESSION = 'session/REMOVE_SESSION';
@@ -41,6 +42,26 @@ export const loginUser = (user) => async (dispatch) => {
         body: JSON.stringify(payload)
     });
     if (res.ok) {
+        dispatch(loginRequest());
+        const data = await res.json();
+        dispatch(setSession(data.user));
+        storeCurrentUser(data.user);
+        setTimeout(() => {
+            dispatch(loginSuccess());
+        }, 2000);
+    } else {
+        const data = await res.json();
+        dispatch(receiveSessionErrors(data.errors))
+    }
+    return res;
+}
+export const loginDemo = (user) => async (dispatch) => {
+    const payload = { user: user }
+    const res = await csrfFetch('/api/session', {
+        method: 'POST',
+        body: JSON.stringify(payload)
+    });
+    if (res.ok) {
         const data = await res.json();
         dispatch(setSession(data.user));
         storeCurrentUser(data.user);
@@ -61,7 +82,8 @@ export const logoutUser = () => async (dispatch) => {
     dispatch(removeSession());
     dispatch(removeUser());
     dispatch(removePosts());
-    dispatch(logoutSuccess())
+    dispatch(removeConnections());
+    dispatch(logoutSuccess());
 }
 
 export const restoreSession = () => async (dispatch) => {
