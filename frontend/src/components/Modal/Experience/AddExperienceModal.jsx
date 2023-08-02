@@ -2,7 +2,7 @@ import './UpdateExperienceModal.css';
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../../store/modal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { createExperience } from '../../../store/experience';
 
 const AddExperienceModal = () => {

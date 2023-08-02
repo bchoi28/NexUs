@@ -3,7 +3,7 @@ import './UpdateAboutModal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../../store/modal';
 import { useState } from 'react';
-import { getUser, updateUser } from '../../../store/user';
+import { updateUser } from '../../../store/user';
 import { getSessionUser } from '../../../store/session';
 
 const UpdateAboutModal = ({ about }) => {

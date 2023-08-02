@@ -1,6 +1,5 @@
 import './NameForm.css';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 const NameForm = ({ onSubmit }) => {
 

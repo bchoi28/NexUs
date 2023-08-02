@@ -1,8 +1,7 @@
 import './UpdatePostModal.css';
 import { useState } from 'react';
 import { updatePost } from '../../../store/post';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../../store/user';
+import { useDispatch } from 'react-redux';
 
 const UpdatePostModal = ({ handleClose, post, currentUser }) => {
     const dispatch = useDispatch();

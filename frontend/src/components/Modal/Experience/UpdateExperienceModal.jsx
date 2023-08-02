@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../../store/modal';
 import { useState, useEffect } from 'react';
-import { getSessionUser } from '../../../store/session';
 import { deleteExperience, updateExperience } from '../../../store/experience';
 
 const UpdateExperienceModal = ({ experienceInfo }) => {

@@ -1,19 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ExperienceItem.css';
 import React from 'react';
 import { getSessionUser } from '../../store/session';
-import { getUser } from '../../store/user';
 import { openModal } from '../../store/modal';
-import { deleteExperience, updateExperience } from '../../store/experience';
 
 const ExperienceItem = ({ experience }) => {
 
     const { id } = useParams();
     const dispatch = useDispatch();
     const currentUser = useSelector(getSessionUser);
-    const profileUser = useSelector(getUser);
     const experienceId = experience.id;
 
     const {
