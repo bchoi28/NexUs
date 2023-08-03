@@ -36,7 +36,7 @@ const LikeCountModal = ({ likers, likeCount }) => {
 
     return (
         <Modal
-            className='modal-custom'
+            className='like-modal-custom'
             overlayClassName='modal-overlay-like-count'
             isOpen={isOpen}
             onRequestClose={handleClose}
