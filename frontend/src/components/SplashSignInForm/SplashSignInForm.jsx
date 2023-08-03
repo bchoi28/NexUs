@@ -34,8 +34,8 @@ const SplashSignInForm = () => {
 
     const handleDemo = () => {
         dispatch(fetchPosts());
-        dispatch(loginRequest());
         dispatch(loginDemo({ email: 'demo@user.io', password: 'password' }))
+        dispatch(loginRequest());
     }
 
     const handleJoin = () => {

@@ -12,12 +12,12 @@ require "open-uri"
 # ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
-  # User.destroy_all
-  # Like.destroy_all
-  # Connection.destroy_all
-  # Experience.destroy_all
-  # Comment.destroy_all
-  # Post.destroy_all
+  User.destroy_all
+  Like.destroy_all
+  Connection.destroy_all
+  Experience.destroy_all
+  Comment.destroy_all
+  Post.destroy_all
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -380,7 +380,11 @@ require "open-uri"
   post8.likes.create!(liker: user5)
   post8.likes.create!(liker: user6)
 
-  post9.likes.create!(liker: user6)
+  user_ids = (2..7).to_a
+  user_ids.each do |user_id|
+    post9.likes.create!(liker_id: user_id)
+  end
+
 
   puts "likes created"
 
@@ -396,6 +400,14 @@ require "open-uri"
   post4.comments.create!(
     commenter: user1,
     content: "My thoughts exactly!"
+  )
+  post8.comments.create!(
+    commenter: user1,
+    content: "Awesome stuff, Brandina!"
+  )
+  post8.comments.create!(
+    commenter: user4,
+    content: "I knew it was real..."
   )
 
   puts "comments created"

@@ -64,10 +64,15 @@
 .comment-names {
     font-size: 15px;
     font-weight: 600;
+    position: relative;
+    bottom: 2px;
+    text-decoration: none;
+    color: var(--color-text-main)
 }
 
 .comment-names:hover {
     text-decoration: underline;
+    color: var(--secondary-color)
 }
 
 .comment-pronouns {
