@@ -72,11 +72,11 @@ class User < ApplicationRecord
 
     has_many :connections_as_connector, -> {where(status: 'connected')},
         foreign_key: :connector_id, 
-        class_name: 'Connection',
+        class_name: :Connection,
         dependent: :destroy
     has_many :connections_as_connectee, -> {where(status: 'connected')},
         foreign_key: :connectee_id, 
-        class_name: 'Connection',
+        class_name: :Connection,
         dependent: :destroy
 
     has_many :connected_users, 
