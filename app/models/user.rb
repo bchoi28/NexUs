@@ -72,10 +72,12 @@ class User < ApplicationRecord
 
     has_many :connections_as_connector, -> {where(status: 'connected')},
         foreign_key: :connector_id, 
-        class_name: 'Connection'
+        class_name: 'Connection',
+        dependent: :destroy
     has_many :connections_as_connectee, -> {where(status: 'connected')},
         foreign_key: :connectee_id, 
-        class_name: 'Connection'
+        class_name: 'Connection',
+        dependent: :destroy
 
     has_many :connected_users, 
         through: :connections_as_connector, 
@@ -89,7 +91,8 @@ class User < ApplicationRecord
         ->(user) { where(status: 'pending', connectee_id: user.id) },
         primary_key: :id,
         foreign_key: :connectee_id,
-        class_name: :Connection
+        class_name: :Connection,
+        dependent: :destroy
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
