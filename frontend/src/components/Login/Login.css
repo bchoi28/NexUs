@@ -1,5 +1,5 @@
 .loading-page-container {
-    animation: loginAnimation 3s linear 1;
+    animation: loginAnimation 3s linear 1 forwards;
     height: 100vh;
     width: 100vw;
     display: flex;

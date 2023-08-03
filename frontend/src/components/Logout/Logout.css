@@ -1,7 +1,6 @@
 .logout-container {
-    /* ... previous styles ... */
     background: #fff;
-    animation: logoutAnimation 1.2s linear 1;
+    animation: logoutAnimation 1.2s linear 1 forwards;
     height: 100vh;
     width: 100vw;
     display: flex;

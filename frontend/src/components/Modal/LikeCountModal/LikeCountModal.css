@@ -1,3 +1,18 @@
+.like-modal-custom {
+    width: 500px;
+    height: 505px;
+    /* min-height: 400px; */
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    top: 32px;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
 .modal-overlay-like-count {
     background-color: rgba(0, 0, 0, 0.75);
     position: fixed;
@@ -12,6 +27,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
+    padding-bottom: 5px;
 }
 
 .like-header-count {
@@ -40,6 +56,7 @@
     border-radius: 50%;
     display: inline-block;
     margin-left: 5px;
+    overflow-y: scroll;
 }
 
 .like-count-text-modal {
@@ -57,7 +74,6 @@
     margin-right: -14.5px;
     border-top: 0.3px solid var(--color-border-light);
     cursor: pointer;
-
 }
 
 .liker-item-container:hover {
