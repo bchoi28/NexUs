@@ -157,10 +157,12 @@ NexUs optimizes Amazon S3 for profile pictures, cover photos, and post images, e
 
 # About Me
 
-<img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
+<a href="https://linkedin.com/in/brandonchoi28">
+    <img className='about-developer-image' src='frontend/public/assets/images/seeds/demo2crop.png' width=100 alt="developer" align="left" />
+</a>
 I am a fullstack software engineer proficient in JavaScript/Ruby on Rails with a strong interest in creating seamless and intuitive user experiences. 
 As a former Physical Therapist, I have redirected my passion for helping others and attention to detail towards the field of software engineering.
-Connect with me on <a href="https://linkedin.com/in/brandonchoi28" target="_blank"  >LinkedIn!</a>
+Connect with me on <a href="https://linkedin.com/in/brandonchoi28">LinkedIn!</a>
 
 <br>
 <br>
