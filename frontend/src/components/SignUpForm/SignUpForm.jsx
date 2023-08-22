@@ -8,7 +8,6 @@ import { removeSessionErrors } from '../../store/errors';
 import { fetchPosts } from '../../store/post';
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
-    debugger
     const dispatch = useDispatch();
 
     const errors = useSelector(state => Object.values(state.errors));

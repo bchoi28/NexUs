@@ -24,7 +24,6 @@ const SplashSignInForm = () => {
     useEffect(() => {
         dispatch(removeSessionErrors());
         return () => {
-            debugger
             setEmail('');
             setPassword('');
             dispatch(removeSessionErrors());
@@ -44,7 +43,6 @@ const SplashSignInForm = () => {
     }
 
     const handleJoin = () => {
-        debugger
         setEmail('');
         setPassword('');
         dispatch(removeSessionErrors())
