@@ -23,7 +23,12 @@ const SplashSignInForm = () => {
 
     useEffect(() => {
         dispatch(removeSessionErrors());
-        return () => dispatch(removeSessionErrors());
+        return () => {
+            debugger
+            setEmail('');
+            setPassword('');
+            dispatch(removeSessionErrors());
+        }
     }, [dispatch])
 
 
@@ -39,6 +44,9 @@ const SplashSignInForm = () => {
     }
 
     const handleJoin = () => {
+        debugger
+        setEmail('');
+        setPassword('');
         dispatch(removeSessionErrors())
         history.push('/signup')
     }

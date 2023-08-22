@@ -11,6 +11,7 @@ import Login from '../Login';
 import { getSessionUser } from '../../store/session';
 
 const SignUpPage = () => {
+    debugger
     const history = useHistory();
     const dispatch = useDispatch();
     const loading = useSelector(getUiState)

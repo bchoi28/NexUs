@@ -8,12 +8,13 @@ import { removeSessionErrors } from '../../store/errors';
 import { fetchPosts } from '../../store/post';
 
 const SignUpForm = ({ onSubmit, email, setEmail }) => {
-
+    debugger
     const dispatch = useDispatch();
 
     const errors = useSelector(state => Object.values(state.errors));
-    const emailErrors = errors.filter(error => error.toLowerCase().includes("email"));
-    const passwordErrors = errors.filter(error => error.toLowerCase().includes("password"));
+    const filteredErrors = errors.filter(error => error !== null);
+    const emailErrors = filteredErrors.filter(error => error.toLowerCase().includes("email"));
+    const passwordErrors = filteredErrors.filter(error => error.toLowerCase().includes("password"));
 
     const [password, setPassword] = useState('');
     const [finalErrors, setFinalErrors] = useState({})

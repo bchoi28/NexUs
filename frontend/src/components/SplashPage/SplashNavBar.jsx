@@ -1,12 +1,23 @@
 import { useHistory } from 'react-router-dom';
 import './SplashNavBar.css';
 import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeSessionErrors } from '../../store/errors';
 
 const SplashNavBar = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const handleLogo = () => {
         history.go(0);
     }
+
+    useEffect(() => {
+        return () => {
+            dispatch(removeSessionErrors());
+        }
+    }, [])
+
     return (
         <div className="splash-nav-bar-main">
             {/* <div className="splash-nav-logo" onClick={handleLogo}>Nex<span className='logo-us'>us</span></div> */}
