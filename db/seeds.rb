@@ -235,7 +235,7 @@ require "open-uri"
     fname: 'Nardbon',
     lname: 'Hico',
     pronouns: 'They/Them',
-    headline: 'Head of Magical AI at Hogwarts School of Witchcraft and Wizardry',
+    headline: 'Head of Magical AI at Hogwarts',
     location_country_region: 'Earth-UK88',
     location_city: 'Hogwarts',
     about: 'Blending the magic of Hogwarts with the power of artificial intelligence. As a witch/wizard and software engineer, I\'m at the intersection of magic and machine learning. Join me in creating enchanting algorithms and charming neural networks.'
