@@ -106,7 +106,7 @@ const Feed = () => {
                                     <i className="fa-brands fa-linkedin-in me-icon-links"></i>
                                     <span className="icon-text">LinkedIn</span>
                                 </NavLink>
-                                <NavLink to={{ pathname: 'https://www.linkedin.com/in/brandonchoi28/' }} target="_blank" className='me-icon-container'>
+                                <NavLink to={{ pathname: 'https://brandonchoi.dev/' }} target="_blank" className='me-icon-container'>
                                     <i className="fa-regular fa-address-card me-icon-links"></i>
                                     <span className="icon-text">Portfolio</span>
                                 </NavLink>
