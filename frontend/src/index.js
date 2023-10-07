@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './reset.css'
 import './index.css';
 import App from './App';
@@ -29,11 +30,18 @@ const Root = () => {
 }
 
 const renderApplication = () => {
-  ReactDOM.render(
+  const root = createRoot(document.getElementById('root'));
+
+  // ReactDOM.render(
+  //   <React.StrictMode>
+  //     <Root />
+  //   </React.StrictMode>,
+  //   document.getElementById('root')
+  // );
+  root.render(
     <React.StrictMode>
       <Root />
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
   );
 }
 
