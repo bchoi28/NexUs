@@ -63,7 +63,7 @@
 .feed-post-form-top {
     display: flex;
     align-items: center;
-    color: rgba(0, 0, 0, 0.6)
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .feed-user-profile-pic {
@@ -148,6 +148,7 @@
     justify-content: space-between;
     position: relative;
     top: 14px;
+    flex-wrap: wrap;
 }
 
 .feed-post-form-bottom i {

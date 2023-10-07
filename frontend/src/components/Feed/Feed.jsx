@@ -77,15 +77,15 @@ const Feed = () => {
                                 </i>
                                 <i className="fa-solid fa-video feed-video-icon">
                                     <span className='feed-video-icon-text' >Video</span>
-                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
+                                    <span className="post-form-tooltip-text">coming soon!</span>
                                 </i>
                                 <i className="fa-regular fa-calendar-plus feed-calendar-icon">
                                     <span className='feed-calendar-icon-text' >Event</span>
-                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
+                                    <span className="post-form-tooltip-text">coming soon!</span>
                                 </i>
                                 <i className="fa-solid fa-newspaper feed-article-icon">
                                     <span className='feed-article-icon-text' >Write article</span>
-                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
+                                    <span className="post-form-tooltip-text">coming soon!</span>
                                 </i>
                             </div>
                         </div>
