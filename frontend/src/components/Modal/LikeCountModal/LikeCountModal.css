@@ -64,6 +64,8 @@
     font-size: 12px;
     color: var(--color-text-light);
     display: inline-block;
+    position: relative;
+    bottom: 3px;
 }
 
 .liker-item-container {
