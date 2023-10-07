@@ -209,6 +209,7 @@
 
 .profile-badge-connections-link {
     color: var(--color-text-light);
+    cursor: pointer;
 }
 
 .profile-badge-connections-link:hover {
@@ -217,5 +218,10 @@
 }
 
 .profile-badge-connections-number {
-    /* margin-right: 1px; */
+    cursor: pointer;
+}
+
+.profile-badge-connections-number:hover {
+    text-decoration: underline;
+    color: var(--secondary-color)
 }

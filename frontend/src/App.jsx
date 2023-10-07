@@ -21,8 +21,9 @@ function App() {
         <ProtectedRoute exact path="/feed" component={Feed} />
         <ProtectedRoute exact path='/logout' component={Logout}></ProtectedRoute>
         <ProtectedRoute exact path='/profile/:id' component={ProfilePage}></ProtectedRoute>
-        <ProtectedRoute exact path='/mynetwork' component={NetworkPage}></ProtectedRoute>
-        <ProtectedRoute exact path='/mynetwork1' component={Login}></ProtectedRoute>
+        <ProtectedRoute exact path='/mynetwork'>
+          <NetworkPage />
+        </ProtectedRoute>
         <ProtectedRoute path='*'><Redirect to='/feed' /></ProtectedRoute>
       </Switch>
     </>

@@ -5,7 +5,7 @@ import { getSessionUser } from '../../store/session';
 import ProfileDropDown from './ProfileDropDown';
 import SearchBar from '../SearchBar/SearchBar';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { fetchAllConnectionRequests, getConnectionRequests } from '../../store/connection';
+import { fetchAllConnectionRequests, getConnectionRequests, removeConnections } from '../../store/connection';
 import { useEffect } from 'react';
 
 const FeedNavBar = () => {
@@ -32,6 +32,8 @@ const FeedNavBar = () => {
         if (location.pathname === '/mynetwork') {
             history.go(0);
         } else {
+            dispatch(removeConnections());
+            debugger
             history.push('/mynetwork');
         }
     };

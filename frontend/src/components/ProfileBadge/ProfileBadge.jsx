@@ -2,13 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProfileBadge.css'
 import { NavLink } from 'react-router-dom';
 import { fetchSessionUser, getSessionUser } from '../../store/session';
-import { fetchAllConnections, getConnections } from '../../store/connection';
+import { fetchAllConnections, getConnections, removeConnections } from '../../store/connection';
 import { useEffect } from 'react';
 import { getPosts } from '../../store/post';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfileBadge = ({ user }) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector(getSessionUser)
     const connections = Object.values(useSelector(getConnections));
     const posts = useSelector(getPosts);
@@ -38,6 +40,11 @@ const ProfileBadge = ({ user }) => {
     const profilePhoto = currentUser.photoUrl;
     const coverPhoto = currentUser.coverPhotoUrl;
 
+    const handleNetworkClick = () => {
+        dispatch(removeConnections());
+        history.push('/mynetwork');
+    };
+
     return (
         <div className='profile-badge-container'>
             <img className='badge-background' src={coverPhoto ? coverPhoto : '/assets/images/seeds/badge-background.png'} alt="banner" />
@@ -55,12 +62,12 @@ const ProfileBadge = ({ user }) => {
                 <div style={{ color: 'var(--primary-color)' }} >{currentUser.id > 5 ? `0` : `18`}</div>
             </div>
             <div className='profile-connections-count'>
-                <NavLink to='/mynetwork' className='profile-badge-connections-link'>
+                <div onClick={handleNetworkClick} className='profile-badge-connections-link'>
                     <div>Alliances</div>
-                </NavLink>
-                <NavLink to='/mynetwork'>
+                </div>
+                <div onClick={handleNetworkClick}>
                     <div className='profile-badge-connections-number' style={{ color: 'var(--primary-color)' }} >{connectionsCount}</div>
-                </NavLink>
+                </div>
             </div>
         </div>
     )
