@@ -104,11 +104,11 @@ const PostItem = React.memo(({ post }) => {
         <>
             <div className='post-item-container'>
                 <header className='post-header'>
-                    <NavLink to={`/profile/${post.authorId}`} profileUser={post.author}>
+                    <NavLink to={`/profile/${post.authorId}`}>
                         <img className='post-profile-pic' src={authorPhoto} alt="profile" />
                     </NavLink>
                     <div className='post-names-headline'>
-                        <NavLink className='post-author-names' to={`/profile/${post.authorId}`} profileUser={post.author}>
+                        <NavLink className='post-author-names' to={`/profile/${post.authorId}`}>
                             {post.author.fName} {post.author.lName}
                         </NavLink>
                         <span className="post-author-pronouns">{post.author.pronouns ? `(${post.author.pronouns})` : null}</span>
