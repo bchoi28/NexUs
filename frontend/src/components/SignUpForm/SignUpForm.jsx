@@ -100,7 +100,7 @@ const SignUpForm = ({ onSubmit, email, setEmail }) => {
                     <label className='input-label' htmlFor="password">Password (6 or more characters)</label>
                     <input
                         className='password'
-                        type="text"
+                        type="password"
                         id='password'
                         value={password}
                         onChange={handlePassword} />
