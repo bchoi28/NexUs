@@ -7,6 +7,7 @@ import postsReducer from './post';
 import uiReducer from './ui';
 import modalReducer from './modal';
 import connectionsReducer from './connection';
+import clickReducer from './click';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     errors: errorsReducer,
     ui: uiReducer,
     modal: modalReducer,
-    connections: connectionsReducer
+    connections: connectionsReducer,
+    click: clickReducer
 });
 
 let enhancer;

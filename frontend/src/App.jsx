@@ -8,7 +8,6 @@ import ProfilePage from "./components/ProfilePage";
 import NetworkPage from './components/Network/NetworkPage';
 import { Redirect } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
-import Login from './components/Login';
 
 function App() {
 

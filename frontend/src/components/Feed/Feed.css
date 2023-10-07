@@ -115,6 +115,7 @@
 
 .feed-photo-icon {
     color: #378fe9;
+    cursor: pointer;
 }
 
 .feed-video-icon {
@@ -127,13 +128,6 @@
 
 .feed-article-icon {
     color: #e16745;
-}
-
-.feed-photo-icon,
-.feed-video-icon,
-.feed-calendar-icon,
-.feed-article-icon {
-    position: relative;
 }
 
 .feed-photo-icon,
@@ -175,10 +169,15 @@
     opacity: 1;
 }
 
-.feed-post-form-bottom i:hover {
+.feed-post-form-bottom i:hover:not(.feed-photo-icon) {
     border-radius: 5px;
     background-color: var(--color-background-button-hover);
     cursor: default;
+}
+
+.feed-photo-icon:hover {
+    border-radius: 5px;
+    background-color: var(--color-background-button-hover);
 }
 
 

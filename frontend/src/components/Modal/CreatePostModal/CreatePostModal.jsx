@@ -1,14 +1,18 @@
 import './CreatePostModal.css'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { createPost } from '../../../store/post';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFileClickStatus, removeFileClick } from '../../../store/click';
 
 const CreatePostModal = ({ handleClose, currentUser }) => {
     const dispatch = useDispatch();
-
+    const fileInputRef = useRef(null);
     const [body, setBody] = useState('')
     const [photoFile, setPhotoFile] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(null);
+    const [fileClicked, setFileClicked] = useState(false);
+
+    const fileClickStatus = useSelector(getFileClickStatus);
 
     const handleBody = (e) => {
         setBody(e.target.value)
@@ -50,6 +54,19 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
     )
     const authorPhoto = currentUser.photoUrl ? currentUser.photoUrl : '/assets/images/seeds/default-profile-image-circle.png';
 
+    useEffect(() => {
+        if (fileClickStatus) {
+            setFileClicked(true);
+        }
+    }, [fileClickStatus]);
+
+    useEffect(() => {
+        if (fileClicked && fileInputRef.current) {
+            fileInputRef.current.click();
+            setFileClicked(false);
+            dispatch(removeFileClick());
+        }
+    }, [fileClicked]);
 
     return (
 
@@ -85,6 +102,7 @@ const CreatePostModal = ({ handleClose, currentUser }) => {
                         className='post-modal-image-upload'
                         type="file"
                         accept='image/*'
+                        ref={fileInputRef}
                         onChange={handleFile} />
                 </div>
                 <button className='post-modal-post-button'>Post</button>

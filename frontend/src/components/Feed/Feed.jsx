@@ -11,12 +11,19 @@ import { removeUser } from '../../store/user';
 import { fetchPosts, getPosts } from '../../store/post';
 import { getSessionUser } from '../../store/session';
 import { NavLink } from 'react-router-dom';
+import { removeConnections } from '../../store/connection';
+import { receiveFileClick } from '../../store/click';
 
 const Feed = () => {
     const dispatch = useDispatch();
     // const [page, setPage] = useState(1);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const handleOpenModal = () => {
+        setModalIsOpen(true);
+        document.body.style.overflow = 'hidden'
+    }
+    const handleOpenModalWithPhotoClick = () => {
+        dispatch(receiveFileClick());
         setModalIsOpen(true);
         document.body.style.overflow = 'hidden'
     }
@@ -34,6 +41,7 @@ const Feed = () => {
         }
         return () => {
             dispatch(removeUser());
+            dispatch(removeConnections());
         }
     }, [dispatch])
 
@@ -71,9 +79,9 @@ const Feed = () => {
 
                             </div>
                             <div className='feed-post-form-bottom' >
-                                <i className="fa-regular fa-image feed-photo-icon" >
+                                <i className="fa-regular fa-image feed-photo-icon" onClick={handleOpenModalWithPhotoClick} >
                                     <span className='feed-photo-icon-text' >Photo</span>
-                                    <span className="post-form-tooltip-text">coming soon!</span>
+                                    {/* <span className="post-form-tooltip-text">coming soon!</span> */}
                                 </i>
                                 <i className="fa-solid fa-video feed-video-icon">
                                     <span className='feed-video-icon-text' >Video</span>

@@ -33,7 +33,6 @@ const FeedNavBar = () => {
             history.go(0);
         } else {
             dispatch(removeConnections());
-            debugger
             history.push('/mynetwork');
         }
     };
