@@ -9,7 +9,7 @@
 # Table of Contents
 * [Background and Overview](#background-and-overview)
 * [MVP Features](#mvp-features)
-  * [Profile](#profile)
+  * [Profiles](#profiles)
   * [Posts/Comments/Likes](#postscommentslikes)
   * [Alliances](#alliances)
   * [Experiences](#experiences)
